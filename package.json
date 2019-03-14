@@ -1,0 +1,37 @@
+{
+  "name": "artiefact",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "react": "16.6.3",
+    "react-native": "0.58.6",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "redux-form": "^8.1.0",
+    "tslint": "^5.13.1"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/jest": "^24.0.11",
+    "@types/react": "^16.8.7",
+    "@types/react-dom": "^16.8.2",
+    "@types/react-native": "^0.57.38",
+    "@types/react-redux": "^7.0.3",
+    "@types/react-test-renderer": "^16.8.1",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "24.3.1",
+    "jest": "^24.3.1",
+    "metro-react-native-babel-preset": "0.53.0",
+    "react-native-typescript-transformer": "^1.2.12",
+    "react-test-renderer": "16.6.3",
+    "ts-jest": "^24.0.0",
+    "typescript": "^3.3.3333"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
