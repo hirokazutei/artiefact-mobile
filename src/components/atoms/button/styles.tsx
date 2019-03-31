@@ -53,18 +53,33 @@ const defaultStyle = {
   size: "medium" as ButtonSizeKeys
 };
 
+/**
+ * Resolve Button Colors
+ *
+ * @param color - color key
+ */
 const resolveBottonColors = (
   color: ButtonColorKeys = defaultStyle.color
 ): string => {
   return buttonColors[color];
 };
 
+/**
+ * Resolve Button Padding Sizes
+ *
+ * @param size - size key
+ */
 const resolveButtonPaddingSizes = (
   size: ButtonSizeKeys = defaultStyle.size
 ): number => {
   return buttonPaddingSizes[size];
 };
 
+/**
+ * Resolve Button Text Sizes
+ *
+ * @param size - size key
+ */
 const resolveButtonTextSizes = (
   size: ButtonSizeKeys = defaultStyle.size
 ): number => {
@@ -78,6 +93,13 @@ interface Styles {
   buttonStretched: ViewStyle;
 }
 
+/**
+ * Stylize Button
+ *
+ * @param styleProps - style properties
+ * @param [styleProps.color] - color key
+ * @param [styleProps.size] - size key
+ */
 export const stylizeButton = (styleProps: StyleProps): Styles => {
   const { color, size } = styleProps;
   return StyleSheet.create<Styles>({

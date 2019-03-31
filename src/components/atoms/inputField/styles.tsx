@@ -5,6 +5,9 @@ interface Styles {
   inputField: TextStyle;
 }
 
+/**
+ * Stylize Input Field
+ */
 export const stylizeInputField = () => {
   return StyleSheet.create<Styles>({
     inputField: {

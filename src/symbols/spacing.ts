@@ -7,7 +7,7 @@ type SpaceKeys =
   | "huge"
   | "massive";
 
-export const colors: { [key in SpaceKeys]: number } = {
+export const spacing: { [key in SpaceKeys]: number } = {
   micro: 2,
   tiny: 4,
   small: 8,

@@ -9,6 +9,18 @@ export interface Props {
   isStretched?: boolean;
 }
 
+/**
+ * Button
+ *
+ * @param props - props
+ * @param props.children - children
+ * @param [props.onPress] - action fired on press
+ * @param [props.isDiabled] - is button disabled
+ * @param [props.isStretched] - is button stretched
+ * Style
+ * @param [props.color] - color of the button
+ * @param [props.size] - size of the Button
+ */
 const Button = (props: Props & StyleProps): React.ReactElement => {
   const { children, isDisabled, isStretched, ...styleProps } = props;
   const styles = stylizeButton(styleProps);

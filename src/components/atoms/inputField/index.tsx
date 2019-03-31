@@ -13,6 +13,19 @@ export interface Props {
   secureTextEntry?: boolean;
 }
 
+/**
+ * Input Field
+ * @param props - properties
+ * @param [props.defaultValue] - default value
+ * @param [props.editable] - is field editable
+ * @param [props.maxLength - max length of field
+ * @param [props.onChange] - action fired when change occures
+ * @param [props.onChangeValue] - action fired when value change occures
+ * @param [props.placeholder] - placeholder of the field
+ * @param [props.secureTextEntry] - if it is secure text entry
+ * Settings
+ * @param [props.keyboardType] - the keyboard type of field
+ */
 const InputField = (props: Props & SettingProps): React.ReactElement => {
   const { keyboardType, ...otherProps } = props;
   const styles = stylizeInputField();

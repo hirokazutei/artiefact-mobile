@@ -18,6 +18,11 @@ const defaultSetting = {
   keyboardType: "default" as KeyboardKeys
 };
 
+/**
+ * Resolve Keyboard Types
+ *
+ * @param keyboardType - keyboard type key
+ */
 export const resolveKeyboardTypes = (
   keyboardType: KeyboardKeys = defaultSetting.keyboardType
 ): KeyboardType => {

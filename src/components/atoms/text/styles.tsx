@@ -2,16 +2,23 @@ import { StyleSheet, TextStyle } from "react-native";
 import * as symbols from "../../../symbols";
 
 export interface StyleProps {
-  color: TextColorKeys;
-  size: TextSizeKeys;
-  italic: Boolean;
-  weight: TextWeightKeys;
-  align: TextAlignKeys;
+  color?: TextColorKeys;
+  size?: TextSizeKeys;
+  italic?: Boolean;
+  weight?: TextWeightKeys;
+  align?: TextAlignKeys;
 }
 
 type TextColorKeys = "danger" | "default" | "faded" | "primary" | "secondary";
 
-type TextSizeKeys = "tiny" | "small" | "medium" | "large" | "huge" | "massive";
+type TextSizeKeys =
+  | "tiny"
+  | "small"
+  | "medium"
+  | "large"
+  | "huge"
+  | "massive"
+  | "macro";
 
 type TextWeightKeys = "hairline" | "thin" | "default" | "bold" | "thicc";
 
@@ -31,7 +38,8 @@ const textSizes: { [key in TextSizeKeys]: number } = {
   medium: 12,
   large: 16,
   huge: 24,
-  massive: 30
+  massive: 32,
+  macro: 48
 };
 
 const textWeights: { [key in TextWeightKeys]: TextStyle["fontWeight"] } = {
@@ -50,16 +58,31 @@ const defaultStyle = {
   align: "auto" as TextAlignKeys
 };
 
+/**
+ * Resolve Text Colors
+ *
+ * @param color - color key
+ */
 const resolveTextColors = (
   color: TextColorKeys = defaultStyle.color
 ): string => {
   return textColors[color];
 };
 
+/**
+ * Resolve Text Sizes
+ *
+ * @param size - size key
+ */
 const resolveTextSizes = (size: TextSizeKeys = defaultStyle.size): number => {
   return textSizes[size];
 };
 
+/**
+ * Resolve Text Weights
+ *
+ * @param weight - weight key
+ */
 const resolveTextWeights = (
   weight: TextWeightKeys = defaultStyle.weight
 ): TextStyle["fontWeight"] => {
@@ -70,6 +93,16 @@ interface Styles {
   text: TextStyle;
 }
 
+/**
+ * Stylize Text
+ *
+ * @param styleProps - style properties
+ * @param [styleProps.color] - color of text
+ * @param [styleProps.size] - size of text
+ * @param [styleProps.italic] - is text italic
+ * @param [styleProps.weight] - weight of text
+ * @param [styleProps.align] - alignment of text
+ */
 export const stylizeText = (styleProps: StyleProps) => {
   const { color, size, italic, align, weight } = styleProps;
   return StyleSheet.create<Styles>({
