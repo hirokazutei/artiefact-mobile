@@ -2,12 +2,12 @@ import React from "react";
 import { TouchableOpacity, Text } from "react-native";
 import { stylizeButton, StyleProps } from "./styles";
 
-export interface Props {
+type Props = {
   children: string;
   onPress?: () => any;
   isDisabled?: boolean;
   isStretched?: boolean;
-}
+} & StyleProps;
 
 /**
  * Button
@@ -21,7 +21,7 @@ export interface Props {
  * @param [props.color] - color of the button
  * @param [props.size] - size of the Button
  */
-const Button = (props: Props & StyleProps): React.ReactElement => {
+const Button = (props: Props): React.ReactElement => {
   const { children, isDisabled, isStretched, ...styleProps } = props;
   const styles = stylizeButton(styleProps);
   return (

@@ -1,17 +1,11 @@
 import * as React from "react";
 import { View } from "react-native";
 import { spacing } from "../../../symbols";
+import { stylizeInset, StyleProps } from "./styles";
 
 type Props = {
   children: Array<React.ReactElement>;
-  padding?: number;
-  paddingBottom?: number;
-  paddingHorizontal?: number;
-  paddingLeft?: number;
-  paddingRight?: number;
-  paddingTop?: number;
-  paddingVertical?: number;
-};
+} & StyleProps;
 
 /**
  * Inset
@@ -27,8 +21,9 @@ type Props = {
  * @param [props.paddingVertical] - Vertical Padding
  */
 const Inset = (props: Props): React.ReactElement => {
-  const { children, ...styles } = props;
-  return <View style={{ ...styles }}>{children}</View>;
+  const { children, ...styleProps } = props;
+  const styles = stylizeInset(styleProps);
+  return <View style={styles.inset}>{children}</View>;
 };
 
 export default Inset;

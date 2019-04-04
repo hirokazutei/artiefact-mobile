@@ -3,7 +3,7 @@ import { TextInput } from "react-native";
 import { stylizeInputField } from "./styles";
 import { SettingProps, resolveKeyboardTypes } from "./settings";
 
-export interface Props {
+type Props = {
   defaultValue?: string;
   editable?: boolean;
   maxLength?: number;
@@ -11,7 +11,7 @@ export interface Props {
   onChangeValue?: (val: any) => any;
   placeholder?: string;
   secureTextEntry?: boolean;
-}
+} & SettingProps;
 
 /**
  * Input Field
@@ -26,7 +26,7 @@ export interface Props {
  * Settings
  * @param [props.keyboardType] - the keyboard type of field
  */
-const InputField = (props: Props & SettingProps): React.ReactElement => {
+const InputField = (props: Props): React.ReactElement => {
   const { keyboardType, ...otherProps } = props;
   const styles = stylizeInputField();
   return (

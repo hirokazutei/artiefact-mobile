@@ -103,7 +103,7 @@ interface Styles {
  * @param [styleProps.weight] - weight of text
  * @param [styleProps.align] - alignment of text
  */
-export const stylizeText = (styleProps: StyleProps) => {
+export const stylizeText = (styleProps: StyleProps): Styles => {
   const { color, size, italic, align, weight } = styleProps;
   return StyleSheet.create<Styles>({
     text: {

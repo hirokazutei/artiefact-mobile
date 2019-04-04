@@ -1,12 +1,11 @@
 /* @flow */
 import * as React from "react";
 import { View } from "react-native";
+import { stylizeOutset, StyleProps } from "./styles";
 
 type Props = {
   children: React.ReactElement;
-  marginBottom?: number;
-  marginRight?: number;
-};
+} & StyleProps;
 
 /**
  * Outset
@@ -17,8 +16,9 @@ type Props = {
  * @param [props.marginRight] - right margin
  */
 const Outset = (props: Props): React.ReactElement => {
-  const { children, ...style } = props;
-  return <View style={{ ...style }}>{children}</View>;
+  const { children, ...styleProps } = props;
+  const styles = stylizeOutset(styleProps);
+  return <View style={styles.outset}>{children}</View>;
 };
 
 export default Outset;

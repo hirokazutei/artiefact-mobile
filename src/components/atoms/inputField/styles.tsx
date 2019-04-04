@@ -8,7 +8,7 @@ interface Styles {
 /**
  * Stylize Input Field
  */
-export const stylizeInputField = () => {
+export const stylizeInputField = (): Styles => {
   return StyleSheet.create<Styles>({
     inputField: {
       borderColor: symbols.colors.primary,
