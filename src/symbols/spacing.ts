@@ -1,11 +1,12 @@
-type SpaceKeys =
+export type SpaceKeys =
   | "micro"
   | "tiny"
   | "small"
   | "medium"
   | "large"
   | "huge"
-  | "massive";
+  | "massive"
+  | "macro";
 
 export const spacing: { [key in SpaceKeys]: number } = {
   micro: 2,
@@ -14,5 +15,6 @@ export const spacing: { [key in SpaceKeys]: number } = {
   medium: 12,
   large: 16,
   huge: 24,
-  massive: 40
+  massive: 40,
+  macro: 64
 };

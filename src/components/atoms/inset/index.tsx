@@ -4,7 +4,7 @@ import { spacing } from "../../../symbols";
 import { stylizeInset, StyleProps } from "./styles";
 
 type Props = {
-  children: Array<React.ReactElement>;
+  children: React.ReactElement;
 } & StyleProps;
 
 /**

@@ -1,5 +1,4 @@
-/* @flow */
-import * as React from "react";
+import React from "react";
 import { View } from "react-native";
 import { stylizeOutset, StyleProps } from "./styles";
 
@@ -15,7 +14,7 @@ type Props = {
  * @param [props.marginBottom] - bottom margin
  * @param [props.marginRight] - right margin
  */
-const Outset = (props: Props): React.ReactElement => {
+const Outset: React.FC<Props> = (props: Props): React.ReactElement => {
   const { children, ...styleProps } = props;
   const styles = stylizeOutset(styleProps);
   return <View style={styles.outset}>{children}</View>;

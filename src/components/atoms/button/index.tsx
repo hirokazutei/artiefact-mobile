@@ -21,7 +21,7 @@ type Props = {
  * @param [props.color] - color of the button
  * @param [props.size] - size of the Button
  */
-const Button = (props: Props): React.ReactElement => {
+const Button: React.FC<Props> = (props: Props): React.ReactElement => {
   const { children, isDisabled, isStretched, ...styleProps } = props;
   const styles = stylizeButton(styleProps);
   return (

@@ -2,11 +2,11 @@ import React from "react";
 import { Text as RNText } from "react-native";
 import { stylizeText, StyleProps } from "./styles";
 
-interface Props {
+type Props = {
+  allowScaling?: boolean;
   children: string;
   onPress?: (arg: any) => any;
-  allowScaling?: boolean;
-}
+} & StyleProps;
 
 /**
  * Text
@@ -21,7 +21,7 @@ interface Props {
  * @param [props.weight] - weight of text
  * @param [props.align] - alignment of text
  */
-const Text = (props: Props & StyleProps): React.ReactElement => {
+const Text: React.FC<Props> = (props: Props): React.ReactElement => {
   const { children, onPress, allowScaling, ...styleProps } = props;
   const styles = stylizeText(styleProps);
   return (

@@ -26,7 +26,7 @@ type Props = {
  * Settings
  * @param [props.keyboardType] - the keyboard type of field
  */
-const InputField = (props: Props): React.ReactElement => {
+const InputField: React.FC<Props> = (props: Props): React.ReactElement => {
   const { keyboardType, ...otherProps } = props;
   const styles = stylizeInputField();
   return (
