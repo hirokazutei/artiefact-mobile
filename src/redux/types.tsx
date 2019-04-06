@@ -1,18 +1,8 @@
 /* @flow */
-import { Dispatch as ReduxDispatch, Store as ReduxStore, } from 'redux';
+import { Dispatch, Action, Store as ReduxStore } from "redux";
 
+export type Dispatcher = Dispatch;
 
-export interface Action {
-    error?: boolean,
-    meta?: Object,
-    payload?: any,
-    type: string
-};
-
-export type Dispatch = ReduxDispatch<Action>;
-
-export type State = Object
-
-export type ReduxStore = Object
+export type State = Object;
 
 export type Store = ReduxStore<State, Action>;

@@ -1,12 +1,11 @@
-import { createStore } from 'redux';
-import rootReducer from './rootReducer';
-import { Store } from './types';
+import { createStore, Store, AnyAction } from "redux";
+import rootReducer from "./rootReducer";
 
 /**
  * Create Store for the Whole Application
  */
-const configureStore = (): Store => {
-    return createStore(rootReducer);
-}
+const configureStore: () => Store<Object, AnyAction> = (): Store => {
+  return createStore(rootReducer);
+};
 
 export default configureStore;

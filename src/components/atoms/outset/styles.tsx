@@ -1,14 +1,14 @@
 import { StyleSheet, ViewStyle } from "react-native";
-import { spacing, SpaceKeys } from "../../../symbols";
+import { spacing, SpacingKeys } from "../../../symbols";
 
 export type StyleProps = {
-  marginBottom?: SpaceKeys;
-  marginRight?: SpaceKeys;
+  marginBottom?: SpacingKeys;
+  marginRight?: SpacingKeys;
 };
 
-interface Styles {
+type Styles = {
   outset: ViewStyle;
-}
+};
 
 /**
  * Stylize Outset

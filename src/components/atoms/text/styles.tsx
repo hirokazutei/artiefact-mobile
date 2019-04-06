@@ -1,13 +1,13 @@
 import { StyleSheet, TextStyle } from "react-native";
 import * as symbols from "../../../symbols";
 
-export interface StyleProps {
+export type StyleProps = {
   color?: TextColorKeys;
   size?: TextSizeKeys;
   italic?: Boolean;
   weight?: TextWeightKeys;
   align?: TextAlignKeys;
-}
+};
 
 type TextColorKeys = "danger" | "default" | "faded" | "primary" | "secondary";
 
@@ -24,7 +24,7 @@ type TextWeightKeys = "hairline" | "thin" | "default" | "bold" | "thicc";
 
 type TextAlignKeys = "auto" | "left" | "right" | "center";
 
-const textColors: { [key in TextColorKeys]: string } = {
+const textColors: Readonly<{ [key in TextColorKeys]: string }> = {
   danger: symbols.colors.danger,
   default: symbols.colors.defaultText,
   faded: symbols.colors.faded,
@@ -32,7 +32,7 @@ const textColors: { [key in TextColorKeys]: string } = {
   secondary: symbols.colors.secondary
 };
 
-const textSizes: { [key in TextSizeKeys]: number } = {
+const textSizes: Readonly<{ [key in TextSizeKeys]: number }> = {
   tiny: 6,
   small: 8,
   medium: 12,
@@ -42,7 +42,9 @@ const textSizes: { [key in TextSizeKeys]: number } = {
   macro: 48
 };
 
-const textWeights: { [key in TextWeightKeys]: TextStyle["fontWeight"] } = {
+const textWeights: Readonly<
+  { [key in TextWeightKeys]: TextStyle["fontWeight"] }
+> = {
   hairline: "100",
   thin: "300",
   default: "500",
@@ -50,13 +52,14 @@ const textWeights: { [key in TextWeightKeys]: TextStyle["fontWeight"] } = {
   thicc: "900"
 };
 
-const defaultStyle = {
+const defaultStyle: Readonly<Required<StyleProps>> = {
   color: "default" as TextColorKeys,
   size: "medium" as TextSizeKeys,
   italic: false as Boolean,
   weight: "default" as TextWeightKeys,
   align: "auto" as TextAlignKeys
 };
+type Distribute<U> = U extends any ? { type: U } : never;
 
 /**
  * Resolve Text Colors
@@ -89,9 +92,9 @@ const resolveTextWeights = (
   return textWeights[weight];
 };
 
-interface Styles {
+type Styles = {
   text: TextStyle;
-}
+};
 
 /**
  * Stylize Text

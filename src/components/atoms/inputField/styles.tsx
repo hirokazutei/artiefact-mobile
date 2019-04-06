@@ -1,9 +1,9 @@
 import { StyleSheet, TextStyle } from "react-native";
 import * as symbols from "../../../symbols";
 
-interface Styles {
+type Styles = {
   inputField: TextStyle;
-}
+};
 
 /**
  * Stylize Input Field

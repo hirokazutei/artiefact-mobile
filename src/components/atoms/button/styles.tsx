@@ -1,10 +1,10 @@
 import { StyleSheet, ViewStyle, TextStyle } from "react-native";
 import * as symbols from "../../../symbols";
 
-export interface StyleProps {
+export type StyleProps = {
   color?: ButtonColorKeys;
   size?: ButtonSizeKeys;
-}
+};
 
 type ButtonColorKeys = "primary" | "secondary" | "disabled";
 
@@ -18,17 +18,17 @@ type ButtonSizeKeys =
   | "huge"
   | "massive";
 
-const buttonColors: { [key in ButtonColorKeys]: string } = {
+const buttonColors: Readonly<{ [key in ButtonColorKeys]: string }> = {
   primary: symbols.colors.primary,
   secondary: symbols.colors.secondary,
   disabled: symbols.colors.disabled
 };
 
-const textColors: { [key in textColorKeys]: string } = {
+const textColors: Readonly<{ [key in textColorKeys]: string }> = {
   white: symbols.colors.white
 };
 
-type Sizes = { [key in ButtonSizeKeys]: number };
+type Sizes = Readonly<{ [key in ButtonSizeKeys]: number }>;
 
 const buttonPaddingSizes: Sizes = {
   tiny: 1,
@@ -48,7 +48,7 @@ const buttonTextSizes: Sizes = {
   massive: 24
 };
 
-const defaultStyle = {
+const defaultStyle: Readonly<Required<StyleProps>> = {
   color: "primary" as ButtonColorKeys,
   size: "medium" as ButtonSizeKeys
 };
@@ -87,10 +87,10 @@ const resolveButtonTextSizes = (
 };
 
 interface Styles {
-  button: ViewStyle;
-  text: TextStyle;
-  buttonDisabled: ViewStyle;
-  buttonStretched: ViewStyle;
+  readonly button: ViewStyle;
+  readonly text: TextStyle;
+  readonly buttonDisabled: ViewStyle;
+  readonly buttonStretched: ViewStyle;
 }
 
 /**

@@ -1,4 +1,4 @@
-export type SpaceKeys =
+export type SpacingKeys =
   | "micro"
   | "tiny"
   | "small"
@@ -8,7 +8,7 @@ export type SpaceKeys =
   | "massive"
   | "macro";
 
-export const spacing: { [key in SpaceKeys]: number } = {
+export const spacing: Readonly<{ [key in SpacingKeys]: number }> = {
   micro: 2,
   tiny: 4,
   small: 8,

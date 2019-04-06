@@ -1,11 +1,15 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ViewStyle } from "react-native";
 import Button from "../../atoms/Button";
 import InputField from "../../atoms/InputField";
 import Outset from "../../atoms/Outset";
 import Text from "../../atoms/Text";
 
-const styles = StyleSheet.create({
+type Styles = {
+  base: ViewStyle;
+};
+
+const styles: Styles = StyleSheet.create<Styles>({
   base: {
     flexDirection: "column",
     justifyContent: "center"
@@ -26,15 +30,10 @@ const SignIn: React.FC = (): React.ReactElement => {
       <Outset marginBottom="huge">
         <InputField placeholder="Password" secureTextEntry={true} />
       </Outset>
-
       <Outset marginBottom="medium">
-        <Button size="massive" color="primary">
-          Login
-        </Button>
+        <Button size="massive" color="primary" label="Login" />
       </Outset>
-      <Button size="massive" color="secondary">
-        SignUp
-      </Button>
+      <Button size="massive" color="secondary" label="SignUp" />
     </View>
   );
 };

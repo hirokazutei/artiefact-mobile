@@ -1,4 +1,4 @@
-type ColorTypes =
+type ColorTypeKeys =
   | "danger"
   | "defaultText"
   | "disabled"
@@ -8,7 +8,7 @@ type ColorTypes =
   | "disabled"
   | "white";
 
-export const colors: { [key in ColorTypes]: string } = {
+export const colors: Readonly<{ [key in ColorTypeKeys]: string }> = {
   danger: "#ff2323",
   defaultText: "#2d2832",
   disabled: "#808080",

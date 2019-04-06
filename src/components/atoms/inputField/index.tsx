@@ -4,6 +4,7 @@ import { stylizeInputField } from "./styles";
 import { SettingProps, resolveKeyboardTypes } from "./settings";
 
 type Props = {
+  children?: never;
   defaultValue?: string;
   editable?: boolean;
   maxLength?: number;

@@ -1,5 +1,5 @@
 import { buttonBorders } from "./borders";
 import { colors } from "./colors";
-import { spacing, SpaceKeys } from "./spacing";
+import { spacing, SpacingKeys } from "./spacing";
 
-export { buttonBorders, colors, spacing, SpaceKeys };
+export { buttonBorders, colors, spacing, SpacingKeys };

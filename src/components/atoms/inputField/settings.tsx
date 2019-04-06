@@ -7,14 +7,14 @@ export interface SettingProps {
 
 type KeyboardKeys = "default" | "numeric" | "email" | "phone";
 
-const keyboardTypes: { [key in KeyboardKeys]: KeyboardType } = {
+const keyboardTypes: Readonly<{ [key in KeyboardKeys]: KeyboardType }> = {
   default: "default",
   numeric: "numeric",
   email: "email-address",
   phone: "phone-pad"
 };
 
-const defaultSetting = {
+const defaultSetting: Required<SettingProps> = {
   keyboardType: "default" as KeyboardKeys
 };
 

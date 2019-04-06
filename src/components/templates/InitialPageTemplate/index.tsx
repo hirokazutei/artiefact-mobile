@@ -1,9 +1,13 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ViewStyle } from "react-native";
 import Inset from "../../atoms/Inset";
 import SignIn from "../../organism/SignIn/index";
 
-const styles = StyleSheet.create({
+type Styles = {
+  base: ViewStyle;
+};
+
+const styles: Styles = StyleSheet.create<Styles>({
   base: { flex: 1, flexDirection: "column", justifyContent: "center" }
 });
 

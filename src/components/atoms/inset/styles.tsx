@@ -1,19 +1,19 @@
 import { StyleSheet, ViewStyle } from "react-native";
-import { spacing, SpaceKeys } from "../../../symbols";
+import { spacing, SpacingKeys } from "../../../symbols";
 
 export type StyleProps = {
-  padding?: SpaceKeys;
-  paddingBottom?: SpaceKeys;
-  paddingHorizontal?: SpaceKeys;
-  paddingLeft?: SpaceKeys;
-  paddingRight?: SpaceKeys;
-  paddingTop?: SpaceKeys;
-  paddingVertical?: SpaceKeys;
+  padding?: SpacingKeys;
+  paddingBottom?: SpacingKeys;
+  paddingHorizontal?: SpacingKeys;
+  paddingLeft?: SpacingKeys;
+  paddingRight?: SpacingKeys;
+  paddingTop?: SpacingKeys;
+  paddingVertical?: SpacingKeys;
 };
 
-interface Styles {
+type Styles = {
   inset: ViewStyle;
-}
+};
 
 /**
  * Stylize Inset

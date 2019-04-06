@@ -3,7 +3,8 @@ import { TouchableOpacity, Text } from "react-native";
 import { stylizeButton, StyleProps } from "./styles";
 
 type Props = {
-  children: string;
+  children?: never;
+  label: string;
   onPress?: () => any;
   isDisabled?: boolean;
   isStretched?: boolean;
@@ -13,7 +14,7 @@ type Props = {
  * Button
  *
  * @param props - props
- * @param props.children - children
+ * @param props.label - label
  * @param [props.onPress] - action fired on press
  * @param [props.isDiabled] - is button disabled
  * @param [props.isStretched] - is button stretched
@@ -22,7 +23,7 @@ type Props = {
  * @param [props.size] - size of the Button
  */
 const Button: React.FC<Props> = (props: Props): React.ReactElement => {
-  const { children, isDisabled, isStretched, ...styleProps } = props;
+  const { label, isDisabled, isStretched, ...styleProps } = props;
   const styles = stylizeButton(styleProps);
   return (
     <TouchableOpacity
@@ -32,9 +33,9 @@ const Button: React.FC<Props> = (props: Props): React.ReactElement => {
         isStretched && styles.buttonStretched
       ]}
       onPress={props.onPress}
-      accessibilityLabel={children}
+      accessibilityLabel={label}
     >
-      <Text style={styles.text}>{children}</Text>
+      <Text style={styles.text}>{label}</Text>
     </TouchableOpacity>
   );
 };
