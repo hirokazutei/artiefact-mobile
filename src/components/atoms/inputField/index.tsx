@@ -1,6 +1,6 @@
 import React from "react";
 import { TextInput } from "react-native";
-import { stylizeInputField } from "./styles";
+import { StyleProps, stylizeInputField } from "./styles";
 import { SettingProps, resolveKeyboardTypes } from "./settings";
 
 type Props = {
@@ -12,7 +12,8 @@ type Props = {
   onChangeValue?: (val: any) => any;
   placeholder?: string;
   secureTextEntry?: boolean;
-} & SettingProps;
+} & SettingProps &
+  StyleProps;
 
 /**
  * Input Field
@@ -28,8 +29,8 @@ type Props = {
  * @param [props.keyboardType] - the keyboard type of field
  */
 const InputField: React.FC<Props> = (props: Props): React.ReactElement => {
-  const { keyboardType, ...otherProps } = props;
-  const styles = stylizeInputField();
+  const { keyboardType, color, ...otherProps } = props;
+  const styles = stylizeInputField({ color });
   return (
     <TextInput
       style={styles.inputField}

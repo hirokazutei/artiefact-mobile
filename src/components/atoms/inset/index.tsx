@@ -1,10 +1,9 @@
 import * as React from "react";
 import { View } from "react-native";
-import { spacing } from "../../../symbols";
 import { stylizeInset, StyleProps } from "./styles";
 
 type Props = {
-  children: React.ReactChild | React.ReactChildren;
+  children: Array<React.ReactElement> | React.ReactChildren;
 } & StyleProps;
 
 /**

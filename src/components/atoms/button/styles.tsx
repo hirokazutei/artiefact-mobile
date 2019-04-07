@@ -86,12 +86,12 @@ const resolveButtonTextSizes = (
   return buttonTextSizes[size];
 };
 
-interface Styles {
-  readonly button: ViewStyle;
-  readonly text: TextStyle;
-  readonly buttonDisabled: ViewStyle;
-  readonly buttonStretched: ViewStyle;
-}
+type Styles = {
+  button: ViewStyle;
+  text: TextStyle;
+  buttonDisabled: ViewStyle;
+  buttonStretched: ViewStyle;
+};
 
 /**
  * Stylize Button

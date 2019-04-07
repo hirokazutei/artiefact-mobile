@@ -1,8 +1,13 @@
 import React from "react";
-import InitialPageTemplate from "../../templates/InitialPageTemplate/index";
+import SignInTemplate from "../../templates/SignInTemplate/index";
+import { NavigationScreenProp } from "react-navigation";
+
+export interface HomeScreenProps {
+  navigation: NavigationScreenProp<any, any>;
+}
 
 const SignInPage: React.FC = (): React.ReactElement => {
-  return <InitialPageTemplate />;
+  return <SignInTemplate />;
 };
 
 export default SignInPage;
