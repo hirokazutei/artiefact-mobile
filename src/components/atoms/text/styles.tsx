@@ -3,24 +3,13 @@ import * as symbols from "../../../symbols";
 
 export type StyleProps = {
   color?: TextColorKeys;
-  size?: TextSizeKeys;
+  size?: symbols.text.TextSizeKeys;
   italic?: Boolean;
-  weight?: TextWeightKeys;
+  weight?: symbols.text.TextWeightKeys;
   align?: TextAlignKeys;
 };
 
 type TextColorKeys = "danger" | "default" | "faded" | "primary" | "secondary";
-
-type TextSizeKeys =
-  | "tiny"
-  | "small"
-  | "medium"
-  | "large"
-  | "huge"
-  | "massive"
-  | "macro";
-
-type TextWeightKeys = "hairline" | "thin" | "default" | "bold" | "thicc";
 
 type TextAlignKeys = "auto" | "left" | "right" | "center";
 
@@ -32,34 +21,13 @@ const textColors: Readonly<{ [key in TextColorKeys]: string }> = {
   secondary: symbols.colors.secondary
 };
 
-const textSizes: Readonly<{ [key in TextSizeKeys]: number }> = {
-  tiny: 6,
-  small: 8,
-  medium: 12,
-  large: 16,
-  huge: 24,
-  massive: 32,
-  macro: 48
-};
-
-const textWeights: Readonly<
-  { [key in TextWeightKeys]: TextStyle["fontWeight"] }
-> = {
-  hairline: "100",
-  thin: "300",
-  default: "500",
-  bold: "700",
-  thicc: "900"
-};
-
 const defaultStyle: Readonly<Required<StyleProps>> = {
   color: "default" as TextColorKeys,
-  size: "medium" as TextSizeKeys,
+  size: "medium" as symbols.text.TextSizeKeys,
   italic: false as Boolean,
-  weight: "default" as TextWeightKeys,
+  weight: "default" as symbols.text.TextWeightKeys,
   align: "auto" as TextAlignKeys
 };
-type Distribute<U> = U extends any ? { type: U } : never;
 
 /**
  * Resolve Text Colors
@@ -77,8 +45,10 @@ const resolveTextColors = (
  *
  * @param size - size key
  */
-const resolveTextSizes = (size: TextSizeKeys = defaultStyle.size): number => {
-  return textSizes[size];
+const resolveTextSizes = (
+  size: symbols.text.TextSizeKeys = defaultStyle.size
+): number => {
+  return symbols.text.textSizes[size];
 };
 
 /**
@@ -87,9 +57,9 @@ const resolveTextSizes = (size: TextSizeKeys = defaultStyle.size): number => {
  * @param weight - weight key
  */
 const resolveTextWeights = (
-  weight: TextWeightKeys = defaultStyle.weight
+  weight: symbols.text.TextWeightKeys = defaultStyle.weight
 ): TextStyle["fontWeight"] => {
-  return textWeights[weight];
+  return symbols.text.textWeights[weight];
 };
 
 type Styles = {
