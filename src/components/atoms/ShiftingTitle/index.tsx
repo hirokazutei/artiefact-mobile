@@ -17,14 +17,14 @@ export default class ShiftingTitle extends React.Component<
   fadeInNew() {
     Animated.timing(this.state.fadeAnim, {
       toValue: 1,
-      duration: 1000
+      duration: 1500
     }).start();
   }
 
   componentDidMount() {
     this.fadeInNew();
     setInterval(() => {
-      this.setState({ fadeAnim: new Animated.Value(-1) });
+      this.setState({ fadeAnim: new Animated.Value(-3) });
       this.fadeInNew();
       this.setState({ title: getRandomUserTitle(this.state.title) });
     }, 3000);
@@ -33,8 +33,15 @@ export default class ShiftingTitle extends React.Component<
   render() {
     const styles = stylizeText(this.props);
     return (
-      <Animated.View style={{ opacity: this.state.fadeAnim }}>
-        <Text style={styles.text}>{this.state.title}</Text>
+      <Animated.View style={[styles.base, { opacity: this.state.fadeAnim }]}>
+        <Text
+          style={styles.text}
+          adjustsFontSizeToFit={true}
+          numberOfLines={1}
+          allowFontScaling={false}
+        >
+          {this.state.title}
+        </Text>
       </Animated.View>
     );
   }

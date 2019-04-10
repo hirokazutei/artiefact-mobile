@@ -1,4 +1,4 @@
-import { StyleSheet, TextStyle } from "react-native";
+import { StyleSheet, TextStyle, ViewStyle } from "react-native";
 import * as symbols from "../../../symbols";
 
 export type StyleProps = {
@@ -21,6 +21,7 @@ const resolveTextColors = (
 };
 
 type Styles = {
+  base: ViewStyle;
   text: TextStyle;
 };
 
@@ -33,6 +34,9 @@ type Styles = {
 export const stylizeText = (styleProps: StyleProps): Styles => {
   const { color } = styleProps;
   return StyleSheet.create<Styles>({
+    base: {
+      height: symbols.spacing.macro
+    },
     text: {
       color: resolveTextColors(color),
       fontSize: symbols.text.textSizes["macro"],

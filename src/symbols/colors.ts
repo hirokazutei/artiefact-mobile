@@ -14,6 +14,6 @@ export const colors: Readonly<{ [key in ColorTypeKeys]: string }> = {
   disabled: "#808080",
   faded: "#b4afbe",
   primary: "#4A0D67",
-  secondary: "#FFC145",
+  secondary: "#ff9345",
   white: "#FFFFFF"
 };

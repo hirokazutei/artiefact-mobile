@@ -1,4 +1,9 @@
-import { combineReducers } from 'redux'
-import { accountReducer } from '../logics/account/reduser';
+import { combineReducers } from "redux";
+import {
+  reducer as authenticationReducer,
+  State as AuthenticationState
+} from "./reducers/authentication";
 
-export default combineReducers({ account: accountReducer })
+export type State = { authentication: AuthenticationState };
+
+export default combineReducers({ authentication: authenticationReducer });

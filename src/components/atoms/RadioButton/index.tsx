@@ -2,10 +2,9 @@ import React from "react";
 import { TouchableOpacity, View } from "react-native";
 import { stylizeRadioButton, StyleProps } from "./styles";
 
-type Props = {
+export type Props = {
   checked: boolean;
-  children?: never;
-  onPress?: () => any;
+  onPress?: (arg: any) => any;
 } & StyleProps;
 
 /**

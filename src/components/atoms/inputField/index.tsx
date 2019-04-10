@@ -8,10 +8,10 @@ type Props = {
   defaultValue?: string;
   editable?: boolean;
   maxLength?: number;
-  onChange?: (e: any) => any;
-  onChangeValue?: (val: any) => any;
+  onChangeText?: (e: any) => any;
   placeholder?: string;
   secureTextEntry?: boolean;
+  value?: string;
 } & SettingProps &
   StyleProps;
 
@@ -21,10 +21,10 @@ type Props = {
  * @param [props.defaultValue] - default value
  * @param [props.editable] - is field editable
  * @param [props.maxLength - max length of field
- * @param [props.onChange] - action fired when change occures
- * @param [props.onChangeValue] - action fired when value change occures
+ * @param [props.onChangeText] - action fired when change occures
  * @param [props.placeholder] - placeholder of the field
  * @param [props.secureTextEntry] - if it is secure text entry
+ * @param [props.value] - value of input
  * Settings
  * @param [props.keyboardType] - the keyboard type of field
  */

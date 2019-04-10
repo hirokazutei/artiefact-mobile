@@ -7,7 +7,7 @@ export const getRandomUserTitle: (current?: UserTitle) => UserTitle = (
   current
 ): UserTitle => {
   while (true) {
-    const title = userTitle[Math.floor(Math.random() * (userTitle.length - 1))];
+    const title = userTitle[Math.floor(Math.random() * userTitle.length)];
     if (title !== current) {
       return title;
     }

@@ -9,17 +9,24 @@ export type StyleProps = {
   align?: TextAlignKeys;
 };
 
-type TextColorKeys = "danger" | "default" | "faded" | "primary" | "secondary";
-
-type TextAlignKeys = "auto" | "left" | "right" | "center";
+type TextColorKeys =
+  | "danger"
+  | "default"
+  | "faded"
+  | "primary"
+  | "secondary"
+  | "disabled";
 
 const textColors: Readonly<{ [key in TextColorKeys]: string }> = {
   danger: symbols.colors.danger,
   default: symbols.colors.defaultText,
   faded: symbols.colors.faded,
   primary: symbols.colors.primary,
-  secondary: symbols.colors.secondary
+  secondary: symbols.colors.secondary,
+  disabled: symbols.colors.disabled
 };
+
+type TextAlignKeys = "auto" | "left" | "right" | "center";
 
 const defaultStyle: Readonly<Required<StyleProps>> = {
   color: "default" as TextColorKeys,
