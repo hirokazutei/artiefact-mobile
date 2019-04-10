@@ -3,12 +3,14 @@ import { ActionTypes, actions } from "./actionTypes";
 
 export type State = {
   agreeToTerms: boolean;
+  email: string;
   password: string;
   username: string;
 };
 
 const defaultState: Readonly<State> = {
   agreeToTerms: false,
+  email: "",
   password: "",
   username: ""
 };
@@ -23,8 +25,11 @@ export const reducer: Reducer<State, Action> = (
   action: Action
 ): State => {
   const newState = { ...state };
-  console.log(action);
   switch (action.type) {
+    case actions.CHANGE_EMAIL: {
+      newState.email = action.payload.value;
+      break;
+    }
     case actions.CHANGE_USERNAME: {
       newState.username = action.payload.value;
       break;

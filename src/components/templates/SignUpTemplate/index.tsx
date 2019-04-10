@@ -21,8 +21,18 @@ const styles: Styles = StyleSheet.create<Styles>({
   }
 });
 
-const SignUpTemplate: React.FC = (props: Props): React.ReactElement => {
-  const { agreeToTerms, isButtonDisabled, onPressTerms } = props;
+const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
+  const {
+    agreeToTerms,
+    email,
+    isButtonDisabled,
+    onChangeEmail,
+    onChangePassword,
+    onChangeUsername,
+    onPressTerms,
+    password,
+    username
+  } = props;
   return (
     <View style={styles.base}>
       <Inset paddingHorizontal="macro" paddingBottom="macro">
@@ -33,17 +43,29 @@ const SignUpTemplate: React.FC = (props: Props): React.ReactElement => {
           <ShiftingTitle color="secondary" />
         </Outset>
         <Outset marginBottom="huge">
-          <InputField placeholder="Username" color="secondary" />
+          <InputField
+            placeholder="Username"
+            color="secondary"
+            onChangeText={onChangeUsername}
+            value={username}
+          />
         </Outset>
         <Outset marginBottom="huge">
           <InputField
             placeholder="Password"
             color="secondary"
+            onChangeText={onChangePassword}
             secureTextEntry={true}
+            value={password}
           />
         </Outset>
         <Outset marginBottom="huge">
-          <InputField placeholder="Email" color="secondary" />
+          <InputField
+            placeholder="Email"
+            color="secondary"
+            onChangeText={onChangeEmail}
+            value={email}
+          />
         </Outset>
         <Outset marginBottom="huge">
           <InputField placeholder="Birthday" color="secondary" />
@@ -61,6 +83,7 @@ const SignUpTemplate: React.FC = (props: Props): React.ReactElement => {
           size="massive"
           color={isButtonDisabled ? "disabled" : "secondary"}
           label="Sign Up"
+          isDisabled={isButtonDisabled}
         />
       </Inset>
     </View>

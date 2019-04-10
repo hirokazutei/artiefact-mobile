@@ -32,6 +32,7 @@ const Button: React.FC<Props> = (props: Props): React.ReactElement => {
         isDisabled && styles.buttonDisabled,
         isStretched && styles.buttonStretched
       ]}
+      disabled={isDisabled}
       onPress={props.onPress}
       accessibilityLabel={label}
     >

@@ -2,14 +2,21 @@ import React from "react";
 import { Animated, Text } from "react-native";
 import { getRandomUserTitle } from "../../../helper/wording";
 import { stylizeText, StyleProps } from "./styles";
+import { UserTitle } from "../../../constants/messages";
 
 type Props = { children?: never } & StyleProps;
+
+type ComponentState = {
+  title: UserTitle;
+  fadeAnim: Animated.Value;
+  titleUpdate?: void;
+};
 
 export default class ShiftingTitle extends React.Component<
   Props,
   React.ComponentState
 > {
-  state = {
+  state: ComponentState = {
     title: getRandomUserTitle(),
     fadeAnim: new Animated.Value(-1)
   };
@@ -23,11 +30,19 @@ export default class ShiftingTitle extends React.Component<
 
   componentDidMount() {
     this.fadeInNew();
-    setInterval(() => {
-      this.setState({ fadeAnim: new Animated.Value(-3) });
-      this.fadeInNew();
-      this.setState({ title: getRandomUserTitle(this.state.title) });
-    }, 3000);
+    this.setState({
+      titleUpdate: setInterval(() => {
+        this.setState({ fadeAnim: new Animated.Value(-3) });
+        this.fadeInNew();
+        this.setState({ title: getRandomUserTitle(this.state.title) });
+      }, 3000)
+    });
+  }
+
+  componentWillUnmount() {
+    if (!!this.state.titleUpdate) {
+      clearInterval(this.state.titleUpdate);
+    }
   }
 
   render() {

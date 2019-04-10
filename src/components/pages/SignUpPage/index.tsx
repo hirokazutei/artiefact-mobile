@@ -9,9 +9,16 @@ import { State } from "../../../redux/rootReducer";
 type StateProps = {
   agreeToTerms: boolean;
   isButtonDisabled: boolean;
+  email: string;
+  username: string;
+  password: string;
 };
 
 type DispatchProps = {
+  onChangeEmail: (event: React.FormEvent<HTMLSelectElement>) => void;
+  onChangeUsername: (event: React.FormEvent<HTMLSelectElement>) => void;
+  onChangePassword: (event: React.FormEvent<HTMLSelectElement>) => void;
+  onPressSignUp: () => void;
   onPressTerms: () => void;
 };
 
@@ -29,14 +36,37 @@ class SignUpPage extends React.Component<Props> {
 
 export default connect(
   (state: State): StateProps => {
-    const { agreeToTerms } = state.authentication;
+    const { agreeToTerms, email, password, username } = state.authentication;
+    const isButtonDisabled = !agreeToTerms || !email || !password || !username;
     return {
       agreeToTerms,
-      isButtonDisabled: !agreeToTerms
+      email,
+      isButtonDisabled,
+      password,
+      username
     };
   },
   (dispatch: Dispatch): DispatchProps => {
     return {
+      onChangePassword: (event: React.FormEvent<HTMLSelectElement>) => {
+        dispatch({
+          type: actions.CHANGE_PASSWORD,
+          payload: { value: event }
+        });
+      },
+      onChangeUsername: (event: React.FormEvent<HTMLSelectElement>) => {
+        dispatch({
+          type: actions.CHANGE_USERNAME,
+          payload: { value: event }
+        });
+      },
+      onChangeEmail: (event: React.FormEvent<HTMLSelectElement>) => {
+        dispatch({
+          type: actions.CHANGE_EMAIL,
+          payload: { value: event }
+        });
+      },
+      onPressSignUp: () => dispatch({ type: actions.ON_PRESS_SIGNUP }),
       onPressTerms: () => dispatch({ type: actions.ON_PRESS_TERMS })
     };
   }
