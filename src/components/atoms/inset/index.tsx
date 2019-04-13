@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { stylizeInset, StyleProps } from "./styles";
 
 type Props = {
-  children: Array<React.ReactElement> | React.ReactChildren;
+  children: React.ReactNode;
 } & StyleProps;
 
 /**

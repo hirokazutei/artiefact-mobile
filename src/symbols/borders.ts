@@ -1,14 +1,8 @@
-type ButtonRadiusKeys = "sharp" | "round";
+type ButtonRadiusKeys = "sharp" | "dull" | "round" | "circular";
 
-const radius: Readonly<{ [key in ButtonRadiusKeys]: number }> = {
+export const radius: Readonly<{ [key in ButtonRadiusKeys]: number }> = {
   sharp: 0,
-  round: 72
-};
-
-type ButtonBorderKeys = "radius";
-
-export const buttonBorders: Readonly<
-  { [key in ButtonBorderKeys]: typeof radius }
-> = {
-  radius: radius
+  dull: 8,
+  round: 24,
+  circular: 72
 };

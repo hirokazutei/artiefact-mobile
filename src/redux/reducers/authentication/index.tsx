@@ -3,21 +3,25 @@ import { ActionTypes, actions } from "./actionTypes";
 
 export type State = {
   agreeToTerms: boolean;
+  birthdate: Date;
   email: string;
   password: string;
+  showDatePickerModal: boolean;
   username: string;
 };
 
 const defaultState: Readonly<State> = {
   agreeToTerms: false,
+  birthdate: new Date(),
   email: "",
   password: "",
+  showDatePickerModal: false,
   username: ""
 };
 
 export type Action = {
   type: ActionTypes;
-  payload: { value: string };
+  payload: { value: any };
 };
 
 export const reducer: Reducer<State, Action> = (
@@ -39,8 +43,20 @@ export const reducer: Reducer<State, Action> = (
       break;
     }
     case actions.ON_PRESS_TERMS: {
-      console.log("H");
       newState.agreeToTerms = !newState.agreeToTerms;
+      break;
+    }
+    case actions.SHOW_DATE_PICKER_MODAL: {
+      newState.showDatePickerModal = true;
+      break;
+    }
+    case actions.HIDE_DATE_PICKER_MODAL: {
+      newState.showDatePickerModal = false;
+      break;
+    }
+    case actions.ON_PICK_DATE: {
+      newState.birthdate = action.payload.value;
+      newState.showDatePickerModal = false;
       break;
     }
     default:

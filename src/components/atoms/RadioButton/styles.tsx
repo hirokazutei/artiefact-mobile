@@ -44,7 +44,7 @@ export const stylizeRadioButton = (styleProps: StyleProps): Styles => {
   const backgroundColor = resolveRadioBottonColors(color);
   return StyleSheet.create<Styles>({
     radioButton: {
-      borderRadius: symbols.buttonBorders.radius.round,
+      borderRadius: symbols.borders.radius.round,
       borderWidth: 1,
       borderColor: backgroundColor,
       height: symbols.spacing.huge,
@@ -53,7 +53,7 @@ export const stylizeRadioButton = (styleProps: StyleProps): Styles => {
     },
     checked: {
       flex: 1,
-      borderRadius: symbols.buttonBorders.radius.round,
+      borderRadius: symbols.borders.radius.round,
       backgroundColor: backgroundColor
     }
   });

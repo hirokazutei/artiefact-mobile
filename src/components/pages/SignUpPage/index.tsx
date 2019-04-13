@@ -11,6 +11,7 @@ type StateProps = {
   isButtonDisabled: boolean;
   email: string;
   username: string;
+  showDatePickerModal: boolean;
   password: string;
 };
 
@@ -18,6 +19,9 @@ type DispatchProps = {
   onChangeEmail: (event: React.FormEvent<HTMLSelectElement>) => void;
   onChangeUsername: (event: React.FormEvent<HTMLSelectElement>) => void;
   onChangePassword: (event: React.FormEvent<HTMLSelectElement>) => void;
+  onPressCancelModal: () => void;
+  onPressConfirmModal: (date: Date) => void;
+  onPressSetBirthday: () => void;
   onPressSignUp: () => void;
   onPressTerms: () => void;
 };
@@ -36,13 +40,20 @@ class SignUpPage extends React.Component<Props> {
 
 export default connect(
   (state: State): StateProps => {
-    const { agreeToTerms, email, password, username } = state.authentication;
+    const {
+      agreeToTerms,
+      email,
+      password,
+      showDatePickerModal,
+      username
+    } = state.authentication;
     const isButtonDisabled = !agreeToTerms || !email || !password || !username;
     return {
       agreeToTerms,
       email,
       isButtonDisabled,
       password,
+      showDatePickerModal,
       username
     };
   },
@@ -66,6 +77,19 @@ export default connect(
           payload: { value: event }
         });
       },
+      onPressCancelModal: () => {
+        dispatch({
+          type: actions.HIDE_DATE_PICKER_MODAL
+        });
+      },
+      onPressConfirmModal: (date: Date) => {
+        dispatch({
+          type: actions.ON_PICK_DATE,
+          payload: { value: date }
+        });
+      },
+      onPressSetBirthday: () =>
+        dispatch({ type: actions.SHOW_DATE_PICKER_MODAL }),
       onPressSignUp: () => dispatch({ type: actions.ON_PRESS_SIGNUP }),
       onPressTerms: () => dispatch({ type: actions.ON_PRESS_TERMS })
     };

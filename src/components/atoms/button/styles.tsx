@@ -104,7 +104,7 @@ export const stylizeButton = (styleProps: StyleProps): Styles => {
   const { color, size } = styleProps;
   return StyleSheet.create<Styles>({
     button: {
-      borderRadius: symbols.buttonBorders.radius.round,
+      borderRadius: symbols.borders.radius.round,
       backgroundColor: resolveBottonColors(color),
       padding: resolveButtonPaddingSizes(size)
     },

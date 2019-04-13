@@ -8,6 +8,7 @@ import Text from "../../atoms/Text";
 import ShiftingTitle from "../../atoms/ShiftingTitle";
 import RadioSelection from "../../molecules/RadioSelection";
 import { Props } from "../../pages/SignUpPage";
+import IOSDatePicker from "../../organism/DatePicker/ios";
 
 type Styles = {
   base: ViewStyle;
@@ -29,12 +30,23 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
     onChangeEmail,
     onChangePassword,
     onChangeUsername,
+    onPressCancelModal,
+    onPressConfirmModal,
+    onPressSetBirthday,
+    onPressSignUp,
     onPressTerms,
     password,
+    showDatePickerModal,
     username
   } = props;
   return (
     <View style={styles.base}>
+      <IOSDatePicker
+        isVisible={showDatePickerModal}
+        cancelButton={{ onPress: onPressCancelModal, label: "Cancel" }}
+        confirmButton={{ onPress: onPressConfirmModal, label: "Confirm" }}
+        mode="date"
+      />
       <Inset paddingHorizontal="macro" paddingBottom="macro">
         <Text size="massive" color="secondary" weight="bold" align="center">
           {"Adventure Awaits,"}
@@ -68,7 +80,11 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           />
         </Outset>
         <Outset marginBottom="huge">
-          <InputField placeholder="Birthday" color="secondary" />
+          <Button
+            size="massive"
+            label="birthday"
+            onPress={onPressSetBirthday}
+          />
         </Outset>
         <Outset marginBottom="huge">
           <RadioSelection
@@ -84,6 +100,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           color={isButtonDisabled ? "disabled" : "secondary"}
           label="Sign Up"
           isDisabled={isButtonDisabled}
+          onPress={onPressSignUp}
         />
       </Inset>
     </View>

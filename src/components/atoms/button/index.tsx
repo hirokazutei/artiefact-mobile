@@ -2,10 +2,10 @@ import React from "react";
 import { TouchableOpacity, Text } from "react-native";
 import { stylizeButton, StyleProps } from "./styles";
 
-type Props = {
+export type Props = {
   children?: never;
   label: string;
-  onPress?: () => any;
+  onPress: (args: any) => any;
   isDisabled?: boolean;
   isStretched?: boolean;
 } & StyleProps;
