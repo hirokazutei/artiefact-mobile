@@ -13,16 +13,10 @@ const AuthStack = createStackNavigator({
   SignUp: SignUpPage
 });
 
-const RootAuthStack = createStackNavigator({
-  Main: {
-    screen: AuthStack
-  }
-});
-
 export default createAppContainer(
   createSwitchNavigator(
     {
-      Auth: RootAuthStack
+      Auth: AuthStack
     },
     {
       initialRouteName: "Auth"

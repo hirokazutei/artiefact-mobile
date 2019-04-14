@@ -3,7 +3,9 @@ import { ActionTypes, actions } from "./actionTypes";
 
 export type State = {
   agreeToTerms: boolean;
+  agreeToTermsDate?: Date;
   birthdate: Date;
+  changedBirthdate: boolean;
   email: string;
   password: string;
   showDatePickerModal: boolean;
@@ -13,6 +15,7 @@ export type State = {
 const defaultState: Readonly<State> = {
   agreeToTerms: false,
   birthdate: new Date(),
+  changedBirthdate: false,
   email: "",
   password: "",
   showDatePickerModal: false,
@@ -44,6 +47,7 @@ export const reducer: Reducer<State, Action> = (
     }
     case actions.ON_PRESS_TERMS: {
       newState.agreeToTerms = !newState.agreeToTerms;
+      newState.agreeToTermsDate = new Date();
       break;
     }
     case actions.SHOW_DATE_PICKER_MODAL: {
@@ -57,6 +61,7 @@ export const reducer: Reducer<State, Action> = (
     case actions.ON_PICK_DATE: {
       newState.birthdate = action.payload.value;
       newState.showDatePickerModal = false;
+      newState.changedBirthdate = true;
       break;
     }
     default:

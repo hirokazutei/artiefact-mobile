@@ -6,7 +6,7 @@ export type StyleProps = {
   size?: symbols.text.TextSizeKeys;
   italic?: Boolean;
   weight?: symbols.text.TextWeightKeys;
-  align?: TextAlignKeys;
+  align?: Required<TextStyle["textAlign"]>;
 };
 
 type TextColorKeys =
@@ -26,14 +26,12 @@ const textColors: Readonly<{ [key in TextColorKeys]: string }> = {
   disabled: symbols.colors.disabled
 };
 
-type TextAlignKeys = "auto" | "left" | "right" | "center";
-
 const defaultStyle: Readonly<Required<StyleProps>> = {
   color: "default" as TextColorKeys,
   size: "medium" as symbols.text.TextSizeKeys,
   italic: false as Boolean,
   weight: "default" as symbols.text.TextWeightKeys,
-  align: "auto" as TextAlignKeys
+  align: "auto" as Required<TextStyle["textAlign"]>
 };
 
 /**

@@ -53,7 +53,7 @@ const Modal: React.FC<Props> = (props: Props): React.ReactElement => {
               {secondaryButton && (
                 <View style={styles.buttonView}>
                   <Button color="secondary" size="huge" {...secondaryButton} />
-           `     </View>
+                </View>
               )}
               {secondaryButton && <Spacing width="medium" />}
               <View style={styles.buttonView}>

@@ -29,7 +29,7 @@ const RadioSelection: React.FC<Props> = (props: Props): React.ReactElement => {
       <Outset marginRight="small">
         <RadioButton checked={checked} color={color} onPress={onPress} />
       </Outset>
-      <Text color={color} size="huge">
+      <Text color={color} size="huge" onPress={onPress}>
         {children}
       </Text>
     </TouchableOpacity>

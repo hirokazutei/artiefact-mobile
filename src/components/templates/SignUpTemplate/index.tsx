@@ -9,6 +9,7 @@ import ShiftingTitle from "../../atoms/ShiftingTitle";
 import RadioSelection from "../../molecules/RadioSelection";
 import { Props } from "../../pages/SignUpPage";
 import IOSDatePicker from "../../organism/DatePicker/ios";
+import { formatDate } from "../../../helper/wording";
 
 type Styles = {
   base: ViewStyle;
@@ -25,6 +26,8 @@ const styles: Styles = StyleSheet.create<Styles>({
 const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
   const {
     agreeToTerms,
+    birthdate,
+    changedBirthdate,
     email,
     isButtonDisabled,
     onChangeEmail,
@@ -80,11 +83,25 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           />
         </Outset>
         <Outset marginBottom="huge">
-          <Button
-            size="massive"
-            label="birthday"
-            onPress={onPressSetBirthday}
-          />
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <View style={{ justifyContent: "flex-end" }}>
+              <Text size="large" color="faded">
+                Birthdate:
+              </Text>
+            </View>
+            <View style={{ justifyContent: "flex-end" }}>
+              <Text
+                size="huge"
+                color="secondary"
+                weight="bold"
+                onPress={onPressSetBirthday}
+              >
+                {changedBirthdate ? formatDate(birthdate) : "Enter Birthdate"}
+              </Text>
+            </View>
+          </View>
         </Outset>
         <Outset marginBottom="huge">
           <RadioSelection

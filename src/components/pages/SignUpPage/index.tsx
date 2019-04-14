@@ -8,6 +8,8 @@ import { State } from "../../../redux/rootReducer";
 
 type StateProps = {
   agreeToTerms: boolean;
+  birthdate: Date;
+  changedBirthdate: boolean;
   isButtonDisabled: boolean;
   email: string;
   username: string;
@@ -42,14 +44,24 @@ export default connect(
   (state: State): StateProps => {
     const {
       agreeToTerms,
+      birthdate,
+      changedBirthdate,
       email,
       password,
       showDatePickerModal,
       username
     } = state.authentication;
-    const isButtonDisabled = !agreeToTerms || !email || !password || !username;
+    const isButtonDisabled =
+      !agreeToTerms ||
+      !changedBirthdate ||
+      !birthdate ||
+      !email ||
+      !password ||
+      !username;
     return {
       agreeToTerms,
+      birthdate,
+      changedBirthdate,
       email,
       isButtonDisabled,
       password,

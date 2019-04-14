@@ -1,5 +1,5 @@
 import React from "react";
-import { Text as RNText } from "react-native";
+import { Text as RNText, TouchableOpacity } from "react-native";
 import { stylizeText, StyleProps } from "./styles";
 
 type Props = {
@@ -25,13 +25,11 @@ const Text: React.FC<Props> = (props: Props): React.ReactElement => {
   const { children, onPress, allowScaling, ...styleProps } = props;
   const styles = stylizeText(styleProps);
   return (
-    <RNText
-      style={styles.text}
-      onPress={onPress}
-      allowFontScaling={allowScaling}
-    >
-      {children}
-    </RNText>
+    <TouchableOpacity onPress={onPress}>
+      <RNText style={styles.text} allowFontScaling={allowScaling}>
+        {children}
+      </RNText>
+    </TouchableOpacity>
   );
 };
 

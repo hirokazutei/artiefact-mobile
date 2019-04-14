@@ -12,8 +12,11 @@ type Props = {
   isVisible: boolean;
 };
 
+const currentDate = new Date();
+currentDate.setFullYear(currentDate.getFullYear() - 18);
+
 export default class IOSDatePicker extends React.Component<Props> {
-  state = { chosenDate: new Date() };
+  state = { chosenDate: currentDate };
 
   setDate(newDate: Date) {
     this.setState({ chosenDate: newDate });
@@ -21,10 +24,14 @@ export default class IOSDatePicker extends React.Component<Props> {
 
   render() {
     const { confirmButton, cancelButton, mode, isVisible } = this.props;
+    const { onPress, label } = confirmButton;
     return (
       <Modal
         isVisible={isVisible}
-        primaryButton={{ ...confirmButton }}
+        primaryButton={{
+          onPress: () => onPress(this.state.chosenDate),
+          label: label
+        }}
         secondaryButton={cancelButton && { ...cancelButton }}
       >
         <DatePickerIOS
