@@ -5039,6 +5039,11 @@ react-native-gesture-handler@^1.1.0:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
+react-native-maps@^0.24.0:
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.24.0.tgz#6627942e9357768c96ddd22bf66d7e88084d19b0"
+  integrity sha512-wfDdCMA09Xx8zHKD7+kzWfp7rQPCrYb2j4TWgCAjnFIhk9WZxqAKZSQF5olLBVF+Fhl7mTRoij8GTUOX3inoIg==
+
 react-native-modal@^9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-9.0.0.tgz#0bfd0770361a2e5c6e0072bfdb0f1277f9662dba"
