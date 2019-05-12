@@ -12,11 +12,15 @@ type Props = {
   isVisible: boolean;
 };
 
+type State = {
+  chosenDate: Date;
+};
+
 const currentDate = new Date();
 currentDate.setFullYear(currentDate.getFullYear() - 18);
 
-export default class IOSDatePicker extends React.Component<Props> {
-  state = { chosenDate: currentDate };
+export default class IOSDatePicker extends React.Component<Props, State> {
+  state: State = { chosenDate: currentDate };
 
   setDate(newDate: Date) {
     this.setState({ chosenDate: newDate });
