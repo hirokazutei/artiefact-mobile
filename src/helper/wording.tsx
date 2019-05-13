@@ -5,7 +5,7 @@ import { userTitle, UserTitle } from "../constants/messages";
  *
  * @param {UserTitle} currentTitle - current Title
  */
-export const getRandomUserTitle = (currentTitle: UserTitle): UserTitle => {
+export const getRandomUserTitle = (currentTitle?: UserTitle): UserTitle => {
   while (true) {
     const title = userTitle[Math.floor(Math.random() * userTitle.length)];
     if (title !== currentTitle) {

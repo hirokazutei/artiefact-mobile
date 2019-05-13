@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
 import Inset from "../../atoms/Inset";
-import Outset from "../../atoms/Outset";
+import Stack from "../../atoms/Stack";
 import Button from "../../atoms/Button";
 import Text from "../../atoms/Text";
 
@@ -25,19 +25,17 @@ const IntroTemplate: React.FC<Props> = ({
   return (
     <View style={styles.base}>
       <Inset paddingHorizontal="macro" paddingBottom="macro">
-        <Outset marginBottom="huge">
-          <Text size="macro" color="primary" weight="thicc" align="center">
-            Artiefact
-          </Text>
-        </Outset>
-        <Outset marginBottom="medium">
-          <Button
-            size="massive"
-            color="primary"
-            label="Login"
-            onPress={onPressSignIn}
-          />
-        </Outset>
+        <Text size="macro" color="primary" weight="thicc" align="center">
+          Artiefact
+        </Text>
+        <Stack value="medium" />
+        <Button
+          size="massive"
+          color="primary"
+          label="Login"
+          onPress={onPressSignIn}
+        />
+        <Stack value="medium" />
         <Button
           size="massive"
           color="secondary"

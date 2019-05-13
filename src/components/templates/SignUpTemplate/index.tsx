@@ -3,7 +3,7 @@ import { StyleSheet, View, ViewStyle } from "react-native";
 import Inset from "../../atoms/Inset";
 import Button from "../../atoms/Button";
 import InputField from "../../atoms/InputField";
-import Outset from "../../atoms/Outset";
+import Stack from "../../atoms/Stack";
 import Text from "../../atoms/Text";
 import ShiftingTitle from "../../atoms/ShiftingTitle";
 import RadioSelection from "../../molecules/RadioSelection";
@@ -54,64 +54,56 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <Text size="massive" color="secondary" weight="bold" align="center">
           {"Adventure Awaits,"}
         </Text>
-        <Outset marginBottom="huge">
-          <ShiftingTitle color="secondary" />
-        </Outset>
-        <Outset marginBottom="huge">
-          <InputField
-            placeholder="Username"
-            color="secondary"
-            onChangeText={onChangeUsername}
-            value={username}
-          />
-        </Outset>
-        <Outset marginBottom="huge">
-          <InputField
-            placeholder="Password"
-            color="secondary"
-            onChangeText={onChangePassword}
-            secureTextEntry={true}
-            value={password}
-          />
-        </Outset>
-        <Outset marginBottom="huge">
-          <InputField
-            placeholder="Email"
-            color="secondary"
-            onChangeText={onChangeEmail}
-            value={email}
-          />
-        </Outset>
-        <Outset marginBottom="huge">
-          <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
-          >
-            <View style={{ justifyContent: "flex-end" }}>
-              <Text size="large" color="faded">
-                Birthdate:
-              </Text>
-            </View>
-            <View style={{ justifyContent: "flex-end" }}>
-              <Text
-                size="huge"
-                color="secondary"
-                weight="bold"
-                onPress={onPressSetBirthday}
-              >
-                {changedBirthdate ? formatDate(birthdate) : "Enter Birthdate"}
-              </Text>
-            </View>
+        <ShiftingTitle color="secondary" />
+        <Stack value="huge" />
+        <InputField
+          placeholder="Username"
+          color="secondary"
+          onChangeText={onChangeUsername}
+          value={username}
+        />
+        <Stack value="huge" />
+        <InputField
+          placeholder="Password"
+          color="secondary"
+          onChangeText={onChangePassword}
+          secureTextEntry={true}
+          value={password}
+        />
+        <Stack value="huge" />
+        <InputField
+          placeholder="Email"
+          color="secondary"
+          onChangeText={onChangeEmail}
+          value={email}
+        />
+        <Stack value="huge" />
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <View style={{ justifyContent: "flex-end" }}>
+            <Text size="large" color="faded">
+              Birthdate:
+            </Text>
           </View>
-        </Outset>
-        <Outset marginBottom="huge">
-          <RadioSelection
-            checked={agreeToTerms}
-            color="secondary"
-            onPress={onPressTerms}
-          >
-            {"Agree to Terms & Con"}
-          </RadioSelection>
-        </Outset>
+          <View style={{ justifyContent: "flex-end" }}>
+            <Text
+              size="huge"
+              color="secondary"
+              weight="bold"
+              onPress={onPressSetBirthday}
+            >
+              {changedBirthdate ? formatDate(birthdate) : "Enter Birthdate"}
+            </Text>
+          </View>
+        </View>
+        <Stack value="huge" />
+        <RadioSelection
+          checked={agreeToTerms}
+          color="secondary"
+          onPress={onPressTerms}
+        >
+          {"Agree to Terms & Con"}
+        </RadioSelection>
+        <Stack value="huge" />
         <Button
           size="massive"
           color={isButtonDisabled ? "disabled" : "secondary"}

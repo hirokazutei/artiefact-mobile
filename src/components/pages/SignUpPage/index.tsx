@@ -103,10 +103,7 @@ export default connect(
       onPressSetBirthday: () =>
         dispatch({ type: actions.SHOW_DATE_PICKER_MODAL }),
       onPressSignUp: () => {
-        navigator.geolocation.getCurrentPosition((position) => {
-            console.log(position)
-        })
-        dispatch({ type: actions.ON_PRESS_SIGNUP })
+        dispatch({ type: actions.ON_PRESS_SIGNUP });
       },
       onPressTerms: () => dispatch({ type: actions.ON_PRESS_TERMS })
     };

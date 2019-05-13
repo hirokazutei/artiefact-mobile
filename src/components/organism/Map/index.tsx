@@ -2,6 +2,8 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import MapView, { Region, PROVIDER_GOOGLE } from "react-native-maps";
 
+import { errorHandler } from "../../../logics/error";
+
 const styles = StyleSheet.create({
   map: {
     ...StyleSheet.absoluteFillObject
@@ -18,9 +20,9 @@ const DEFAULT_PROPS = {
   moveonMarkerPress: false
 };
 
-type Props = {
+export type Props = {
   currentRegion?: Region;
-  children: Array<React.ReactElement> | React.ReactElement;
+  children?: Array<React.ReactElement> | React.ReactElement;
 };
 
 type State = {
@@ -48,7 +50,7 @@ export default class Map extends React.Component<Props, State> {
         };
         this.onRegionChange(region);
       },
-      error => console.log(error)
+      error => errorHandler(error)
     );
   }
 
@@ -64,7 +66,7 @@ export default class Map extends React.Component<Props, State> {
         };
         this.setState({ currentRegion: newRegion });
       },
-      error => console.log(error),
+      error => errorHandler(error),
       { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
     );
   }

@@ -3,7 +3,7 @@ import { View } from "react-native";
 import RNModal from "react-native-modal";
 import Button, { Props as ButtonProps } from "../../atoms/Button";
 import Inset from "../../atoms/Inset";
-import Spacing from "../../atoms/Spacing";
+import Inline from "../../atoms/Inline";
 import { stylizeModal } from "./styles";
 
 type Props = {
@@ -55,7 +55,7 @@ const Modal: React.FC<Props> = (props: Props): React.ReactElement => {
                   <Button color="secondary" size="huge" {...secondaryButton} />
                 </View>
               )}
-              {secondaryButton && <Spacing width="medium" />}
+              {secondaryButton && <Inline value="medium" />}
               <View style={styles.buttonView}>
                 <Button color="primary" size="huge" {...primaryButton} />
               </View>

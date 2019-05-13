@@ -1,7 +1,5 @@
-// components/Hello.tsx
 import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
-import store from "./redux/configureStore";
 import SignInPage from "./components/pages/SignInPage/index";
 import * as symbols from "./symbols";
 

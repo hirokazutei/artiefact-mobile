@@ -4,7 +4,7 @@ import { Props } from "../../pages/SignInPage";
 import Inset from "../../atoms/Inset";
 import Button from "../../atoms/Button";
 import InputField from "../../atoms/InputField";
-import Outset from "../../atoms/Outset";
+import Stack from "../../atoms/Stack";
 import Text from "../../atoms/Text";
 import ShiftingTitle from "../../atoms/ShiftingTitle";
 
@@ -34,24 +34,21 @@ const SignInTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <Text size="massive" color="primary" weight="bold">
           {"Welcome Back,"}
         </Text>
-        <Outset marginBottom="huge">
-          <ShiftingTitle color="primary" />
-        </Outset>
-        <Outset marginBottom="huge">
-          <InputField
-            placeholder="Username"
-            onChangeText={onChangeUsername}
-            value={username}
-          />
-        </Outset>
-        <Outset marginBottom="huge">
-          <InputField
-            placeholder="Password"
-            onChangeText={onChangePassword}
-            value={password}
-            secureTextEntry={true}
-          />
-        </Outset>
+        <ShiftingTitle color="primary" />
+        <Stack value="huge" />
+        <InputField
+          placeholder="Username"
+          onChangeText={onChangeUsername}
+          value={username}
+        />
+        <Stack value="huge" />
+        <InputField
+          placeholder="Password"
+          onChangeText={onChangePassword}
+          value={password}
+          secureTextEntry={true}
+        />
+        <Stack value="huge" />
         <Button size="massive" label="Login" onPress={onPressSignIn} />
       </Inset>
     </View>
