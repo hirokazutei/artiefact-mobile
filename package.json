@@ -3,11 +3,18 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "generate": "npm-run-all generate:*",
+    "generate:env": "node ./scripts/generate-env.js",
+    "prepackager": "npm-run-all generate:*",
+    "start": "npm-run-all generate:* && node node_modules/react-native/local-cli/cli.js start",
+    "start-local": "cross-env API_ENDPOINT=http://localhost:8000/ npm run -s start",
     "test": "jest"
   },
   "dependencies": {
+    "@types/node": "^12.0.2",
     "axios": "^0.18.0",
+    "cross-env": "^5.2.0",
+    "npm-run-all": "^4.1.5",
     "react": "16.6.3",
     "react-native": "0.58.6",
     "react-native-blur": "^3.2.2",
@@ -36,7 +43,7 @@
     "react-native-typescript-transformer": "^1.2.12",
     "react-test-renderer": "16.6.3",
     "ts-jest": "^24.0.0",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.4.5"
   },
   "jest": {
     "preset": "react-native"
