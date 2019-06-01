@@ -1,4 +1,4 @@
-import store from "../store";
+import store from "../../store";
 import { handleUnknownError } from "./actionCreator";
 import { EncompassingErrors } from "./types";
 

@@ -1,9 +1,10 @@
 import React from "react";
+import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { State } from "../../../redux/rootReducer";
 import SignInTemplate from "../../templates/SignInTemplate/index";
 import { actions } from "../../../redux/reducers/authentication/actionTypes";
-import { Dispatch } from "redux";
+import { actions as signInActions } from "../../../useCases/signInUseCase/actionTypes";
 
 export type StateProps = {
   password: string;
@@ -35,16 +36,20 @@ export default connect(
       onChangePassword: (event: React.FormEvent<HTMLSelectElement>) => {
         dispatch({
           type: actions.CHANGE_PASSWORD,
-          payload: { value: event.target }
+          payload: { value: event }
         });
       },
       onChangeUsername: (event: React.FormEvent<HTMLSelectElement>) => {
         dispatch({
           type: actions.CHANGE_USERNAME,
-          payload: { value: event.target }
+          payload: { value: event }
         });
       },
-      onPressSignIn: () => {}
+      onPressSignIn: () => {
+        dispatch({
+          type: signInActions.SIGN_IN_USE_CASE
+        });
+      }
     };
   }
 )(SignInPage);

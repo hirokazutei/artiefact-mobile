@@ -1,10 +1,10 @@
 import { Action, Store } from "redux";
 import configureStore from "./redux/configureStore";
 import { sagaMiddleware } from "./redux/configureStore";
-import mySaga from "./logics/saga";
+import rootSaga from "./rootsaga";
 
 const store: Store<Object, Action> = configureStore();
 
-sagaMiddleware.run(mySaga);
+sagaMiddleware.run(rootSaga);
 
 export default store;
