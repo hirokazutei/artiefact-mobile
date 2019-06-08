@@ -16,7 +16,6 @@ export const textWeights: Readonly<
 };
 
 // Text Size
-
 export type TextSizeKeys =
   | "tiny"
   | "small"

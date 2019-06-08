@@ -6,6 +6,9 @@ import Inset from "../../atoms/Inset";
 import Inline from "../../atoms/Inline";
 import { stylizeModal } from "./styles";
 
+const DIALOG_IN_ANIMATION_DURATION = 600;
+const DIALOG_OUT_ANIMATION_DURATION = 600;
+
 type Props = {
   avoidKeyboard?: boolean;
   children: Array<React.ReactElement> | React.ReactElement;
@@ -33,10 +36,26 @@ const Modal: React.FC<Props> = (props: Props): React.ReactElement => {
     secondaryButton
   } = props;
   const styles = stylizeModal();
+  const SecondaryButton = secondaryButton && (
+    <View style={styles.buttonView}>
+      <Button color="secondary" size="huge" {...secondaryButton} />
+    </View>
+  );
+  secondaryButton && <Inline value="medium" />;
+  const PrimaryButton = primaryButton && (
+    <Inset padding="medium">
+      <View style={styles.buttonsView}>
+        {SecondaryButton}
+        <View style={styles.buttonView}>
+          <Button color="primary" size="huge" {...primaryButton} />
+        </View>
+      </View>
+    </Inset>
+  );
   return (
     <RNModal
-      animationInTiming={600}
-      animationOutTiming={600}
+      animationInTiming={DIALOG_IN_ANIMATION_DURATION}
+      animationOutTiming={DIALOG_OUT_ANIMATION_DURATION}
       avoidKeyboard={avoidKeyboard}
       isVisible={isVisible}
       onBackButtonPress={onBackButtonPress ? onBackButtonPress : () => {}}
@@ -47,21 +66,7 @@ const Modal: React.FC<Props> = (props: Props): React.ReactElement => {
     >
       <View style={styles.modalView}>
         {children}
-        {primaryButton && (
-          <Inset padding="medium">
-            <View style={styles.buttonsView}>
-              {secondaryButton && (
-                <View style={styles.buttonView}>
-                  <Button color="secondary" size="huge" {...secondaryButton} />
-                </View>
-              )}
-              {secondaryButton && <Inline value="medium" />}
-              <View style={styles.buttonView}>
-                <Button color="primary" size="huge" {...primaryButton} />
-              </View>
-            </View>
-          </Inset>
-        )}
+        {PrimaryButton}
       </View>
     </RNModal>
   );

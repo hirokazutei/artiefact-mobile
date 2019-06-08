@@ -25,13 +25,13 @@ export type Props = {
 const Button: React.FC<Props> = (props: Props): React.ReactElement => {
   const { label, isDisabled, isStretched, ...styleProps } = props;
   const styles = stylizeButton(styleProps);
+  const extraStyles = [
+    isDisabled ? styles.buttonDisabled : null,
+    isStretched ? styles.buttonStretched : null
+  ];
   return (
     <TouchableOpacity
-      style={[
-        styles.button,
-        isDisabled && styles.buttonDisabled,
-        isStretched && styles.buttonStretched
-      ]}
+      style={[styles.button, ...extraStyles]}
       disabled={isDisabled}
       onPress={props.onPress}
       accessibilityLabel={label}

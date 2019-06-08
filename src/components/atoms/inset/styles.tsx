@@ -28,15 +28,16 @@ export const stylizeInset = (styleProps: StyleProps): Styles => {
     paddingTop,
     paddingVertical
   } = styleProps;
+  const style = {
+    padding: padding && spacing[padding],
+    paddingBottom: paddingBottom && spacing[paddingBottom],
+    paddingHorizontal: paddingHorizontal && spacing[paddingHorizontal],
+    paddingLeft: paddingLeft && spacing[paddingLeft],
+    paddingRight: paddingRight && spacing[paddingRight],
+    paddingTop: paddingTop && spacing[paddingTop],
+    paddingVertical: paddingVertical && spacing[paddingVertical]
+  };
   return StyleSheet.create<Styles>({
-    inset: {
-      padding: padding && spacing[padding],
-      paddingBottom: paddingBottom && spacing[paddingBottom],
-      paddingHorizontal: paddingHorizontal && spacing[paddingHorizontal],
-      paddingLeft: paddingLeft && spacing[paddingLeft],
-      paddingRight: paddingRight && spacing[paddingRight],
-      paddingTop: paddingTop && spacing[paddingTop],
-      paddingVertical: paddingVertical && spacing[paddingVertical]
-    }
+    inset: { ...style }
   });
 };

@@ -1,12 +1,13 @@
 import { StyleSheet, TextStyle, ViewStyle } from "react-native";
+import { TextColorKeys } from "../../../symbols/text";
 import * as symbols from "../../../symbols";
 
 export type StyleProps = {
-  color?: symbols.text.TextColorKeys;
+  color?: TextColorKeys;
 };
 
 const defaultStyle: Readonly<Required<StyleProps>> = {
-  color: "default" as symbols.text.TextColorKeys
+  color: "default" as TextColorKeys
 };
 
 /**
@@ -15,7 +16,7 @@ const defaultStyle: Readonly<Required<StyleProps>> = {
  * @param color - color key
  */
 const resolveTextColors = (
-  color: symbols.text.TextColorKeys = defaultStyle.color
+  color: TextColorKeys = defaultStyle.color
 ): string => {
   return symbols.text.textColors[color];
 };

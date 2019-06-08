@@ -20,9 +20,10 @@ export type Props = {
 const RadioButton: React.FC<Props> = (props: Props): React.ReactElement => {
   const { onPress, checked, ...styleProps } = props;
   const styles = stylizeRadioButton(styleProps);
+  const extraStyles = [checked ? styles.checked : null];
   return (
     <TouchableOpacity style={styles.radioButton} onPress={props.onPress}>
-      <View style={[checked && styles.checked]} />
+      <View style={...extraStyles} />
     </TouchableOpacity>
   );
 };

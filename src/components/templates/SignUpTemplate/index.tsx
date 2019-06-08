@@ -42,6 +42,10 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
     showDatePickerModal,
     username
   } = props;
+  const birthdateField = changedBirthdate
+    ? formatDate(birthdate)
+    : "Enter Birthdate";
+  const secondaryButtonColor = isButtonDisabled ? "disabled" : "secondary";
   return (
     <View style={styles.base}>
       <IOSDatePicker
@@ -81,7 +85,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View style={{ justifyContent: "flex-end" }}>
             <Text size="large" color="faded">
-              Birthdate:
+              {"Birthdate:"}
             </Text>
           </View>
           <View style={{ justifyContent: "flex-end" }}>
@@ -91,7 +95,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
               weight="bold"
               onPress={onPressSetBirthday}
             >
-              {changedBirthdate ? formatDate(birthdate) : "Enter Birthdate"}
+              {birthdateField}
             </Text>
           </View>
         </View>
@@ -106,7 +110,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <Stack value="huge" />
         <Button
           size="massive"
-          color={isButtonDisabled ? "disabled" : "secondary"}
+          color={secondaryButtonColor}
           label="Sign Up"
           isDisabled={isButtonDisabled}
           onPress={onPressSignUp}

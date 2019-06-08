@@ -1,12 +1,15 @@
 import { StyleSheet, TextStyle } from "react-native";
 import * as symbols from "../../../symbols";
+import { Diff } from "../../../type/tsUtility";
+
+type AlignType = Diff<Required<TextStyle["textAlign"]>, undefined>;
 
 export type StyleProps = {
   color?: TextColorKeys;
   size?: symbols.text.TextSizeKeys;
   italic?: Boolean;
   weight?: symbols.text.TextWeightKeys;
-  align?: Required<TextStyle["textAlign"]>;
+  align?: AlignType;
 };
 
 type TextColorKeys =
@@ -31,7 +34,7 @@ const defaultStyle: Readonly<Required<StyleProps>> = {
   size: "medium" as symbols.text.TextSizeKeys,
   italic: false as Boolean,
   weight: "default" as symbols.text.TextWeightKeys,
-  align: "auto" as Required<TextStyle["textAlign"]>
+  align: "auto" as AlignType
 };
 
 /**
@@ -83,11 +86,12 @@ type Styles = {
  */
 export const stylizeText = (styleProps: StyleProps): Styles => {
   const { color, size, italic, align, weight } = styleProps;
+  const italicize = italic ? "italic" : "normal";
   return StyleSheet.create<Styles>({
     text: {
       color: resolveTextColors(color),
       fontSize: resolveTextSizes(size),
-      fontStyle: italic ? "italic" : "normal",
+      fontStyle: italicize,
       fontWeight: resolveTextWeights(weight),
       textAlign: align
     }

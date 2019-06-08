@@ -1,4 +1,3 @@
-import React from "react";
 import { KeyboardType } from "react-native";
 
 export interface SettingProps {
