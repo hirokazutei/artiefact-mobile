@@ -1,4 +1,13 @@
-import env from "../env";
+import env from "../../env";
+
+// TODO: It would be ideal if the schema could ge generated from JSON schema.
+
+export default class Authentication {
+
+
+
+}
+
 
 export const signIn = ({
   username,
