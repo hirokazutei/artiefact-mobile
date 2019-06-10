@@ -1,6 +1,6 @@
 import axios from "axios";
 
-type RESTMethods = "delete" | "get" | "head" | "post" | "put";
+export type RESTMethods = "delete" | "get" | "head" | "post" | "put";
 
 const restMethods: Readonly<{ [key in RESTMethods]: RESTMethods }> = {
   delete: "delete",
@@ -58,23 +58,21 @@ export default class APIClient {
     return axios(fetchParams);
   }
 
-  delete(path: string, options: APIOption): Promise<any> {
-    return this.request("delete", path, options);
-  }
-
-  get(path: string, options: APIOption): Promise<any> {
-    return this.request("get", path, options);
-  }
-
-  head(path: string, options: APIOption): Promise<any> {
-    return this.request("head", path, options);
-  }
-
-  put(path: string, options: APIOption): Promise<any> {
-    return this.request("put", path, options);
-  }
-
-  post(path: string, options: APIOption): Promise<any> {
-    return this.request("post", path, options);
-  }
+  public methods = {
+    delete: (path: string, options: APIOption): Promise<any> => {
+      return this.request("delete", path, options);
+    },
+    get: (path: string, options: APIOption): Promise<any> => {
+      return this.request("get", path, options);
+    },
+    head: (path: string, options: APIOption): Promise<any> => {
+      return this.request("head", path, options);
+    },
+    put: (path: string, options: APIOption): Promise<any> => {
+      return this.request("put", path, options);
+    },
+    post: (path: string, options: APIOption): Promise<any> => {
+      return this.request("post", path, options);
+    }
+  };
 }
