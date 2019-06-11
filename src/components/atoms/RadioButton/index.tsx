@@ -23,7 +23,7 @@ const RadioButton: React.FC<Props> = (props: Props): React.ReactElement => {
   const extraStyles = [checked ? styles.checked : null];
   return (
     <TouchableOpacity style={styles.radioButton} onPress={props.onPress}>
-      <View style={...extraStyles} />
+      <View style={extraStyles} />
     </TouchableOpacity>
   );
 };

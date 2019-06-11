@@ -1,12 +1,12 @@
-import { call, select, takeEvery } from "redux-saga/effects";
-import { signIn } from "../../domain/artifact";
+import { select, takeEvery } from "redux-saga/effects";
+import AuthClient from "../../interface/artiefact/authentication";
 import { actions } from "./actionTypes";
-import { loginSelector } from "../../redux/selectors/authentication";
+import { signInSelector } from "../../redux/selectors/authentication";
 
 export function* signInHandler() {
-  console.log("Sagaing");
   const state = yield select();
-  const response = yield signIn(loginSelector(state));
+  const authClient = AuthClient.get();
+  const response = yield authClient.signIn(signInSelector(state));
   console.log(response);
 }
 

@@ -5,6 +5,7 @@ import { NavigationScreenProp } from "react-navigation";
 import SignUpPageTemplate from "../../templates/SignUpTemplate/index";
 import { actions } from "../../../redux/reducers/authentication/actionTypes";
 import { State } from "../../../redux/rootReducer";
+import { actions as signUpActions } from "../../../useCases/signUpUseCase/actionTypes";
 
 type StateProps = {
   agreeToTerms: boolean;
@@ -103,7 +104,7 @@ export default connect(
       onPressSetBirthday: () =>
         dispatch({ type: actions.SHOW_DATE_PICKER_MODAL }),
       onPressSignUp: () => {
-        dispatch({ type: actions.ON_PRESS_SIGNUP });
+        dispatch({ type: signUpActions.SIGN_UP_USE_CASE });
       },
       onPressTerms: () => dispatch({ type: actions.ON_PRESS_TERMS })
     };

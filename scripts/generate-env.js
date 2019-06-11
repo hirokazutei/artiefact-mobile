@@ -2,7 +2,7 @@ const fileSystem = require("fs");
 const stringifySafe = require("json-stringify-safe");
 
 const ENV_VARS = ["API_ENDPOINT"];
-const DESTINATION = "./src/env.js";
+const DESTINATION = "./src/env.ts";
 
 function main() {
   const envs = {};
