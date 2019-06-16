@@ -9,8 +9,8 @@ import { actions as signUpActions } from "../../../useCases/signUpUseCase/action
 
 type StateProps = {
   agreeToTerms: boolean;
-  birthdate: Date;
-  changedBirthdate: boolean;
+  birthday?: Date;
+  changedBirthday: boolean;
   isButtonDisabled: boolean;
   email: string;
   username: string;
@@ -45,8 +45,8 @@ export default connect(
   (state: State): StateProps => {
     const {
       agreeToTerms,
-      birthdate,
-      changedBirthdate,
+      birthday,
+      changedBirthday,
       email,
       password,
       showDatePickerModal,
@@ -54,15 +54,15 @@ export default connect(
     } = state.authentication;
     const isButtonDisabled =
       !agreeToTerms ||
-      !changedBirthdate ||
-      !birthdate ||
+      !changedBirthday ||
+      !birthday ||
       !email ||
       !password ||
       !username;
     return {
       agreeToTerms,
-      birthdate,
-      changedBirthdate,
+      birthday,
+      changedBirthday,
       email,
       isButtonDisabled,
       password,
@@ -102,9 +102,13 @@ export default connect(
         });
       },
       onPressSetBirthday: () =>
-        dispatch({ type: actions.SHOW_DATE_PICKER_MODAL }),
+        dispatch({
+          type: actions.SHOW_DATE_PICKER_MODAL
+        }),
       onPressSignUp: () => {
-        dispatch({ type: signUpActions.SIGN_UP_USE_CASE });
+        dispatch({
+          type: signUpActions.SIGN_UP_USE_CASE
+        });
       },
       onPressTerms: () => dispatch({ type: actions.ON_PRESS_TERMS })
     };

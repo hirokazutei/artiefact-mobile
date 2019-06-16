@@ -1,4 +1,5 @@
 import { State } from "../rootReducer";
+import { datetimeToDateformatter } from "../../helper/formatter";
 
 export const signInSelector = (
   state: State
@@ -7,9 +8,15 @@ export const signInSelector = (
   return { username, password };
 };
 
-export const signUnSelector = (
-  state: State
-): { username: string; password: string; email: string; birthdate: Date } => {
-  const { username, password, email, birthdate } = state.authentication;
-  return { username, password, email, birthdate };
+type SignUpSelected = {
+  username: string;
+  password: string;
+  email: string;
+  birthday: string;
+};
+
+export const signUpSelector = (state: State): SignUpSelected => {
+  const { username, password, email, birthday } = state.authentication;
+  const convertedBirthday = datetimeToDateformatter(birthday);
+  return { username, password, email, birthday: convertedBirthday };
 };

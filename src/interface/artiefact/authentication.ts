@@ -1,6 +1,7 @@
 import env from "../../env";
 import APIClient from "../../entity/APIClient";
 import endpoint, { EndpointProperty } from "./endpoint";
+import { errorHandler } from "../../logics/error";
 
 type SignInData = {
   username: string;
@@ -11,7 +12,7 @@ type SignUpData = {
   username: string;
   password: string;
   email: string;
-  birthdate: Date;
+  birthday: string;
 };
 
 // TODO: It would be ideal if the schema could ge generated from JSON schema.
@@ -34,19 +35,27 @@ export default class AuthClient extends APIClient {
     const endpointProperty = <EndpointProperty>endpoint.signIn;
     return this.methods[endpointProperty.method](endpointProperty.uriSuffix, {
       data: { ...args }
-    }).then(response => {
-      console.log(response);
-      return response;
-    });
+    })
+      .then(response => {
+        console.log(response);
+        return response;
+      })
+      .catch(error => {
+        errorHandler(error);
+      });
   }
 
   public signUp(args: SignUpData): Promise<any> {
     const endpointProperty = <EndpointProperty>endpoint.signUp;
     return this.methods[endpointProperty.method](endpointProperty.uriSuffix, {
       data: { ...args }
-    }).then(response => {
-      console.log(response);
-      return response;
-    });
+    })
+      .then(response => {
+        console.log(response);
+        return response;
+      })
+      .catch(error => {
+        errorHandler(error);
+      });
   }
 }

@@ -4,8 +4,8 @@ import { ActionTypes, actions } from "./actionTypes";
 export type State = {
   agreeToTerms: boolean;
   agreeToTermsDate?: Date;
-  birthdate: Date;
-  changedBirthdate: boolean;
+  birthday: Date;
+  changedBirthday: boolean;
   email: string;
   password: string;
   showDatePickerModal: boolean;
@@ -14,8 +14,8 @@ export type State = {
 
 const defaultState: Readonly<State> = {
   agreeToTerms: false,
-  birthdate: new Date(),
-  changedBirthdate: false,
+  birthday: new Date(),
+  changedBirthday: false,
   email: "",
   password: "",
   showDatePickerModal: false,
@@ -59,9 +59,9 @@ export const reducer: Reducer<State, Action> = (
       break;
     }
     case actions.ON_PICK_DATE: {
-      newState.birthdate = action.payload.value;
+      newState.birthday = action.payload.value;
       newState.showDatePickerModal = false;
-      newState.changedBirthdate = true;
+      newState.changedBirthday = true;
       break;
     }
     default:

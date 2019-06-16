@@ -26,8 +26,8 @@ const styles: Styles = StyleSheet.create<Styles>({
 const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
   const {
     agreeToTerms,
-    birthdate,
-    changedBirthdate,
+    birthday,
+    changedBirthday,
     email,
     isButtonDisabled,
     onChangeEmail,
@@ -42,9 +42,8 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
     showDatePickerModal,
     username
   } = props;
-  const birthdateField = changedBirthdate
-    ? formatDate(birthdate)
-    : "Enter Birthdate";
+  const birthdayField =
+    changedBirthday && birthday ? formatDate(birthday) : "Enter Birthday";
   const secondaryButtonColor = isButtonDisabled ? "disabled" : "secondary";
   return (
     <View style={styles.base}>
@@ -85,7 +84,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View style={{ justifyContent: "flex-end" }}>
             <Text size="large" color="faded">
-              {"Birthdate:"}
+              {"Birthday:"}
             </Text>
           </View>
           <View style={{ justifyContent: "flex-end" }}>
@@ -95,7 +94,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
               weight="bold"
               onPress={onPressSetBirthday}
             >
-              {birthdateField}
+              {birthdayField}
             </Text>
           </View>
         </View>
