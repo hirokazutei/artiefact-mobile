@@ -5,6 +5,7 @@ import {
 } from "react-navigation";
 import SignInPage from "./components/pages/SignInPage";
 import SignUpPage from "./components/pages/SignUpPage";
+import InitializationPage from "./components/pages/InitializationPage";
 import IntroPage from "./components/pages/IntroPage";
 import MapViewPage from "./components/pages/MapViewPage";
 
@@ -21,11 +22,12 @@ const MapStack = createStackNavigator({
 export default createAppContainer(
   createSwitchNavigator(
     {
+      Initialize: InitializationPage,
       Auth: AuthStack,
       MapStack: MapStack
     },
     {
-      initialRouteName: "Auth"
+      initialRouteName: "Initialize"
     }
   )
 );

@@ -1,12 +1,11 @@
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
-import { NavigationScreenProp } from "react-navigation";
 import { actions } from "../../../redux/reducers/authentication/actionTypes";
 import { State } from "../../../redux/rootReducer";
 import { actions as signUpActions } from "../../../useCases/signUpUseCase/actionTypes";
 import SignUpPage from "./component";
 
-type StateProps = {
+export type StateProps = {
   agreeToTerms: boolean;
   birthday?: Date;
   changedBirthday: boolean;
@@ -17,7 +16,7 @@ type StateProps = {
   password: string;
 };
 
-type DispatchProps = {
+export type DispatchProps = {
   onChangeEmail: (event: React.FormEvent<HTMLSelectElement>) => void;
   onChangeUsername: (event: React.FormEvent<HTMLSelectElement>) => void;
   onChangePassword: (event: React.FormEvent<HTMLSelectElement>) => void;
@@ -27,12 +26,6 @@ type DispatchProps = {
   onPressSignUp: () => void;
   onPressTerms: () => void;
 };
-
-type NavigationProps = {
-  navigation: NavigationScreenProp<any, any>;
-};
-
-export type Props = StateProps & DispatchProps & NavigationProps;
 
 export default connect(
   (state: State): StateProps => {

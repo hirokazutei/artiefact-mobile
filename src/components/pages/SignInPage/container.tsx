@@ -5,18 +5,17 @@ import { actions as signInActions } from "../../../useCases/signInUseCase/action
 import { actions } from "../../../redux/reducers/authentication/actionTypes";
 import SignInPage from "./component";
 
-type StateProps = {
+export type StateProps = {
   password: string;
   username: string;
 };
 
-type DispatchProps = {
+export type DispatchProps = {
   onChangeUsername: (event: React.FormEvent<HTMLSelectElement>) => void;
   onChangePassword: (event: React.FormEvent<HTMLSelectElement>) => void;
   onPressSignIn: () => void;
 };
 
-export type Props = StateProps & DispatchProps;
 
 export default connect(
   (state: State): StateProps => {

@@ -7,7 +7,7 @@ import Stack from "../../atoms/Stack";
 import Text from "../../atoms/Text";
 import ShiftingTitle from "../../atoms/ShiftingTitle";
 import RadioSelection from "../../molecules/RadioSelection";
-import { Props } from "../../pages/SignUpPage/container";
+import { Props } from "../../pages/SignUpPage/component";
 import IOSDatePicker from "../../organism/DatePicker/ios";
 import { formatDate } from "../../../helper/wording";
 

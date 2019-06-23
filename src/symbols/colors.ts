@@ -15,5 +15,5 @@ export const colors: Readonly<{ [key in ColorTypeKeys]: string }> = {
   faded: "#b4afbe",
   primary: "#4A0D67",
   secondary: "#ff9345",
-  white: "#FFFFFF"
+  white: "#EEEEEE"
 };

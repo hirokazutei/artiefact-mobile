@@ -1,12 +1,15 @@
 import React from "react";
 import SignInTemplate from "../../templates/SignInTemplate/index";
+import { StateProps, DispatchProps } from "./container";
 import { actions } from "../../../redux/reducers/authentication/actionTypes";
 import BackButton from "../../atoms/NavigationBackButton";
-import { Props } from "./container";
+import NavigationTitle from "../../atoms/NavigationTitle";
+
+export type Props = StateProps & DispatchProps;
 
 class SignInPage extends React.Component<Props> {
   static navigationOptions = {
-    headerTitle: "Sign Up",
+    headerTitle: <NavigationTitle>{"SIGN IN"}</NavigationTitle>,
     headerLeft: <BackButton action={{ type: actions.RESET_SIGNUP_FORM }} />
   };
 
