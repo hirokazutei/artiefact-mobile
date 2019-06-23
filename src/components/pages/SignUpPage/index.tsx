@@ -6,6 +6,7 @@ import SignUpPageTemplate from "../../templates/SignUpTemplate/index";
 import { actions } from "../../../redux/reducers/authentication/actionTypes";
 import { State } from "../../../redux/rootReducer";
 import { actions as signUpActions } from "../../../useCases/signUpUseCase/actionTypes";
+import BackButton from "../../atoms/NavigationBackButton";
 
 type StateProps = {
   agreeToTerms: boolean;
@@ -36,6 +37,11 @@ type NavigationProps = {
 export type Props = StateProps & DispatchProps & NavigationProps;
 
 class SignUpPage extends React.Component<Props> {
+  static navigationOptions = {
+    headerTitle: "Sign Up",
+    headerLeft: <BackButton action={{ type: actions.RESET_SIGNUP_FORM }} />
+  };
+
   render() {
     return <SignUpPageTemplate {...this.props} />;
   }

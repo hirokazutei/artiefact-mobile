@@ -7,6 +7,7 @@ export type StyleProps = {
   size?: TextSizeKeys;
 };
 
+// TODO: Standardize Line Thickness Later
 const BOTTOM_LINE_THICKNESS = 3;
 
 type InputFieldColorKeys = "primary" | "secondary" | "disabled";

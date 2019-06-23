@@ -5,6 +5,7 @@ import { State } from "../../../redux/rootReducer";
 import SignInTemplate from "../../templates/SignInTemplate/index";
 import { actions } from "../../../redux/reducers/authentication/actionTypes";
 import { actions as signInActions } from "../../../useCases/signInUseCase/actionTypes";
+import BackButton from "../../atoms/NavigationBackButton";
 
 export type StateProps = {
   password: string;
@@ -19,9 +20,16 @@ export type DispatchProps = {
 
 export type Props = StateProps & DispatchProps;
 
-const SignInPage: React.FC<Props> = (props: Props): React.ReactElement => {
-  return <SignInTemplate {...props} />;
-};
+class SignInPage extends React.Component<Props> {
+  static navigationOptions = {
+    headerTitle: "Sign Up",
+    headerLeft: <BackButton action={{ type: actions.RESET_SIGNUP_FORM }} />
+  };
+
+  render() {
+    return <SignInTemplate {...this.props} />;
+  }
+}
 
 export default connect(
   (state: State): StateProps => {

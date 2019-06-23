@@ -37,7 +37,6 @@ export default class AuthClient extends APIClient {
       data: { ...args }
     })
       .then(response => {
-        console.log(response);
         return response;
       })
       .catch(error => {
@@ -51,7 +50,6 @@ export default class AuthClient extends APIClient {
       data: { ...args }
     })
       .then(response => {
-        console.log(response);
         return response;
       })
       .catch(error => {

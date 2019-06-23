@@ -1,8 +1,7 @@
 import { StyleSheet, TextStyle } from "react-native";
 import * as symbols from "../../../symbols";
-import { Diff } from "../../../type/tsUtility";
 
-type AlignType = Diff<Required<TextStyle["textAlign"]>, undefined>;
+type AlignType = NonNullable<TextStyle["textAlign"]>;
 
 export type StyleProps = {
   color?: TextColorKeys;

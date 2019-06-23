@@ -64,6 +64,12 @@ export const reducer: Reducer<State, Action> = (
       newState.changedBirthday = true;
       break;
     }
+    case actions.RESET_SIGNIN_FORM: {
+      return { ...defaultState };
+    }
+    case actions.RESET_SIGNUP_FORM: {
+      return { ...defaultState };
+    }
     default:
       break;
   }

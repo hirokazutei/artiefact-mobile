@@ -1,5 +1,5 @@
 import * as Keychain from "react-native-keychain";
-import Token, { TokenParams } from "../../entity/Auth/Token";
+import Token, { TokenParams } from "../../entity/Authentication/Token";
 import env from "../../env";
 import { errorHandler } from "../../logics/error";
 

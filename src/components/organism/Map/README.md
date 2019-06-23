@@ -2,11 +2,11 @@
 
 ## Usage Patterns
 
-### Personal / Friends / Found Artifact View
+### Personal / Friends / Found Artiefact View
 
 #### Description
 
-A display of the loacitons of where you have taken the picture and submitted as artifacts.
+A display of the loacitons of where you have taken the picture and submitted as artiefacts.
 
 #### Visual
 
@@ -24,16 +24,16 @@ Tapped items produces a callout.
 </MapView>
 ```
 
-### Searching For Artifacts
+### Searching For Artiefacts
 
 #### Description
 
-People not in your friendlist, you can see their artifacts only if their privacy setting allows it and if you are within the searching vicinity. The vicinity becomes smaller as more artifacts are around in the area.
+People not in your friendlist, you can see their artiefacts only if their privacy setting allows it and if you are within the searching vicinity. The vicinity becomes smaller as more artiefacts are around in the area.
 
 #### Visual
 
 A circle around you displaying the area where your "search" is. Pins within that circle.
-Other circles showing the general area/concentration of other artifacts.
+Other circles showing the general area/concentration of other artiefacts.
 
 #### Implementation
 
@@ -50,7 +50,7 @@ Other circles showing the general area/concentration of other artifacts.
 </MapView>
 ```
 
-### Artifact Saga
+### Artiefact Saga
 
 #### Description
 
@@ -58,7 +58,7 @@ Record the location data of where you have travelled as well as the pictures you
 
 #### Visual
 
-A line displaying the path that you have taken as well as pins scattered through the path displaying the artifacts that you have found along the way.
+A line displaying the path that you have taken as well as pins scattered through the path displaying the artiefacts that you have found along the way.
 
 #### Implementation
 
