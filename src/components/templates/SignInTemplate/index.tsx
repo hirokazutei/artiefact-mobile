@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
-import { Props } from "../../pages/SignInPage";
+import { Props } from "../../pages/SignInPage/container";
 import Inset from "../../atoms/Inset";
 import Button from "../../atoms/Button";
 import InputField from "../../atoms/InputField";
