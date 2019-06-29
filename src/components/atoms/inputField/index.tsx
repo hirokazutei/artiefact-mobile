@@ -16,6 +16,8 @@ type Props = {
   placeholder?: string;
   secureTextEntry?: boolean;
   value?: string;
+  isDisabled?: boolean;
+  isErrornous?: boolean;
 } & SettingProps &
   StyleProps;
 
@@ -35,8 +37,16 @@ type Props = {
  * @param [props.keyboardType] - the keyboard type of field
  */
 const InputField: React.FC<Props> = (props: Props): React.ReactElement => {
-  const { keyboardType, autoCapitalize, color, ...otherProps } = props;
-  const styles = stylizeInputField({ color });
+  const {
+    keyboardType,
+    autoCapitalize,
+    color,
+    size,
+    isDisabled,
+    isErrornous,
+    ...otherProps
+  } = props;
+  const styles = stylizeInputField({ color, size, isDisabled, isErrornous });
   return (
     <TextInput
       style={styles.inputField}

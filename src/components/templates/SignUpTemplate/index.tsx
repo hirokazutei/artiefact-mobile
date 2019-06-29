@@ -29,6 +29,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
     birthday,
     changedBirthday,
     email,
+    emailErrors,
     isButtonDisabled,
     onChangeEmail,
     onChangePassword,
@@ -39,8 +40,10 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
     onPressSignUp,
     onPressTerms,
     password,
+    passwordErrors,
     showDatePickerModal,
-    username
+    username,
+    usernameErrors
   } = props;
   const birthdayField =
     changedBirthday && birthday ? formatDate(birthday) : "Enter Birthday";
@@ -65,6 +68,13 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           onChangeText={onChangeUsername}
           value={username}
         />
+        {usernameErrors.map(error => {
+          return (
+            <Text size="medium" color="danger" align="left">
+              {`・${error}`}
+            </Text>
+          );
+        })}
         <Stack value="huge" />
         <InputField
           placeholder="Password"
@@ -73,6 +83,13 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           secureTextEntry={true}
           value={password}
         />
+        {passwordErrors.map(error => {
+          return (
+            <Text size="medium" color="danger" align="left">
+              {`・${error}`}
+            </Text>
+          );
+        })}
         <Stack value="huge" />
         <InputField
           placeholder="Email"
@@ -80,6 +97,13 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           onChangeText={onChangeEmail}
           value={email}
         />
+        {emailErrors.map(error => {
+          return (
+            <Text size="medium" color="danger" align="left">
+              {`・${error}`}
+            </Text>
+          );
+        })}
         <Stack value="huge" />
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View style={{ justifyContent: "flex-end" }}>
