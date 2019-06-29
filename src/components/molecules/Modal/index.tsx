@@ -41,11 +41,11 @@ const Modal: React.FC<Props> = (props: Props): React.ReactElement => {
       <Button color="secondary" size="huge" {...secondaryButton} />
     </View>
   );
-  secondaryButton && <Inline value="medium" />;
   const PrimaryButton = primaryButton && (
     <Inset padding="medium">
       <View style={styles.buttonsView}>
         {SecondaryButton}
+        {SecondaryButton && <Inline value="medium" />}
         <View style={styles.buttonView}>
           <Button color="primary" size="huge" {...primaryButton} />
         </View>

@@ -27,7 +27,7 @@ export default createAppContainer(
       MapStack: MapStack
     },
     {
-      initialRouteName: "Initialize"
+      initialRouteName: "Auth"
     }
   )
 );

@@ -1,5 +1,6 @@
-export type ActionTypes = "UNKNOWN_ERROR";
+export type ActionTypes = "UNKNOWN_ERROR" | "NETWORK_ERROR";
 
 export const actions: { [key in ActionTypes]: ActionTypes } = {
-  UNKNOWN_ERROR: "UNKNOWN_ERROR"
+  UNKNOWN_ERROR: "UNKNOWN_ERROR",
+  NETWORK_ERROR: "NETWORK_ERROR"
 };

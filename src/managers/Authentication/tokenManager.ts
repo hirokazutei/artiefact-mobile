@@ -8,12 +8,26 @@ const KEYCHAIN_USERNAME = "token";
 export default class TokenManager {
   authToken?: Token;
 
-  constructor(props: { token: Token } | null) {
+  constructor(props?: { token: Token }) {
     if (props && props.token) {
       this.authToken = props.token;
+      TokenManager.saveAccessToken(props.token)
+        .then(
+          (): void => {
+            return;
+          }
+        )
+        .catch(error => {
+          errorHandler(error);
+        });
+      return;
     }
     this.setAccessToken();
   }
+
+  static clearAccessToken = (): Promise<any> => {
+    return Keychain.resetInternetCredentials(env.API_ENDPOINT);
+  };
 
   static createToken = (params: TokenParams): Token => {
     return new Token(params);
@@ -29,9 +43,9 @@ export default class TokenManager {
 
   static loadAccessToken = (): Promise<Token> => {
     return Keychain.getInternetCredentials(env.API_ENDPOINT)
-      .then(credential => {
-        if (credential && credential.password) {
-          return JSON.parse(credential.password);
+      .then(credentials => {
+        if (credentials && credentials.password) {
+          return JSON.parse(credentials.password);
         }
         return null;
       })

@@ -16,7 +16,6 @@ export type DispatchProps = {
   onPressSignIn: () => void;
 };
 
-
 export default connect(
   (state: State): StateProps => {
     const { password, username } = state.authentication;

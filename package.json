@@ -41,7 +41,7 @@
     "@types/react-test-renderer": "^16.8.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "24.3.1",
-    "jest": "^24.3.1",
+    "jest": "^24.8.0",
     "metro-react-native-babel-preset": "0.53.0",
     "react-native-typescript-transformer": "^1.2.12",
     "react-test-renderer": "16.6.3",

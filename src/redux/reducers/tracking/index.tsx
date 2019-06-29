@@ -1,5 +1,5 @@
 import { Reducer } from "redux";
-import { ActionTypes, actions } from "./actionTypes";
+import { ActionTypes } from "./actionTypes";
 
 export type State = {
   isTracking: boolean;
@@ -25,6 +25,6 @@ export const reducer: Reducer<State, Action> = (
   state: State = defaultState,
   action: Action
 ): State => {
-  const newState = { ...state };
+  const newState = { ...state, action };
   return newState;
 };

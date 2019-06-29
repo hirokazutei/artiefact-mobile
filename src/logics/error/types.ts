@@ -1,9 +1,9 @@
 import { ActionTypes } from "./actionTypes";
-import {PositionError} from "react-native-maps";
+import { AxiosError } from "axios";
 
 export type Action = {
   type: ActionTypes;
   error: Object;
 };
 
-export type EncompassingErrors = Error | PositionError;
+export type EncompassingErrors = Error | AxiosError;
