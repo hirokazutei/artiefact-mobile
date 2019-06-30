@@ -14,6 +14,10 @@ type SignUpData = {
   birthday: string;
 };
 
+type CheckUsernameAvailabilityData = {
+  username: string;
+};
+
 export default class AuthClient extends APIClient {
   private static instance: AuthClient;
 
@@ -37,6 +41,17 @@ export default class AuthClient extends APIClient {
 
   public signUp(args: SignUpData): Promise<any> {
     const endpointProperty = <EndpointProperty>endpoint.signUp;
+    return this.methods[endpointProperty.method](endpointProperty.uriSuffix, {
+      data: { ...args }
+    });
+  }
+
+  public checkUsernameAvailability(
+    args: CheckUsernameAvailabilityData
+  ): Promise<any> {
+    const endpointProperty = <EndpointProperty>(
+      endpoint.checkUsernameAvailability
+    );
     return this.methods[endpointProperty.method](endpointProperty.uriSuffix, {
       data: { ...args }
     });

@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
 import Inset from "../../atoms/Inset";
 import Button from "../../atoms/Button";
-import InputField from "../../atoms/InputField";
 import Stack from "../../atoms/Stack";
 import Text from "../../atoms/Text";
 import ShiftingTitle from "../../atoms/ShiftingTitle";

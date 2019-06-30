@@ -10,6 +10,8 @@ export type State = {
   password: string;
   showDatePickerModal: boolean;
   username: string;
+  isUsernameValidating: boolean;
+  isUsernameAvailable: boolean | null;
 };
 
 const defaultState: Readonly<State> = {
@@ -19,7 +21,9 @@ const defaultState: Readonly<State> = {
   email: "",
   password: "",
   showDatePickerModal: false,
-  username: ""
+  username: "",
+  isUsernameValidating: false,
+  isUsernameAvailable: null
 };
 
 export type Action = {
@@ -62,6 +66,18 @@ export const reducer: Reducer<State, Action> = (
       newState.birthday = action.payload.value;
       newState.showDatePickerModal = false;
       newState.changedBirthday = true;
+      break;
+    }
+    case actions.USERNAME_IS_VALIDATING: {
+      newState.isUsernameValidating = true;
+      break;
+    }
+    case actions.USERNAME_AVAILABLE: {
+      newState.isUsernameAvailable = true;
+      break;
+    }
+    case actions.USERNAME_UNAVAILABLE: {
+      newState.isUsernameAvailable = false;
       break;
     }
     case actions.RESET_SIGNIN_FORM: {
