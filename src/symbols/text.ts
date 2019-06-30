@@ -26,9 +26,9 @@ export type TextSizeKeys =
   | "macro";
 
 export const textSizes: Readonly<{ [key in TextSizeKeys]: number }> = {
-  tiny: 6,
-  small: 8,
-  medium: 12,
+  tiny: 10,
+  small: 12,
+  medium: 14,
   large: 16,
   huge: 24,
   massive: 32,

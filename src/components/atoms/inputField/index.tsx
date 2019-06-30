@@ -7,9 +7,10 @@ import {
   resolveAutoCapitalize
 } from "./settings";
 
-type Props = {
+export type Props = {
   children?: never;
   defaultValue?: string;
+  disableLine?: boolean;
   editable?: boolean;
   maxLength?: number;
   onChangeText?: (e: any) => any;
@@ -26,7 +27,10 @@ type Props = {
  *
  * @param props - properties
  * @param [props.defaultValue] - default value
+ * @param [props.disableLine] - disable line to be used in another component
  * @param [props.editable] - is field editable
+ * @param [props.isDisabled] - if the input field is disabled
+ * @param [props.isErrornous] -if the input field contains an error
  * @param [props.maxLength] - max length of field
  * @param [props.onChangeText] - action fired when change occures
  * @param [props.placeholder] - placeholder of the field
@@ -42,11 +46,19 @@ const InputField: React.FC<Props> = (props: Props): React.ReactElement => {
     autoCapitalize,
     color,
     size,
+    disableLine,
     isDisabled,
     isErrornous,
     ...otherProps
   } = props;
-  const styles = stylizeInputField({ color, size, isDisabled, isErrornous });
+  const styles = stylizeInputField({
+    color,
+    size,
+    isDisabled,
+    disableLine,
+    isErrornous
+  });
+
   return (
     <TextInput
       style={styles.inputField}

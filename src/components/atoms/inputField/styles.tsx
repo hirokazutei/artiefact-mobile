@@ -3,14 +3,12 @@ import { TextSizeKeys, textSizes } from "../../../symbols/text";
 import * as symbols from "../../../symbols";
 
 export type StyleProps = {
-  color?: InputFieldColorKeys;
+  color: InputFieldColorKeys;
   size?: TextSizeKeys;
+  disableLine?: boolean;
   isDisabled?: boolean;
   isErrornous?: boolean;
 };
-
-// TODO: Standardize Line Thickness Later
-const BOTTOM_LINE_THICKNESS = 3;
 
 type InputFieldColorKeys = "primary" | "secondary" | "disabled" | "error";
 
@@ -24,6 +22,7 @@ const inputFieldColors: Readonly<{ [key in InputFieldColorKeys]: string }> = {
 const defaultStyle: Readonly<Required<StyleProps>> = {
   color: "primary" as InputFieldColorKeys,
   size: "large" as TextSizeKeys,
+  disableLine: false,
   isDisabled: false,
   isErrornous: false
 };
@@ -58,7 +57,7 @@ type Styles = {
  * Stylize Input Field
  */
 export const stylizeInputField = (styleProps: StyleProps): Styles => {
-  const { color, size, isDisabled, isErrornous } = styleProps;
+  const { color, size, isDisabled, disableLine, isErrornous } = styleProps;
   let borderColor = resolveInputFieldColor(color);
   if (isDisabled) {
     borderColor = resolveInputFieldColor("disabled");
@@ -70,7 +69,7 @@ export const stylizeInputField = (styleProps: StyleProps): Styles => {
     inputField: {
       borderColor: borderColor,
       fontSize: resolveInputFieldFontSize(size),
-      borderBottomWidth: BOTTOM_LINE_THICKNESS
+      borderBottomWidth: disableLine ? 0 : symbols.borders.thickness.thin
     }
   });
 };

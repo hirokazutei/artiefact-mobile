@@ -8,6 +8,7 @@ import Text from "../../atoms/Text";
 import ShiftingTitle from "../../atoms/ShiftingTitle";
 import RadioSelection from "../../molecules/RadioSelection";
 import { Props } from "../../pages/SignUpPage/component";
+import ValidationField from "../../molecules/ValidationField";
 import IOSDatePicker from "../../organism/DatePicker/ios";
 import { formatDate } from "../../../helper/wording";
 
@@ -62,48 +63,30 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         </Text>
         <ShiftingTitle color="secondary" />
         <Stack value="huge" />
-        <InputField
+        <ValidationField
           placeholder="Username"
           color="secondary"
           onChangeText={onChangeUsername}
           value={username}
+          errors={usernameErrors}
         />
-        {usernameErrors.map(error => {
-          return (
-            <Text size="medium" color="danger" align="left">
-              {`・${error}`}
-            </Text>
-          );
-        })}
         <Stack value="huge" />
-        <InputField
+        <ValidationField
           placeholder="Password"
           color="secondary"
           onChangeText={onChangePassword}
           secureTextEntry={true}
           value={password}
+          errors={passwordErrors}
         />
-        {passwordErrors.map(error => {
-          return (
-            <Text size="medium" color="danger" align="left">
-              {`・${error}`}
-            </Text>
-          );
-        })}
         <Stack value="huge" />
-        <InputField
+        <ValidationField
           placeholder="Email"
           color="secondary"
           onChangeText={onChangeEmail}
           value={email}
+          errors={emailErrors}
         />
-        {emailErrors.map(error => {
-          return (
-            <Text size="medium" color="danger" align="left">
-              {`・${error}`}
-            </Text>
-          );
-        })}
         <Stack value="huge" />
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View style={{ justifyContent: "flex-end" }}>

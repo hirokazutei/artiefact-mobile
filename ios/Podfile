@@ -40,6 +40,8 @@ target 'artiefact' do
     pod 'Google-Maps-iOS-Utils'
     pod 'RNKeychain', :path => '../node_modules/react-native-keychain'
 
+    pod 'react-native-spinkit', :path => '../node_modules/react-native-spinkit'
+
   end
   
   post_install do |installer|
