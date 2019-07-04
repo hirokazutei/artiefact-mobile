@@ -40,7 +40,6 @@ export default class APIClient {
     );
     const data = Object.assign({}, (options && options.data) || {});
     const query = Object.assign({}, (options && options.queryParams) || {});
-
     const fetchParams = {
       method: restMethods[method],
       baseURL: this.endpoint,

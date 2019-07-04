@@ -2,12 +2,14 @@ import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { actions } from "../../../redux/reducers/authentication/actionTypes";
 import { State } from "../../../redux/rootReducer";
+import { actions as validationActions } from "../../../logics/validator/actionTypes";
 import { actions as signUpActions } from "../../../useCases/signUpUseCase/actionTypes";
 import {
   usernameValidator,
   passwordValidator,
   emailValidator
 } from "../../../logics/validator/authentication";
+import { ValidationResultType } from "../../molecules/ValidationField";
 import SignUpPage from "./component";
 
 export type StateProps = {
@@ -16,12 +18,14 @@ export type StateProps = {
   changedBirthday: boolean;
   emailErrors: Array<string>;
   isButtonDisabled: boolean;
+  isUsernameValidating: boolean;
   email: string;
   username: string;
   usernameErrors: Array<string>;
   showDatePickerModal: boolean;
   password: string;
   passwordErrors: Array<string>;
+  usernameValidationStatus: ValidationResultType;
 };
 
 export type DispatchProps = {
@@ -42,13 +46,19 @@ export default connect(
       birthday,
       changedBirthday,
       email,
+      isUsernameAvailable,
+      isUsernameValidating,
       password,
       showDatePickerModal,
       username
     } = state.authentication;
     const usernameErrors = [];
+    let usernameValidationStatus = "undefined";
     if (username) {
       const usernameValidationResult = usernameValidator(username);
+      if (!isUsernameAvailable) {
+        usernameErrors.push(`The username ${username} is unavailable.`);
+      }
       if (!usernameValidationResult.hasLength) {
         usernameErrors.push("Username must be between 4 to 24 characters.");
       }
@@ -57,6 +67,7 @@ export default connect(
           "Username only permits alphabets, numbers and the following characters: _+=-"
         );
       }
+      usernameValidationStatus = usernameErrors.length ? "error" : "success";
     }
     const passwordErrors = [];
     if (password) {
@@ -93,7 +104,9 @@ export default connect(
       !username ||
       !!emailErrors.length ||
       !!usernameErrors.length ||
-      !!passwordErrors.length;
+      !!passwordErrors.length ||
+      isUsernameValidating ||
+      !isUsernameAvailable;
     return {
       agreeToTerms,
       birthday,
@@ -101,11 +114,13 @@ export default connect(
       email,
       emailErrors,
       isButtonDisabled,
+      isUsernameValidating,
       password,
       passwordErrors,
       showDatePickerModal,
       username,
-      usernameErrors
+      usernameErrors,
+      usernameValidationStatus: usernameValidationStatus as ValidationResultType
     };
   },
   (dispatch: Dispatch): DispatchProps => {
@@ -120,6 +135,9 @@ export default connect(
         dispatch({
           type: actions.CHANGE_USERNAME,
           payload: { value: event }
+        });
+        dispatch({
+          type: validationActions.CHECK_USERNAME_AVAILABILITY
         });
       },
       onChangeEmail: (event: React.FormEvent<HTMLSelectElement>) => {

@@ -6,7 +6,7 @@ import Text from "../../atoms/Text";
 import Stack from "../../atoms/Stack";
 import * as symbols from "../../../symbols";
 
-const DotsLoader = require("react-native-indicator");
+const RNIndicator = require("react-native-indicator");
 
 type Props = {
   isValidating?: boolean;
@@ -35,7 +35,11 @@ const styles = StyleSheet.create<Styles>({
   }
 });
 
-type ValidationResultType = "success" | "warning" | "error";
+export type ValidationResultType =
+  | "success"
+  | "warning"
+  | "error"
+  | "undefined";
 
 type ValidationFieldColorKeys = "primary" | "secondary" | "disabled" | "error";
 
@@ -53,7 +57,8 @@ const validationFieldIcons: Readonly<
 > = {
   success: <Text>{"✓"}</Text>,
   warning: <Text>{"!"}</Text>,
-  error: <Text>{"✖"}</Text>
+  error: <Text>{"✖"}</Text>,
+  undefined: <View />
 };
 
 /**
@@ -76,12 +81,13 @@ const ValidationField: React.FC<Props> = (props: Props): React.ReactElement => {
     ...inputFieldProps
   } = props;
   const colorStyle = validationFieldColors[color];
-  var validationIcon = validationResult
+  let validationIcon = validationResult
     ? validationFieldIcons[validationResult]
     : null;
+  console.log(isValidating);
   if (isValidating) {
     validationIcon = (
-      <DotsLoader size={10} betweenSpace={5} color={colorStyle} />
+      <RNIndicator.DotsLoader size={10} betweenSpace={5} color={colorStyle} />
     );
   }
   return (
@@ -96,25 +102,25 @@ const ValidationField: React.FC<Props> = (props: Props): React.ReactElement => {
       </View>
       <Stack value="tiny" />
       {errors &&
-        errors.map(error => {
+        errors.map((error, i) => {
           return (
-            <Text size="small" color="danger" align="left">
+            <Text key={i} size="small" color="danger" align="left">
               {`・${error}`}
             </Text>
           );
         })}
       {warnings &&
-        warnings.map(warning => {
+        warnings.map((warning, i) => {
           return (
-            <Text size="small" color="primary" align="left">
+            <Text key={i} size="small" color="primary" align="left">
               {`・${warning}`}
             </Text>
           );
         })}
       {infos &&
-        infos.map(info => {
+        infos.map((info, i) => {
           return (
-            <Text size="small" color="default" align="left">
+            <Text key={i} size="small" color="default" align="left">
               {`・${info}`}
             </Text>
           );

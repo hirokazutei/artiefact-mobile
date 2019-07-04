@@ -31,6 +31,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
     email,
     emailErrors,
     isButtonDisabled,
+    isUsernameValidating,
     onChangeEmail,
     onChangePassword,
     onChangeUsername,
@@ -43,7 +44,8 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
     passwordErrors,
     showDatePickerModal,
     username,
-    usernameErrors
+    usernameErrors,
+    usernameValidationStatus
   } = props;
   const birthdayField =
     changedBirthday && birthday ? formatDate(birthday) : "Enter Birthday";
@@ -68,6 +70,8 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           onChangeText={onChangeUsername}
           value={username}
           errors={usernameErrors}
+          validationResult={usernameValidationStatus}
+          isValidating={isUsernameValidating}
         />
         <Stack value="huge" />
         <ValidationField

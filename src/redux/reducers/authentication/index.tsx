@@ -70,14 +70,17 @@ export const reducer: Reducer<State, Action> = (
     }
     case actions.USERNAME_IS_VALIDATING: {
       newState.isUsernameValidating = true;
+      newState.isUsernameAvailable = true;
       break;
     }
     case actions.USERNAME_AVAILABLE: {
       newState.isUsernameAvailable = true;
+      newState.isUsernameValidating = false;
       break;
     }
     case actions.USERNAME_UNAVAILABLE: {
       newState.isUsernameAvailable = false;
+      newState.isUsernameValidating = false;
       break;
     }
     case actions.RESET_SIGNIN_FORM: {

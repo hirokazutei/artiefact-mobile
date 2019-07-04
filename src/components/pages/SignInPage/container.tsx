@@ -2,7 +2,6 @@ import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { State } from "../../../redux/rootReducer";
 import { actions as signInActions } from "../../../useCases/signInUseCase/actionTypes";
-import { actions as validationActions } from "../../../logics/validator/actionTypes";
 import { actions } from "../../../redux/reducers/authentication/actionTypes";
 import SignInPage from "./component";
 
@@ -37,9 +36,6 @@ export default connect(
         dispatch({
           type: actions.CHANGE_USERNAME,
           payload: { value: event }
-        });
-        dispatch({
-          type: validationActions.CHECK_USERNAME_AVAILABILITY
         });
       },
       onPressSignIn: () => {
