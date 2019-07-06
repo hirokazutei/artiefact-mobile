@@ -5,13 +5,14 @@ import {
   Store as ReduxStore,
   AnyAction
 } from "redux";
+import { State as ReduxState } from "./rootReducer";
 
 export type Dispatch = ReduxDispatch<Action>;
 
 export type Dispatcher = { dispatch: Dispatch };
 
-export type State = Object;
+export type Store = ReduxStore<ReduxState, Action>;
 
-export type Store = ReduxStore<State, Action>;
+export type State = ReduxState;
 
 export type Action = AnyAction;
