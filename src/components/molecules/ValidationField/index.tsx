@@ -84,7 +84,6 @@ const ValidationField: React.FC<Props> = (props: Props): React.ReactElement => {
   let validationIcon = validationResult
     ? validationFieldIcons[validationResult]
     : null;
-  console.log(isValidating);
   if (isValidating) {
     validationIcon = (
       <RNIndicator.DotsLoader size={10} betweenSpace={5} color={colorStyle} />

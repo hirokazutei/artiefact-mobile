@@ -10,7 +10,7 @@ export type Props = StateProps & DispatchProps;
 class SignInPage extends React.Component<Props> {
   static navigationOptions = {
     headerTitle: <NavigationTitle>{"SIGN IN"}</NavigationTitle>,
-    headerLeft: <BackButton action={{ type: actions.RESET_SIGNUP_FORM }} />
+    headerLeft: <BackButton action={{ type: actions.AUTH_RESET_SIGNUP_FORM }} />
   };
 
   render() {

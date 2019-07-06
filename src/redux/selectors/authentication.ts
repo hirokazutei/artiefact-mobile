@@ -7,8 +7,8 @@ type SignInSelected = {
 };
 
 export const signInSelector = (state: State): SignInSelected => {
-  const { username, password } = state.authentication;
-  return { username, password };
+  const { usernameForm, passwordForm } = state.authentication;
+  return { username: usernameForm.value, password: passwordForm.value };
 };
 
 type SignUpSelected = {
@@ -19,18 +19,32 @@ type SignUpSelected = {
 };
 
 export const signUpSelector = (state: State): SignUpSelected => {
-  const { username, password, email, birthday } = state.authentication;
-  const convertedBirthday = datetimeToDateformatter(birthday);
-  return { username, password, email, birthday: convertedBirthday };
+  const {
+    usernameForm,
+    passwordForm,
+    emailForm,
+    birthdayForm
+  } = state.authentication;
+  const convertedBirthday = datetimeToDateformatter(birthdayForm.value);
+  return {
+    username: usernameForm.value,
+    password: passwordForm.value,
+    email: emailForm.value,
+    birthday: convertedBirthday
+  };
 };
 
-type CheckUsernameAvailabilitySelected = {
-  username: string;
+export const usernameSelector = (state: State): string => {
+  const { usernameForm } = state.authentication;
+  return usernameForm.value;
 };
 
-export const checkUsernameAvailabilitySelector = (
-  state: State
-): CheckUsernameAvailabilitySelected => {
-  const { username } = state.authentication;
-  return { username };
+export const passwordSelector = (state: State): string => {
+  const { passwordForm } = state.authentication;
+  return passwordForm.value;
+};
+
+export const emailSelector = (state: State): string => {
+  const { emailForm } = state.authentication;
+  return emailForm.value;
 };

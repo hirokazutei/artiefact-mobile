@@ -4,13 +4,9 @@ import { actions } from "../../../redux/reducers/authentication/actionTypes";
 import { State } from "../../../redux/rootReducer";
 import { actions as validationActions } from "../../../logics/validator/actionTypes";
 import { actions as signUpActions } from "../../../useCases/signUpUseCase/actionTypes";
-import {
-  usernameValidator,
-  passwordValidator,
-  emailValidator
-} from "../../../logics/validator/authentication";
 import { ValidationResultType } from "../../molecules/ValidationField";
 import SignUpPage from "./component";
+import messages from "./messages";
 
 export type StateProps = {
   agreeToTerms: boolean;
@@ -42,79 +38,102 @@ export type DispatchProps = {
 export default connect(
   (state: State): StateProps => {
     const {
-      agreeToTerms,
-      birthday,
-      changedBirthday,
-      email,
-      isUsernameAvailable,
-      isUsernameValidating,
-      password,
+      agreeToTermsForm,
+      birthdayForm,
+      emailForm,
+      passwordForm,
       showDatePickerModal,
-      username
+      usernameForm
     } = state.authentication;
+
+    // Username
+    const {
+      value: username,
+      isValidating,
+      hasOnlyAllowedChars,
+      isAvailable,
+      hasLength: usernameHasLength,
+      hideErrors: usernameHideErrors,
+      isDirty: usernameIsDirty
+    } = usernameForm;
     const usernameErrors = [];
     let usernameValidationStatus = "undefined";
-    if (username) {
-      const usernameValidationResult = usernameValidator(username);
-      if (!isUsernameAvailable) {
-        usernameErrors.push(`The username ${username} is unavailable.`);
+    if (!usernameHideErrors && username) {
+      if (!usernameHasLength) {
+        usernameErrors.push(messages.usernameWrongLength);
       }
-      if (!usernameValidationResult.hasLength) {
-        usernameErrors.push("Username must be between 4 to 24 characters.");
+      if (!isAvailable) {
+        usernameErrors.push(messages.usernameUnavailable(username));
       }
-      if (!usernameValidationResult.hasOnlyAllowedChars) {
-        usernameErrors.push(
-          "Username only permits alphabets, numbers and the following characters: _+=-"
-        );
+      if (!hasOnlyAllowedChars) {
+        usernameErrors.push(messages.usernameHasIllegalChars);
       }
-      usernameValidationStatus = usernameErrors.length ? "error" : "success";
     }
+    if (usernameIsDirty && !username) {
+      usernameErrors.push(messages.usernameIsBlank);
+    }
+    // TODO: Change the ugly icons
+    usernameValidationStatus = usernameErrors.length ? "error" : "success";
+
+    // Password
+    const {
+      value: password,
+      hasLength: passwordHasLength,
+      hasUpper,
+      hasLower,
+      hideErrors: passwordHideErrors,
+      isDirty: passwordIsDirty
+    } = passwordForm;
     const passwordErrors = [];
-    if (password) {
-      const passwordValidationResult = passwordValidator(password);
-      if (!passwordValidationResult.hasLength) {
-        passwordErrors.push("Password must be between 8 to 32 characters.");
+    if (!passwordHideErrors && password) {
+      if (!passwordHasLength) {
+        passwordErrors.push(messages.passwordWrongLength);
       }
-      /* This condion might be too intense.
-      if (
-        !passwordValidationResult.hasUpper ||
-        !passwordValidationResult.hasLower ||
-        !passwordValidationResult.hasNumber ||
-        !passwordValidationResult.hasSpecial
-      ) {
-        passwordErrors.push(
-          "Password must contain at least one uppercase letter, one lowercase letter, one number and one of the following characters: * @ ! # % & ( ) ^ ~ { }"
-        );
+      if (!hasLower || !hasUpper) {
+        passwordErrors.push(messages.passwordNeedsLowerAndUpper);
       }
-      */
     }
+    if (passwordIsDirty && !password) {
+      passwordErrors.push(messages.passwordIsBlank);
+    }
+
+    // Email
+    const {
+      value: email,
+      isValid: isEmailValid,
+      hideErrors: emailHideErrors,
+      isDirty: emailIsDirty
+    } = emailForm;
     const emailErrors = [];
-    if (email) {
-      const emailValidationResult = emailValidator(email);
-      if (!emailValidationResult.valid) {
-        emailErrors.push("The e-mail address provided is not valid");
+    if (!emailHideErrors && email) {
+      if (!isEmailValid) {
+        emailErrors.push(messages.emailIsInvalid);
       }
     }
+    if (emailIsDirty && !email) {
+      emailErrors.push(messages.emailIsBlank);
+    }
+
     const isButtonDisabled =
-      !agreeToTerms ||
-      !changedBirthday ||
-      !birthday ||
+      !agreeToTermsForm.value ||
+      !birthdayForm.isDirty ||
+      !birthdayForm.value ||
       !email ||
       !password ||
       !username ||
       !!emailErrors.length ||
       !!usernameErrors.length ||
       !!passwordErrors.length ||
-      isUsernameValidating ||
-      !isUsernameAvailable;
+      isValidating ||
+      !isAvailable;
     return {
-      agreeToTerms,
-      birthday,
-      changedBirthday,
+      agreeToTerms: agreeToTermsForm.value,
+      birthday: birthdayForm.value,
+      changedBirthday: birthdayForm.isDirty,
       email,
       emailErrors,
       isButtonDisabled,
-      isUsernameValidating,
+      isUsernameValidating: isValidating,
       password,
       passwordErrors,
       showDatePickerModal,
@@ -127,46 +146,55 @@ export default connect(
     return {
       onChangePassword: (event: React.FormEvent<HTMLSelectElement>) => {
         dispatch({
-          type: actions.CHANGE_PASSWORD,
+          type: actions.AUTH_CHANGE_PASSWORD,
           payload: { value: event }
+        });
+        dispatch({
+          type: validationActions.DELAYED_PASSWORD_VALIDATION
         });
       },
       onChangeUsername: (event: React.FormEvent<HTMLSelectElement>) => {
         dispatch({
-          type: actions.CHANGE_USERNAME,
+          type: actions.AUTH_CHANGE_USERNAME,
           payload: { value: event }
         });
         dispatch({
           type: validationActions.CHECK_USERNAME_AVAILABILITY
         });
+        dispatch({
+          type: validationActions.DELAYED_USERNAME_VALIDATION
+        });
       },
       onChangeEmail: (event: React.FormEvent<HTMLSelectElement>) => {
         dispatch({
-          type: actions.CHANGE_EMAIL,
+          type: actions.AUTH_CHANGE_EMAIL,
           payload: { value: event }
+        });
+        dispatch({
+          type: validationActions.DELAYED_EMAIL_VALIDATION
         });
       },
       onPressCancelModal: () => {
         dispatch({
-          type: actions.HIDE_DATE_PICKER_MODAL
+          type: actions.AUTH_HIDE_DATE_PICKER_MODAL
         });
       },
       onPressConfirmModal: (date: Date) => {
         dispatch({
-          type: actions.ON_PICK_DATE,
+          type: actions.AUTH_ON_PICK_BIRTHDATE,
           payload: { value: date }
         });
       },
       onPressSetBirthday: () =>
         dispatch({
-          type: actions.SHOW_DATE_PICKER_MODAL
+          type: actions.AUTH_SHOW_DATE_PICKER_MODAL
         }),
       onPressSignUp: () => {
         dispatch({
           type: signUpActions.SIGN_UP_USE_CASE
         });
       },
-      onPressTerms: () => dispatch({ type: actions.ON_PRESS_TERMS })
+      onPressTerms: () => dispatch({ type: actions.AUTH_ON_PRESS_TERMS })
     };
   }
 )(SignUpPage);

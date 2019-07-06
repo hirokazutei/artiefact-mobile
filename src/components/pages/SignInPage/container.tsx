@@ -18,23 +18,23 @@ export type DispatchProps = {
 
 export default connect(
   (state: State): StateProps => {
-    const { password, username } = state.authentication;
+    const { passwordForm, usernameForm } = state.authentication;
     return {
-      password,
-      username
+      password: passwordForm.value,
+      username: usernameForm.value
     };
   },
   (dispatch: Dispatch): DispatchProps => {
     return {
       onChangePassword: (event: React.FormEvent<HTMLSelectElement>) => {
         dispatch({
-          type: actions.CHANGE_PASSWORD,
+          type: actions.AUTH_CHANGE_PASSWORD,
           payload: { value: event }
         });
       },
       onChangeUsername: (event: React.FormEvent<HTMLSelectElement>) => {
         dispatch({
-          type: actions.CHANGE_USERNAME,
+          type: actions.AUTH_CHANGE_USERNAME,
           payload: { value: event }
         });
       },

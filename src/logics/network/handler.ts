@@ -11,13 +11,13 @@ export default class ConnectionChangeHandler {
     if (!ConnectionChangeHandler.instance) {
       ConnectionChangeHandler.instance = new ConnectionChangeHandler();
     }
-    ConnectionChangeHandler.dispatch = store.dispatch;
   };
 
   private constructor() {
     Network.startListeningConnectionChange(
       ConnectionChangeHandler.netwrokChangeHandler
     );
+    ConnectionChangeHandler.dispatch = store.dispatch;
     ConnectionChangeHandler.dispatch(
       actionCreators.startListeningConnectionAction()
     );

@@ -57,7 +57,6 @@ export default class Map extends React.Component<Props, State> {
   async setCurrentRegion() {
     return await navigator.geolocation.getCurrentPosition(
       (region: Position) => {
-        console.log(region);
         const newRegion: Region = {
           latitude: region.coords.latitude,
           longitude: region.coords.longitude,
