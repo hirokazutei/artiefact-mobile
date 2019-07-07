@@ -12,14 +12,14 @@ type BirthdayForm = {
   isDirty: boolean;
 };
 
-type EmailForm = {
+export type EmailForm = {
   value: string;
   isDirty: boolean;
   isValid?: boolean;
   hideErrors: boolean;
 };
 
-type PasswordForm = {
+export type PasswordForm = {
   value: string;
   isDirty: boolean;
   hasLength?: boolean;
@@ -28,7 +28,7 @@ type PasswordForm = {
   hideErrors: boolean;
 };
 
-type UsernameForm = {
+export type UsernameForm = {
   value: string;
   isDirty: boolean;
   hasLength?: boolean;

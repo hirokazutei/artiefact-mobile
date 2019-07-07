@@ -5,7 +5,7 @@ import { stylizeText, StyleProps } from "./styles";
 import { UserTitle } from "../../../constants/messages";
 
 const ANIMATION_DURATION = 1500;
-const ANIMATION_START_OFFSET = -3;
+const ANIMATION_START_OFFSET = -4;
 
 type Props = { children?: never } & StyleProps;
 
@@ -21,7 +21,7 @@ export default class ShiftingTitle extends React.Component<
 > {
   state: ComponentState = {
     title: getRandomUserTitle(),
-    fadeAnim: new Animated.Value(-1)
+    fadeAnim: new Animated.Value(-2)
   };
 
   fadeInNew() {

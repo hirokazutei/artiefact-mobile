@@ -4,7 +4,10 @@ import { Props as InputFieldProps } from "../../atoms/InputField";
 import InputField from "../../atoms/InputField";
 import Text from "../../atoms/Text";
 import Stack from "../../atoms/Stack";
-import * as symbols from "../../../symbols";
+import { borders, colors } from "../../../symbols";
+import { ColorTypeKeys } from "../../../symbols/colors";
+import Icon from "../../atoms/Icon";
+import { IconTypes, IconSizeKeys } from "../../atoms/Icon";
 
 const RNIndicator = require("react-native-indicator");
 
@@ -31,7 +34,7 @@ const styles = StyleSheet.create<Styles>({
   },
   validationFieldWrapper: {
     flexDirection: "row",
-    borderBottomWidth: symbols.borders.thickness.thin
+    borderBottomWidth: borders.thickness.thin
   }
 });
 
@@ -46,19 +49,32 @@ type ValidationFieldColorKeys = "primary" | "secondary" | "disabled" | "error";
 const validationFieldColors: Readonly<
   { [key in ValidationFieldColorKeys]: string }
 > = {
-  primary: symbols.colors.primary,
-  secondary: symbols.colors.secondary,
-  disabled: symbols.colors.disabled,
-  error: symbols.colors.danger
+  primary: colors.primary,
+  secondary: colors.secondary,
+  disabled: colors.disabled,
+  error: colors.danger
 };
 
-const validationFieldIcons: Readonly<
-  { [key in ValidationResultType]: React.ReactElement }
+const validationIconNames: Readonly<
+  { [key in ValidationResultType]: IconTypes | null }
 > = {
-  success: <Text>{"✓"}</Text>,
-  warning: <Text>{"!"}</Text>,
-  error: <Text>{"✖"}</Text>,
-  undefined: <View />
+  success: "successCircle",
+  warning: "warningCircle",
+  error: "errorCircle",
+  undefined: null
+};
+
+const validationFieldIcons = (
+  status: ValidationResultType,
+  size: IconSizeKeys,
+  color: ValidationFieldColorKeys
+): React.ReactElement => {
+  const iconName = validationIconNames[status];
+  const iconColor = color as ColorTypeKeys;
+  if (iconName != null) {
+    return <Icon name={iconName} size={size} color={iconColor} />;
+  }
+  return <View />;
 };
 
 /**
@@ -82,7 +98,7 @@ const ValidationField: React.FC<Props> = (props: Props): React.ReactElement => {
   } = props;
   const colorStyle = validationFieldColors[color];
   let validationIcon = validationResult
-    ? validationFieldIcons[validationResult]
+    ? validationFieldIcons(validationResult, "medium", color)
     : null;
   if (isValidating) {
     validationIcon = (

@@ -1,6 +1,11 @@
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { actions } from "../../../redux/reducers/authentication/actionTypes";
+import {
+  EmailForm,
+  PasswordForm,
+  UsernameForm
+} from "../../../redux/reducers/authentication";
 import { State } from "../../../redux/rootReducer";
 import { actions as validationActions } from "../../../logics/validator/actionTypes";
 import { actions as signUpActions } from "../../../useCases/signUpUseCase/actionTypes";
@@ -13,14 +18,16 @@ export type StateProps = {
   birthday?: Date;
   changedBirthday: boolean;
   emailErrors: Array<string>;
+  emailValidationStatus: ValidationResultType;
   isButtonDisabled: boolean;
   isUsernameValidating: boolean;
   email: string;
-  username: string;
-  usernameErrors: Array<string>;
-  showDatePickerModal: boolean;
   password: string;
   passwordErrors: Array<string>;
+  passwordValidationStatus: ValidationResultType;
+  showDatePickerModal: boolean;
+  username: string;
+  usernameErrors: Array<string>;
   usernameValidationStatus: ValidationResultType;
 };
 
@@ -35,6 +42,86 @@ export type DispatchProps = {
   onPressTerms: () => void;
 };
 
+const extractUsernameVerificationErrorAndStatus = (
+  usernameForm: UsernameForm
+): { errorMessages: Array<string>; status: ValidationResultType } => {
+  const {
+    value,
+    hasOnlyAllowedChars,
+    isAvailable,
+    hasLength,
+    hideErrors,
+    isDirty
+  } = usernameForm;
+  const errorMessages = [];
+  let status = "undefined";
+  if (!hideErrors && value) {
+    if (!hasLength) {
+      errorMessages.push(messages.usernameWrongLength);
+    }
+    if (!isAvailable) {
+      errorMessages.push(messages.usernameUnavailable(value));
+    }
+    if (!hasOnlyAllowedChars) {
+      errorMessages.push(messages.usernameHasIllegalChars);
+    }
+    status = errorMessages.length ? "error" : "success";
+  }
+  if (isDirty && !value) {
+    errorMessages.push(messages.usernameIsBlank);
+    status = "warning";
+  }
+  return { errorMessages, status: status as ValidationResultType };
+};
+
+const extractPasswordVerificationErrorAndStatus = (
+  passwordForm: PasswordForm
+): { errorMessages: Array<string>; status: ValidationResultType } => {
+  const {
+    value,
+    hasLength,
+    hasUpper,
+    hasLower,
+    hideErrors,
+    isDirty
+  } = passwordForm;
+  const errorMessages = [];
+  let status = "undefined";
+  if (!hideErrors && value) {
+    if (!hasLength) {
+      errorMessages.push(messages.passwordWrongLength);
+    }
+    if (!hasLower || !hasUpper) {
+      errorMessages.push(messages.passwordNeedsLowerAndUpper);
+    }
+    status = errorMessages.length ? "error" : "success";
+  }
+  if (isDirty && !value) {
+    errorMessages.push(messages.passwordIsBlank);
+    status = "warning";
+  }
+  return { errorMessages, status: status as ValidationResultType };
+};
+
+const extractEmailVerificationErrorAndStatus = (
+  emailForm: EmailForm
+): { errorMessages: Array<string>; status: ValidationResultType } => {
+  const { value, isValid, hideErrors, isDirty } = emailForm;
+  const errorMessages = [];
+  let status = "undefined";
+  if (!hideErrors && value) {
+    if (!isValid) {
+      errorMessages.push(messages.emailIsInvalid);
+    }
+    status = errorMessages.length ? "error" : "success";
+  }
+  if (isDirty && !value) {
+    errorMessages.push(messages.emailIsBlank);
+    status = "warning";
+  }
+  return { errorMessages, status: status as ValidationResultType };
+};
+
 export default connect(
   (state: State): StateProps => {
     const {
@@ -47,72 +134,25 @@ export default connect(
     } = state.authentication;
 
     // Username
+    const { value: username, isValidating, isAvailable } = usernameForm;
     const {
-      value: username,
-      isValidating,
-      hasOnlyAllowedChars,
-      isAvailable,
-      hasLength: usernameHasLength,
-      hideErrors: usernameHideErrors,
-      isDirty: usernameIsDirty
-    } = usernameForm;
-    const usernameErrors = [];
-    let usernameValidationStatus = "undefined";
-    if (!usernameHideErrors && username) {
-      if (!usernameHasLength) {
-        usernameErrors.push(messages.usernameWrongLength);
-      }
-      if (!isAvailable) {
-        usernameErrors.push(messages.usernameUnavailable(username));
-      }
-      if (!hasOnlyAllowedChars) {
-        usernameErrors.push(messages.usernameHasIllegalChars);
-      }
-    }
-    if (usernameIsDirty && !username) {
-      usernameErrors.push(messages.usernameIsBlank);
-    }
-    // TODO: Change the ugly icons
-    usernameValidationStatus = usernameErrors.length ? "error" : "success";
+      errorMessages: usernameErrors,
+      status: usernameValidationStatus
+    } = extractUsernameVerificationErrorAndStatus(usernameForm);
 
     // Password
+    const { value: password } = passwordForm;
     const {
-      value: password,
-      hasLength: passwordHasLength,
-      hasUpper,
-      hasLower,
-      hideErrors: passwordHideErrors,
-      isDirty: passwordIsDirty
-    } = passwordForm;
-    const passwordErrors = [];
-    if (!passwordHideErrors && password) {
-      if (!passwordHasLength) {
-        passwordErrors.push(messages.passwordWrongLength);
-      }
-      if (!hasLower || !hasUpper) {
-        passwordErrors.push(messages.passwordNeedsLowerAndUpper);
-      }
-    }
-    if (passwordIsDirty && !password) {
-      passwordErrors.push(messages.passwordIsBlank);
-    }
+      errorMessages: passwordErrors,
+      status: passwordValidationStatus
+    } = extractPasswordVerificationErrorAndStatus(passwordForm);
 
     // Email
+    const { value: email } = emailForm;
     const {
-      value: email,
-      isValid: isEmailValid,
-      hideErrors: emailHideErrors,
-      isDirty: emailIsDirty
-    } = emailForm;
-    const emailErrors = [];
-    if (!emailHideErrors && email) {
-      if (!isEmailValid) {
-        emailErrors.push(messages.emailIsInvalid);
-      }
-    }
-    if (emailIsDirty && !email) {
-      emailErrors.push(messages.emailIsBlank);
-    }
+      errorMessages: emailErrors,
+      status: emailValidationStatus
+    } = extractEmailVerificationErrorAndStatus(emailForm);
 
     const isButtonDisabled =
       !agreeToTermsForm.value ||
@@ -132,14 +172,16 @@ export default connect(
       changedBirthday: birthdayForm.isDirty,
       email,
       emailErrors,
+      emailValidationStatus,
       isButtonDisabled,
       isUsernameValidating: isValidating,
       password,
       passwordErrors,
+      passwordValidationStatus,
       showDatePickerModal,
       username,
       usernameErrors,
-      usernameValidationStatus: usernameValidationStatus as ValidationResultType
+      usernameValidationStatus
     };
   },
   (dispatch: Dispatch): DispatchProps => {

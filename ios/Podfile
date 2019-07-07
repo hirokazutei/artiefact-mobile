@@ -42,6 +42,8 @@ target 'artiefact' do
 
     pod 'react-native-spinkit', :path => '../node_modules/react-native-spinkit'
 
+    pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   end
   
   post_install do |installer|

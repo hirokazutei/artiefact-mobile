@@ -1,4 +1,4 @@
-type ColorTypeKeys =
+export type ColorTypeKeys =
   | "danger"
   | "defaultText"
   | "disabled"

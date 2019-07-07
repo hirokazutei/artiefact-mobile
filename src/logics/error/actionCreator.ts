@@ -12,6 +12,6 @@ export const handleUnknownError = (error: Error): Action => {
 export const handleNetworkError = (error: AxiosError): Action => {
   return {
     type: actions.NETWORK_ERROR,
-    error: error.response ? error.response.data.type : "Known Network Error"
+    error: error.response ? error.response.data.type : "Unknown Network Error"
   };
 };

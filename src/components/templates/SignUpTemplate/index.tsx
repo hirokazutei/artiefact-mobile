@@ -30,6 +30,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
     changedBirthday,
     email,
     emailErrors,
+    emailValidationStatus,
     isButtonDisabled,
     isUsernameValidating,
     onChangeEmail,
@@ -42,6 +43,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
     onPressTerms,
     password,
     passwordErrors,
+    passwordValidationStatus,
     showDatePickerModal,
     username,
     usernameErrors,
@@ -80,6 +82,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           onChangeText={onChangePassword}
           secureTextEntry={true}
           value={password}
+          validationResult={passwordValidationStatus}
           errors={passwordErrors}
         />
         <Stack value="huge" />
@@ -88,6 +91,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           color="secondary"
           onChangeText={onChangeEmail}
           value={email}
+          validationResult={emailValidationStatus}
           errors={emailErrors}
         />
         <Stack value="huge" />
