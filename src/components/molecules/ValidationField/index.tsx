@@ -6,10 +6,10 @@ import Text from "../../atoms/Text";
 import Stack from "../../atoms/Stack";
 import { borders, colors } from "../../../symbols";
 import { ColorTypeKeys } from "../../../symbols/colors";
-import {TextColorKeys} from "../../../symbols/text"
+import { TextColorKeys } from "../../../symbols/text";
 import Icon from "../../atoms/Icon";
 import { IconTypes, IconSizeKeys } from "../../atoms/Icon";
-import {Diff} from '../../../type/tsUtility'
+import { Diff } from "../../../type/tsUtility";
 
 const RNIndicator = require("react-native-indicator");
 
@@ -40,10 +40,7 @@ const styles = StyleSheet.create<Styles>({
   }
 });
 
-export type ValidationResultType =
-  | "success"
-  | "warning"
-  | "error"
+export type ValidationResultType = "success" | "warning" | "error";
 
 type ValidationFieldColorKeys = "primary" | "secondary" | "disabled" | "error";
 
@@ -57,11 +54,11 @@ const validationFieldColors: Readonly<
 };
 
 const validationIconNames: Readonly<
-  {[key in ValidationResultType]: IconTypes | null }
+  { [key in ValidationResultType]: IconTypes | null }
 > = {
   success: "successCircle",
   warning: "warningCircle",
-  error: "errorCircle",
+  error: "errorCircle"
 };
 
 const validationFieldIcons = (
@@ -77,22 +74,27 @@ const validationFieldIcons = (
   return <View />;
 };
 
-const listMessagesColor: Readonly<{[key in Diff<ValidationResultType, 'success'> | 'info']: TextColorKeys}> = {
-    info: "default",
-    warning: "secondary",
-    error: "danger", 
-}
+const listMessagesColor: Readonly<
+  { [key in Diff<ValidationResultType, "success"> | "info"]: TextColorKeys }
+> = {
+  info: "default",
+  warning: "secondary",
+  error: "danger"
+};
 
-const listMessages = (type: Diff<ValidationResultType, 'success'> | 'info', messages: Array<string>) =>{
-    const color = listMessagesColor[type]
-    return messages.map((messages, i) => {
-          return (
-            <Text key={i} size="small" color={color} align="left">
-              {`・${messages}`}
-            </Text>
-          );
-        })
-}
+const listMessages = (
+  type: Diff<ValidationResultType, "success"> | "info",
+  messages: Array<string>
+) => {
+  const color = listMessagesColor[type];
+  return messages.map((messages, i) => {
+    return (
+      <Text key={i} size="small" color={color} align="left">
+        {`・${messages}`}
+      </Text>
+    );
+  });
+};
 
 /**
  * Validation Field Props

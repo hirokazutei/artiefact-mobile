@@ -4,7 +4,10 @@ import { actions } from "./actionTypes";
 import { actions as reduxActions } from "../../redux/reducers/error/actionTypes";
 
 function* handleError(actions: Action) {
-  yield put({ type: reduxActions.SHOW_ERROR_MODAL, payload: actions.error });
+  yield put({
+    type: reduxActions.SHOW_ERROR_MODAL,
+    payload: { message: actions.error, icon: "noConnection" }
+  });
 }
 
 function* errorSaga() {

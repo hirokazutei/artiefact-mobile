@@ -1,14 +1,17 @@
 import { Reducer } from "redux";
 import { ActionTypes, actions } from "./actionTypes";
+import { IconTypes } from "../../../components/atoms/Icon";
 
 export type State = {
-  showErrorModal: boolean;
-  errorMessage: string;
+  icon?: IconTypes;
+  showModal: boolean;
+  message: string;
 };
 
 const defaultState: Readonly<State> = {
-  showErrorModal: false,
-  errorMessage: ""
+  icon: undefined,
+  showModal: false,
+  message: ""
 };
 
 export type Action = {
@@ -23,12 +26,13 @@ export const reducer: Reducer<State, Action> = (
   const newState = { ...state };
   switch (action.type) {
     case actions.SHOW_ERROR_MODAL: {
-      newState.showErrorModal = true;
-      newState.errorMessage = action.payload;
+      newState.showModal = true;
+      newState.message = action.payload.message;
+      newState.icon = action.payload.icon;
       break;
     }
     case actions.HIDE_ERROR_MODAL: {
-      newState.showErrorModal = false;
+      newState.showModal = false;
       break;
     }
     default:
