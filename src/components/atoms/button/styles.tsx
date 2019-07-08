@@ -8,7 +8,7 @@ export type StyleProps = {
 
 type ButtonColorKeys = "primary" | "secondary" | "disabled";
 
-type textColorKeys = "white";
+type buttonTextColorKeys = "white";
 
 type ButtonSizeKeys =
   | "tiny"
@@ -24,7 +24,7 @@ const buttonColors: Readonly<{ [key in ButtonColorKeys]: string }> = {
   disabled: symbols.colors.disabled
 };
 
-const textColors: Readonly<{ [key in textColorKeys]: string }> = {
+const textColors: Readonly<{ [key in buttonTextColorKeys]: string }> = {
   white: symbols.colors.white
 };
 

@@ -36,18 +36,19 @@ export const textSizes: Readonly<{ [key in TextSizeKeys]: number }> = {
 };
 
 // Text Color
-
 export type TextColorKeys =
   | "danger"
   | "default"
   | "faded"
   | "primary"
-  | "secondary";
+  | "secondary"
+  | "disabled";
 
 export const textColors: Readonly<{ [key in TextColorKeys]: string }> = {
   danger: colors.danger,
   default: colors.defaultText,
   faded: colors.faded,
   primary: colors.primary,
-  secondary: colors.secondary
+  secondary: colors.secondary,
+  disabled: colors.disabled
 };

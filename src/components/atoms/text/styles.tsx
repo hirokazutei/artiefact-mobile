@@ -4,32 +4,15 @@ import * as symbols from "../../../symbols";
 type AlignType = NonNullable<TextStyle["textAlign"]>;
 
 export type StyleProps = {
-  color?: TextColorKeys;
+  color?: symbols.text.TextColorKeys;
   size?: symbols.text.TextSizeKeys;
   italic?: Boolean;
   weight?: symbols.text.TextWeightKeys;
   align?: AlignType;
 };
 
-type TextColorKeys =
-  | "danger"
-  | "default"
-  | "faded"
-  | "primary"
-  | "secondary"
-  | "disabled";
-
-const textColors: Readonly<{ [key in TextColorKeys]: string }> = {
-  danger: symbols.colors.danger,
-  default: symbols.colors.defaultText,
-  faded: symbols.colors.faded,
-  primary: symbols.colors.primary,
-  secondary: symbols.colors.secondary,
-  disabled: symbols.colors.disabled
-};
-
 const defaultStyle: Readonly<Required<StyleProps>> = {
-  color: "default" as TextColorKeys,
+  color: "default" as symbols.text.TextColorKeys,
   size: "medium" as symbols.text.TextSizeKeys,
   italic: false as Boolean,
   weight: "default" as symbols.text.TextWeightKeys,
@@ -42,9 +25,9 @@ const defaultStyle: Readonly<Required<StyleProps>> = {
  * @param color - color key
  */
 const resolveTextColors = (
-  color: TextColorKeys = defaultStyle.color
+  color: symbols.text.TextColorKeys = defaultStyle.color
 ): string => {
-  return textColors[color];
+  return symbols.text.textColors[color];
 };
 
 /**
