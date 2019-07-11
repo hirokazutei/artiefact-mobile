@@ -19,7 +19,7 @@ export default class ConnectionChangeHandler {
     );
     ConnectionChangeHandler.dispatch = store.dispatch;
     ConnectionChangeHandler.dispatch(
-      actionCreators.startListeningConnectionAction()
+      actionCreators.startListeningConnectionActionCreator()
     );
   }
 
@@ -28,13 +28,13 @@ export default class ConnectionChangeHandler {
       ConnectionChangeHandler.netwrokChangeHandler
     );
     ConnectionChangeHandler.dispatch(
-      actionCreators.stopListeningConnectionAction()
+      actionCreators.stopListeningConnectionActionCreator()
     );
   };
 
   private static netwrokChangeHandler = (result: boolean) => {
     ConnectionChangeHandler.dispatch(
-      actionCreators.connectionChangeAction(result)
+      actionCreators.connectionChangeActionCreator(result)
     );
   };
 }

@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
-import { actions } from "../../../redux/reducers/error/actionTypes";
+import actionCreators from "../../../redux/reducers/error/actionCreator";
 import { State } from "../../../redux/rootReducer";
 import { IconTypes } from "../../atoms/Icon";
 import ErrorModal from "./component";
@@ -27,9 +27,7 @@ export default connect(
   (dispatch: Dispatch): DispatchProps => {
     return {
       onPress: () => {
-        dispatch({
-          type: actions.HIDE_ERROR_MODAL
-        });
+        dispatch(actionCreators.hideErrorModalActionCreator());
       }
     };
   }

@@ -34,6 +34,7 @@ const enhancer = compose(
     null,
     (dispatch: Dispatch, { navigation, action }: OwnProps): DispatchProps => {
       return {
+        // Have the component above pass in a bounded Action
         onPressBack: () => {
           dispatch(action);
           navigation.goBack();

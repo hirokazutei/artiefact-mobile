@@ -1,14 +1,14 @@
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
-import { actions } from "../../../redux/reducers/authentication/actionTypes";
+import reduxActionCreators from "../../../redux/reducers/authentication/actionCreators";
 import {
   EmailForm,
   PasswordForm,
   UsernameForm
 } from "../../../redux/reducers/authentication";
 import { State } from "../../../redux/rootReducer";
-import { actions as validationActions } from "../../../logics/validator/actionTypes";
-import { actions as signUpActions } from "../../../useCases/signUpUseCase/actionTypes";
+import validationActionCreators from "../../../logics/validator/actionCreators";
+import useCaseActionCreators from "../../../useCases/signUpUseCase/actionCreators";
 import { ValidationResultType } from "../../molecules/ValidationField";
 import SignUpPage from "./component";
 import messages from "./messages";
@@ -187,56 +187,39 @@ export default connect(
   (dispatch: Dispatch): DispatchProps => {
     return {
       onChangePassword: (event: React.FormEvent<HTMLSelectElement>) => {
-        dispatch({
-          type: actions.AUTH_CHANGE_PASSWORD,
-          payload: { value: event }
-        });
-        dispatch({
-          type: validationActions.DELAYED_PASSWORD_VALIDATION
-        });
+        dispatch(reduxActionCreators.changePasswordActionCreator(event));
+        dispatch(
+          validationActionCreators.delayedPasswordValidationActionCreator()
+        );
       },
       onChangeUsername: (event: React.FormEvent<HTMLSelectElement>) => {
-        dispatch({
-          type: actions.AUTH_CHANGE_USERNAME,
-          payload: { value: event }
-        });
-        dispatch({
-          type: validationActions.CHECK_USERNAME_AVAILABILITY
-        });
-        dispatch({
-          type: validationActions.DELAYED_USERNAME_VALIDATION
-        });
+        dispatch(reduxActionCreators.changeUsernameActionCreator(event));
+        dispatch(
+          validationActionCreators.checkUsernameAvailabilityActionCreator()
+        );
+        dispatch(
+          validationActionCreators.delayedUsernameValidationActionCreator()
+        );
       },
       onChangeEmail: (event: React.FormEvent<HTMLSelectElement>) => {
-        dispatch({
-          type: actions.AUTH_CHANGE_EMAIL,
-          payload: { value: event }
-        });
-        dispatch({
-          type: validationActions.DELAYED_EMAIL_VALIDATION
-        });
+        dispatch(reduxActionCreators.changeEmailActionCreator(event));
+        dispatch(
+          validationActionCreators.delayedEmailValidationActionCreator()
+        );
       },
       onPressCancelModal: () => {
-        dispatch({
-          type: actions.AUTH_HIDE_DATE_PICKER_MODAL
-        });
+        dispatch(reduxActionCreators.hideDatePickerModalActionCreator());
       },
       onPressConfirmModal: (date: Date) => {
-        dispatch({
-          type: actions.AUTH_ON_PICK_BIRTHDATE,
-          payload: { value: date }
-        });
+        dispatch(reduxActionCreators.pickBirthdateActionCreator(date));
       },
       onPressSetBirthday: () =>
-        dispatch({
-          type: actions.AUTH_SHOW_DATE_PICKER_MODAL
-        }),
+        dispatch(reduxActionCreators.showDatePickerModalActionCreator()),
       onPressSignUp: () => {
-        dispatch({
-          type: signUpActions.SIGN_UP_USE_CASE
-        });
+        dispatch(useCaseActionCreators.signUpActionCreator());
       },
-      onPressTerms: () => dispatch({ type: actions.AUTH_ON_PRESS_TERMS })
+      onPressTerms: () =>
+        dispatch(reduxActionCreators.onPressTermsActionCreator())
     };
   }
 )(SignUpPage);

@@ -1,23 +1,23 @@
 import { actions } from "../../redux/reducers/system/actionTypes";
 import { Action } from "../../redux/types";
 
-export const connectionChangeAction = (isConnected: boolean): Action => {
+export const connectionChangeActionCreator = (isConnected: boolean): Action => {
   return {
     type: actions.CONNECTION_CHANGE,
     payload: { isConnected }
   };
 };
 
-export const startListeningConnectionAction = (): Action => {
+export const startListeningConnectionActionCreator = (): Action => {
   return { type: actions.CONNECTION_START_LISTENING };
 };
 
-export const stopListeningConnectionAction = (): Action => {
+export const stopListeningConnectionActionCreator = (): Action => {
   return { type: actions.CONNECTION_STOP_LISTENING };
 };
 
 export default {
-  connectionChangeAction,
-  startListeningConnectionAction,
-  stopListeningConnectionAction
+  connectionChangeActionCreator,
+  startListeningConnectionActionCreator,
+  stopListeningConnectionActionCreator
 };

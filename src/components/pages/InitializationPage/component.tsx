@@ -21,7 +21,7 @@ class InitializationPage extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
     const { dispatch } = props;
-    dispatch({ type: "INITIALIZE" });
+    dispatch({ type: "INITIALIZE" }); // TODO: Placeholder action for saga
   }
 
   loadingComma(commas: number) {

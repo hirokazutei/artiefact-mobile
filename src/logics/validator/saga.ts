@@ -17,7 +17,6 @@ import {
 const VALIDATION_WAIT_PERIOD = 1000;
 
 function* checkUsernameAvailabilityhandler() {
-  delay(VALIDATION_WAIT_PERIOD);
   const state = yield select();
   const username = usernameSelector(state);
   const usernameValidationResult = usernameValidator(username);
@@ -52,11 +51,13 @@ function* checkUsernameAvailabilityhandler() {
 }
 
 function* delayedEmailValidationHandler() {
-  yield delay(VALIDATION_WAIT_PERIOD);
   const state = yield select();
   const email = emailSelector(state);
   if (email) {
     const emailValidationResult = emailValidator(email);
+    if (!emailValidationResult.valid) {
+      yield delay(VALIDATION_WAIT_PERIOD);
+    }
     yield put({
       type: reduxActions.AUTH_EMAIL_VALIDATION,
       payload: { isValid: emailValidationResult.valid }
@@ -65,12 +66,14 @@ function* delayedEmailValidationHandler() {
 }
 
 function* delayedUsernameValidationHandler() {
-  yield delay(VALIDATION_WAIT_PERIOD);
   const state = yield select();
   const username = usernameSelector(state);
   if (username) {
     const usernameValidationResult = usernameValidator(username);
     const { hasLength, hasOnlyAllowedChars } = usernameValidationResult;
+    if (!hasLength && !hasOnlyAllowedChars) {
+      yield delay(VALIDATION_WAIT_PERIOD);
+    }
     yield put({
       type: reduxActions.AUTH_USERNAME_VALIDATION,
       payload: { hasLength, hasOnlyAllowedChars }
@@ -79,12 +82,14 @@ function* delayedUsernameValidationHandler() {
 }
 
 function* delayedPasswordValidationHandler() {
-  yield delay(VALIDATION_WAIT_PERIOD);
   const state = yield select();
   const password = passwordSelector(state);
   if (password) {
     const passwordValidationResult = passwordValidator(password);
     const { hasLength, hasLower, hasUpper } = passwordValidationResult;
+    if (!hasLength && !hasLower && !hasUpper) {
+      yield delay(VALIDATION_WAIT_PERIOD);
+    }
     yield put({
       type: reduxActions.AUTH_PASSWORD_VALIDATION,
       payload: { hasLength, hasLower, hasUpper }

@@ -1,5 +1,5 @@
 import store from "../../store";
-import { handleUnknownError, handleNetworkError } from "./actionCreator";
+import actionCreators from "./actionCreator";
 import { EncompassingErrors } from "./types";
 import { AxiosError } from "axios";
 
@@ -11,8 +11,8 @@ export const errorHandler = (error: EncompassingErrors) => {
   const { dispatch } = store;
   if (instanceOfAxiosError(error)) {
     const axiosError = error as AxiosError;
-    dispatch(handleNetworkError(axiosError));
+    dispatch(actionCreators.handleNetworkErrorActionCreator(axiosError));
   } else {
-    dispatch(handleUnknownError(error));
+    dispatch(actionCreators.handleUnknownErrorActionCreator(error));
   }
 };

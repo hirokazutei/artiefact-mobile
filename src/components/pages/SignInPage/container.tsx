@@ -1,8 +1,8 @@
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { State } from "../../../redux/rootReducer";
-import { actions as signInActions } from "../../../useCases/signInUseCase/actionTypes";
-import { actions } from "../../../redux/reducers/authentication/actionTypes";
+import useCaseActionCreators from "../../../useCases/signInUseCase/actionCreators";
+import reduxActionCreators from "../../../redux/reducers/authentication/actionCreators";
 import SignInPage from "./component";
 
 export type StateProps = {
@@ -27,21 +27,13 @@ export default connect(
   (dispatch: Dispatch): DispatchProps => {
     return {
       onChangePassword: (event: React.FormEvent<HTMLSelectElement>) => {
-        dispatch({
-          type: actions.AUTH_CHANGE_PASSWORD,
-          payload: { value: event }
-        });
+        dispatch(reduxActionCreators.changePasswordActionCreator(event));
       },
       onChangeUsername: (event: React.FormEvent<HTMLSelectElement>) => {
-        dispatch({
-          type: actions.AUTH_CHANGE_USERNAME,
-          payload: { value: event }
-        });
+        dispatch(reduxActionCreators.changeUsernameActionCreator(event));
       },
       onPressSignIn: () => {
-        dispatch({
-          type: signInActions.SIGN_IN_USE_CASE
-        });
+        dispatch(useCaseActionCreators.signInActionCreator());
       }
     };
   }
