@@ -1,22 +1,41 @@
 import React from "react";
-import { NavigationScreenProp } from "react-navigation";
+import { NavigationParams, NavigationNavigatorProps } from "react-navigation";
 import SignUpPageTemplate from "../../templates/SignUpTemplate/index";
-import { actions } from "../../../redux/reducers/authentication/actionTypes";
 import { StateProps, DispatchProps } from "./container";
 import NavigationTitle from "../../atoms/NavigationTitle";
 import BackButton from "../../atoms/NavigationBackButton";
 
-type NavigationProps = {
-  navigation: NavigationScreenProp<any, any>;
-};
+export type NavigationProps = NavigationNavigatorProps<
+  {},
+  {
+    params: {
+      onPressBack?: () => void;
+    };
+  }
+>;
 
-export type Props = StateProps & DispatchProps & NavigationProps;
+export type Props = StateProps & DispatchProps & NavigationParams;
 
 class SignUpPage extends React.Component<Props> {
-  static navigationOptions = {
+  static navigationOptions = ({ navigation }: NavigationProps) => ({
     headerTitle: <NavigationTitle>{"SIGN UP"}</NavigationTitle>,
-    headerLeft: <BackButton action={{ type: actions.AUTH_RESET_SIGNUP_FORM }} />
-  };
+    headerLeft: (
+      <BackButton
+        onPressBack={
+          navigation &&
+          navigation.state &&
+          navigation.state.params &&
+          navigation.state.params.onPressBack
+        }
+      />
+    )
+  });
+
+  componentDidMount() {
+    this.props.navigation.setParams({
+      onPressBack: this.props.onPressBack
+    });
+  }
 
   render() {
     return <SignUpPageTemplate {...this.props} />;

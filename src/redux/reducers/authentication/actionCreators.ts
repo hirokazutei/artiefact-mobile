@@ -38,6 +38,14 @@ export const onPressTermsActionCreator = (): Action => {
   return { type: actions.AUTH_ON_PRESS_TERMS };
 };
 
+export const resetSignUpFormActionCreator = (): Action => {
+  return { type: actions.AUTH_RESET_SIGN_UP_FORM };
+};
+
+export const resetSignInFormActionCreator = (): Action => {
+  return { type: actions.AUTH_RESET_SIGN_IN_FORM };
+};
+
 export default {
   changePasswordActionCreator,
   changeUsernameActionCreator,
@@ -45,5 +53,7 @@ export default {
   hideDatePickerModalActionCreator,
   pickBirthdateActionCreator,
   showDatePickerModalActionCreator,
-  onPressTermsActionCreator
+  onPressTermsActionCreator,
+  resetSignUpFormActionCreator,
+  resetSignInFormActionCreator
 };

@@ -40,6 +40,7 @@ export type DispatchProps = {
   onPressSetBirthday: () => void;
   onPressSignUp: () => void;
   onPressTerms: () => void;
+  onPressBack: () => void;
 };
 
 const extractUsernameVerificationErrorAndStatus = (
@@ -206,6 +207,9 @@ export default connect(
         dispatch(
           validationActionCreators.delayedEmailValidationActionCreator()
         );
+      },
+      onPressBack: () => {
+        dispatch(reduxActionCreators.resetSignUpFormActionCreator());
       },
       onPressCancelModal: () => {
         dispatch(reduxActionCreators.hideDatePickerModalActionCreator());

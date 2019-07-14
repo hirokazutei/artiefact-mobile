@@ -170,10 +170,10 @@ export const reducer: Reducer<State, Action> = (
       break;
     }
     // Reset
-    case actions.AUTH_RESET_SIGNIN_FORM: {
+    case actions.AUTH_RESET_SIGN_IN_FORM: {
       return { ...defaultState };
     }
-    case actions.AUTH_RESET_SIGNUP_FORM: {
+    case actions.AUTH_RESET_SIGN_UP_FORM: {
       return { ...defaultState };
     }
     default:

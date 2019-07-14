@@ -14,6 +14,7 @@ export type DispatchProps = {
   onChangeUsername: (event: React.FormEvent<HTMLSelectElement>) => void;
   onChangePassword: (event: React.FormEvent<HTMLSelectElement>) => void;
   onPressSignIn: () => void;
+  onPressBack: () => void;
 };
 
 export default connect(
@@ -31,6 +32,9 @@ export default connect(
       },
       onChangeUsername: (event: React.FormEvent<HTMLSelectElement>) => {
         dispatch(reduxActionCreators.changeUsernameActionCreator(event));
+      },
+      onPressBack: () => {
+        dispatch(reduxActionCreators.resetSignInFormActionCreator());
       },
       onPressSignIn: () => {
         dispatch(useCaseActionCreators.signInActionCreator());
