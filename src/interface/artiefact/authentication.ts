@@ -14,6 +14,10 @@ type SignUpData = {
   birthday: string;
 };
 
+type getUserData = {
+  bearerToken: string;
+};
+
 type CheckUsernameAvailabilityData = {
   username: string;
 };
@@ -43,6 +47,13 @@ export default class AuthClient extends APIClient {
     const endpointProperty = <EndpointProperty>endpoint.signUp;
     return this.methods[endpointProperty.method](endpointProperty.uriSuffix, {
       data: { ...args }
+    });
+  }
+
+  public getUser(args: getUserData): Promise<any> {
+    const endpointProperty = <EndpointProperty>endpoint.getUser;
+    return this.methods[endpointProperty.method](endpointProperty.uriSuffix, {
+      headers: { Authorization: args.bearerToken }
     });
   }
 

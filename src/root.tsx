@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import store from "./store";
-import AppContainer from "./navigation";
+import AppContainer from "./navigation/navigation";
 import ErrorModal from "./components/organism/ErrorModal";
 import ConnectionChangeHandler from "./logics/network/handler";
 

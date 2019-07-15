@@ -1,5 +1,6 @@
 import React from "react";
 import LoadingTemplate from "../../templates/LoadingTemplate";
+import { initizationActionCreator } from "../../../logics/initialization/actionCreator";
 import { DispatchProps } from "./container";
 
 const LOADING_COMMA_MAX = 5;
@@ -21,7 +22,7 @@ class InitializationPage extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
     const { dispatch } = props;
-    dispatch({ type: "INITIALIZE" }); // TODO: Placeholder action for saga
+    dispatch(initizationActionCreator());
   }
 
   loadingComma(commas: number) {

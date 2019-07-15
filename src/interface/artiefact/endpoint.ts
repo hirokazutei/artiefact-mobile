@@ -1,9 +1,14 @@
 import { RESTMethods } from "../../entity/APIClient";
 
-export type EndpointNames = "signIn" | "signUp" | "checkUsernameAvailability";
+export type EndpointNames =
+  | "signIn"
+  | "signUp"
+  | "getUser"
+  | "checkUsernameAvailability";
 export type Endpoints =
   | "user/sign-in"
   | "user/sign-up"
+  | "user/me"
   | "user/username-availability";
 export type EndpointProperty = {
   method: RESTMethods;
@@ -14,6 +19,7 @@ export type EndpointProperty = {
 const ENDPOINTS: Readonly<{ [key in EndpointNames]: EndpointProperty }> = {
   signIn: { uriSuffix: "user/sign-in", method: "post" },
   signUp: { uriSuffix: "user/sign-up", method: "post" },
+  getUser: { uriSuffix: "user/me", method: "get" },
   checkUsernameAvailability: {
     uriSuffix: "user/username-availability",
     method: "post"

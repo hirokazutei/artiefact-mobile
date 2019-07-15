@@ -58,20 +58,40 @@ export default class APIClient {
   }
 
   public methods = {
-    delete: (path: string, options: APIOption): Promise<any> => {
-      return this.request("delete", path, options);
+    delete: (
+      path: string,
+      options: APIOption,
+      isSensitive?: boolean
+    ): Promise<any> => {
+      return this.request("delete", path, options, isSensitive);
     },
-    get: (path: string, options: APIOption): Promise<any> => {
-      return this.request("get", path, options);
+    get: (
+      path: string,
+      options: APIOption,
+      isSensitive?: boolean
+    ): Promise<any> => {
+      return this.request("get", path, options, isSensitive);
     },
-    head: (path: string, options: APIOption): Promise<any> => {
-      return this.request("head", path, options);
+    head: (
+      path: string,
+      options: APIOption,
+      isSensitive?: boolean
+    ): Promise<any> => {
+      return this.request("head", path, options, isSensitive);
     },
-    put: (path: string, options: APIOption): Promise<any> => {
-      return this.request("put", path, options);
+    put: (
+      path: string,
+      options: APIOption,
+      isSensitive?: boolean
+    ): Promise<any> => {
+      return this.request("put", path, options, isSensitive);
     },
-    post: (path: string, options: APIOption): Promise<any> => {
-      return this.request("post", path, options);
+    post: (
+      path: string,
+      options: APIOption,
+      isSensitive?: boolean
+    ): Promise<any> => {
+      return this.request("post", path, options, isSensitive);
     }
   };
 }
