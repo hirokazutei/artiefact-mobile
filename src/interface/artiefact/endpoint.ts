@@ -8,7 +8,7 @@ export type EndpointNames =
 export type Endpoints =
   | "user/sign-in"
   | "user/sign-up"
-  | "user/me"
+  | "user/get-user"
   | "user/username-availability";
 export type EndpointProperty = {
   method: RESTMethods;
@@ -19,7 +19,7 @@ export type EndpointProperty = {
 const ENDPOINTS: Readonly<{ [key in EndpointNames]: EndpointProperty }> = {
   signIn: { uriSuffix: "user/sign-in", method: "post" },
   signUp: { uriSuffix: "user/sign-up", method: "post" },
-  getUser: { uriSuffix: "user/me", method: "get" },
+  getUser: { uriSuffix: "user/get-user", method: "get" },
   checkUsernameAvailability: {
     uriSuffix: "user/username-availability",
     method: "post"
