@@ -1,7 +1,5 @@
 import {
   createStackNavigator,
-  createSwitchNavigator,
-  createAppContainer,
   NavigationContainer
 } from "react-navigation";
 import SignInPage from "../components/pages/SignInPage";
@@ -14,7 +12,6 @@ import {
   MainStackRouteTypes,
   MapStackRouteTypes
 } from "./routes";
-import routes from "./routes";
 
 const authStackMapper: Readonly<
   { [key in AuthStackRouteTypes]: React.FunctionComponent<any> }
@@ -42,8 +39,4 @@ const mainStackMapper: Readonly<
   mapStack: MapStack
 };
 
-export default createAppContainer(
-  createSwitchNavigator(mainStackMapper, {
-    initialRouteName: routes.mainStackRoutes.auth
-  })
-);
+export default mainStackMapper

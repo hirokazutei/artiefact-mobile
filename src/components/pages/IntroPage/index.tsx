@@ -9,7 +9,7 @@ const IntroPage: React.FC<Props> = (props: Props): React.ReactElement => {
   const onPressSignUp = () =>
     props.navigation.navigate(routes.authStackRoutes.signUp);
   const onPressSignIn = () =>
-    props.navigation.navigate(routes.authStackRoutes.signUp);
+    props.navigation.navigate(routes.authStackRoutes.signIn);
   return (
     <IntroTemplate
       onPressSignUp={onPressSignUp}
