@@ -1,5 +1,5 @@
 import { actions } from "./actionTypes";
-import { Action } from "./types";
+import { Action } from "../../redux/types";
 import { AxiosError } from "axios";
 
 export const handleUnknownErrorActionCreator = (error: Error): Action => {
@@ -16,7 +16,17 @@ export const handleNetworkErrorActionCreator = (error: AxiosError): Action => {
   };
 };
 
+export const handlePositionErrorActionCreator = (
+  error: PositionError
+): Action => {
+  return {
+    type: actions.POSITION_ERROR,
+    error: error.message ? error.message : "Position Error"
+  };
+};
+
 export default {
   handleUnknownErrorActionCreator,
-  handleNetworkErrorActionCreator
+  handleNetworkErrorActionCreator,
+  handlePositionErrorActionCreator
 };

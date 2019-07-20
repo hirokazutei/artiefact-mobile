@@ -2,12 +2,13 @@ import { select, takeEvery } from "redux-saga/effects";
 import { NavigationActions } from "react-navigation";
 import AuthClient from "../../interface/artiefact/authentication";
 import TokenManager from "../../managers/Authentication/tokenManager";
-import { TokenResponse } from "../../entity/Authentication/Token";
 import { actions } from "./actionTypes";
 import { signUpSelector } from "../../redux/selectors/authentication";
 import { errorHandler } from "../../logics/error";
 import Navigator from "../../navigation/navigationService";
 import routes from "../../navigation/routes";
+import ArtiefactError, { errorTypeNames } from "../../entity/Error";
+import { SignUpResponse } from "../../entity/Authentication/responses";
 
 export function* signUpHandler() {
   const state = yield select();
@@ -15,11 +16,14 @@ export function* signUpHandler() {
   const nav = Navigator.get();
   const response = yield authClient
     .signUp(signUpSelector(state))
-    .then((response: object & { data: TokenResponse }) => {
-      return response;
-    })
+    .then((response: object & { data: SignUpResponse }) => response)
     .catch((error: Error) => {
-      errorHandler(error);
+      // TODO Determine Axios Error and Server Error
+      const artiefactError = new ArtiefactError({
+        error,
+        errorType: errorTypeNames.axiosError
+      });
+      errorHandler(artiefactError);
     });
   if (response) {
     // TODO, These response data's parsing should be handled by an interface

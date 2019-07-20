@@ -1,6 +1,7 @@
 import * as Keychain from "react-native-keychain";
 import Token, { TokenResponse } from "../../entity/Authentication/Token";
 import env from "../../env";
+import ArtiefactError, { errorTypeNames } from "../../entity/Error";
 import { errorHandler } from "../../logics/error";
 
 const KEYCHAIN_USERNAME = "token";
@@ -17,8 +18,12 @@ export default class TokenManager {
             return;
           }
         )
-        .catch(error => {
-          errorHandler(error);
+        .catch((error: Error) => {
+          const artiefactError = new ArtiefactError({
+            error,
+            errorType: errorTypeNames.systemError
+          });
+          errorHandler(artiefactError);
         });
       return;
     }
@@ -49,8 +54,12 @@ export default class TokenManager {
         }
         return null;
       })
-      .catch(error => {
-        errorHandler(error);
+      .catch((error: Error) => {
+        const artiefactError = new ArtiefactError({
+          error,
+          errorType: errorTypeNames.systemError
+        });
+        errorHandler(artiefactError);
       });
   };
 

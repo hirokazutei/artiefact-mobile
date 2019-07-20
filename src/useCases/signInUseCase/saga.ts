@@ -7,6 +7,7 @@ import TokenManager from "../../managers/Authentication/tokenManager";
 import { SignInResponse } from "../../entity/Authentication/responses";
 import { errorHandler } from "../../logics/error";
 import Navigator from "../../navigation/navigationService";
+import ArtiefactError, { errorTypeNames } from "../../entity/Error";
 import routes from "../../navigation/routes";
 
 export function* signInHandler() {
@@ -17,7 +18,12 @@ export function* signInHandler() {
     .signIn(signInSelector(state))
     .then((response: object & { data: SignInResponse }) => response)
     .catch((error: Error) => {
-      errorHandler(error);
+      // TODO Determine Axios Error and Server Error
+      const artiefactError = new ArtiefactError({
+        error,
+        errorType: errorTypeNames.axiosError
+      });
+      errorHandler(artiefactError);
     });
   if (response) {
     // TODO, These response data's parsing should be handled by an interface

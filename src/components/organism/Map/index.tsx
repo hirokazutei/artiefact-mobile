@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import MapView, { Region, PROVIDER_GOOGLE } from "react-native-maps";
+import ArtiefactError, { errorTypeNames } from "../../../entity/Error";
 
 import { errorHandler } from "../../../logics/error";
 
@@ -41,6 +42,7 @@ export default class Map extends React.Component<Props, State> {
   componentDidMount() {
     this.watchID = navigator.geolocation.watchPosition(
       position => {
+        console.log(position);
         // Create the object to update this.state.mapRegion through the onRegionChange function
         let region = {
           latitude: position.coords.latitude,
@@ -50,7 +52,13 @@ export default class Map extends React.Component<Props, State> {
         };
         this.onRegionChange(region);
       },
-      error => errorHandler(error)
+      (error: PositionError) => {
+        const artiefactError = new ArtiefactError({
+          error,
+          errorType: errorTypeNames.positionError
+        });
+        errorHandler(artiefactError);
+      }
     );
   }
 
@@ -65,7 +73,13 @@ export default class Map extends React.Component<Props, State> {
         };
         this.setState({ currentRegion: newRegion });
       },
-      error => errorHandler(error),
+      error => {
+        const artiefactError = new ArtiefactError({
+          error,
+          errorType: errorTypeNames.positionError
+        });
+        errorHandler(artiefactError);
+      },
       { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
     );
   }
@@ -81,7 +95,7 @@ export default class Map extends React.Component<Props, State> {
       <View style={{ flex: 1 }}>
         {this.state.currentRegion && (
           <MapView
-            style={styles.map}
+            // style={styles.map}
             region={{
               latitude: this.state.currentRegion.latitude,
               longitude: this.state.currentRegion.longitude,

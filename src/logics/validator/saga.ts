@@ -3,6 +3,7 @@ import { actions } from "./actionTypes";
 import { actions as reduxActions } from "../../redux/reducers/authentication/actionTypes";
 import AuthClient from "../../interface/artiefact/authentication";
 import { errorHandler } from "../error";
+import ArtiefactError, { errorTypeNames } from "../../entity/Error";
 import {
   usernameSelector,
   emailSelector,
@@ -13,6 +14,7 @@ import {
   passwordValidator,
   usernameValidator
 } from "./authentication";
+import { AxiosError } from "axios";
 
 const VALIDATION_WAIT_PERIOD = 1000;
 
@@ -32,10 +34,15 @@ function* checkUsernameAvailabilityhandler() {
     const response = yield authClient
       .checkUsernameAvailability({ username })
       .then(response => {
+        // TODO Typing
         return response;
       })
-      .catch(error => {
-        errorHandler(error);
+      .catch((error: AxiosError) => {
+        const artiefactError = new ArtiefactError({
+          error,
+          errorType: errorTypeNames.axiosError
+        });
+        errorHandler(artiefactError);
       });
     const isAvailable = response && response.data && response.data.is_available;
     yield put({

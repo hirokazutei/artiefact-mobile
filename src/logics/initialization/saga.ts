@@ -1,4 +1,4 @@
-import { delay, call, put, takeEvery } from "redux-saga/effects";
+import { delay, takeEvery } from "redux-saga/effects";
 import { NavigationActions } from "react-navigation";
 import TokenManager from "../../managers/Authentication/tokenManager";
 import { initializationRespose } from "../../entity/Authentication/responses";
