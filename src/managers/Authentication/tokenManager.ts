@@ -1,5 +1,5 @@
 import * as Keychain from "react-native-keychain";
-import Token, { TokenParams } from "../../entity/Authentication/Token";
+import Token, { TokenResponse } from "../../entity/Authentication/Token";
 import env from "../../env";
 import { errorHandler } from "../../logics/error";
 
@@ -8,10 +8,10 @@ const KEYCHAIN_USERNAME = "token";
 export default class TokenManager {
   authToken?: Token;
 
-  constructor(props?: { token: Token }) {
-    if (props && props.token) {
-      this.authToken = props.token;
-      TokenManager.saveAccessToken(props.token)
+  constructor({ tokenObject }: { tokenObject: Token }) {
+    if (tokenObject) {
+      this.authToken = tokenObject;
+      TokenManager.saveAccessToken(tokenObject)
         .then(
           (): void => {
             return;
@@ -29,7 +29,7 @@ export default class TokenManager {
     return Keychain.resetInternetCredentials(env.API_ENDPOINT);
   };
 
-  static createToken = (params: TokenParams): Token => {
+  static createToken = (params: TokenResponse): Token => {
     return new Token(params);
   };
 

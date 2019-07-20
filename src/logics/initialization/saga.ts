@@ -1,6 +1,7 @@
-import { delay, put, takeEvery } from "redux-saga/effects";
+import { delay, call, put, takeEvery } from "redux-saga/effects";
 import { NavigationActions } from "react-navigation";
 import TokenManager from "../../managers/Authentication/tokenManager";
+import { initializationRespose } from "../../entity/Authentication/responses";
 import AuthClient from "../../interface/artiefact/authentication";
 import { actions } from "./actionTypes";
 import routes from "../../navigation/routes";
@@ -28,29 +29,33 @@ function* initializationHandler() {
   */
 
   const nav = Navigator.get();
-  console.log(token);
-  console.log(token.expiryDatetime);
-  if (token && token.expiryDatetime && token.expiryDatetime < new Date()) {
+  if (
+    token &&
+    token.expiryDatetime &&
+    new Date(token.expiryDatetime) > new Date()
+  ) {
     const authClient = AuthClient.get();
     const response = yield authClient
-      .getUser({ bearerToken: `bearer${token.token}` })
-      .then(response => {
-        return response;
+      .getUser({
+        bearerToken: `Bearer ${token.token}`
       })
-      .catch(error => {
+      .then((response: object & { data: initializationRespose }) => response)
+      .catch((error: Error) => {
         console.log(error);
         return null;
       });
     if (response) {
-      // parse that response
-      // TODO
+      // TODO: Response parsing should not be done here
       const { artiefact_user } = response.data;
-      put(artiefact_user);
-      NavigationActions.navigate({
-        routeName: routes.mainStackRoutes.mapStack
-      });
+      console.log(artiefact_user);
+      // put(artiefact_user);
+      nav.dispatch(
+        NavigationActions.navigate({
+          routeName: routes.mainStackRoutes.mapStack
+        })
+      );
+      return;
     }
-    return;
   }
   // NOTE: Intentionally making it take 2sec to see initialization screen
   yield delay(2000);

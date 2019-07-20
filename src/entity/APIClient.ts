@@ -35,25 +35,24 @@ export default class APIClient {
     isSensitive?: boolean
   ): Promise<any> {
     const headers = Object.assign(
-      { Accept: "application/json" },
+      { Accept: "*/*" },
       (options && options.headers) || {}
     );
-    const data = Object.assign({}, (options && options.data) || {});
-    const query = Object.assign({}, (options && options.queryParams) || {});
+    const data = Object.assign({}, (options && options.data) || null);
+    const query = Object.assign({}, (options && options.queryParams) || null);
     const fetchParams = {
       method: restMethods[method],
-      baseURL: this.endpoint,
-      url: path,
-      params: query,
-      cache: isSensitive ? "no-cache" : "default",
       headers: {
         "Content-Type": "application/json",
         ...headers
       },
+      baseURL: this.endpoint,
+      url: path,
       data: JSON.stringify(data),
+      params: query,
+      cache: isSensitive ? "no-cache" : "default",
       timeout: this.timeout
     };
-
     return axios(fetchParams);
   }
 

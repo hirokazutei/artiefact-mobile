@@ -1,8 +1,10 @@
 export type TokenParams = {
+  active: boolean;
+  expiry_datetime: string;
+  generated_datetime: string;
+  obtained_by: string;
   token: string;
-  expiryDatetime: string; // change into Datetime
-  generatedDateTime: string;
-  obtainedBy: string;
+  user_id: number;
 };
 
 export default class Token {
@@ -13,8 +15,8 @@ export default class Token {
 
   constructor(param: TokenParams) {
     this.token = param.token;
-    this.expiryDatetime = param.expiryDatetime;
-    this.generatedDateTime = param.generatedDateTime;
-    this.obtainedBy = param.generatedDateTime;
+    this.expiryDatetime = param.expiry_datetime;
+    this.generatedDateTime = param.generated_datetime;
+    this.obtainedBy = param.generated_datetime;
   }
 }

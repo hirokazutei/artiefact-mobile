@@ -4,6 +4,7 @@ import AuthClient from "../../interface/artiefact/authentication";
 import { actions } from "./actionTypes";
 import { signInSelector } from "../../redux/selectors/authentication";
 import TokenManager from "../../managers/Authentication/tokenManager";
+import { SignInResponse } from "../../entity/Authentication/responses";
 import { errorHandler } from "../../logics/error";
 import Navigator from "../../navigation/navigationService";
 import routes from "../../navigation/routes";
@@ -14,22 +15,21 @@ export function* signInHandler() {
   const nav = Navigator.get();
   const response = yield authClient
     .signIn(signInSelector(state))
-    .then(response => {
-      return response;
-    })
-    .catch(error => {
+    .then((response: object & { data: SignInResponse }) => response)
+    .catch((error: Error) => {
       errorHandler(error);
     });
   if (response) {
+    // TODO, These response data's parsing should be handled by an interface
     const { access_token, artiefact_user } = response.data;
-    const token = TokenManager.createToken(access_token);
-    new TokenManager({ token });
+    const tokenObject = TokenManager.createToken(access_token);
+    new TokenManager({ tokenObject });
+    nav.dispatch(
+      NavigationActions.navigate({ routeName: routes.mainStackRoutes.mapStack })
+    );
     // TODO: Set user and navigate to map
     console.log(artiefact_user);
   }
-  nav.dispatch(
-    NavigationActions.navigate({ routeName: routes.mainStackRoutes.auth })
-  );
 }
 
 export default function* signInUseCaseSaga() {

@@ -19,7 +19,7 @@ export type EndpointProperty = {
 const ENDPOINTS: Readonly<{ [key in EndpointNames]: EndpointProperty }> = {
   signIn: { uriSuffix: "user/sign-in", method: "post" },
   signUp: { uriSuffix: "user/sign-up", method: "post" },
-  getUser: { uriSuffix: "user/get-user", method: "get" },
+  getUser: { uriSuffix: "user/get-user", method: "post" }, // For some reason, GET can't receive requests
   checkUsernameAvailability: {
     uriSuffix: "user/username-availability",
     method: "post"
