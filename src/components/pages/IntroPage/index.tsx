@@ -1,6 +1,6 @@
 import React from "react";
 import IntroTemplate from "../../templates/IntroTemplate";
-import { NavigationProps } from "../../../type/navigation";
+import { NavigationProps } from "../../../navigation/type";
 import routes from "../../../navigation/routes";
 
 type Props = NavigationProps;
