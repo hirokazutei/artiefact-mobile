@@ -22,18 +22,22 @@ PODS:
     - GoogleMaps
   - Google-Maps-iOS-Utils/QuadTree (2.1.0):
     - GoogleMaps
-  - GoogleMaps (2.5.0):
-    - GoogleMaps/Maps (= 2.5.0)
-  - GoogleMaps/Base (2.5.0)
-  - GoogleMaps/Maps (2.5.0):
+  - GoogleMaps (3.1.0):
+    - GoogleMaps/Maps (= 3.1.0)
+  - GoogleMaps/Base (3.1.0)
+  - GoogleMaps/Maps (3.1.0):
     - GoogleMaps/Base
   - React (0.58.6):
     - React/Core (= 0.58.6)
-  - react-native-google-maps (0.24.0):
-    - Google-Maps-iOS-Utils (= 2.1.0)
-    - GoogleMaps (= 2.5.0)
+  - react-native-blur (0.8.0):
     - React
-  - react-native-maps (0.24.0):
+  - react-native-google-maps (0.25.0):
+    - Google-Maps-iOS-Utils (= 2.1.0)
+    - GoogleMaps (= 3.1.0)
+    - React
+  - react-native-maps (0.25.0):
+    - React
+  - react-native-spinkit (1.0.2):
     - React
   - React/Core (0.58.6):
     - yoga (= 0.58.6.React)
@@ -82,7 +86,11 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - RNGestureHandler (1.3.0):
+    - React
   - RNKeychain (3.1.3):
+    - React
+  - RNVectorIcons (6.6.0):
     - React
   - yoga (0.58.6.React)
 
@@ -92,8 +100,10 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - Google-Maps-iOS-Utils
   - GoogleMaps
+  - react-native-blur (from `../node_modules/react-native-blur`)
   - react-native-google-maps (from `../node_modules/react-native-maps`)
   - react-native-maps (from `../node_modules/react-native-maps`)
+  - react-native-spinkit (from `../node_modules/react-native-spinkit`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
@@ -107,7 +117,9 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNKeychain (from `../node_modules/react-native-keychain`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
 SPEC REPOS:
@@ -125,12 +137,20 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
     :path: "../node_modules/react-native"
+  react-native-blur:
+    :path: "../node_modules/react-native-blur"
   react-native-google-maps:
     :path: "../node_modules/react-native-maps"
   react-native-maps:
     :path: "../node_modules/react-native-maps"
+  react-native-spinkit:
+    :path: "../node_modules/react-native-spinkit"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   RNKeychain:
     :path: "../node_modules/react-native-keychain"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga/yoga.podspec"
 
@@ -140,13 +160,17 @@ SPEC CHECKSUMS:
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
   Google-Maps-iOS-Utils: c32891ff472eaaa1fca032beedafa1a013af7875
-  GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
+  GoogleMaps: 5c13302e6fe6bb6e686b267196586b91cd594225
   React: 130b87b2d5e2baac646954282cab87be986d98fc
-  react-native-google-maps: 7e8a041d5c552e698350a3380cbd0f4bf7e339b3
-  react-native-maps: d87d8ed456d4132112fb1d2ee9baf3470c0f211d
+  react-native-blur: cad4d93b364f91e7b7931b3fa935455487e5c33c
+  react-native-google-maps: 88d750ad441b19c24885f20d43a55ecac25939b5
+  react-native-maps: 190c02ca533fddac5bb49cf17bdece3644612107
+  react-native-spinkit: 9a5d2f95aa975d5660fd3e76b7eac38e7329e46c
+  RNGestureHandler: 5329a942fce3d41c68b84c2c2276ce06a696d8b0
   RNKeychain: c658833a9cb2cbcba6423bdd6e16cce59e27da0e
+  RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   yoga: 32d7ef1081951e9a35a4c72a7be797598b138a48
 
-PODFILE CHECKSUM: 1843d959234b0bd6086d3be077e817089332d268
+PODFILE CHECKSUM: 276d55069ad35f5fa138e722d2c0a18d3c073f3a
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.3

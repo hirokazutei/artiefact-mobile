@@ -6,6 +6,11 @@ import ArtiefactError, { errorTypeNames } from "../../../entity/Error";
 import { errorHandler } from "../../../logics/error";
 
 const styles = StyleSheet.create({
+  container: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: "flex-end",
+    alignItems: "center"
+  },
   map: {
     ...StyleSheet.absoluteFillObject
   }
@@ -92,10 +97,10 @@ export default class Map extends React.Component<Props, State> {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.container}>
         {this.state.currentRegion && (
           <MapView
-            // style={styles.map}
+            style={styles.map}
             region={{
               latitude: this.state.currentRegion.latitude,
               longitude: this.state.currentRegion.longitude,
