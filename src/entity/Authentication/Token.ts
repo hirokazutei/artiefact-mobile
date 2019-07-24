@@ -11,7 +11,7 @@ export default class Token {
   token: string;
   expiryDatetime: string; // change into Datetime
   generatedDateTime: string;
-  obtainedBy: string; // This should be union of all the types where it can be pbtained
+  obtainedBy: string; // This should be union of all the types where it can be obtained
 
   constructor(param: TokenParams) {
     this.token = param.token;

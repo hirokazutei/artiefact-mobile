@@ -1,6 +1,6 @@
 import { Reducer } from "redux";
 import { ActionTypes, actions } from "./actionTypes";
-import { Action } from "../../../redux/types";
+import { Action } from "../../types";
 
 type AgreeToTermsForm = {
   value: boolean;

@@ -1,5 +1,5 @@
 import * as Keychain from "react-native-keychain";
-import Token, { TokenResponse } from "../../entity/Authentication/Token";
+import Token, { TokenParams } from "../../entity/Authentication/Token";
 import env from "../../env";
 import ArtiefactError, { errorTypeNames } from "../../entity/Error";
 import { errorHandler } from "../../logics/error";
@@ -34,7 +34,7 @@ export default class TokenManager {
     return Keychain.resetInternetCredentials(env.API_ENDPOINT);
   };
 
-  static createToken = (params: TokenResponse): Token => {
+  static createToken = (params: TokenParams): Token => {
     return new Token(params);
   };
 

@@ -6,6 +6,7 @@ export type DispatchProps = {
   dispatch: Dispatch;
 };
 
+// TODO: Turn this into a functional component
 export default connect(
   null,
   (dispatch: Dispatch): DispatchProps => {

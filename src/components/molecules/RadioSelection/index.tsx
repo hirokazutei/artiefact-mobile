@@ -15,7 +15,7 @@ type Props = {
 /**
  * Radio Selection
  *
- * @param props - props
+ * @param {Props} props - props
  * @param props.checked - buttonchecked
  * @param props.children - text of selection
  * @param [props.color] - color of the button

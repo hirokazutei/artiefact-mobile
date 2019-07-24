@@ -17,13 +17,13 @@ export const errorHandler = (artiefactError: ArtiefactError) => {
       break;
     }
     case errorTypeNames.networkError: {
+      // @ts-ignore TODO: Implement Appropriate Error Handler
       const error = artiefactError.error as Error;
-      // TODO Error Handler
       break;
     }
     case errorTypeNames.systemError: {
+      // @ts-ignore TODO: Implement Appropriate Error Handler
       const error = artiefactError.error as Error;
-      // TODO Error Handler
       break;
     }
     case errorTypeNames.unknownError: {
