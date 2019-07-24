@@ -10,8 +10,8 @@ import { TextColorKeys } from "../../../symbols/text";
 import Icon from "../../atoms/Icon";
 import { IconTypes, IconSizeKeys } from "../../atoms/Icon";
 import { Diff } from "../../../type/tsUtility";
-
-const RNIndicator = require("react-native-indicator");
+// @ts-ignore: Implicit Any Import
+import Spinkit from "react-native-spinkit";
 
 type Props = {
   isValidating?: boolean;
@@ -121,7 +121,7 @@ const ValidationField: React.FC<Props> = (props: Props): React.ReactElement => {
     : null;
   if (isValidating) {
     validationIcon = (
-      <RNIndicator.DotsLoader size={10} betweenSpace={5} color={colorStyle} />
+      <Spinkit size={25} type={"ThreeBounce"} color={colorStyle} />
     );
   }
   return (

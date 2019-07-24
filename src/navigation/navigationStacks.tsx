@@ -1,7 +1,4 @@
-import {
-  createStackNavigator,
-  NavigationContainer
-} from "react-navigation";
+import { createStackNavigator, NavigationContainer } from "react-navigation";
 import SignInPage from "../components/pages/SignInPage";
 import SignUpPage from "../components/pages/SignUpPage";
 import InitializationPage from "../components/pages/InitializationPage";
@@ -34,9 +31,9 @@ const MapStack = createStackNavigator(mapStackMapper);
 const mainStackMapper: Readonly<
   { [key in MainStackRouteTypes]: NavigationContainer }
 > = {
+  mapStack: MapStack,
   initialize: InitializationPage,
-  auth: AuthStack,
-  mapStack: MapStack
+  auth: AuthStack
 };
 
-export default mainStackMapper
+export default mainStackMapper;
