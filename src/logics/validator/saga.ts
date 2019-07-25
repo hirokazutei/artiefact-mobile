@@ -2,6 +2,7 @@ import { all, delay, select, put, takeLatest } from "redux-saga/effects";
 import { actions } from "./actionTypes";
 import { actions as reduxActions } from "../../redux/reducers/authentication/actionTypes";
 import AuthClient from "../../interface/artiefact/authentication";
+import { CheckUsernameAvailabilityResponse } from "../../entity/Authentication/responses";
 import { errorHandler } from "../error";
 import ArtiefactError, { errorTypeNames } from "../../entity/Error";
 import {
@@ -33,10 +34,11 @@ function* checkUsernameAvailabilityhandler() {
     const authClient = AuthClient.get();
     const response = yield authClient
       .checkUsernameAvailability({ username })
-      .then(response => {
-        // TODO Typing
-        return response;
-      })
+      .then(
+        (response: object & { data: CheckUsernameAvailabilityResponse }) => {
+          return response;
+        }
+      )
       .catch((error: AxiosError) => {
         const artiefactError = new ArtiefactError({
           error,

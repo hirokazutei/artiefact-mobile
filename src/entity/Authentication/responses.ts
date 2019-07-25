@@ -11,6 +11,11 @@ export type SignUpResponse = {
   artiefact_user: ArtiefactUserParams;
 };
 
+export type CheckUsernameAvailabilityResponse = {
+  is_avialable?: boolean;
+  username: string;
+};
+
 export type initializationRespose = {
   artiefact_user: ArtiefactUserParams;
 };

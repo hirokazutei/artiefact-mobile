@@ -1,29 +1,21 @@
 import React from "react";
 import LoadingTemplate from "../../templates/LoadingTemplate";
 import { initizationActionCreator } from "../../../logics/initialization/actionCreator";
-import { DispatchProps } from "./container";
+import store from "../../../store";
 
 const LOADING_COMMA_MAX = 5;
 const COMMA_LOAD_DURATION = 500;
 const MESSAGE = "Initializing";
-
-type Props = DispatchProps;
 
 type ComponentState = {
   loadingCommas: number;
   commaUpdate?: void;
 };
 
-class InitializationPage extends React.Component<Props> {
+class InitializationPage extends React.Component {
   state: ComponentState = {
     loadingCommas: 0
   };
-
-  constructor(props: Props) {
-    super(props);
-    const { dispatch } = props;
-    dispatch(initizationActionCreator());
-  }
 
   loadingComma(commas: number) {
     if (commas < LOADING_COMMA_MAX) {
@@ -33,6 +25,8 @@ class InitializationPage extends React.Component<Props> {
   }
 
   componentDidMount() {
+    const { dispatch } = store;
+    dispatch(initizationActionCreator());
     this.setState({
       commaUpdate: setInterval(() => {
         this.setState({
