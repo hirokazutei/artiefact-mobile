@@ -13,9 +13,9 @@ import {
 const authStackMapper: Readonly<
   { [key in AuthStackRouteTypes]: React.FunctionComponent<any> }
 > = {
-  intro: IntroPage,
-  signIn: SignInPage,
-  signUp: SignUpPage
+  intro: MapViewPage,
+  signIn: MapViewPage,
+  signUp: MapViewPage
 };
 
 const AuthStack = createStackNavigator(authStackMapper);

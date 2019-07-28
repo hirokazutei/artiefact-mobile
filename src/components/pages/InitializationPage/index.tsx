@@ -1,51 +1,43 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import LoadingTemplate from "../../templates/LoadingTemplate";
 import { initizationActionCreator } from "../../../logics/initialization/actionCreator";
 import store from "../../../store";
 
 const LOADING_COMMA_MAX = 5;
 const COMMA_LOAD_DURATION = 500;
-const MESSAGE = "Initializing";
 
-type ComponentState = {
-  loadingCommas: number;
-  commaUpdate?: void;
-};
-
-class InitializationPage extends React.Component {
-  state: ComponentState = {
-    loadingCommas: 0
-  };
-
-  loadingComma(commas: number) {
-    if (commas < LOADING_COMMA_MAX) {
-      return ++commas;
-    }
-    return 0;
-  }
-
-  componentDidMount() {
+const InitializationPage: React.FC = (): React.ReactElement => {
+  useEffect(() => {
     const { dispatch } = store;
     dispatch(initizationActionCreator());
-    this.setState({
-      commaUpdate: setInterval(() => {
-        this.setState({
-          loadingCommas: this.loadingComma(this.state.loadingCommas)
-        });
-      }, COMMA_LOAD_DURATION)
-    });
-  }
+  });
+  const [commaCount, setCommaCount] = useState(0);
+  useInterval(() => {
+    setCommaCount(commaCount < LOADING_COMMA_MAX ? commaCount + 1 : 0);
+  }, COMMA_LOAD_DURATION);
+  // @ts-ignore
+  const loadingMessage = `Initializing${".".repeat(commaCount)}`;
+  return <LoadingTemplate message={loadingMessage} />;
+};
 
-  componentWillUnmount() {
-    if (!!this.state.commaUpdate) {
-      clearInterval(this.state.commaUpdate);
+function useInterval(callback: (args: any) => void, delay: number) {
+  const savedCallback = useRef();
+
+  useEffect(() => {
+    // @ts-ignore
+    savedCallback.current = callback;
+  }, [callback]);
+
+  useEffect((): void | (() => void | undefined) => {
+    const addComma = () => {
+      // @ts-ignore
+      savedCallback.current();
+    };
+    if (delay !== null) {
+      let id = setInterval(addComma, delay);
+      return () => clearInterval(id);
     }
-  }
-
-  render() {
-    const loadingMessage = `${MESSAGE}${".".repeat(this.state.loadingCommas)}`;
-    return <LoadingTemplate message={loadingMessage} />;
-  }
+  }, [delay]);
 }
 
 export default InitializationPage;
