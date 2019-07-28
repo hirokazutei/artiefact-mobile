@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* artiefactTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* artiefactTests.m */; };
 		044837438B66B9FF3CCC6123 /* libPods-artiefact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B45120E5BA7BEC166CB10EB /* libPods-artiefact.a */; };

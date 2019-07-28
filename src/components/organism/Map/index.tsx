@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
+import Geolocation from "@react-native-community/geolocation";
 import MapView, { Region, PROVIDER_GOOGLE } from "react-native-maps";
 import ArtiefactError, { errorTypeNames } from "../../../entity/Error";
 
@@ -45,7 +46,7 @@ export default class Map extends React.Component<Props, State> {
   watchID?: any;
 
   componentDidMount() {
-    this.watchID = navigator.geolocation.watchPosition(
+    this.watchID = Geolocation.watchPosition(
       position => {
         console.log(position);
         // Create the object to update this.state.mapRegion through the onRegionChange function
@@ -68,7 +69,7 @@ export default class Map extends React.Component<Props, State> {
   }
 
   async setCurrentRegion() {
-    return await navigator.geolocation.getCurrentPosition(
+    return await Geolocation.getCurrentPosition(
       (region: Position) => {
         const newRegion: Region = {
           latitude: region.coords.latitude,
