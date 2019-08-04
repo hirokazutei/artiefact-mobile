@@ -1,8 +1,11 @@
 import React from "react";
 import MapViewTemplate from "../../templates/MapViewTemplate";
+import { NavigationProps } from "../../../navigation/type";
 
-const MapViewPage: React.FC = (): React.ReactElement => {
-  return <MapViewTemplate />;
+type Props = NavigationProps;
+
+const MapViewPage: React.FC<Props> = (props: Props): React.ReactElement => {
+  return <MapViewTemplate {...props} />;
 };
 
 export default MapViewPage;

@@ -4,11 +4,20 @@ import SignUpPage from "../components/pages/SignUpPage";
 import InitializationPage from "../components/pages/InitializationPage";
 import IntroPage from "../components/pages/IntroPage";
 import MapViewPage from "../components/pages/MapViewPage";
+import CameraPage from "../components/pages/CameraPage";
 import {
   AuthStackRouteTypes,
   MainStackRouteTypes,
-  MapStackRouteTypes
+  MapStackRouteTypes,
+  InitializationRouteTypes
 } from "./routes";
+
+const initializaMapper: Readonly<
+  { [key in InitializationRouteTypes]: React.FunctionComponent<any> }
+> = {
+  initialization: InitializationPage
+};
+const InitializationStack = createStackNavigator(initializaMapper);
 
 const authStackMapper: Readonly<
   { [key in AuthStackRouteTypes]: React.FunctionComponent<any> }
@@ -16,6 +25,7 @@ const authStackMapper: Readonly<
   intro: MapViewPage,
   signIn: MapViewPage,
   signUp: MapViewPage
+  // Temporarily changing these to MapView
 };
 
 const AuthStack = createStackNavigator(authStackMapper);
@@ -23,7 +33,8 @@ const AuthStack = createStackNavigator(authStackMapper);
 const mapStackMapper: Readonly<
   { [key in MapStackRouteTypes]: React.FunctionComponent<any> }
 > = {
-  mapView: MapViewPage
+  mapView: MapViewPage,
+  camera: CameraPage
 };
 
 const MapStack = createStackNavigator(mapStackMapper);
@@ -32,8 +43,8 @@ const mainStackMapper: Readonly<
   { [key in MainStackRouteTypes]: NavigationContainer }
 > = {
   mapStack: MapStack,
-  initialize: InitializationPage,
-  auth: AuthStack
+  initializationStack: InitializationStack,
+  authStack: AuthStack
 };
 
 export default mainStackMapper;

@@ -7,7 +7,7 @@ import routes from "./routes";
 
 const AppContainer = createAppContainer(
   createSwitchNavigator(mainStackMapper, {
-    initialRouteName: routes.mainStackRoutes.initialize
+    initialRouteName: routes.mainStackRoutes.initializationStack
   })
 );
 

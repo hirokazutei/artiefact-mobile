@@ -1,11 +1,22 @@
-export type MainStackRouteTypes = "initialize" | "auth" | "mapStack";
+export type MainStackRouteTypes =
+  | "initializationStack"
+  | "authStack"
+  | "mapStack";
 
 const mainStackRoutes: Readonly<
   { [key in MainStackRouteTypes]: MainStackRouteTypes }
 > = {
-  initialize: "initialize",
-  auth: "auth",
+  initializationStack: "initializationStack",
+  authStack: "authStack",
   mapStack: "mapStack"
+};
+
+export type InitializationRouteTypes = "initialization";
+
+const initializationStackRoutes: Readonly<
+  { [key in InitializationRouteTypes]: InitializationRouteTypes }
+> = {
+  initialization: "initialization"
 };
 
 export type AuthStackRouteTypes = "intro" | "signIn" | "signUp";
@@ -18,16 +29,18 @@ const authStackRoutes: Readonly<
   signUp: "signUp"
 };
 
-export type MapStackRouteTypes = "mapView";
+export type MapStackRouteTypes = "mapView" | "camera";
 
 const mapStackRoutes: Readonly<
   { [key in MapStackRouteTypes]: MapStackRouteTypes }
 > = {
+  camera: "camera",
   mapView: "mapView"
 };
 
 export default {
   mainStackRoutes,
   authStackRoutes,
-  mapStackRoutes
+  mapStackRoutes,
+  initializationStackRoutes
 };

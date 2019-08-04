@@ -7,6 +7,7 @@ import com.facebook.react.PackageList;
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.ReactApplication;
+import org.reactnative.camera.RNCameraPackage;
 import com.reactnativecommunity.geolocation.GeolocationPackage;
 import com.reactnativecommunity.netinfo.NetInfoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -37,6 +38,7 @@ public class MainApplication extends Application implements ReactApplication {
       /* 
       packages.add(
             new MainReactPackage(),
+            new RNCameraPackage(),
             new GeolocationPackage(),
             new NetInfoPackage(),
             new VectorIconsPackage(),
