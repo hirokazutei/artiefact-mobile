@@ -2,9 +2,12 @@ import { StyleSheet, ViewStyle, TextStyle } from "react-native";
 import * as symbols from "../../../symbols";
 
 export type StyleProps = {
+  buttonType?: ButtonTypeKeys;
   color?: ButtonColorKeys;
   size?: ButtonSizeKeys;
 };
+
+type ButtonTypeKeys = "default" | "circular";
 
 type ButtonColorKeys = "primary" | "secondary" | "disabled";
 
@@ -49,6 +52,7 @@ const buttonTextSizes: Sizes = {
 };
 
 const defaultStyle: Readonly<Required<StyleProps>> = {
+  buttonType: "default" as ButtonTypeKeys,
   color: "primary" as ButtonColorKeys,
   size: "medium" as ButtonSizeKeys
 };
@@ -93,21 +97,48 @@ type Styles = {
   buttonStretched: ViewStyle;
 };
 
-/**
- * Stylize Button
- *
- * @param styleProps - style properties
- * @param [styleProps.color] - color key
- * @param [styleProps.size] - size key
- */
-export const stylizeButton = (styleProps: StyleProps): Styles => {
-  const { color, size } = styleProps;
-  return StyleSheet.create<Styles>({
-    button: {
+const ButtonType = ({
+  buttonType = defaultStyle.buttonType,
+  color = defaultStyle.color,
+  size = defaultStyle.size
+}: {
+  buttonType: ButtonTypeKeys;
+  color: ButtonColorKeys;
+  size: ButtonSizeKeys;
+}): ViewStyle => {
+  const buttonTypeStyles: Readonly<{ [key in ButtonTypeKeys]: ViewStyle }> = {
+    default: {
       borderRadius: symbols.borders.radius.round,
       backgroundColor: resolveBottonColors(color),
       padding: resolveButtonPaddingSizes(size)
     },
+    circular: {
+      borderRadius: symbols.borders.radius.circular,
+      backgroundColor: resolveBottonColors(color),
+      padding: resolveButtonPaddingSizes(size),
+      width: resolveButtonPaddingSizes(size) * 2,
+      height: resolveButtonPaddingSizes(size) * 2
+    }
+  };
+  return buttonTypeStyles[buttonType];
+};
+
+/**
+ * Stylize Button
+ *
+ * @param styleProps - style properties
+ * @param [styleProps.buttonType] - style of the button
+ * @param [styleProps.color] - color key
+ * @param [styleProps.size] - size key
+ */
+export const stylizeButton = (styleProps: StyleProps): Styles => {
+  const { buttonType, color, size } = styleProps;
+  return StyleSheet.create<Styles>({
+    button: ButtonType({
+      buttonType: buttonType as ButtonTypeKeys,
+      color: color as ButtonColorKeys,
+      size: size as ButtonSizeKeys
+    }),
     text: {
       color: textColors.white,
       alignSelf: "center",

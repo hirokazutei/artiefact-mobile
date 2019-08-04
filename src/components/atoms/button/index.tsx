@@ -3,7 +3,7 @@ import { TouchableOpacity, Text } from "react-native";
 import { stylizeButton, StyleProps } from "./styles";
 
 export type Props = {
-  children?: never;
+  children?: React.ReactNode;
   label: string;
   onPress: (args: any) => any;
   isDisabled?: boolean;
@@ -15,15 +15,17 @@ export type Props = {
  *
  * @param props - props
  * @param props.label - label
+ * @param [props.children] - children
  * @param [props.onPress] - action fired on press
  * @param [props.isDiabled] - is button disabled
  * @param [props.isStretched] - is button stretched
  * Style
+ * @param [props.buttonStyle] - the style of the button
  * @param [props.color] - color of the button
  * @param [props.size] - size of the Button
  */
 const Button: React.FC<Props> = (props: Props): React.ReactElement => {
-  const { label, isDisabled, isStretched, ...styleProps } = props;
+  const { children, label, isDisabled, isStretched, ...styleProps } = props;
   const styles = stylizeButton(styleProps);
   const extraStyles = [
     isDisabled ? styles.buttonDisabled : null,
@@ -36,7 +38,7 @@ const Button: React.FC<Props> = (props: Props): React.ReactElement => {
       onPress={props.onPress}
       accessibilityLabel={label}
     >
-      <Text style={styles.text}>{label}</Text>
+      {children ? children : <Text style={styles.text}>{label}</Text>}
     </TouchableOpacity>
   );
 };
