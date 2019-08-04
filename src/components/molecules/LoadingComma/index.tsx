@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import Text from "../../atoms/Text";
 import { StyleProps } from "../../atoms/Text/styles";
 
 type Props = {
@@ -14,7 +15,7 @@ const LoadingComma: React.FC<Props> = (props: Props): React.ReactElement => {
     setCommaCount(commaCount < commaLength ? commaCount + 1 : 0);
   }, speed);
   // @ts-ignore
-  return <Text style={...textStyles}>{".".repeat(commaCount)}</Text>;
+  return <Text {...textStyles}>{".".repeat(commaCount)}</Text>;
 };
 
 function useInterval(callback: (args: any) => void, delay: number) {

@@ -60,7 +60,7 @@ function* initializationHandler() {
   // NOTE: Intentionally making it take 2sec to see initialization screen
   yield delay(2000);
   nav.dispatch(
-    NavigationActions.navigate({ routeName: routes.mainStackRoutes.auth })
+    NavigationActions.navigate({ routeName: routes.mainStackRoutes.authStack })
   );
 }
 
