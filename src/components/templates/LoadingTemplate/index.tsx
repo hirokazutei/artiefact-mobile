@@ -1,12 +1,14 @@
 import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
 import Text from "../../atoms/Text";
+import {
+  TextColorKeys,
+  TextSizeKeys,
+  TextWeightKeys
+} from "../../../symbols/text";
 import { spacing } from "../../../symbols/spacing";
 import { colors } from "../../../symbols/colors";
-
-type Props = {
-  message: string;
-};
+import LoadingComma from "../../molecules/LoadingComma";
 
 type Styles = {
   base: ViewStyle;
@@ -15,20 +17,23 @@ type Styles = {
 const styles: Styles = StyleSheet.create<Styles>({
   base: {
     flex: 1,
-    flexDirection: "column",
+    flexDirection: "row",
     justifyContent: "center",
     padding: spacing.macro,
     backgroundColor: colors.white
   }
 });
 
-const LoadingTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
-  const { message } = props;
+const LoadingTemplate: React.FC = (): React.ReactElement => {
+  const textStyles = {
+    size: "massive" as TextSizeKeys,
+    color: "primary" as TextColorKeys,
+    weight: "bold" as TextWeightKeys
+  };
   return (
     <View style={styles.base}>
-      <Text size="massive" color="primary" weight="bold">
-        {message}
-      </Text>
+      <Text {...textStyles}>Initializing</Text>
+      <LoadingComma commaLength={5} speed={500} textStyles={textStyles} />
     </View>
   );
 };
