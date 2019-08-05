@@ -8,15 +8,21 @@ import {
   reducer as systemReducer,
   State as SystemState
 } from "./reducers/system";
+import {
+  reducer as trackingReducer,
+  State as TrackingState
+} from "./reducers/tracking";
 
 export type State = {
   authentication: AuthenticationState;
   error: ErrorState;
   system: SystemState;
+  tracking: TrackingState;
 };
 
 export default combineReducers({
   authentication: authenticationReducer,
   error: errorReducer,
-  system: systemReducer
+  system: systemReducer,
+  tracking: trackingReducer
 });

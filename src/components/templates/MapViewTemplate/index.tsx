@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
 import { NavigationProps } from "../../../navigation/type";
-import Map from "../../organism/Map";
+import Map from "../../organism/Map/component";
 import Button from "../../atoms/Button";
 import routes from "../../../navigation/routes";
 

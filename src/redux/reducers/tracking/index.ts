@@ -1,30 +1,32 @@
 import { Reducer } from "redux";
-import { ActionTypes } from "./actionTypes";
+import { ActionTypes, actions } from "./actionTypes";
+import { Region } from "react-native-maps";
 
 export type State = {
-  isTracking: boolean;
-  userID?: number;
-  sagaID?: number;
-  chapterID?: number;
-  longitudes: number[];
-  latitudes: number[];
+  currentRegion?: Region;
 };
 
-const defaultState: Readonly<State> = {
-  isTracking: false,
-  longitudes: [],
-  latitudes: []
-};
+const defaultState: Readonly<State> = {};
 
 export type Action = {
   type: ActionTypes;
-  payload: { value: any };
+  payload: any;
 };
 
 export const reducer: Reducer<State, Action> = (
   state: State = defaultState,
   action: Action
 ): State => {
-  const newState = { ...state, action };
+  const newState = { ...state };
+  const { type, payload } = action;
+  switch (type) {
+    case actions.UPDATE_CURRENT_REGION: {
+      newState.currentRegion = payload.region;
+      break;
+    }
+    default: {
+      break;
+    }
+  }
   return newState;
 };
