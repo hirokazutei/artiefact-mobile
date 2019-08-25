@@ -1,18 +1,6 @@
-import React from "react";
-import { View } from "react-native";
-import { stylizeStack, StyleProps } from "./styles";
+import { stackFactory } from "react-native-spacing-system";
+import { spacing } from "../../../symbols/spacing";
 
-/**
- * Stack
- *
- * @param props - properties
- * @param [props.value] - space value
- */
-const Stack: React.FC<StyleProps> = (
-  styleProps: StyleProps
-): React.ReactElement => {
-  const styles = stylizeStack(styleProps);
-  return <View style={styles.stack} />;
-};
+const Stack = stackFactory(spacing);
 
 export default Stack;

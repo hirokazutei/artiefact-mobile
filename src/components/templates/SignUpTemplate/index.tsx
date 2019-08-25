@@ -60,12 +60,12 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         confirmButton={{ onPress: onPressConfirmModal, label: "Confirm" }}
         mode="date"
       />
-      <Inset paddingHorizontal="macro" paddingBottom="macro">
+      <Inset horizontal="macro" bottom="macro">
         <Text size="massive" color="secondary" weight="bold" align="center">
           {"Adventure Awaits,"}
         </Text>
         <ShiftingTitle color="secondary" />
-        <Stack value="huge" />
+        <Stack size="huge" />
         <ValidationField
           placeholder="Username"
           color="secondary"
@@ -75,7 +75,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           validationResult={usernameValidationStatus}
           isValidating={isUsernameValidating}
         />
-        <Stack value="huge" />
+        <Stack size="huge" />
         <ValidationField
           placeholder="Password"
           color="secondary"
@@ -85,7 +85,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           validationResult={passwordValidationStatus}
           errors={passwordErrors}
         />
-        <Stack value="huge" />
+        <Stack size="huge" />
         <ValidationField
           placeholder="Email"
           color="secondary"
@@ -94,7 +94,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           validationResult={emailValidationStatus}
           errors={emailErrors}
         />
-        <Stack value="huge" />
+        <Stack size="huge" />
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View style={{ justifyContent: "flex-end" }}>
             <Text size="large" color="faded">
@@ -112,7 +112,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
             </Text>
           </View>
         </View>
-        <Stack value="huge" />
+        <Stack size="huge" />
         <RadioSelection
           checked={agreeToTerms}
           color="secondary"
@@ -120,7 +120,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         >
           {"Agree to Terms & Con"}
         </RadioSelection>
-        <Stack value="huge" />
+        <Stack size="huge" />
         <Button
           size="massive"
           color={secondaryButtonColor}

@@ -30,25 +30,25 @@ const SignInTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
   } = props;
   return (
     <View style={styles.base}>
-      <Inset paddingHorizontal="macro" paddingBottom="macro">
+      <Inset horizontal="macro" bottom="macro">
         <Text size="massive" color="primary" weight="bold">
           {"Welcome Back,"}
         </Text>
         <ShiftingTitle color="primary" />
-        <Stack value="huge" />
+        <Stack size="huge" />
         <InputField
           placeholder="Username"
           onChangeText={onChangeUsername}
           value={username}
         />
-        <Stack value="huge" />
+        <Stack size="huge" />
         <InputField
           placeholder="Password"
           onChangeText={onChangePassword}
           value={password}
           secureTextEntry={true}
         />
-        <Stack value="huge" />
+        <Stack size="huge" />
         <Button size="massive" label="Login" onPress={onPressSignIn} />
       </Inset>
     </View>

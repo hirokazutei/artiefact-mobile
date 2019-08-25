@@ -35,11 +35,11 @@ export default class ErrorModal extends React.Component<Props> {
           label: "OK"
         }}
       >
-        <Inset paddingTop="huge" paddingHorizontal="huge">
+        <Inset top="huge" horizontal="huge">
           <Text size="huge">{message}</Text>
           {icon && (
             <View style={styles.iconView}>
-              <Stack value="large" />
+              <Stack size="large" />
               <Icon name={icon} size={"macro"} color={"primary"} />
             </View>
           )}

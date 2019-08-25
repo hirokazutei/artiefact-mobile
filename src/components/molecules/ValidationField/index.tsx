@@ -111,7 +111,7 @@ const ValidationField: React.FC<Props> = (props: Props): React.ReactElement => {
     errors,
     warnings,
     infos,
-    color,
+    color = "primary",
     ...inputFieldProps
   } = props;
   const colorStyle = validationFieldColors[color];
@@ -133,7 +133,7 @@ const ValidationField: React.FC<Props> = (props: Props): React.ReactElement => {
         </View>
         <View style={styles.iconWrapper}>{validationIcon}</View>
       </View>
-      <Stack value="tiny" />
+      <Stack size="tiny" />
       {errors && listMessages("error", errors)}
       {warnings && listMessages("warning", warnings)}
       {infos && listMessages("info", infos)}

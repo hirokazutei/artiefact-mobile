@@ -24,18 +24,18 @@ const IntroTemplate: React.FC<Props> = ({
 }: Props): React.ReactElement => {
   return (
     <View style={styles.base}>
-      <Inset paddingHorizontal="macro" paddingBottom="macro">
+      <Inset horizontal="macro" bottom="macro">
         <Text size="macro" color="primary" weight="thicc" align="center">
           Artiefact
         </Text>
-        <Stack value="medium" />
+        <Stack size="medium" />
         <Button
           size="massive"
           color="primary"
           label="Login"
           onPress={onPressSignIn}
         />
-        <Stack value="medium" />
+        <Stack size="medium" />
         <Button
           size="massive"
           color="secondary"
