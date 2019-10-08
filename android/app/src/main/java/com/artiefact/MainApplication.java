@@ -7,15 +7,6 @@ import com.facebook.react.PackageList;
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.ReactApplication;
-import org.reactnative.camera.RNCameraPackage;
-import com.reactnativecommunity.geolocation.GeolocationPackage;
-import com.reactnativecommunity.netinfo.NetInfoPackage;
-import com.oblador.vectoricons.VectorIconsPackage;
-import com.react.rnspinkit.RNSpinkitPackage;
-import com.oblador.keychain.KeychainPackage;
-import com.airbnb.android.react.maps.MapsPackage;
-import com.cmcewen.blurview.BlurViewPackage;
-import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
@@ -37,16 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
       // Packages that cannot be autolinked yet can be added manually here, for example:
       /* 
       packages.add(
-            new MainReactPackage(),
-            new RNCameraPackage(),
-            new GeolocationPackage(),
-            new NetInfoPackage(),
-            new VectorIconsPackage(),
-            new RNSpinkitPackage(),
-            new KeychainPackage(),
-            new BlurViewPackage(),
-            new MapsPackage(),
-            new RNGestureHandlerPackage()
+            new MainReactPackage()
       );
       */
       return packages;
