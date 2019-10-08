@@ -53,14 +53,14 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-    <key>NSCameraUsageDescription</key>
-    <string>Artiefact needs your permission to use your camera to catalog artiefacts.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>Artiefact needs your permission to access your catalog photos on your phone.</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>Artiefact needs your permission to access your catalog photos on your phone.</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>Artiefact needs your permission to listen to your audio logs.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Artiefact needs your permission to use your camera to catalog artiefacts.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Artiefact needs your permission to access your catalog photos on your phone.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Artiefact needs your permission to access your catalog photos on your phone.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Artiefact needs your permission to listen to your audio logs.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>

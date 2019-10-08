@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import Geolocation from "@react-native-community/geolocation";
 import MapView, { Region, PROVIDER_GOOGLE } from "react-native-maps";
+import Text from "../../atoms/Text";
 import ArtiefactError, { errorTypeNames } from "../../../entity/Error";
 
 import { errorHandler } from "../../../logics/error";
@@ -35,6 +36,7 @@ export type Props = {
 type State = {
   currentRegion?: Region;
   watchID?: any;
+  permission?: boolean;
 };
 
 /**
@@ -44,28 +46,31 @@ type State = {
 export default class Map extends React.Component<Props, State> {
   state: State = {};
   watchID?: any;
+  permission?: boolean;
 
   componentDidMount() {
-    this.watchID = Geolocation.watchPosition(
-      position => {
-        console.log(position);
-        // Create the object to update this.state.mapRegion through the onRegionChange function
-        let region = {
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          latitudeDelta: 0.00922 * 1.5,
-          longitudeDelta: 0.00421 * 1.5
-        };
-        this.onRegionChange(region);
-      },
-      (error: PositionError) => {
-        const artiefactError = new ArtiefactError({
-          error,
-          errorType: errorTypeNames.positionError
-        });
-        errorHandler(artiefactError);
-      }
-    );
+    if (this.state.permission) {
+      this.watchID = Geolocation.watchPosition(
+        position => {
+          console.log(position);
+          // Create the object to update this.state.mapRegion through the onRegionChange function
+          let region = {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            latitudeDelta: 0.00922 * 1.5,
+            longitudeDelta: 0.00421 * 1.5
+          };
+          this.onRegionChange(region);
+        },
+        (error: PositionError) => {
+          const artiefactError = new ArtiefactError({
+            error,
+            errorType: errorTypeNames.positionError
+          });
+          errorHandler(artiefactError);
+        }
+      );
+    }
   }
 
   async setCurrentRegion() {
@@ -97,7 +102,7 @@ export default class Map extends React.Component<Props, State> {
   }
 
   render() {
-    return (
+    return this.state.permission ? (
       <View style={styles.container}>
         {this.state.currentRegion && (
           <MapView
@@ -113,6 +118,10 @@ export default class Map extends React.Component<Props, State> {
             {this.props.children}
           </MapView>
         )}
+      </View>
+    ) : (
+      <View>
+        <Text>Permission not granted for maps</Text>
       </View>
     );
   }
