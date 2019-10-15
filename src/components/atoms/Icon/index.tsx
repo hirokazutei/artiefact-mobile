@@ -3,17 +3,20 @@ import RNVIcon from "react-native-vector-icons/Feather";
 import { colors, ColorTypeKeys } from "../../../symbols/colors";
 
 export type IconTypes =
-  | "successCircle"
+  | "camera"
   | "errorCircle"
-  | "warningCircle"
-  | "noConnection";
+  | "noConnection"
+  | "successCircle"
+  | "warningCircle";
 type FeatherIconNames =
+  | "camera"
   | "check-circle"
   | "x-circle"
   | "alert-circle"
   | "wifi-off";
 
 const IconType: Readonly<{ [key in IconTypes]: FeatherIconNames }> = {
+  camera: "camera",
   successCircle: "check-circle",
   errorCircle: "x-circle",
   warningCircle: "alert-circle",

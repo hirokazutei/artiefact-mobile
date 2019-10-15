@@ -80,5 +80,13 @@
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
 	</array>
+  <key>NSCameraUsageDescription</key>
+  <string>Artiefact needs your permission to use your camera to capture artiefacts.</string>
+  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  <string>Artiefact needs your permission to use your location to keep track of your adventure.</string>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>Artiefact needs your permission to access your artiefact records in your photo library.</string>
+  <key>NSRemindersUsageDescription</key>
+  <string>Artiefact needs your permission to give you notifications.</string>
 </dict>
 </plist>
