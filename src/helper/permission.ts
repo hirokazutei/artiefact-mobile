@@ -11,6 +11,7 @@ import {
 type RequiredPermissionAccess =
   | "camera"
   | "location"
+  | "locationBackground"
   | "storageRead"
   | "storageWrite";
 type PlatformPermission = { [key in PlatformOSType]?: Permission };
@@ -26,20 +27,19 @@ const PERMISSION_TYPES: {
   },
   location: {
     android: PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
-    // PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION;
-    // PERMISSIONS.ANDROID.ACCESS_COARSE_LOCATION;
+    ios: PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
+  },
+  locationBackground: {
+    android: PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
     ios: PERMISSIONS.IOS.LOCATION_ALWAYS
-    // PERMISSIONS.IOS.LOCATION_WHEN_IN_USE;
   },
   storageRead: {
     android: PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE,
-    ios: PERMISSIONS.IOS.MEDIA_LIBRARY
-    // PERMISSIONS.IOS.PHOTO_LIBRARY;
+    ios: PERMISSIONS.IOS.PHOTO_LIBRARY
   },
   storageWrite: {
     android: PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE,
-    ios: PERMISSIONS.IOS.MEDIA_LIBRARY
-    // PERMISSIONS.IOS.PHOTO_LIBRARY;
+    ios: PERMISSIONS.IOS.PHOTO_LIBRARY
   }
 };
 
@@ -75,3 +75,8 @@ export const requestPermission = ({
 }): Promise<PermissionStatus> => {
   return request(Platform.select(PERMISSION_TYPES[type]), rationale);
 };
+
+// Initial Start-up Check.
+// Store in redux.
+// If permission is available --> Use the feature but have a failsafe
+// If permission is unavailable --> Get permission and store it in state

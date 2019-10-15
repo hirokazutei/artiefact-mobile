@@ -1,9 +1,10 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Rationale } from "react-native";
 import Geolocation from "@react-native-community/geolocation";
 import MapView, { Region, PROVIDER_GOOGLE } from "react-native-maps";
 import Text from "../../atoms/Text";
 import ArtiefactError, { errorTypeNames } from "../../../entity/Error";
+import { checkPermission, requestPermission } from "../../../helper/permission";
 
 import { errorHandler } from "../../../logics/error";
 
@@ -48,8 +49,8 @@ export default class Map extends React.Component<Props, State> {
   watchID?: any;
   permission?: boolean;
 
-  componentDidMount() {
-    if (this.state.permission) {
+  async componentDidMount() {
+    if (true) {
       this.watchID = Geolocation.watchPosition(
         position => {
           console.log(position);
@@ -70,6 +71,21 @@ export default class Map extends React.Component<Props, State> {
           errorHandler(artiefactError);
         }
       );
+    } else {
+      const rationale: Rationale = {
+        title: "title",
+        message: "message",
+        buttonPositive: "positive",
+        buttonNegative: "negative",
+        buttonNeutral: "neutral"
+      };
+      const permissionResult = await checkPermission("location");
+      console.log(permissionResult);
+      const requestPermissionResult = await requestPermission({
+        type: "location",
+        rationale
+      });
+      console.log(requestPermissionResult);
     }
   }
 
@@ -102,7 +118,8 @@ export default class Map extends React.Component<Props, State> {
   }
 
   render() {
-    return this.state.permission ? (
+    console.log(this.state.currentRegion);
+    return true ? (
       <View style={styles.container}>
         {this.state.currentRegion && (
           <MapView

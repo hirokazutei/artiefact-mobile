@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
 import { NavigationProps } from "../../../navigation/type";
 import Map from "../../organism/Map";
-import Button from "../../atoms/Button";
+import Icon from "../../atoms/IconButton";
 import routes from "../../../navigation/routes";
 
 type Styles = {
@@ -17,7 +17,10 @@ const styles: Styles = StyleSheet.create<Styles>({
     justifyContent: "center"
   },
   buttonView: {
-    position: "absolute"
+    position: "absolute",
+    bottom: 10,
+    right: 10,
+    zIndex: 1
   }
 });
 
@@ -30,15 +33,9 @@ const MapViewTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
     <View style={styles.base}>
       <Map />
       <View style={styles.buttonView}>
-        <Button
-          color="secondary"
-          size="huge"
-          label="Photo"
-          onPress={onPressPhoto}
-        />
+        <Icon.Circular color="primary" size="huge" name="camera" />
       </View>
     </View>
   );
 };
-
 export default MapViewTemplate;
