@@ -1090,10 +1090,18 @@
     "@types/react" "*"
     "@types/react-native" "*"
 
-"@types/react-native@*", "@types/react-native@^0.59.0", "@types/react-native@^0.60.2":
+"@types/react-native@*", "@types/react-native@^0.60.2":
   version "0.60.2"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.60.2.tgz#2dca78481a904419c2a5907288dd97d1090c6e3c"
   integrity sha512-K4+/etirpv52xu24xAc++OdhbD0VQEt0Kq0h6dZrLU82OlA+I7BhpKF3JBvx9tbmrFaZDxhHp8N4TEvRYS4fdQ==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/react" "*"
+
+"@types/react-native@^0.60.0":
+  version "0.60.21"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.60.21.tgz#81a41cae7b232f52ab3983d854f4a0b0df79531e"
+  integrity sha512-E7F+P/UG4Utu+kh8Hy544i0m4CzpHw1awNX6hVfkhlu4mXSlAn6KLZzKEkPBbHm7g1kspmZTiuP23HAKZpASPw==
   dependencies:
     "@types/prop-types" "*"
     "@types/react" "*"
@@ -5555,6 +5563,14 @@ react-native-keychain@^3.1.3:
   resolved "https://registry.yarnpkg.com/react-native-keychain/-/react-native-keychain-3.1.3.tgz#fce176e7b95243cecda1896a7e6bdfe0335d778a"
   integrity sha512-eWUbjYJge4icX8FhWJk/OPlyGxPnW9bZDysBX3WwOG37iurdH692HKnM2Ih+S+0te65RytImvUrcVnHVBbumYg==
 
+"react-native-kinpaku-ui@https://github.com/hirokazutei/react-native-kinpaku-ui.git":
+  version "0.0.0"
+  resolved "https://github.com/hirokazutei/react-native-kinpaku-ui.git#8ea888138f884fd4f35010626673c78fe4e5538c"
+  dependencies:
+    "@types/react" "^16.8.0"
+    "@types/react-native" "^0.60.0"
+    rimraf "^3.0.0"
+
 react-native-maps@0.25.0:
   version "0.25.0"
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.25.0.tgz#81bc51eb50e33811a9e1c345cc48869413ead67d"
@@ -5592,13 +5608,13 @@ react-native-safe-area-view@^0.14.1:
   dependencies:
     debounce "^1.2.0"
 
-react-native-spacing-system@0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/react-native-spacing-system/-/react-native-spacing-system-0.4.1.tgz#1d1e03baa25f9fc14df94b985d813e58aade5a60"
-  integrity sha512-V4ug4mS7ZM1qcHjTe2GJ2/1mSTQZbkks7++anNGk9PUFGgOuCSfzi2SvXaqxDOfB1+pAO2v45KXn6Krha6fNPg==
+react-native-spacing-system@0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-spacing-system/-/react-native-spacing-system-0.4.2.tgz#40c58b76c217c919ca94d2bcfffe0ff7a2e5afdd"
+  integrity sha512-St171adGakLZgp0KT7j1uQcsiFXZ2Zw/Uf59eZAWqi/+bjNuH9VzbIjXn0/O/sa42lHS1Z+oLhMcNj4ONSeCrA==
   dependencies:
     "@types/react" "^16.8.0"
-    "@types/react-native" "^0.59.0"
+    "@types/react-native" "^0.60.0"
 
 react-native-tab-view@^1.2.0, react-native-tab-view@^1.4.1:
   version "1.4.1"
@@ -6025,6 +6041,13 @@ rimraf@2.6.3, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.3:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.3.tgz#b2d104fe0d8fb27cf9e0a1cda8262dd3833c6cab"
   integrity sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==
+  dependencies:
+    glob "^7.1.3"
+
+rimraf@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-3.0.0.tgz#614176d4b3010b75e5c390eb0ee96f6dc0cebb9b"
+  integrity sha512-NDGVxTsjqfunkds7CqsOiEnxln4Bo7Nddl3XhS4pXg5OzwkLqJ971ZVAAnB+DDLnF76N+VnDEiBHaVV8I06SUg==
   dependencies:
     glob "^7.1.3"
 

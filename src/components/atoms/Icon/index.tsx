@@ -1,5 +1,6 @@
 import React from "react";
 import RNVIcon from "react-native-vector-icons/Feather";
+import UIFactory from "react-native-kinpaku-ui";
 import { colors, ColorTypeKeys } from "../../../symbols/colors";
 
 export type IconTypes =
