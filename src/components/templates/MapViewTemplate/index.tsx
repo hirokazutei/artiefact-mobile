@@ -26,15 +26,15 @@ const styles: Styles = StyleSheet.create<Styles>({
 
 type Props = NavigationProps;
 
+import { Test } from "../../atoms/Icon";
+
 const MapViewTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
   const onPressPhoto = () =>
     props.navigation.navigate(routes.mapStackRoutes.camera);
   return (
     <View style={styles.base}>
       <Map />
-      <View style={styles.buttonView}>
-        <Icon.Circular color="primary" size="huge" name="camera" />
-      </View>
+      <View style={styles.buttonView}>{Test()}</View>
     </View>
   );
 };
