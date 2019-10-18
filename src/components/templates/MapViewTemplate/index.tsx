@@ -4,6 +4,7 @@ import { NavigationProps } from "../../../navigation/type";
 import Map from "../../organism/Map";
 import Icon from "../../atoms/IconButton";
 import routes from "../../../navigation/routes";
+import IconButton from "../../atoms/IconButton";
 
 type Styles = {
   base: ViewStyle;
@@ -26,15 +27,15 @@ const styles: Styles = StyleSheet.create<Styles>({
 
 type Props = NavigationProps;
 
-import { Test } from "../../atoms/Icon";
-
 const MapViewTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
   const onPressPhoto = () =>
     props.navigation.navigate(routes.mapStackRoutes.camera);
   return (
     <View style={styles.base}>
       <Map />
-      <View style={styles.buttonView}>{Test()}</View>
+      <View style={styles.buttonView}>
+        {<IconButton color="primary" size="medium" />}
+      </View>
     </View>
   );
 };

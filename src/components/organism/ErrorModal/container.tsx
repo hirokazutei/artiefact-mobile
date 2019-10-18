@@ -2,7 +2,7 @@ import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import actionCreators from "../../../redux/reducers/error/actionCreator";
 import { State } from "../../../redux/rootReducer";
-import { IconTypes } from "../../atoms/Icon";
+import { IconTypes } from "../../atoms/IconButton";
 import ErrorModal from "./component";
 
 export type StateProps = {

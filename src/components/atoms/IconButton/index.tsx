@@ -1,72 +1,104 @@
 import React from "react";
-import { View } from "react-native";
 import RNVIcon from "react-native-vector-icons/Feather";
+import {
+  touchableFactory,
+  TouchableAllPaddingProps,
+  TouchableProps
+} from "react-native-kinpaku-ui";
 import { colors, ColorTypeKeys } from "../../../symbols/colors";
+import { themes } from "../../../symbols/colors";
 
-export type IconButtonTypes = "camera";
-type FeatherIconNames = "camera";
+type IconSizeKeys = "small" | "medium" | "large";
 
-const IconType: Readonly<{ [key in IconButtonTypes]: FeatherIconNames }> = {
-  camera: "camera"
+export const touchablePaddingSizes: Readonly<
+  { [key in IconSizeKeys | "default"]: TouchableAllPaddingProps }
+> = {
+  small: {
+    padding: 4,
+    borderRadius: 12
+  },
+  medium: {
+    padding: 8,
+    borderRadius: 24
+  },
+  large: {
+    padding: 12,
+    borderRadius: 36
+  },
+  default: { padding: 4, borderRadius: 8 }
 };
 
-export type IconButtonSizeKeys =
-  | "tiny"
-  | "small"
-  | "medium"
-  | "large"
-  | "huge"
-  | "massive"
-  | "macro";
+export const Touchable = touchableFactory<
+  typeof themes,
+  ColorTypeKeys,
+  IconSizeKeys
+>({ themes, touchablePaddingSizes });
 
-const iconSize: Readonly<{ [key in IconButtonSizeKeys]: number }> = {
-  tiny: 12,
+const iconSizes: Readonly<{ [key in IconSizeKeys | "default"]: number }> = {
   small: 16,
   medium: 24,
   large: 32,
-  huge: 56,
-  massive: 72,
-  macro: 104
+  default: 16
+};
+
+export type IconTypes =
+  | "camera"
+  | "errorCircle"
+  | "noConnection"
+  | "successCircle"
+  | "warningCircle";
+
+type FeatherIconNames =
+  | "camera"
+  | "check-circle"
+  | "x-circle"
+  | "alert-circle"
+  | "wifi-off";
+
+const IconType: Readonly<{ [key in IconTypes]: FeatherIconNames }> = {
+  camera: "camera",
+  successCircle: "check-circle",
+  errorCircle: "x-circle",
+  warningCircle: "alert-circle",
+  noConnection: "wifi-off"
 };
 
 type Props = {
-  color: ColorTypeKeys;
-  name: IconButtonTypes;
-  size: IconButtonSizeKeys;
-};
+  children: never;
+  name: IconTypes;
+  color?: ColorTypeKeys;
+} & TouchableProps<ColorTypeKeys, typeof touchablePaddingSizes>;
 
 /**
  * IconButton
  *
  * @param props - properties
- * @param props.color - color of IconButton
- * @param props.name - name of IconButton
- * @param props.size - size of IconButton
+ * @param props.name - name of Icon
+ * @param props.size - size of Icon
+ * @param props.type - type of Icon
+ * @param props.isDisabled -
+ * @param props.isStreched -
+ * @param props.type -
+ * @param props.onPress -
  */
-const Circular: React.FC<Props> = (props: Props): React.ReactElement => {
-  const size = iconSize[props.size];
-  const color = colors[props.color];
-  const name = IconType[props.name];
+const IconButton: React.FC<Props> = ({
+  size,
+  color = "primary",
+  isDisabled,
+  name,
+  type = "filled",
+  ...props
+}: Props): React.ReactElement => {
+  const isFilledType = type === "filled";
+  const iconSize = iconSizes[size as keyof typeof touchablePaddingSizes];
+  const ioconColor =
+    isFilledType || isDisabled ? colors["background"] : colors[color];
+  const iconName = IconType[name];
   return (
-    <View style={{ backgroundColor: color, borderRadius: 50, padding: 10 }}>
-      <RNVIcon name={name} size={20} color={colors["white"]} />
-    </View>
+    <Touchable color={color} size={size} {...props}>
+      <RNVIcon name={iconName} size={iconSize} color={ioconColor} />
+    </Touchable>
   );
 };
 
-/**
- * IconButton
- *
- * @param props - properties
- * @param props.color - color of IconButton
- * @param props.name - name of IconButton
- * @param props.size - size of IconButton
- */
-const Icon: React.FC<Props> = (props: Props): React.ReactElement => {
-  const size = iconSize[props.size];
-  const color = colors[props.color];
-  const name = IconType[props.name];
-  return <RNVIcon name={name} size={size} color={color} />;
-};
-
-export default { Circular, Icon };
+export default IconButton;
