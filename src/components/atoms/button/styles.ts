@@ -8,7 +8,7 @@ export type StyleProps = {
 
 type ButtonColorKeys = "primary" | "secondary" | "disabled";
 
-type buttonTextColorKeys = "white";
+type buttonTextColorKeys = "default";
 
 type ButtonSizeKeys =
   | "tiny"
@@ -25,7 +25,7 @@ const buttonColors: Readonly<{ [key in ButtonColorKeys]: string }> = {
 };
 
 const textColors: Readonly<{ [key in buttonTextColorKeys]: string }> = {
-  white: symbols.colors.white
+  default: symbols.colors.background
 };
 
 type Sizes = Readonly<{ [key in ButtonSizeKeys]: number }>;
@@ -109,7 +109,7 @@ export const stylizeButton = (styleProps: StyleProps): Styles => {
       padding: resolveButtonPaddingSizes(size)
     },
     text: {
-      color: textColors.white,
+      color: textColors.default,
       alignSelf: "center",
       fontSize: resolveButtonTextSizes(size)
     },
