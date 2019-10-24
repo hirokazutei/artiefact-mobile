@@ -1,44 +1,46 @@
-import React from "react";
-import { TouchableOpacity, Text } from "react-native";
-import { stylizeButton, StyleProps } from "./styles";
+import {
+  buttonFactory,
+  ButtonProps as UIButtonProps,
+  ButtonShapeOptions
+} from "react-native-kinpaku-ui";
+import { themes, colors } from "../../../symbols/colors";
+import { buttonSizes } from "./const";
 
-export type Props = {
-  children?: never;
-  label: string;
-  onPress: (args: any) => any;
-  isDisabled?: boolean;
-  isStretched?: boolean;
-} & StyleProps;
+type UnusedProps =
+  | "additionalButtonProps"
+  | "additionalButtonStyle"
+  | "additionalTextProps"
+  | "additionalTextStyle";
+
+export type ButtonProps = Omit<
+  UIButtonProps<typeof colors, typeof buttonSizes>,
+  UnusedProps
+>;
 
 /**
  * Button
  *
- * @param props - props
- * @param props.label - label
- * @param [props.onPress] - action fired on press
- * @param [props.isDiabled] - is button disabled
- * @param [props.isStretched] - is button stretched
- * Style
+ * Required:
+ * @param props - properties
+ * @param props.title - title label of the button
+ * @param props.onPress - onPress event of the button
+ *
+ * Optional:
+ * @param [props.align] - flex alignment of the label inside
  * @param [props.color] - color of the button
- * @param [props.size] - size of the Button
+ * @param [props.isDisabled] - if the button is disabled or not
+ * @param [props.isStretched] - if the button spans the entire horizontal space
+ * @param [props.size] - size of the button, default is medium.
+ * @param [props.type] - type of button: solid | clear | outline
  */
-const Button: React.FC<Props> = (props: Props): React.ReactElement => {
-  const { label, isDisabled, isStretched, ...styleProps } = props;
-  const styles = stylizeButton(styleProps);
-  const extraStyles = [
-    isDisabled ? styles.buttonDisabled : null,
-    isStretched ? styles.buttonStretched : null
-  ];
-  return (
-    <TouchableOpacity
-      style={[styles.button, ...extraStyles]}
-      disabled={isDisabled}
-      onPress={props.onPress}
-      accessibilityLabel={label}
-    >
-      <Text style={styles.text}>{label}</Text>
-    </TouchableOpacity>
-  );
-};
+const Button: {
+  [buttonShape in ButtonShapeOptions]: React.FunctionComponent<ButtonProps>;
+} = buttonFactory<typeof themes, typeof colors, typeof buttonSizes>({
+  themes,
+  additionalPalettes: colors,
+  buttonSizes
+});
 
-export default Button;
+export const { Circular, Round, Sharp } = Button;
+
+export default Button.Circular;

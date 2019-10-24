@@ -32,14 +32,14 @@ const IntroTemplate: React.FC<Props> = ({
         <Button
           size="massive"
           color="primary"
-          label="Login"
+          title="Login"
           onPress={onPressSignIn}
         />
         <Stack size="medium" />
         <Button
           size="massive"
           color="secondary"
-          label="SignUp"
+          title="SignUp"
           onPress={onPressSignUp}
         />
       </Inset>

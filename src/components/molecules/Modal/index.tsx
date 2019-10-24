@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import RNModal from "react-native-modal";
-import Button, { Props as ButtonProps } from "../../atoms/Button";
+import Button, { ButtonProps } from "../../atoms/Button";
 import Inset from "../../atoms/Inset";
 import Queue from "../../atoms/Queue";
 import { stylizeModal } from "./styles";

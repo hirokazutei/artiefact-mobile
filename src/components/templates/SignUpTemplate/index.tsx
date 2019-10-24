@@ -56,8 +56,8 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
     <View style={styles.base}>
       <IOSDatePicker
         isVisible={showDatePickerModal}
-        cancelButton={{ onPress: onPressCancelModal, label: "Cancel" }}
-        confirmButton={{ onPress: onPressConfirmModal, label: "Confirm" }}
+        cancelButton={{ onPress: onPressCancelModal, title: "Cancel" }}
+        confirmButton={{ onPress: onPressConfirmModal, title: "Confirm" }}
         mode="date"
       />
       <Inset horizontal="macro" bottom="macro">
@@ -124,7 +124,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <Button
           size="massive"
           color={secondaryButtonColor}
-          label="Sign Up"
+          title="Sign Up"
           isDisabled={isButtonDisabled}
           onPress={onPressSignUp}
         />

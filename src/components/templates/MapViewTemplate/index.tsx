@@ -4,6 +4,7 @@ import { NavigationProps } from "../../../navigation/type";
 import Map from "../../organism/Map";
 import Icon from "../../atoms/IconButton";
 import routes from "../../../navigation/routes";
+import IconButton from "../../atoms/IconButton";
 
 type Styles = {
   base: ViewStyle;
@@ -33,7 +34,14 @@ const MapViewTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
     <View style={styles.base}>
       <Map />
       <View style={styles.buttonView}>
-        <Icon.Circular color="primary" size="huge" name="camera" />
+        {
+          <IconButton
+            name="camera"
+            color="primary"
+            size="medium"
+            onPress={onPressPhoto}
+          />
+        }
       </View>
     </View>
   );
