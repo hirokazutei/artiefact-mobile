@@ -34,7 +34,14 @@ const MapViewTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
     <View style={styles.base}>
       <Map />
       <View style={styles.buttonView}>
-        {<IconButton color="primary" size="medium" />}
+        {
+          <IconButton
+            name="camera"
+            color="primary"
+            size="medium"
+            onPress={onPressPhoto}
+          />
+        }
       </View>
     </View>
   );

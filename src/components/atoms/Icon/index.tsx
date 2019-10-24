@@ -54,6 +54,7 @@ type Props = {
  * @param props - properties
  * @param props.name - name of Icon
  * @param props.size - size of Icon
+ * @param props.color - color of Icon
  */
 const Icon: React.FC<Props> = (props: Props): React.ReactElement => {
   const size = iconSize[props.size];

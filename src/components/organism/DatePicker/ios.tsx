@@ -1,7 +1,7 @@
 import React from "react";
 import { DatePickerIOS, DatePickerIOSProps } from "react-native";
 import Modal from "../../molecules/Modal";
-import { Props as ButtonProps } from "../../atoms/Button";
+import { ButtonProps } from "../../atoms/Button";
 
 type modeType = DatePickerIOSProps["mode"];
 
@@ -29,14 +29,14 @@ export default class IOSDatePicker extends React.Component<Props, State> {
   render() {
     const { confirmButton, cancelButton, mode, isVisible } = this.props;
     const { chosenDate } = this.state;
-    const { onPress, label } = confirmButton;
+    const { onPress, title } = confirmButton;
     const secondaryButton = cancelButton && cancelButton;
     return (
       <Modal
         isVisible={isVisible}
         primaryButton={{
           onPress: () => onPress(chosenDate),
-          label: label
+          title: title
         }}
         secondaryButton={secondaryButton}
       >

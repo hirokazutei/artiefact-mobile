@@ -1,10 +1,6 @@
 import React from "react";
 import RNVIcon from "react-native-vector-icons/Feather";
-import {
-  touchableFactory,
-  TouchableAllPaddingProps,
-  TouchableProps
-} from "react-native-kinpaku-ui";
+import { touchableFactory, TouchableProps } from "react-native-kinpaku-ui";
 import { colors, ColorTypeKeys } from "../../../symbols/colors";
 import { themes } from "../../../symbols/colors";
 import {
@@ -12,9 +8,9 @@ import {
   iconSizes,
   IconTypes,
   iconTypes
-} from "./constants";
+} from "./const";
 
-export const Touchable: React.FunctionComponent<
+const Touchable: React.FunctionComponent<
   TouchableProps<typeof colors, typeof touchablePaddingSizes>
 > = touchableFactory<
   typeof themes,
@@ -26,26 +22,40 @@ export const Touchable: React.FunctionComponent<
   additionalPalettes: colors
 });
 
+type UnusedProps =
+  | "additionalProps"
+  | "additionalStyle"
+  | "aslign"
+  | "children"
+  | "isStretched";
+
+type UsedTouchableProps = Omit<
+  TouchableProps<ColorTypeKeys, typeof touchablePaddingSizes>,
+  UnusedProps
+>;
+
 type Props = {
-  children: never;
-  name: IconTypes;
   color?: ColorTypeKeys;
-} & TouchableProps<ColorTypeKeys, typeof touchablePaddingSizes>;
+  isDisabled?: boolean;
+  name: IconTypes;
+  onPress: (arg: any) => void;
+} & UsedTouchableProps;
 
 /**
  * IconButton
  *
+ * Required:
  * @param props - properties
- * @param props.name - name of Icon
- * @param props.size - size of Icon
- * @param props.type - type of Icon
- * @param props.isDisabled -
- * @param props.isStreched -
- * @param props.type -
- * @param props.onPress -
+ * @param props.name - the name of Icon type
+ * @param props.onPress - the onPress event of the button
+ *
+ * Optional
+ * @param [props.size] - the size of Icon
+ * @param [props.isDisabled] - if the button is disabled
+ * @param [props.type] - filled or bordered button type
  */
 const IconButton: React.FC<Props> = ({
-  size,
+  size = "default",
   color = "primary",
   isDisabled,
   name,
@@ -56,7 +66,7 @@ const IconButton: React.FC<Props> = ({
   const iconSize = iconSizes[size as keyof typeof touchablePaddingSizes];
   const ioconColor =
     isFilledType || isDisabled ? colors["background"] : colors[color];
-  const iconName = IconType[name];
+  const iconName = iconTypes[name];
   return (
     <Touchable color={color} size={size} {...props}>
       <RNVIcon name={iconName} size={iconSize} color={ioconColor} />

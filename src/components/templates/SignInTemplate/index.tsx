@@ -49,7 +49,7 @@ const SignInTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           secureTextEntry={true}
         />
         <Stack size="huge" />
-        <Button size="massive" label="Login" onPress={onPressSignIn} />
+        <Button size="massive" title="Login" onPress={onPressSignIn} />
       </Inset>
     </View>
   );

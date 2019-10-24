@@ -20,7 +20,7 @@ const styles: Styles = StyleSheet.create<Styles>({
     flexDirection: "row",
     justifyContent: "center",
     padding: spacing.macro,
-    backgroundColor: colors.white
+    backgroundColor: colors.background
   }
 });
 

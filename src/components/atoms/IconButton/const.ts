@@ -1,4 +1,4 @@
-import { touchalbeAllPaddingProps } from "react-native-kinpaku-ui";
+import { TouchableAllPaddingProps } from "react-native-kinpaku-ui";
 
 type IconSizeKeys = "small" | "medium" | "large";
 
