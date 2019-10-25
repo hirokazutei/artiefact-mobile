@@ -8,8 +8,6 @@ env.ts
 # Jest
 .jest/
 
-
-
 # OSX
 #
 .DS_Store
@@ -68,3 +66,6 @@ buck-out/
 
 # Bundle artiefact
 *.jsbundle
+
+# Storybook
+/storybook/storyLoader.js

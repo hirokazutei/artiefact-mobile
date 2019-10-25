@@ -1,13 +1,15 @@
 import {
   buttonFactory,
   ButtonProps as UIButtonProps,
-  ButtonShapeOptions
+  ButtonShapeOptions,
+  ButtonType
 } from "react-native-kinpaku-ui";
 import { themes, colors } from "../../../symbols/colors";
 import { buttonSizes } from "./const";
 
 type UnusedProps =
   | "additionalButtonProps"
+  | "align"
   | "additionalButtonStyle"
   | "additionalTextProps"
   | "additionalTextStyle";
@@ -26,7 +28,6 @@ export type ButtonProps = Omit<
  * @param props.onPress - onPress event of the button
  *
  * Optional:
- * @param [props.align] - flex alignment of the label inside
  * @param [props.color] - color of the button
  * @param [props.isDisabled] - if the button is disabled or not
  * @param [props.isStretched] - if the button spans the entire horizontal space
