@@ -1,8 +1,7 @@
 import {
   buttonFactory,
   ButtonProps as UIButtonProps,
-  ButtonShapeOptions,
-  ButtonType
+  ButtonShapeOptions
 } from "react-native-kinpaku-ui";
 import { themes, colors } from "../../../symbols/colors";
 import { buttonSizes } from "./const";
