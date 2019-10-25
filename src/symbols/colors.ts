@@ -13,8 +13,8 @@ export type ColorTypeKeys =
 
 export const mainThemeColors: ThemePalette = {
   primary: "#ff9345",
-  secondary: "#4555ff",
-  tertiary: "#45fff0",
+  secondary: "#008148",
+  tertiary: "#034732",
   disabled: "#808080",
   background: "#EEEEEE",
   text: "#2d2832"
