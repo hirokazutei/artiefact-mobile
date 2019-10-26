@@ -1,8 +1,7 @@
 import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
-import Inset from "../../atoms/Inset";
+import Space from "../../atoms/Space";
 import Button from "../../atoms/Button";
-import Stack from "../../atoms/Stack";
 import Text from "../../atoms/Text";
 import ShiftingTitle from "../../atoms/ShiftingTitle";
 import RadioSelection from "../../molecules/RadioSelection";
@@ -60,12 +59,12 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         confirmButton={{ onPress: onPressConfirmModal, title: "Confirm" }}
         mode="date"
       />
-      <Inset horizontal="macro" bottom="macro">
+      <Space.Inset horizontal="macro" bottom="macro">
         <Text size="massive" color="secondary" weight="bold" align="center">
           {"Adventure Awaits,"}
         </Text>
         <ShiftingTitle color="secondary" />
-        <Stack size="huge" />
+        <Space.Stack size="huge" />
         <ValidationField
           placeholder="Username"
           color="secondary"
@@ -75,7 +74,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           validationResult={usernameValidationStatus}
           isValidating={isUsernameValidating}
         />
-        <Stack size="huge" />
+        <Space.Stack size="huge" />
         <ValidationField
           placeholder="Password"
           color="secondary"
@@ -85,7 +84,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           validationResult={passwordValidationStatus}
           errors={passwordErrors}
         />
-        <Stack size="huge" />
+        <Space.Stack size="huge" />
         <ValidationField
           placeholder="Email"
           color="secondary"
@@ -94,7 +93,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           validationResult={emailValidationStatus}
           errors={emailErrors}
         />
-        <Stack size="huge" />
+        <Space.Stack size="huge" />
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View style={{ justifyContent: "flex-end" }}>
             <Text size="large" color="faded">
@@ -112,7 +111,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
             </Text>
           </View>
         </View>
-        <Stack size="huge" />
+        <Space.Stack size="huge" />
         <RadioSelection
           checked={agreeToTerms}
           color="secondary"
@@ -120,7 +119,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         >
           {"Agree to Terms & Con"}
         </RadioSelection>
-        <Stack size="huge" />
+        <Space.Stack size="huge" />
         <Button
           size="massive"
           color={secondaryButtonColor}
@@ -128,7 +127,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           isDisabled={isButtonDisabled}
           onPress={onPressSignUp}
         />
-      </Inset>
+      </Space.Inset>
     </View>
   );
 };

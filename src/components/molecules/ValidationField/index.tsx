@@ -3,7 +3,7 @@ import { View, ViewStyle, StyleSheet } from "react-native";
 import { Props as InputFieldProps } from "../../atoms/InputField";
 import InputField from "../../atoms/InputField";
 import Text from "../../atoms/Text";
-import Stack from "../../atoms/Stack";
+import Space from "../../atoms/Space";
 import { borders, colors } from "../../../symbols";
 import { ColorTypeKeys } from "../../../symbols/colors";
 import { TextColorKeys } from "../../../symbols/text";
@@ -133,7 +133,7 @@ const ValidationField: React.FC<Props> = (props: Props): React.ReactElement => {
         </View>
         <View style={styles.iconWrapper}>{validationIcon}</View>
       </View>
-      <Stack size="tiny" />
+      <Space.Stack size="tiny" />
       {errors && listMessages("error", errors)}
       {warnings && listMessages("warning", warnings)}
       {infos && listMessages("info", infos)}

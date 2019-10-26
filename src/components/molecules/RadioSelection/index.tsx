@@ -2,8 +2,8 @@ import React from "react";
 import { TouchableOpacity } from "react-native";
 import RadioButton from "../../atoms/RadioButton";
 import Text from "../../atoms/Text";
+import Space from "../../atoms/Space";
 import { stylizeRadioSelection } from "./styles";
-import Queue from "../../atoms/Queue";
 
 type Props = {
   checked: boolean;
@@ -27,7 +27,7 @@ const RadioSelection: React.FC<Props> = (props: Props): React.ReactElement => {
   return (
     <TouchableOpacity style={styles.base} onPress={onPress}>
       <RadioButton checked={checked} color={color} onPress={onPress} />
-      <Queue size="small" />
+      <Space.Queue size="small" />
       <Text color={color} size="huge" onPress={onPress}>
         {children}
       </Text>

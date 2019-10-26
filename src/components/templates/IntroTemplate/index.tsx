@@ -1,7 +1,6 @@
 import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
-import Inset from "../../atoms/Inset";
-import Stack from "../../atoms/Stack";
+import Space from "../../atoms/Space";
 import Button from "../../atoms/Button";
 import Text from "../../atoms/Text";
 
@@ -24,25 +23,25 @@ const IntroTemplate: React.FC<Props> = ({
 }: Props): React.ReactElement => {
   return (
     <View style={styles.base}>
-      <Inset horizontal="macro" bottom="macro">
+      <Space.Inset horizontal="macro" bottom="macro">
         <Text size="macro" color="primary" weight="thicc" align="center">
           Artiefact
         </Text>
-        <Stack size="medium" />
+        <Space.Stack size="medium" />
         <Button
           size="massive"
           color="primary"
           title="Login"
           onPress={onPressSignIn}
         />
-        <Stack size="medium" />
+        <Space.Stack size="medium" />
         <Button
           size="massive"
           color="secondary"
           title="SignUp"
           onPress={onPressSignUp}
         />
-      </Inset>
+      </Space.Inset>
     </View>
   );
 };

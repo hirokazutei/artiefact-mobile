@@ -2,8 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import RNModal from "react-native-modal";
 import Button, { ButtonProps } from "../../atoms/Button";
-import Inset from "../../atoms/Inset";
-import Queue from "../../atoms/Queue";
+import Space from "../../atoms/Space";
 import { stylizeModal } from "./styles";
 
 const DIALOG_IN_ANIMATION_DURATION = 600;
@@ -42,15 +41,15 @@ const Modal: React.FC<Props> = (props: Props): React.ReactElement => {
     </View>
   );
   const PrimaryButton = primaryButton && (
-    <Inset all="medium">
+    <Space.Inset all="medium">
       <View style={styles.buttonsView}>
         {SecondaryButton}
-        {SecondaryButton && <Queue size="medium" />}
+        {SecondaryButton && <Space.Queue size="medium" />}
         <View style={styles.buttonView}>
           <Button color="primary" size="huge" {...primaryButton} />
         </View>
       </View>
-    </Inset>
+    </Space.Inset>
   );
   return (
     <RNModal

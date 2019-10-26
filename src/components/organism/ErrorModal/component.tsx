@@ -2,10 +2,9 @@ import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
 import Modal from "../../molecules/Modal";
 import Text from "../../atoms/Text";
-import Inset from "../../atoms/Inset";
+import Space from "../../atoms/Space";
 import Icon from "../../atoms/Icon";
 import { IconTypes } from "../../atoms/Icon";
-import Stack from "../../atoms/Stack";
 
 type Props = {
   onPress: () => void;
@@ -32,18 +31,18 @@ export default class ErrorModal extends React.Component<Props> {
         isVisible={isVisible}
         primaryButton={{
           onPress: onPress,
-          label: "OK"
+          title: "OK"
         }}
       >
-        <Inset top="huge" horizontal="huge">
+        <Space.Inset top="huge" horizontal="huge">
           <Text size="huge">{message}</Text>
           {icon && (
             <View style={styles.iconView}>
-              <Stack size="large" />
+              <Space.Stack size="large" />
               <Icon name={icon} size={"macro"} color={"primary"} />
             </View>
           )}
-        </Inset>
+        </Space.Inset>
       </Modal>
     );
   }
