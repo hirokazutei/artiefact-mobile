@@ -6,8 +6,8 @@ import { themes } from "../../../symbols/colors";
 import {
   touchablePaddingSizes,
   iconSizes,
-  IconTypes,
-  iconTypes
+  IconNames,
+  iconNames
 } from "./const";
 
 const Touchable: React.FunctionComponent<
@@ -30,16 +30,36 @@ type UnusedProps =
   | "isStretched";
 
 type UsedTouchableProps = Omit<
-  TouchableProps<ColorTypeKeys, typeof touchablePaddingSizes>,
+  TouchableProps<typeof colors, typeof touchablePaddingSizes>,
   UnusedProps
 >;
 
-type Props = {
+export type Props = {
   color?: ColorTypeKeys;
   isDisabled?: boolean;
-  name: IconTypes;
+  name: IconNames;
   onPress: (arg: any) => void;
 } & UsedTouchableProps;
+
+const colorResolver = ({
+  color,
+  isSolidType,
+  isDisabled
+}: {
+  color: ColorTypeKeys;
+  isSolidType: boolean;
+  isDisabled?: boolean;
+}): { buttonColor: ColorTypeKeys; iconColor: string } => {
+  if (!isSolidType) {
+    return {
+      buttonColor: "background",
+      iconColor: isDisabled ? colors.disabled : colors[color]
+    };
+  } else if (isDisabled) {
+    return { buttonColor: "disabled", iconColor: colors.background };
+  }
+  return { buttonColor: color, iconColor: colors.background };
+};
 
 /**
  * IconButton
@@ -50,26 +70,31 @@ type Props = {
  * @param props.onPress - the onPress event of the button
  *
  * Optional
- * @param [props.size] - the size of Icon
+ * @param [props.color] - the color of the Icon
  * @param [props.isDisabled] - if the button is disabled
- * @param [props.type] - filled or bordered button type
+ * @param [props.size] - the size of Icon
+ * @param [props.type] - solid | outline button type
  */
 const IconButton: React.FC<Props> = ({
   size = "default",
   color = "primary",
   isDisabled,
   name,
-  type = "filled",
+  type = "solid",
   ...props
 }: Props): React.ReactElement => {
-  const isFilledType = type === "filled";
+  const isSolidType = type === "solid";
   const iconSize = iconSizes[size as keyof typeof touchablePaddingSizes];
-  const ioconColor =
-    isFilledType || isDisabled ? colors["background"] : colors[color];
-  const iconName = iconTypes[name];
+  const { buttonColor, iconColor } = colorResolver({
+    color,
+    isSolidType,
+    isDisabled
+  });
+  const iconName = iconNames[name];
+  // FIXME: It is better if the icons took the same color parameters instead of hex strings
   return (
-    <Touchable color={color} size={size} {...props}>
-      <RNVIcon name={iconName} size={iconSize} color={ioconColor} />
+    <Touchable color={buttonColor} size={size} {...props}>
+      <RNVIcon name={iconName} size={iconSize} color={iconColor} />
     </Touchable>
   );
 };

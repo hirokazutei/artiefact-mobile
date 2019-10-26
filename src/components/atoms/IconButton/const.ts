@@ -1,35 +1,35 @@
 import { TouchableAllPaddingProps } from "react-native-kinpaku-ui";
 
-type IconSizeKeys = "small" | "medium" | "large";
+export type IconSizeKeys = "small" | "medium" | "large";
 
 export const touchablePaddingSizes: Readonly<
   { [key in IconSizeKeys | "default"]: TouchableAllPaddingProps }
 > = {
   small: {
     padding: 4,
-    borderRadius: 12
+    borderRadius: 24
   },
   medium: {
     padding: 8,
-    borderRadius: 24
+    borderRadius: 48
   },
   large: {
     padding: 12,
-    borderRadius: 36
+    borderRadius: 72
   },
-  default: { padding: 4, borderRadius: 8 }
+  default: { padding: 8, borderRadius: 48 }
 };
 
 export const iconSizes: Readonly<
   { [key in IconSizeKeys | "default"]: number }
 > = {
-  small: 16,
-  medium: 24,
-  large: 32,
-  default: 16
+  small: 24,
+  medium: 36,
+  large: 46,
+  default: 36
 };
 
-export type IconTypes =
+export type IconNames =
   | "camera"
   | "errorCircle"
   | "noConnection"
@@ -43,7 +43,7 @@ type FeatherIconNames =
   | "alert-circle"
   | "wifi-off";
 
-export const iconTypes: Readonly<{ [key in IconTypes]: FeatherIconNames }> = {
+export const iconNames: Readonly<{ [key in IconNames]: FeatherIconNames }> = {
   camera: "camera",
   successCircle: "check-circle",
   errorCircle: "x-circle",
