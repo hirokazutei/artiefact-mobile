@@ -8,20 +8,19 @@ import IconButton from "../../atoms/IconButton";
 
 type Styles = {
   base: ViewStyle;
+  button: ViewStyle;
   buttonView: ViewStyle;
 };
 
 const styles: Styles = StyleSheet.create<Styles>({
   base: {
+    ...StyleSheet.absoluteFillObject
+  },
+  button: {},
+  buttonView: {
     flex: 1,
     flexDirection: "column",
-    justifyContent: "center"
-  },
-  buttonView: {
-    position: "absolute",
-    bottom: 10,
-    right: 10,
-    zIndex: 1
+    justifyContent: "flex-end"
   }
 });
 
@@ -32,17 +31,18 @@ const MapViewTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
     props.navigation.navigate(routes.mapStackRoutes.camera);
   return (
     <View style={styles.base}>
-      <Map />
-      <View style={styles.buttonView}>
-        {
-          <IconButton
-            name="camera"
-            color="primary"
-            size="medium"
-            onPress={onPressPhoto}
-          />
-        }
-      </View>
+      <Map>
+        <View style={styles.buttonView}>
+          <View style={styles.button}>
+            <IconButton
+              name="camera"
+              color="primary"
+              size="medium"
+              onPress={onPressPhoto}
+            />
+          </View>
+        </View>
+      </Map>
     </View>
   );
 };

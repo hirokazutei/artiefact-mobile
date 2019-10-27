@@ -1,12 +1,21 @@
 import React from "react";
-import { View, StyleSheet, Rationale } from "react-native";
-import Geolocation from "@react-native-community/geolocation";
+import { Dimensions, View, StyleSheet, Rationale } from "react-native";
+import geolocation from "@react-native-community/geolocation";
 import MapView, { Region, PROVIDER_GOOGLE } from "react-native-maps";
 import Text from "../../atoms/Text";
+import Space from "../../atoms/Space";
+import Button from "../../atoms/Button";
 import ArtiefactError, { errorTypeNames } from "../../../entity/Error";
-import { checkPermission, requestPermission } from "../../../helper/permission";
-
+import {
+  checkPermission,
+  requestPermission,
+  permissionStatus
+} from "../../../helper/permission";
 import { errorHandler } from "../../../logics/error";
+import { DEFAULT_DELTA } from "./const";
+
+const { width, height } = Dimensions.get("window");
+const ASPECT_RATIO = width / height;
 
 const styles = StyleSheet.create({
   container: {
@@ -31,6 +40,7 @@ const DEFAULT_PROPS = {
 
 export type Props = {
   currentRegion?: Region;
+  shouldMapUpdate?: boolean;
   children?: Array<React.ReactElement> | React.ReactElement;
 };
 
@@ -46,32 +56,61 @@ type State = {
  */
 export default class Map extends React.Component<Props, State> {
   state: State = {};
-  watchID?: any;
-  permission?: boolean;
 
   async componentDidMount() {
-    if (true) {
-      this.watchID = Geolocation.watchPosition(
-        position => {
-          console.log(position);
-          // Create the object to update this.state.mapRegion through the onRegionChange function
-          let region = {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-            latitudeDelta: 0.00922 * 1.5,
-            longitudeDelta: 0.00421 * 1.5
-          };
-          this.onRegionChange(region);
-        },
-        (error: PositionError) => {
-          const artiefactError = new ArtiefactError({
-            error,
-            errorType: errorTypeNames.positionError
-          });
-          errorHandler(artiefactError);
-        }
-      );
-    } else {
+    await this.checkMapPermission();
+    if (this.state.permission) {
+      if (this.props.shouldMapUpdate) {
+        this.watchPosition();
+      } else if (this.props.currentRegion) {
+        this.setRegion(this.props.currentRegion);
+      } else {
+        this.setCurrentRegion();
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    geolocation.clearWatch(this.state.watchID);
+  }
+
+  // Watches the current location of the user
+  watchPosition() {
+    const watchID = geolocation.watchPosition(
+      position => {
+        const region = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          latitudeDelta:
+            (this.state.currentRegion &&
+              this.state.currentRegion.latitudeDelta) ||
+            DEFAULT_DELTA,
+          longitudeDelta:
+            (this.state.currentRegion &&
+              this.state.currentRegion.longitudeDelta) ||
+            DEFAULT_DELTA * ASPECT_RATIO
+        };
+        this.setRegion(region);
+      },
+      (error: PositionError) => {
+        const artiefactError = new ArtiefactError({
+          error,
+          errorType: errorTypeNames.positionError
+        });
+        errorHandler(artiefactError);
+      }
+    );
+    this.setState({ ...this.state, watchID });
+  }
+
+  // Check Map's Permission
+  async checkMapPermission() {
+    const permissionResult = await checkPermission("location");
+    if (permissionResult === permissionStatus.granted) {
+      this.setState({ ...this.state, permission: true });
+      return;
+    }
+    if (permissionResult === permissionStatus.unavailable) {
       const rationale: Rationale = {
         title: "title",
         message: "message",
@@ -79,26 +118,36 @@ export default class Map extends React.Component<Props, State> {
         buttonNegative: "negative",
         buttonNeutral: "neutral"
       };
-      const permissionResult = await checkPermission("location");
-      console.log(permissionResult);
       const requestPermissionResult = await requestPermission({
         type: "location",
         rationale
       });
-      console.log(requestPermissionResult);
+      if (
+        requestPermissionResult === permissionStatus.denied ||
+        requestPermissionResult === permissionStatus.blocked
+      ) {
+        this.setState({ ...this.state, permission: false });
+      }
     }
+    this.setState({ ...this.state, permission: false });
   }
 
   async setCurrentRegion() {
-    return await Geolocation.getCurrentPosition(
+    return await geolocation.getCurrentPosition(
       (region: Position) => {
         const newRegion: Region = {
           latitude: region.coords.latitude,
           longitude: region.coords.longitude,
-          latitudeDelta: 0,
-          longitudeDelta: 0
+          latitudeDelta:
+            (this.state.currentRegion &&
+              this.state.currentRegion.latitudeDelta) ||
+            DEFAULT_DELTA,
+          longitudeDelta:
+            (this.state.currentRegion &&
+              this.state.currentRegion.longitudeDelta) ||
+            DEFAULT_DELTA * ASPECT_RATIO
         };
-        this.setState({ currentRegion: newRegion });
+        this.setRegion(newRegion);
       },
       error => {
         const artiefactError = new ArtiefactError({
@@ -111,15 +160,12 @@ export default class Map extends React.Component<Props, State> {
     );
   }
 
-  onRegionChange(region: Region) {
-    this.setState({
-      currentRegion: region
-    });
+  setRegion(region: Region) {
+    this.setState({ ...this.state, currentRegion: region });
   }
 
   render() {
-    console.log(this.state.currentRegion);
-    return true ? (
+    return this.state.permission ? (
       <View style={styles.container}>
         {this.state.currentRegion && (
           <MapView
@@ -127,18 +173,26 @@ export default class Map extends React.Component<Props, State> {
             region={{
               latitude: this.state.currentRegion.latitude,
               longitude: this.state.currentRegion.longitude,
-              latitudeDelta: 0.01,
-              longitudeDelta: 0.01
+              latitudeDelta: this.state.currentRegion.latitudeDelta,
+              longitudeDelta: this.state.currentRegion.longitudeDelta
             }}
             {...DEFAULT_PROPS}
           >
             {this.props.children}
           </MapView>
         )}
+        {this.props.children}
       </View>
     ) : (
       <View>
-        <Text>Permission not granted for maps</Text>
+        <Space.Inset all="massive">
+          <Text>Permission not granted for maps.</Text>
+          <Space.Stack size="medium" />
+          <Button
+            title="Request Permission"
+            onPress={() => this.checkMapPermission()}
+          />
+        </Space.Inset>
       </View>
     );
   }
