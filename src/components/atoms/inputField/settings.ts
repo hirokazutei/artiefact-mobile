@@ -4,10 +4,10 @@ type AutoCapitalizeOptions = NonNullable<TextInputProps["autoCapitalize"]>;
 
 export interface SettingProps {
   autoCapitalize?: AutoCapitalizeOptions;
-  keyboardType?: KeyboardKeys;
+  keyboardType?: KeyboardTypes;
 }
 
-type KeyboardKeys = "default" | "numeric" | "email" | "phone";
+export type KeyboardTypes = "default" | "numeric" | "email" | "phone";
 
 const autoCapitalizeTypes: Readonly<
   { [key in AutoCapitalizeOptions]: AutoCapitalizeOptions }
@@ -18,7 +18,7 @@ const autoCapitalizeTypes: Readonly<
   characters: "characters"
 };
 
-const keyboardTypes: Readonly<{ [key in KeyboardKeys]: KeyboardType }> = {
+const keyboardTypes: Readonly<{ [key in KeyboardTypes]: KeyboardType }> = {
   default: "default",
   numeric: "numeric",
   email: "email-address",
@@ -27,7 +27,7 @@ const keyboardTypes: Readonly<{ [key in KeyboardKeys]: KeyboardType }> = {
 
 const defaultSetting: Required<SettingProps> = {
   autoCapitalize: "none" as AutoCapitalizeOptions,
-  keyboardType: "default" as KeyboardKeys
+  keyboardType: "default" as KeyboardTypes
 };
 
 /**
@@ -36,7 +36,7 @@ const defaultSetting: Required<SettingProps> = {
  * @param keyboardType - keyboard type key
  */
 export const resolveKeyboardTypes = (
-  keyboardType: KeyboardKeys = defaultSetting.keyboardType
+  keyboardType: KeyboardTypes = defaultSetting.keyboardType
 ): KeyboardType => {
   return keyboardTypes[keyboardType];
 };
