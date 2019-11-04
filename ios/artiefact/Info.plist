@@ -54,39 +54,20 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSCameraUsageDescription</key>
-	<string>Artiefact needs your permission to use your camera to catalog artiefacts.</string>
+	<string>Artiefact needs your permission to use your camera to capture artiefacts.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Artiefact needs your permission to access your catalog photos on your phone.</string>
+	<string>Artiefact needs your permission to access your artiefact records in your photo library.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Artiefact needs your permission to access your catalog photos on your phone.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Artiefact needs your permission to listen to your audio logs.</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>AntDesign.ttf</string>
-		<string>Entypo.ttf</string>
-		<string>EvilIcons.ttf</string>
-		<string>Feather.ttf</string>
-		<string>FontAwesome.ttf</string>
-		<string>FontAwesome5_Brands.ttf</string>
-		<string>FontAwesome5_Regular.ttf</string>
-		<string>FontAwesome5_Solid.ttf</string>
-		<string>Fontisto.ttf</string>
-		<string>Foundation.ttf</string>
-		<string>Ionicons.ttf</string>
-		<string>MaterialCommunityIcons.ttf</string>
-		<string>MaterialIcons.ttf</string>
-		<string>Octicons.ttf</string>
-		<string>SimpleLineIcons.ttf</string>
-		<string>Zocial.ttf</string>
-	</array>
-  <key>NSCameraUsageDescription</key>
-  <string>Artiefact needs your permission to use your camera to capture artiefacts.</string>
+    <string>Feather.ttf</string>
+  </array>
   <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-  <string>Artiefact needs your permission to use your location to keep track of your adventure.</string>
-  <key>NSPhotoLibraryUsageDescription</key>
-  <string>Artiefact needs your permission to access your artiefact records in your photo library.</string>
-  <key>NSRemindersUsageDescription</key>
-  <string>Artiefact needs your permission to give you notifications.</string>
+	<string>Artiefact needs your permission to use your location to keep track of your adventure.</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>Artiefact needs your permission to give you notifications.</string>
 </dict>
 </plist>

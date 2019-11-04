@@ -1,16 +1,23 @@
-import { StyleSheet, TextStyle } from "react-native";
+import { StyleSheet, TextStyle, FlexAlignType } from "react-native";
 import { TextSizeKeys, textSizes } from "../../../symbols/text";
 import * as symbols from "../../../symbols";
 
 export type StyleProps = {
+  // It currently does not work since we are only using TextField
+  align?: FlexAlignType;
   color?: InputFieldColorKeys;
   size?: TextSizeKeys;
   disableLine?: boolean;
   isDisabled?: boolean;
   isErrornous?: boolean;
+  isStretched?: boolean;
 };
 
-type InputFieldColorKeys = "primary" | "secondary" | "disabled" | "error";
+export type InputFieldColorKeys =
+  | "primary"
+  | "secondary"
+  | "disabled"
+  | "error";
 
 const inputFieldColors: Readonly<{ [key in InputFieldColorKeys]: string }> = {
   primary: symbols.colors.primary,
@@ -20,11 +27,13 @@ const inputFieldColors: Readonly<{ [key in InputFieldColorKeys]: string }> = {
 };
 
 const defaultStyle: Readonly<Required<StyleProps>> = {
-  color: "primary" as InputFieldColorKeys,
-  size: "large" as TextSizeKeys,
+  align: "flex-start",
+  color: "primary",
+  size: "large",
   disableLine: false,
   isDisabled: false,
-  isErrornous: false
+  isErrornous: false,
+  isStretched: false
 };
 
 /**
@@ -57,7 +66,15 @@ type Styles = {
  * Stylize Input Field
  */
 export const stylizeInputField = (styleProps: StyleProps): Styles => {
-  const { color, size, isDisabled, disableLine, isErrornous } = styleProps;
+  const {
+    align,
+    color,
+    size,
+    isDisabled,
+    disableLine,
+    isErrornous,
+    isStretched
+  } = styleProps;
   let borderColor = resolveInputFieldColor(color);
   if (isDisabled) {
     borderColor = resolveInputFieldColor("disabled");
@@ -69,7 +86,9 @@ export const stylizeInputField = (styleProps: StyleProps): Styles => {
     inputField: {
       borderColor: borderColor,
       fontSize: resolveInputFieldFontSize(size),
-      borderBottomWidth: disableLine ? 0 : symbols.borders.thickness.thin
+      borderBottomWidth: disableLine ? 0 : symbols.borders.thickness.thin,
+      ...(isStretched ? { flex: 1 } : {}),
+      ...(align ? { alignSelf: align } : {})
     }
   });
 };

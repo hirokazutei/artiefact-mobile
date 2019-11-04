@@ -8,17 +8,14 @@ import {
 } from "./settings";
 
 export type Props = {
+  onChangeText: (e: any) => void;
   children?: never;
   defaultValue?: string;
-  disableLine?: boolean;
   editable?: boolean;
   maxLength?: number;
-  onChangeText?: (e: any) => any;
   placeholder?: string;
   secureTextEntry?: boolean;
   value?: string;
-  isDisabled?: boolean;
-  isErrornous?: boolean;
 } & SettingProps &
   StyleProps;
 
@@ -49,6 +46,7 @@ const InputField: React.FC<Props> = (props: Props): React.ReactElement => {
     disableLine,
     isDisabled,
     isErrornous,
+    isStretched,
     ...otherProps
   } = props;
   const styles = stylizeInputField({
@@ -56,7 +54,8 @@ const InputField: React.FC<Props> = (props: Props): React.ReactElement => {
     size,
     isDisabled,
     disableLine,
-    isErrornous
+    isErrornous,
+    isStretched
   });
 
   return (

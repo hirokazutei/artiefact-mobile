@@ -15,7 +15,7 @@ type FeatherIconNames =
   | "alert-circle"
   | "wifi-off";
 
-const IconType: Readonly<{ [key in IconTypes]: FeatherIconNames }> = {
+const iconTypes: Readonly<{ [key in IconTypes]: FeatherIconNames }> = {
   camera: "camera",
   successCircle: "check-circle",
   errorCircle: "x-circle",
@@ -23,7 +23,7 @@ const IconType: Readonly<{ [key in IconTypes]: FeatherIconNames }> = {
   noConnection: "wifi-off"
 };
 
-export type IconSizeKeys =
+export type IconSizes =
   | "tiny"
   | "small"
   | "medium"
@@ -32,7 +32,7 @@ export type IconSizeKeys =
   | "massive"
   | "macro";
 
-const iconSize: Readonly<{ [key in IconSizeKeys]: number }> = {
+const iconSizes: Readonly<{ [key in IconSizes]: number }> = {
   tiny: 12,
   small: 16,
   medium: 24,
@@ -42,10 +42,10 @@ const iconSize: Readonly<{ [key in IconSizeKeys]: number }> = {
   macro: 104
 };
 
-type Props = {
+export type Props = {
   name: IconTypes;
-  size: IconSizeKeys;
-  color: ColorTypeKeys;
+  size?: IconSizes;
+  color?: ColorTypeKeys;
 };
 
 /**
@@ -56,11 +56,15 @@ type Props = {
  * @param props.size - size of Icon
  * @param props.color - color of Icon
  */
-const Icon: React.FC<Props> = (props: Props): React.ReactElement => {
-  const size = iconSize[props.size];
-  const color = colors[props.color];
-  const name = IconType[props.name];
-  return <RNVIcon name={name} size={size} color={color} />;
+const Icon: React.FC<Props> = ({
+  size = "medium",
+  color = "primary",
+  name
+}: Props): React.ReactElement => {
+  const iconSize = iconSizes[size];
+  const iconColor = colors[color];
+  const iconName = iconTypes[name];
+  return <RNVIcon name={iconName} size={iconSize} color={iconColor} />;
 };
 
 export default Icon;
