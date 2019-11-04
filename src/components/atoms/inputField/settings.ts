@@ -1,6 +1,8 @@
 import { KeyboardType, TextInputProps } from "react-native";
 
-type AutoCapitalizeOptions = NonNullable<TextInputProps["autoCapitalize"]>;
+export type AutoCapitalizeOptions = NonNullable<
+  TextInputProps["autoCapitalize"]
+>;
 
 export interface SettingProps {
   autoCapitalize?: AutoCapitalizeOptions;

@@ -7,7 +7,7 @@ import { UserTitle } from "../../../constants/messages";
 const ANIMATION_DURATION = 1500;
 const ANIMATION_START_OFFSET = -4;
 
-type Props = { children?: never } & StyleProps;
+export type Props = StyleProps;
 
 type ComponentState = {
   title: UserTitle;
