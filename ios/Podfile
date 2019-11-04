@@ -6,6 +6,8 @@ target 'artiefact' do
   rn_maps_path = '../node_modules/react-native-maps'
   # React Native Permissions
   permissions_path = '../node_modules/react-native-permissions/ios'
+  # react-native-vector-icon
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
   # Pods for artiefact
   pod 'Permission-Camera', :path => "#{permissions_path}/Camera.podspec"
   pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways.podspec"
@@ -44,6 +46,7 @@ target 'artiefact' do
 
 
   pod 'RNPermissions', :path => '../node_modules/react-native-permissions'
+
 
   target 'artiefactTests' do
     inherit! :search_paths
