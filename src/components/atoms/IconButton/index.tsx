@@ -11,26 +11,21 @@ import {
 } from "./const";
 
 const Touchable: React.FunctionComponent<
-  TouchableProps<typeof colors, typeof touchablePaddingSizes>
+  TouchableProps<typeof colors, typeof touchablePaddingSizes, false>
 > = touchableFactory<
   typeof themes,
   typeof colors,
   typeof touchablePaddingSizes
 >({
   themes,
-  touchablePaddingSizes,
+  sizes: touchablePaddingSizes,
   additionalPalettes: colors
 });
 
-type UnusedProps =
-  | "additionalProps"
-  | "additionalStyle"
-  | "aslign"
-  | "children"
-  | "isStretched";
+type UnusedProps = "aslign" | "children" | "isStretched";
 
 type UsedTouchableProps = Omit<
-  TouchableProps<typeof colors, typeof touchablePaddingSizes>,
+  TouchableProps<typeof colors, typeof touchablePaddingSizes, false>,
   UnusedProps
 >;
 

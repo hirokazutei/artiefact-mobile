@@ -113,7 +113,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         </View>
         <Space.Stack size="huge" />
         <RadioSelection
-          checked={agreeToTerms}
+          active={agreeToTerms}
           color="secondary"
           onPress={onPressTerms}
         >

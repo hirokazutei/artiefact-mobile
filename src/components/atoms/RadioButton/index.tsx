@@ -1,31 +1,34 @@
 import React from "react";
-import { TouchableOpacity, View } from "react-native";
-import { stylizeRadioButton, StyleProps } from "./styles";
-
-export type Props = {
-  checked: boolean;
-  onPress?: (arg: any) => any;
-} & StyleProps;
+import {
+  radioButtonFactory,
+  RadioButtonProps,
+  RadioButtonVariations
+} from "react-native-kinpaku-ui";
+import { colors } from "../../../symbols/colors";
+import { themes } from "../../../symbols/colors";
+import { radioButtonSize } from "./const";
 
 /**
- * Radio Button
+ * RadioButton
  *
- * @param props - props
- * @param checked - buttonchecked
- * @param [props.onPress] - action fired on press
- * Style
- * @param [props.color] - color of the button
- * @param [props.size] - size of the Button
+ * Required:
+ * @param props - properties
+ * @param props.active - if the radioButton is active
+ * @param props.onPress - the onPress event of the button
+ *
+ * Optional
+ * @param [props.color] - the color of the Icon
+ * @param [props.isDisabled] - if the button is disabled
+ * @param [props.size] - the size of Icon
  */
-const RadioButton: React.FC<Props> = (props: Props): React.ReactElement => {
-  const { onPress, checked, ...styleProps } = props;
-  const styles = stylizeRadioButton(styleProps);
-  const extraStyles = [checked ? styles.checked : null];
-  return (
-    <TouchableOpacity style={styles.radioButton} onPress={props.onPress}>
-      <View style={extraStyles} />
-    </TouchableOpacity>
-  );
-};
+const RadioButton: {
+  [key in RadioButtonVariations]: React.FunctionComponent<
+    RadioButtonProps<typeof colors, null, false>
+  >;
+} = radioButtonFactory<typeof themes, typeof colors, null>({
+  themes,
+  sizes: radioButtonSize,
+  additionalPalettes: colors
+});
 
-export default RadioButton;
+export default RadioButton.Dot;

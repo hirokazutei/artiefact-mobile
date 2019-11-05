@@ -1,20 +1,15 @@
 import {
   buttonFactory,
   ButtonProps as UIButtonProps,
-  ButtonShapeOptions
+  ButtonVariations
 } from "react-native-kinpaku-ui";
 import { themes, colors } from "../../../symbols/colors";
 import { buttonSizes } from "./const";
 
-type UnusedProps =
-  | "additionalButtonProps"
-  | "align"
-  | "additionalButtonStyle"
-  | "additionalTextProps"
-  | "additionalTextStyle";
+type UnusedProps = "align";
 
 export type ButtonProps = Omit<
-  UIButtonProps<typeof colors, typeof buttonSizes>,
+  UIButtonProps<typeof colors, typeof buttonSizes, false>,
   UnusedProps
 >;
 
@@ -34,11 +29,12 @@ export type ButtonProps = Omit<
  * @param [props.type] - type of button: solid | clear | outline
  */
 const Button: {
-  [buttonShape in ButtonShapeOptions]: React.FunctionComponent<ButtonProps>;
+  [buttonShape in ButtonVariations]: React.FunctionComponent<ButtonProps>;
 } = buttonFactory<typeof themes, typeof colors, typeof buttonSizes>({
   themes,
   additionalPalettes: colors,
-  buttonSizes
+  sizes: buttonSizes,
+  defaultType: "solid"
 });
 
 export const { Circular, Round, Sharp } = Button;
