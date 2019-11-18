@@ -1,36 +1,34 @@
 import React from "react";
-import { Text as RNText, TouchableOpacity } from "react-native";
-import { stylizeText, StyleProps } from "./styles";
-
-type Props = {
-  allowScaling?: boolean;
-  children: string;
-  onPress?: (arg: any) => any;
-} & StyleProps;
+import { textFactory } from "react-native-kinpaku-ui";
+import { textVariations, FontSizes } from "./const";
+import { themes, colors } from "../../../symbols/colors";
 
 /**
  * Text
  *
+ * Required:
  * @param props - properties
- * @param [props.onPress] - action fired on press
- * @param [props.allowScaling] - allow font scaling
- * styles
- * @param [props.color] - color of text
- * @param [props.size] - size of text
- * @param [props.italic] - is text italic
- * @param [props.weight] - weight of text
- * @param [props.align] - alignment of text
+ * @param props.children - the text being displayed
+ *
+ * Optional
+ * @param [props.align] - how the text is aligned
+ * @param [props.bold] - if the text is bold
+ * @param [props.color] - the color of the text
+ * @param [props.italic] - if the text is italicized or not
+ * @param [props.size] - the size of text
+ * @param [props.lineThrough] - if the text has lineThrough
+ * @param [props.bold] - if the text is underlined
  */
-const Text: React.FC<Props> = (props: Props): React.ReactElement => {
-  const { children, onPress, allowScaling, ...styleProps } = props;
-  const styles = stylizeText(styleProps);
-  return (
-    <TouchableOpacity onPress={onPress}>
-      <RNText style={styles.text} allowFontScaling={allowScaling}>
-        {children}
-      </RNText>
-    </TouchableOpacity>
-  );
-};
+const { Title, Heading, SubHeading, Body, Caption, Quote } = textFactory<
+  typeof themes,
+  typeof colors,
+  typeof textVariations,
+  FontSizes,
+  true
+>({
+  themes,
+  defaultFontSizeKey: "medium",
+  textVariations: textVariations
+});
 
-export default Text;
+export { Title, Heading, SubHeading, Body, Caption, Quote };

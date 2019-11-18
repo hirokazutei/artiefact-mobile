@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet, View, ViewStyle } from "react-native";
+import { StyleSheet, View, ViewStyle, TouchableOpacity } from "react-native";
 import Space from "../../atoms/Space";
 import Button from "../../atoms/Button";
-import Text from "../../atoms/Text";
+import { Title, Caption } from "../../atoms/Text";
 import ShiftingTitle from "../../atoms/ShiftingTitle";
 import RadioSelection from "../../molecules/RadioSelection";
 import { Props } from "../../pages/SignUpPage/component";
@@ -60,9 +60,9 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         mode="date"
       />
       <Space.Inset horizontal="macro" bottom="macro">
-        <Text size="massive" color="secondary" weight="bold" align="center">
+        <Title size="large" color="secondary" align="center">
           {"Adventure Awaits,"}
-        </Text>
+        </Title>
         <ShiftingTitle color="secondary" />
         <Space.Stack size="huge" />
         <ValidationField
@@ -96,20 +96,18 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <Space.Stack size="huge" />
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View style={{ justifyContent: "flex-end" }}>
-            <Text size="large" color="faded">
+            <Caption size="large" color="faded">
               {"Birthday:"}
-            </Text>
+            </Caption>
           </View>
-          <View style={{ justifyContent: "flex-end" }}>
-            <Text
-              size="huge"
-              color="secondary"
-              weight="bold"
-              onPress={onPressSetBirthday}
-            >
+          <TouchableOpacity
+            style={{ justifyContent: "flex-end" }}
+            onPress={onPressSetBirthday}
+          >
+            <Caption size="large" color="secondary">
               {birthdayField}
-            </Text>
-          </View>
+            </Caption>
+          </TouchableOpacity>
         </View>
         <Space.Stack size="huge" />
         <RadioSelection

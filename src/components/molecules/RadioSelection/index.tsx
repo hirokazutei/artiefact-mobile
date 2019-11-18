@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import RadioButton from "../../atoms/RadioButton";
-import Text from "../../atoms/Text";
+import { Caption } from "../../atoms/Text";
 import Space from "../../atoms/Space";
 import { stylizeRadioSelection } from "./styles";
 
@@ -28,9 +28,11 @@ const RadioSelection: React.FC<Props> = (props: Props): React.ReactElement => {
     <TouchableOpacity style={styles.base} onPress={onPress}>
       <RadioButton active={active} color={color} onPress={onPress} />
       <Space.Queue size="small" />
-      <Text color={color} size="huge" onPress={onPress}>
-        {children}
-      </Text>
+      <TouchableOpacity onPress={onPress}>
+        <Caption color={color} size="large">
+          {children}
+        </Caption>
+      </TouchableOpacity>
     </TouchableOpacity>
   );
 };

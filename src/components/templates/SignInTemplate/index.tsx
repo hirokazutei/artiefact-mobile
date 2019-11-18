@@ -4,7 +4,7 @@ import { Props } from "../../pages/SignInPage/Component";
 import Space from "../../atoms/Space";
 import Button from "../../atoms/Button";
 import InputField from "../../atoms/InputField";
-import Text from "../../atoms/Text";
+import { Title } from "../../atoms/Text";
 import ShiftingTitle from "../../atoms/ShiftingTitle";
 
 type Styles = {
@@ -30,9 +30,9 @@ const SignInTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
   return (
     <View style={styles.base}>
       <Space.Inset horizontal="macro" bottom="macro">
-        <Text size="massive" color="primary" weight="bold">
-          {"Welcome Back,"}
-        </Text>
+        <Title size="large" color="primary">
+          Welcome Back,
+        </Title>
         <ShiftingTitle color="primary" />
         <Space.Stack size="huge" />
         <InputField

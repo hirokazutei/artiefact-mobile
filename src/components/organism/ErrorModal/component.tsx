@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
 import Modal from "../../molecules/Modal";
-import Text from "../../atoms/Text";
+import { SubHeading } from "../../atoms/Text";
 import Space from "../../atoms/Space";
 import Icon from "../../atoms/Icon";
 import { IconTypes } from "../../atoms/Icon";
@@ -35,7 +35,7 @@ export default class ErrorModal extends React.Component<Props> {
         }}
       >
         <Space.Inset top="huge" horizontal="huge">
-          <Text size="huge">{message}</Text>
+          <SubHeading size="large">{message}</SubHeading>
           {icon && (
             <View style={styles.iconView}>
               <Space.Stack size="large" />

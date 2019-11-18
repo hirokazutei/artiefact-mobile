@@ -2,7 +2,7 @@ import React from "react";
 import { Dimensions, View, StyleSheet, Rationale } from "react-native";
 import geolocation from "@react-native-community/geolocation";
 import MapView, { Region, PROVIDER_GOOGLE } from "react-native-maps";
-import Text from "../../atoms/Text";
+import { SubHeading } from "../../atoms/Text";
 import Space from "../../atoms/Space";
 import Button from "../../atoms/Button";
 import ArtiefactError, { errorTypeNames } from "../../../entity/Error";
@@ -186,7 +186,7 @@ export default class Map extends React.Component<Props, State> {
     ) : (
       <View>
         <Space.Inset all="massive">
-          <Text>Permission not granted for maps.</Text>
+          <SubHeading>Permission not granted for maps.</SubHeading>
           <Space.Stack size="medium" />
           <Button
             title="Request Permission"

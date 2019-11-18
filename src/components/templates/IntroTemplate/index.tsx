@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
 import Space from "../../atoms/Space";
 import Button from "../../atoms/Button";
-import Text from "../../atoms/Text";
+import { Title } from "../../atoms/Text";
 
 type Styles = {
   base: ViewStyle;
@@ -24,9 +24,9 @@ const IntroTemplate: React.FC<Props> = ({
   return (
     <View style={styles.base}>
       <Space.Inset horizontal="macro" bottom="macro">
-        <Text size="macro" color="primary" weight="thicc" align="center">
+        <Title size="large" color="primary" align="center">
           Artiefact
-        </Text>
+        </Title>
         <Space.Stack size="medium" />
         <Button
           size="massive"

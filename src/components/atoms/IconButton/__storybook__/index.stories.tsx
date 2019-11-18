@@ -3,10 +3,10 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
-import { TouchableType } from "react-native-kinpaku-ui";
+import { TouchableTypes } from "react-native-kinpaku-ui";
 import Provider from "../../../../../storybook/Provider";
 import { ColorTypeKeys } from "../../../../symbols/colors";
-import { IconNames, IconSizeKeys } from "../const";
+import { IconNames, IconSizes } from "../const";
 import IconButton, { Props as IconButtonProps } from "../";
 
 const DEFAULT_PROPS: { name: IconNames; onPress: (args: any) => any } = {
@@ -28,13 +28,13 @@ const colorSelect: { [key in ColorTypeKeys]?: ColorTypeKeys } = {
   tertiary: "tertiary"
 };
 
-const sizeSelect: { [key in IconSizeKeys]: IconSizeKeys } = {
+const sizeSelect: { [key in IconSizes]: IconSizes } = {
   small: "small",
   medium: "medium",
   large: "large"
 };
 
-const typeSelect: { [key in TouchableType]: TouchableType } = {
+const typeSelect: { [key in TouchableTypes]: TouchableTypes } = {
   outline: "outline",
   solid: "solid"
 };
@@ -55,7 +55,7 @@ const getOptionalProps = () => {
     color: select("Color", colorSelect, "primary" as ColorTypeKeys),
     isDisabled: boolean("Disabled", false),
     size: select("Size", sizeSelect, "default"),
-    type: select("Type", typeSelect, "solid" as TouchableType)
+    type: select("Type", typeSelect, "solid" as TouchableTypes)
   };
 };
 

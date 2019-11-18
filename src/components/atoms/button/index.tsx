@@ -30,7 +30,7 @@ export type ButtonProps = Omit<
  */
 const Button: {
   [buttonShape in ButtonVariations]: React.FunctionComponent<ButtonProps>;
-} = buttonFactory<typeof themes, typeof colors, typeof buttonSizes>({
+} = buttonFactory<typeof themes, typeof colors, typeof buttonSizes, false>({
   themes,
   additionalPalettes: colors,
   sizes: buttonSizes,

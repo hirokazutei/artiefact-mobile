@@ -3,7 +3,7 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
-import { ButtonType } from "react-native-kinpaku-ui";
+import { ButtonTypes } from "react-native-kinpaku-ui";
 import Provider from "../../../../../storybook/Provider";
 import { ColorTypeKeys } from "../../../../symbols/colors";
 import { ButtonSizeKeys } from "../const";
@@ -28,7 +28,7 @@ const sizeSelect: { [key in ButtonSizeKeys]: ButtonSizeKeys } = {
   massive: "massive"
 };
 
-const typeSelect: { [key in ButtonType]: ButtonType } = {
+const typeSelect: { [key in ButtonTypes]: ButtonTypes } = {
   solid: "solid",
   clear: "clear",
   outline: "outline"
@@ -51,7 +51,7 @@ const getOptionalProps = () => {
     isDisabled: boolean("Disabled", false),
     isStretched: boolean("Stretched", false),
     size: select("Size", sizeSelect, "default"),
-    type: select("Type", typeSelect, "solid" as ButtonType)
+    type: select("Type", typeSelect, "solid" as ButtonTypes)
   };
 };
 

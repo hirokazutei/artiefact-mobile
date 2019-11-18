@@ -1,21 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
-import Text from "../../atoms/Text";
-import { StyleProps } from "../../atoms/Text/styles";
+import { Title } from "../../atoms/Text";
 
 type Props = {
   commaLength: number;
   speed: number;
-  textStyles: StyleProps;
 };
 
 const LoadingComma: React.FC<Props> = (props: Props): React.ReactElement => {
-  const { commaLength, speed, textStyles } = props;
+  const { commaLength, speed } = props;
   const [commaCount, setCommaCount] = useState(0);
   useInterval(() => {
     setCommaCount(commaCount < commaLength ? commaCount + 1 : 0);
   }, speed);
   // @ts-ignore
-  return <Text {...textStyles}>{".".repeat(commaCount)}</Text>;
+  return <Title>{".".repeat(commaCount)}</Title>;
 };
 
 function useInterval(callback: (args: any) => void, delay: number) {

@@ -10,12 +10,15 @@ import {
   iconNames
 } from "./const";
 
-const Touchable: React.FunctionComponent<
-  TouchableProps<typeof colors, typeof touchablePaddingSizes, false>
-> = touchableFactory<
+const Touchable: React.FunctionComponent<TouchableProps<
+  typeof colors,
+  typeof touchablePaddingSizes,
+  false
+>> = touchableFactory<
   typeof themes,
   typeof colors,
-  typeof touchablePaddingSizes
+  typeof touchablePaddingSizes,
+  false
 >({
   themes,
   sizes: touchablePaddingSizes,
