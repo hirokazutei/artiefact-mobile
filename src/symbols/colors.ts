@@ -11,6 +11,8 @@ const mainThemeColors: ThemePalette = {
 
 type ThemeKeys = "main";
 
+type ThemePaletteKeys = keyof ThemePalette;
+
 type ThemePalettes = { [key in ThemeKeys]: ThemePalette };
 
 const themes: Themes<ThemePalettes> = {
@@ -43,5 +45,6 @@ export {
   allColors,
   mainThemeColors,
   TextColorKeys,
-  themes
+  themes,
+  ThemePaletteKeys
 };

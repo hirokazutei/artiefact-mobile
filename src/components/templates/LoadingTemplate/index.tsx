@@ -1,8 +1,7 @@
 import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
 import { Title } from "../../atoms/Text";
-import { spacing } from "../../../symbols/spacing";
-import { allColors } from "../../../symbols";
+import { spacing, allColors } from "../../../symbols";
 import LoadingComma from "../../molecules/LoadingComma";
 
 type Styles = {

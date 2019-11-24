@@ -1,5 +1,5 @@
 import { stackFactory } from "react-native-spacing-system";
-import { spacing } from "../../../symbols/spacing";
+import { spacing } from "../../../symbols";
 
 const Stack = stackFactory(spacing);
 

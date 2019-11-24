@@ -5,7 +5,8 @@ import {
   AllColorKeys,
   mainThemeColors,
   TextColorKeys,
-  themes
+  themes,
+  ThemePaletteKeys
 } from "./colors";
 import { spacing, SpacingKeys } from "./spacing";
 
@@ -18,5 +19,6 @@ export {
   TextColorKeys,
   themes,
   spacing,
-  SpacingKeys
+  SpacingKeys,
+  ThemePaletteKeys
 };

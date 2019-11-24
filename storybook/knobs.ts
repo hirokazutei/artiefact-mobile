@@ -1,5 +1,5 @@
 import { FlexAlignType, TextStyle } from "react-native";
-import { TextColorKeys } from "../src/symbols";
+import { TextColorKeys, ThemePaletteKeys } from "../src/symbols";
 
 type AlignKeys = "baseline" | "center" | "flexStart" | "flexEnd" | "stretch";
 
@@ -21,6 +21,17 @@ const selectTextAlign: {
   justify: "justify"
 };
 
+const selectThemePaletteColor: {
+  [key in ThemePaletteKeys]: ThemePaletteKeys;
+} = {
+  primary: "primary",
+  secondary: "secondary",
+  tertiary: "tertiary",
+  background: "background",
+  disabled: "disabled",
+  text: "text"
+};
+
 const selectTextColor: { [key in TextColorKeys]: TextColorKeys } = {
   primary: "primary",
   secondary: "secondary",
@@ -31,4 +42,9 @@ const selectTextColor: { [key in TextColorKeys]: TextColorKeys } = {
   faded: "faded"
 };
 
-export { alignSelect, selectTextAlign, selectTextColor };
+export {
+  alignSelect,
+  selectTextAlign,
+  selectThemePaletteColor,
+  selectTextColor
+};

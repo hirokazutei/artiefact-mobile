@@ -1,19 +1,32 @@
 import React from "react";
-import { Animated, Text } from "react-native";
+import { Animated } from "react-native";
+import { textFactory, ThemePalette } from "react-native-kinpaku-ui";
 import { getRandomUserTitle } from "../../../helper/wording";
-import { stylizeText, StyleProps } from "./styles";
 import { UserTitle } from "../../../constants/messages";
+import { themes } from "../../../symbols";
+import { textVariation } from "./const";
 
 const ANIMATION_DURATION = 1500;
 const ANIMATION_START_OFFSET = -4;
 
-export type Props = StyleProps;
+export type Props = { color: keyof ThemePalette };
 
 type ComponentState = {
   title: UserTitle;
   fadeAnim: Animated.Value;
   titleUpdate?: void;
 };
+
+const { ShiftingTitle: ShiftingTitleComponent } = textFactory<
+  typeof themes,
+  null,
+  typeof textVariation,
+  null,
+  false
+>({
+  themes,
+  textVariations: textVariation
+});
 
 export default class ShiftingTitle extends React.Component<
   Props,
@@ -49,18 +62,18 @@ export default class ShiftingTitle extends React.Component<
   }
 
   render() {
-    const styles = stylizeText(this.props);
     const { fadeAnim, title } = this.state;
+    const { color } = this.props;
     return (
-      <Animated.View style={[styles.base, { opacity: fadeAnim }]}>
-        <Text
-          style={styles.text}
-          adjustsFontSizeToFit={true}
-          numberOfLines={1}
-          allowFontScaling={false}
+      <Animated.View style={{ opacity: fadeAnim }}>
+        <ShiftingTitleComponent
+          //adjustsFontSizeToFit={true}
+          //numberOfLines={1}
+          //allowFontScaling={false}
+          color={color}
         >
           {title}
-        </Text>
+        </ShiftingTitleComponent>
       </Animated.View>
     );
   }

@@ -11,7 +11,6 @@ import {
   withKnobs
 } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
-import { TextSizeKeys } from "../../../../symbols/text";
 import InputField, { Props as InputFieldProps } from "../";
 import { KeyboardTypes, AutoCapitalizeOptions } from "../settings";
 import { InputFieldColorKeys } from "../styles";
@@ -41,18 +40,8 @@ const selectColor: { [key in InputFieldColorKeys]?: InputFieldColorKeys } = {
   error: "error"
 };
 
-const selectTextSize: { [key in TextSizeKeys]: TextSizeKeys } = {
-  tiny: "tiny",
-  small: "small",
-  medium: "medium",
-  large: "large",
-  huge: "huge",
-  massive: "massive",
-  macro: "macro"
-};
-
-const selectAlign: { [key in string]: FlexAlignType } = {
-  "felx-start": "flex-start",
+const selectAlign: { [key in FlexAlignType]: FlexAlignType } = {
+  "flex-start": "flex-start",
   "flex-end": "flex-end",
   center: "center",
   stretch: "stretch",

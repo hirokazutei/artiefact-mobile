@@ -4,9 +4,8 @@ import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import { RadioButtonProps } from "react-native-kinpaku-ui";
-import { AllColorKeys } from "../../../../symbols";
+import { AllColorKeys, allColors } from "../../../../symbols";
 import Provider from "../../../../../storybook/Provider";
-import { allColors } from "../../../../symbols";
 import RadioButton from "../";
 
 const DEFAULT_PROPS = {

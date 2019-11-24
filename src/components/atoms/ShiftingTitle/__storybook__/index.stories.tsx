@@ -3,16 +3,11 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react-native";
 import { select, withKnobs } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
-import { TextColorKeys } from "../../../../symbols/text";
+import { selectThemePaletteColor } from "../../../../../storybook/knobs";
 import ShiftingTitle, { Props as ShiftingTitleProps } from "../";
 
-const selectColor: { [key in TextColorKeys]?: TextColorKeys } = {
-  primary: "primary",
-  secondary: "secondary"
-};
-
 const DEFAULT_PROPS: ShiftingTitleProps = {
-  color: selectColor.primary
+  color: selectThemePaletteColor.primary
 };
 
 const getRequiredProps = (overrides = {}): ShiftingTitleProps => {
@@ -21,7 +16,7 @@ const getRequiredProps = (overrides = {}): ShiftingTitleProps => {
     ...overrides
   };
   return {
-    color: select("Color", selectColor, color)
+    color: select("Color", selectThemePaletteColor, color)
   };
 };
 
