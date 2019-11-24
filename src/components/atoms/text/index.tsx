@@ -1,6 +1,6 @@
 import { textFactory } from "react-native-kinpaku-ui";
 import { textVariations, FontSizes } from "./const";
-import { themes, colors } from "../../../symbols/colors";
+import { themes, additionalColors } from "../../../symbols/colors";
 
 /**
  * Text
@@ -20,7 +20,7 @@ import { themes, colors } from "../../../symbols/colors";
  */
 const { Title, Heading, SubHeading, Body, Caption, Quote } = textFactory<
   typeof themes,
-  typeof colors,
+  typeof additionalColors,
   typeof textVariations,
   FontSizes,
   true

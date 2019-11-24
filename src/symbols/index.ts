@@ -1,6 +1,20 @@
 import * as borders from "./borders";
-import { colors } from "./colors";
+import {
+  additionalColors,
+  allColors,
+  mainThemeColors,
+  TextColorKeys,
+  themes
+} from "./colors";
 import { spacing, SpacingKeys } from "./spacing";
-import * as text from "./text";
 
-export { borders, colors, spacing, SpacingKeys, text };
+export {
+  borders,
+  additionalColors,
+  allColors,
+  mainThemeColors,
+  TextColorKeys,
+  themes,
+  spacing,
+  SpacingKeys
+};

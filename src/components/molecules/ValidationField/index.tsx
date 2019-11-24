@@ -4,9 +4,8 @@ import { Props as InputFieldProps } from "../../atoms/InputField";
 import InputField from "../../atoms/InputField";
 import { Body } from "../../atoms/Text";
 import Space from "../../atoms/Space";
-import { borders, colors } from "../../../symbols";
-import { ColorTypeKeys } from "../../../symbols/colors";
-import { TextColorKeys } from "../../../symbols/text";
+import { borders, allColors } from "../../../symbols";
+import { TextColorKeys } from "../../../symbols/colors";
 import Icon from "../../atoms/Icon";
 import { IconTypes, IconSizes } from "../../atoms/Icon";
 import { Diff } from "../../../type/tsUtility";
@@ -46,10 +45,10 @@ type ValidationFieldColorKeys = "primary" | "secondary" | "disabled" | "error";
 const validationFieldColors: Readonly<
   { [key in ValidationFieldColorKeys]: string }
 > = {
-  primary: colors.primary,
-  secondary: colors.secondary,
-  disabled: colors.disabled,
-  error: colors.danger
+  primary: allColors.primary,
+  secondary: allColors.secondary,
+  disabled: allColors.disabled,
+  error: allColors.danger
 };
 
 const validationIconNames: Readonly<
@@ -66,7 +65,7 @@ const validationFieldIcons = (
   color: ValidationFieldColorKeys
 ): React.ReactElement => {
   const iconName = validationIconNames[status];
-  const iconColor = color as ColorTypeKeys;
+  const iconColor = color as TextColorKeys;
   if (iconName != null) {
     return <Icon name={iconName} size={size} color={iconColor} />;
   }

@@ -1,16 +1,5 @@
 import { Themes, ThemePalette } from "react-native-kinpaku-ui";
 
-export type ColorTypeKeys =
-  | "danger"
-  | "text"
-  | "disabled"
-  | "faded"
-  | "primary"
-  | "secondary"
-  | "tertiary"
-  | "disabled"
-  | "background";
-
 const mainThemeColors: ThemePalette = {
   primary: "#ff9345",
   secondary: "#008148",
@@ -20,19 +9,30 @@ const mainThemeColors: ThemePalette = {
   text: "#2d2832"
 };
 
-type MainThemeNames = "main";
+type ThemeKeys = "main";
 
-type ThemePalettes = { [key in MainThemeNames]: ThemePalette };
+type ThemePalettes = { [key in ThemeKeys]: ThemePalette };
 
 const themes: Themes<ThemePalettes> = {
   default: mainThemeColors,
   main: mainThemeColors
 };
 
-const colors: { [key in ColorTypeKeys]: string } = {
+type AdditionalColorKeys = "danger" | "faded";
+
+const additionalColors: { [key in AdditionalColorKeys]: string } = {
   danger: "#ff2323",
-  faded: "#b4afbe",
+  faded: "#b4afbe"
+};
+
+const allColors = {
+  ...additionalColors,
   ...mainThemeColors
 };
 
-export { themes, colors, mainThemeColors };
+// Text
+type TextColorKeys =
+  | keyof Omit<ThemePalette, "background">
+  | AdditionalColorKeys;
+
+export { additionalColors, allColors, mainThemeColors, TextColorKeys, themes };
