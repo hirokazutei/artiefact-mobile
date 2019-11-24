@@ -1,9 +1,4 @@
-import React from "react";
-import {
-  radioButtonFactory,
-  RadioButtonProps,
-  RadioButtonVariations
-} from "react-native-kinpaku-ui";
+import { radioButtonFactory } from "react-native-kinpaku-ui";
 import { colors, themes } from "../../../symbols/colors";
 import { radioButtonSize } from "./const";
 
@@ -20,11 +15,12 @@ import { radioButtonSize } from "./const";
  * @param [props.isDisabled] - if the button is disabled
  * @param [props.size] - the size of Icon
  */
-const RadioButton: {
-  [key in RadioButtonVariations]: React.FunctionComponent<
-    RadioButtonProps<typeof colors, null, false>
-  >;
-} = radioButtonFactory<typeof themes, typeof colors, null, false>({
+const RadioButton = radioButtonFactory<
+  typeof themes,
+  typeof colors,
+  null,
+  false
+>({
   themes,
   sizes: radioButtonSize,
   additionalPalettes: colors

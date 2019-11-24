@@ -11,7 +11,7 @@ export type ColorTypeKeys =
   | "disabled"
   | "background";
 
-export const mainThemeColors: ThemePalette = {
+const mainThemeColors: ThemePalette = {
   primary: "#ff9345",
   secondary: "#008148",
   tertiary: "#034732",
@@ -22,17 +22,17 @@ export const mainThemeColors: ThemePalette = {
 
 type MainThemeNames = "main";
 
-const mainThemes: Readonly<{ [key in MainThemeNames]: ThemePalette }> = {
-  main: mainThemeColors
-};
+type ThemePalettes = { [key in MainThemeNames]: ThemePalette };
 
-export const themes: Themes<typeof mainThemes> = {
+const themes: Themes<ThemePalettes> = {
   default: mainThemeColors,
   main: mainThemeColors
 };
 
-export const colors: Readonly<{ [key in ColorTypeKeys]: string }> = {
+const colors: { [key in ColorTypeKeys]: string } = {
   danger: "#ff2323",
   faded: "#b4afbe",
   ...mainThemeColors
 };
+
+export { themes, colors, mainThemeColors };

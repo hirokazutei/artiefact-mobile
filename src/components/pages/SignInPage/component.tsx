@@ -22,7 +22,7 @@ class SignInPage extends React.Component<Props> {
       headerTitle: <NavigationTitle>{"SIGN IN"}</NavigationTitle>,
       headerLeft: (
         <BackButton
-          onPressBack={
+          onPress={
             navigation &&
             navigation.state &&
             navigation.state.params &&

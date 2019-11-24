@@ -2,7 +2,6 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react-native";
 import { select, withKnobs } from "@storybook/addon-knobs";
-import { TouchableType } from "react-native-kinpaku-ui";
 import Provider from "../../../../../storybook/Provider";
 import { ColorTypeKeys } from "../../../../symbols/colors";
 import MapIcon, {

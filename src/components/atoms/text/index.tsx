@@ -1,4 +1,3 @@
-import React from "react";
 import { textFactory } from "react-native-kinpaku-ui";
 import { textVariations, FontSizes } from "./const";
 import { themes, colors } from "../../../symbols/colors";
@@ -28,7 +27,7 @@ const { Title, Heading, SubHeading, Body, Caption, Quote } = textFactory<
 >({
   themes,
   defaultFontSizeKey: "medium",
-  textVariations: textVariations
+  textVariations
 });
 
 export { Title, Heading, SubHeading, Body, Caption, Quote };

@@ -1,14 +1,13 @@
 import React from "react";
-import { StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native";
-import { textWeights, textSizes } from "../../../symbols/text";
+import { StyleSheet, View, ViewStyle } from "react-native";
+import { Title } from "../Text";
 
-type Props = {
+export type Props = {
   children: Required<string>;
 };
 
 type Styles = {
   view: ViewStyle;
-  text: TextStyle;
 };
 
 const styles: Styles = StyleSheet.create<Styles>({
@@ -17,12 +16,11 @@ const styles: Styles = StyleSheet.create<Styles>({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center"
-  },
-  text: { fontWeight: textWeights.bold, fontSize: textSizes.large }
+  }
 });
 
 /**
- * Text
+ * NavigationTitle
  *
  * @param props - properties
  * @param props.children - children
@@ -31,15 +29,14 @@ const NavigationTitle: React.FC<Props> = (props: Props): React.ReactElement => {
   const { children } = props;
   return (
     <View style={styles.view}>
-      <Text
-        style={styles.text}
-        allowFontScaling={false}
-        adjustsFontSizeToFit={true}
-        accessibilityLabel={children}
-        numberOfLines={1}
+      <Title
+      //allowFontScaling={false}
+      //adjustsFontSizeToFit={true}
+      //accessibilityLabel={children}
+      //numberOfLines={1}
       >
         {children}
-      </Text>
+      </Title>
     </View>
   );
 };

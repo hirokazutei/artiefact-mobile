@@ -21,7 +21,7 @@ class SignUpPage extends React.Component<Props> {
     headerTitle: <NavigationTitle>{"SIGN UP"}</NavigationTitle>,
     headerLeft: (
       <BackButton
-        onPressBack={
+        onPress={
           navigation &&
           navigation.state &&
           navigation.state.params &&

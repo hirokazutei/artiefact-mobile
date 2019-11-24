@@ -2,13 +2,13 @@ import React from "react";
 import { View, ViewStyle, StyleSheet } from "react-native";
 import { Props as InputFieldProps } from "../../atoms/InputField";
 import InputField from "../../atoms/InputField";
-import Text from "../../atoms/Text";
+import { Body } from "../../atoms/Text";
 import Space from "../../atoms/Space";
 import { borders, colors } from "../../../symbols";
 import { ColorTypeKeys } from "../../../symbols/colors";
 import { TextColorKeys } from "../../../symbols/text";
 import Icon from "../../atoms/Icon";
-import { IconTypes, IconSizeKeys } from "../../atoms/Icon";
+import { IconTypes, IconSizes } from "../../atoms/Icon";
 import { Diff } from "../../../type/tsUtility";
 const RNIndicator = require("react-native-indicator");
 
@@ -62,7 +62,7 @@ const validationIconNames: Readonly<
 
 const validationFieldIcons = (
   status: ValidationResultType,
-  size: IconSizeKeys,
+  size: IconSizes,
   color: ValidationFieldColorKeys
 ): React.ReactElement => {
   const iconName = validationIconNames[status];
@@ -74,9 +74,9 @@ const validationFieldIcons = (
 };
 
 const listMessagesColor: Readonly<
-  { [key in Diff<ValidationResultType, "success"> | "info"]: TextColorKeys }
+  { [key in Diff<ValidationResultType, "success"> | "info"]?: TextColorKeys }
 > = {
-  info: "default",
+  info: "text",
   warning: "secondary",
   error: "danger"
 };
@@ -88,9 +88,9 @@ const listMessages = (
   const color = listMessagesColor[type];
   return messages.map((messages, i) => {
     return (
-      <Text key={i} size="small" color={color} align="left">
+      <Body key={i} size="small" color={color} align="left">
         {`・${messages}`}
-      </Text>
+      </Body>
     );
   });
 };

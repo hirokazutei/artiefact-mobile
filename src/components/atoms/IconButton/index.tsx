@@ -25,7 +25,7 @@ const Touchable: React.FunctionComponent<TouchableProps<
   additionalPalettes: colors
 });
 
-type UnusedProps = "aslign" | "children" | "isStretched";
+type UnusedProps = "align" | "children" | "isStretched";
 
 type UsedTouchableProps = Omit<
   TouchableProps<typeof colors, typeof touchablePaddingSizes, false>,

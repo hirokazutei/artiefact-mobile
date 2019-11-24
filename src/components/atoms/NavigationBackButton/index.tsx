@@ -5,20 +5,20 @@ import {
   withNavigation
 } from "react-navigation";
 
-type Props = {
-  onPressBack?: () => void;
+export type Props = {
+  onPress?: () => void;
 };
 
 class BackButton extends React.Component<Props & NavigationScreenProps<any>> {
   render() {
-    const { onPressBack, navigation } = this.props;
-    const onPress = () => {
+    const { onPress, navigation } = this.props;
+    const onPressBack = () => {
       navigation.goBack();
-      if (onPressBack) {
-        onPressBack();
+      if (onPress) {
+        onPress();
       }
     };
-    return <HeaderBackButton onPress={onPress} />;
+    return <HeaderBackButton onPress={onPressBack} />;
   }
 }
 
