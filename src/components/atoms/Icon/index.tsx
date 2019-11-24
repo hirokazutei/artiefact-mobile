@@ -1,6 +1,6 @@
 import React from "react";
 import RNVIcon from "react-native-vector-icons/Feather";
-import { colors, ColorTypeKeys } from "../../../symbols/colors";
+import { allColors, AllColorKeys } from "../../../symbols";
 
 export type IconTypes =
   | "camera"
@@ -45,7 +45,7 @@ const iconSizes: Readonly<{ [key in IconSizes]: number }> = {
 export type Props = {
   name: IconTypes;
   size?: IconSizes;
-  color?: ColorTypeKeys;
+  color?: AllColorKeys;
 };
 
 /**
@@ -62,7 +62,7 @@ const Icon: React.FC<Props> = ({
   name
 }: Props): React.ReactElement => {
   const iconSize = iconSizes[size];
-  const iconColor = colors[color];
+  const iconColor = allColors[color];
   const iconName = iconTypes[name];
   return <RNVIcon name={iconName} size={iconSize} color={iconColor} />;
 };

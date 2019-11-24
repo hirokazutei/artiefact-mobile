@@ -1,8 +1,7 @@
 import React from "react";
 import RNVIcon from "react-native-vector-icons/Feather";
 import { touchableFactory, TouchableProps } from "react-native-kinpaku-ui";
-import { colors, ColorTypeKeys } from "../../../symbols/colors";
-import { themes } from "../../../symbols/colors";
+import { allColors, AllColorKeys, themes } from "../../../symbols";
 import {
   touchablePaddingSizes,
   iconSizes,
@@ -11,29 +10,29 @@ import {
 } from "./const";
 
 const Touchable: React.FunctionComponent<TouchableProps<
-  typeof colors,
+  typeof allColors,
   typeof touchablePaddingSizes,
   false
 >> = touchableFactory<
   typeof themes,
-  typeof colors,
+  typeof allColors,
   typeof touchablePaddingSizes,
   false
 >({
   themes,
   sizes: touchablePaddingSizes,
-  additionalPalettes: colors
+  additionalPalettes: allColors
 });
 
 type UnusedProps = "align" | "children" | "isStretched";
 
 type UsedTouchableProps = Omit<
-  TouchableProps<typeof colors, typeof touchablePaddingSizes, false>,
+  TouchableProps<typeof allColors, typeof touchablePaddingSizes, false>,
   UnusedProps
 >;
 
 export type Props = {
-  color?: ColorTypeKeys;
+  color?: AllColorKeys;
   isDisabled?: boolean;
   name: IconNames;
   onPress: (arg: any) => void;
@@ -44,19 +43,19 @@ const colorResolver = ({
   isSolidType,
   isDisabled
 }: {
-  color: ColorTypeKeys;
+  color: AllColorKeys;
   isSolidType: boolean;
   isDisabled?: boolean;
-}): { buttonColor: ColorTypeKeys; iconColor: string } => {
+}): { buttonColor: AllColorKeys; iconColor: string } => {
   if (!isSolidType) {
     return {
       buttonColor: "background",
-      iconColor: isDisabled ? colors.disabled : colors[color]
+      iconColor: isDisabled ? allColors.disabled : allColors[color]
     };
   } else if (isDisabled) {
-    return { buttonColor: "disabled", iconColor: colors.background };
+    return { buttonColor: "disabled", iconColor: allColors.background };
   }
-  return { buttonColor: color, iconColor: colors.background };
+  return { buttonColor: color, iconColor: allColors.background };
 };
 
 /**

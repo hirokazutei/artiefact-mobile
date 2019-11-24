@@ -4,8 +4,8 @@ import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { ButtonTypes } from "react-native-kinpaku-ui";
+import { AllColorKeys } from "../../../../symbols";
 import Provider from "../../../../../storybook/Provider";
-import { ColorTypeKeys } from "../../../../symbols/colors";
 import { ButtonSizeKeys } from "../const";
 import Button, { ButtonProps, Round, Sharp } from "../";
 
@@ -13,7 +13,7 @@ const DEFAULT_PROPS = {
   title: "PRESS HERE"
 };
 
-const colorSelect: { [key in ColorTypeKeys]?: ColorTypeKeys } = {
+const colorSelect: { [key in AllColorKeys]?: AllColorKeys } = {
   primary: "primary",
   secondary: "secondary",
   tertiary: "tertiary"
@@ -47,7 +47,7 @@ const getRequiredProps = (overrides = {}): ButtonProps => {
 
 const getOptionalProps = () => {
   return {
-    color: select("Color", colorSelect, "primary" as ColorTypeKeys),
+    color: select("Color", colorSelect, "primary" as AllColorKeys),
     isDisabled: boolean("Disabled", false),
     isStretched: boolean("Stretched", false),
     size: select("Size", sizeSelect, "default"),

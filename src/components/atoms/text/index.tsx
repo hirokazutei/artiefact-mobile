@@ -1,6 +1,6 @@
 import { textFactory } from "react-native-kinpaku-ui";
 import { textVariations, FontSizes } from "./const";
-import { themes, additionalColors } from "../../../symbols/colors";
+import { themes, additionalColors } from "../../../symbols";
 
 /**
  * Text

@@ -8,7 +8,7 @@ import {
   selectTextAlign,
   selectTextColor
 } from "../../../../../storybook/knobs";
-import { additionalColors } from "../../../../symbols/colors";
+import { additionalColors } from "../../../../symbols";
 import { FontSizes } from "../const";
 import { Title, Heading, SubHeading, Body, Caption, Quote } from "../";
 
@@ -50,7 +50,7 @@ const getOptionalProps = (): Partial<TextProps<
   };
 };
 
-storiesOf("Atoms/ShiftingTitle")
+storiesOf("Atoms/Text")
   .addDecorator((story: () => React.ReactElement) => <Provider story={story} />)
   .addDecorator(withKnobs)
   .add("default", () => (

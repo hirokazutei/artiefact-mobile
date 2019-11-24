@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import RNVIcon from "react-native-vector-icons/Feather";
-import { colors, ColorTypeKeys } from "../../../symbols/colors";
+import { allColors, AllColorKeys } from "../../../symbols";
 
 export type MapIconTypes = "user" | "text" | "image" | "audio" | "video";
 
@@ -28,7 +28,7 @@ const iconSizes: Readonly<{ [key in MapIconSizeKeys]: number }> = {
 export type Props = {
   name: MapIconTypes;
   size?: MapIconSizeKeys;
-  color?: ColorTypeKeys;
+  color?: AllColorKeys;
 };
 
 /**
@@ -49,7 +49,7 @@ const Icon: React.FC<Props> = ({
   name
 }: Props): React.ReactElement => {
   const iconSize = iconSizes[size];
-  const iconColor = colors[color];
+  const iconColor = allColors[color];
   const iconName = mapIcontypes[name];
   return (
     <View style={{ alignItems: "center" }}>

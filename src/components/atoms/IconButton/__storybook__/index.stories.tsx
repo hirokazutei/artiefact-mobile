@@ -5,7 +5,7 @@ import { action } from "@storybook/addon-actions";
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import { TouchableTypes } from "react-native-kinpaku-ui";
 import Provider from "../../../../../storybook/Provider";
-import { ColorTypeKeys } from "../../../../symbols/colors";
+import { AllColorKeys } from "../../../../symbols";
 import { IconNames, IconSizes } from "../const";
 import IconButton, { Props as IconButtonProps } from "../";
 
@@ -22,7 +22,7 @@ const iconTypeSelect: { [key in IconNames]: IconNames } = {
   noConnection: "noConnection"
 };
 
-const colorSelect: { [key in ColorTypeKeys]?: ColorTypeKeys } = {
+const colorSelect: { [key in AllColorKeys]?: AllColorKeys } = {
   primary: "primary",
   secondary: "secondary",
   tertiary: "tertiary"
@@ -52,7 +52,7 @@ const getRequiredProps = (overrides = {}): IconButtonProps => {
 
 const getOptionalProps = () => {
   return {
-    color: select("Color", colorSelect, "primary" as ColorTypeKeys),
+    color: select("Color", colorSelect, "primary" as AllColorKeys),
     isDisabled: boolean("Disabled", false),
     size: select("Size", sizeSelect, "default"),
     type: select("Type", typeSelect, "solid" as TouchableTypes)

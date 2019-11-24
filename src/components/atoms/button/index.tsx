@@ -3,13 +3,13 @@ import {
   ButtonProps as UIButtonProps,
   ButtonVariations
 } from "react-native-kinpaku-ui";
-import { themes, colors } from "../../../symbols/colors";
+import { themes, allColors } from "../../../symbols";
 import { buttonSizes } from "./const";
 
 type UnusedProps = "align";
 
 export type ButtonProps = Omit<
-  UIButtonProps<typeof colors, typeof buttonSizes, false>,
+  UIButtonProps<typeof allColors, typeof buttonSizes, false>,
   UnusedProps
 >;
 
@@ -30,9 +30,9 @@ export type ButtonProps = Omit<
  */
 const Button: {
   [buttonShape in ButtonVariations]: React.FunctionComponent<ButtonProps>;
-} = buttonFactory<typeof themes, typeof colors, typeof buttonSizes, false>({
+} = buttonFactory<typeof themes, typeof allColors, typeof buttonSizes, false>({
   themes,
-  additionalPalettes: colors,
+  additionalPalettes: allColors,
   sizes: buttonSizes,
   defaultType: "solid"
 });

@@ -1,10 +1,10 @@
 /* @flow */
 import * as React from "react";
 import { View } from "react-native";
-import { colors } from "../src/symbols/colors";
+import { allColors } from "../src/symbols";
 
 const Provider = ({
-  backgroundColor = colors.background,
+  backgroundColor = allColors.background,
   story
 }: {
   backgroundColor?: string;

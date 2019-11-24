@@ -2,6 +2,7 @@ import * as borders from "./borders";
 import {
   additionalColors,
   allColors,
+  AllColorKeys,
   mainThemeColors,
   TextColorKeys,
   themes
@@ -12,6 +13,7 @@ export {
   borders,
   additionalColors,
   allColors,
+  AllColorKeys,
   mainThemeColors,
   TextColorKeys,
   themes,

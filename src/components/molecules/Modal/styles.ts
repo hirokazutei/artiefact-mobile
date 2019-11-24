@@ -1,5 +1,5 @@
 import { StyleSheet, ViewStyle } from "react-native";
-import * as symbols from "../../../symbols";
+import { allColors, borders } from "../../../symbols";
 
 type Styles = {
   modalView: ViewStyle;
@@ -13,8 +13,8 @@ type Styles = {
 export const stylizeModal = (): Styles => {
   return StyleSheet.create<Styles>({
     modalView: {
-      backgroundColor: symbols.colors.white,
-      borderRadius: symbols.borders.radius.round
+      backgroundColor: allColors.background,
+      borderRadius: borders.radius.round
     },
     buttonsView: {
       flexDirection: "row"

@@ -30,9 +30,18 @@ const allColors = {
   ...mainThemeColors
 };
 
+type AllColorKeys = keyof typeof allColors;
+
 // Text
 type TextColorKeys =
   | keyof Omit<ThemePalette, "background">
   | AdditionalColorKeys;
 
-export { additionalColors, allColors, mainThemeColors, TextColorKeys, themes };
+export {
+  additionalColors,
+  AllColorKeys,
+  allColors,
+  mainThemeColors,
+  TextColorKeys,
+  themes
+};

@@ -1,5 +1,5 @@
 import { FlexAlignType, TextStyle } from "react-native";
-import { TextColorKeys } from "../src/symbols/colors";
+import { TextColorKeys } from "../src/symbols";
 
 type AlignKeys = "baseline" | "center" | "flexStart" | "flexEnd" | "stretch";
 

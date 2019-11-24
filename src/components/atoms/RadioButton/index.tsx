@@ -1,5 +1,5 @@
 import { radioButtonFactory } from "react-native-kinpaku-ui";
-import { colors, themes } from "../../../symbols/colors";
+import { allColors, themes } from "../../../symbols";
 import { radioButtonSize } from "./const";
 
 /**
@@ -17,13 +17,13 @@ import { radioButtonSize } from "./const";
  */
 const RadioButton = radioButtonFactory<
   typeof themes,
-  typeof colors,
+  typeof allColors,
   null,
   false
 >({
   themes,
   sizes: radioButtonSize,
-  additionalPalettes: colors
+  additionalPalettes: allColors
 });
 
 export default RadioButton.Dot;

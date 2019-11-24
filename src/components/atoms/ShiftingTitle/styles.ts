@@ -1,5 +1,5 @@
 import { StyleSheet, TextStyle, ViewStyle } from "react-native";
-import { TextColorKeys } from "../../../symbols/text";
+import { TextColorKeys } from "../../../symbols";
 import * as symbols from "../../../symbols";
 
 export type StyleProps = {

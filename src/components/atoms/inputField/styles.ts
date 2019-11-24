@@ -1,5 +1,4 @@
 import { StyleSheet, TextStyle, FlexAlignType } from "react-native";
-import { TextSizeKeys, textSizes } from "../../../symbols/text";
 import * as symbols from "../../../symbols";
 
 export type StyleProps = {
@@ -20,10 +19,10 @@ export type InputFieldColorKeys =
   | "error";
 
 const inputFieldColors: Readonly<{ [key in InputFieldColorKeys]: string }> = {
-  primary: symbols.colors.primary,
-  secondary: symbols.colors.secondary,
-  disabled: symbols.colors.disabled,
-  error: symbols.colors.danger
+  primary: symbols.allColors.primary,
+  secondary: symbols.allColors.secondary,
+  disabled: symbols.allColors.disabled,
+  error: symbols.allColors.danger
 };
 
 const defaultStyle: Readonly<Required<StyleProps>> = {

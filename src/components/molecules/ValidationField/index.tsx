@@ -5,7 +5,7 @@ import InputField from "../../atoms/InputField";
 import { Body } from "../../atoms/Text";
 import Space from "../../atoms/Space";
 import { borders, allColors } from "../../../symbols";
-import { TextColorKeys } from "../../../symbols/colors";
+import { TextColorKeys } from "../../../symbols";
 import Icon from "../../atoms/Icon";
 import { IconTypes, IconSizes } from "../../atoms/Icon";
 import { Diff } from "../../../type/tsUtility";

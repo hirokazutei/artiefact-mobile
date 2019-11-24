@@ -3,7 +3,7 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react-native";
 import { select, withKnobs } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
-import { ColorTypeKeys } from "../../../../symbols/colors";
+import { AllColorKeys } from "../../../../symbols";
 import Icon, { Props, IconSizes, IconTypes } from "../";
 
 const DEFAULT_PROPS: Props = {
@@ -18,7 +18,7 @@ const typeSelect: { [key in IconTypes]: IconTypes } = {
   noConnection: "noConnection"
 };
 
-const colorSelect: { [key in ColorTypeKeys]?: ColorTypeKeys } = {
+const colorSelect: { [key in AllColorKeys]?: AllColorKeys } = {
   primary: "primary",
   secondary: "secondary",
   tertiary: "tertiary"
@@ -46,7 +46,7 @@ const getRequiredProps = (overrides = {}): Props => {
 
 const getOptionalProps = () => {
   return {
-    color: select("Color", colorSelect, "primary" as ColorTypeKeys),
+    color: select("Color", colorSelect, "primary" as AllColorKeys),
     size: select("Size", sizeSelect, "medium")
   };
 };
