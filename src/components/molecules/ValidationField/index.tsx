@@ -4,7 +4,7 @@ import { Props as InputFieldProps } from "../../atoms/InputField";
 import InputField from "../../atoms/InputField";
 import { Body } from "../../atoms/Text";
 import Space from "../../atoms/Space";
-import { borders, allColors } from "../../../symbols";
+import { borders, allColors, themes } from "../../../symbols";
 import { TextColorKeys } from "../../../symbols";
 import Icon from "../../atoms/Icon";
 import { IconTypes, IconSizes } from "../../atoms/Icon";
@@ -12,11 +12,12 @@ import { Diff } from "../../../type/tsUtility";
 const RNIndicator = require("react-native-indicator");
 
 type Props = {
+  color?: keyof typeof allColors;
+  errors?: Array<string>;
+  infos?: Array<string>;
   isValidating?: boolean;
   validationResult?: ValidationResultType;
-  errors?: Array<string>;
   warnings?: Array<string>;
-  infos?: Array<string>;
 } & InputFieldProps;
 
 type Styles = {
@@ -40,16 +41,7 @@ const styles = StyleSheet.create<Styles>({
 
 export type ValidationResultType = "success" | "warning" | "error";
 
-type ValidationFieldColorKeys = "primary" | "secondary" | "disabled" | "error";
-
-const validationFieldColors: Readonly<
-  { [key in ValidationFieldColorKeys]: string }
-> = {
-  primary: allColors.primary,
-  secondary: allColors.secondary,
-  disabled: allColors.disabled,
-  error: allColors.danger
-};
+type ValidationFieldColorKeys = keyof (typeof themes & typeof allColors);
 
 const validationIconNames: Readonly<
   { [key in ValidationResultType]: IconTypes | null }
@@ -105,30 +97,31 @@ const listMessages = (
  */
 const ValidationField: React.FC<Props> = (props: Props): React.ReactElement => {
   const {
+    color = "primary",
+    errors,
+    infos,
     isValidating,
     validationResult,
-    errors,
     warnings,
-    infos,
-    color = "primary",
     ...inputFieldProps
   } = props;
-  const colorStyle = validationFieldColors[color];
+  const colorLiteral = allColors[color];
   let validationIcon = validationResult
     ? validationFieldIcons(validationResult, "medium", color)
     : null;
   if (isValidating) {
     validationIcon = (
-      <RNIndicator.DotsLoader size={10} betweenSpace={5} color={colorStyle} />
+      <RNIndicator.DotsLoader size={10} betweenSpace={5} color={colorLiteral} />
     );
   }
+  // Free Field Should Be Changed to be customizable.
   return (
     <View>
       <View
-        style={[styles.validationFieldWrapper, { borderColor: colorStyle }]}
+        style={[styles.validationFieldWrapper, { borderColor: colorLiteral }]}
       >
         <View style={styles.inputFieldWrapper}>
-          <InputField {...inputFieldProps} disableLine={true} color={color} />
+          <InputField.freeField {...inputFieldProps} />
         </View>
         <View style={styles.iconWrapper}>{validationIcon}</View>
       </View>

@@ -35,17 +35,16 @@ const SignInTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         </Title>
         <ShiftingTitle color="primary" />
         <Space.Stack size="huge" />
-        <InputField
+        <InputField.username
           placeholder="Username"
-          onChangeText={onChangeUsername}
+          onChange={onChangeUsername}
           value={username}
         />
         <Space.Stack size="huge" />
-        <InputField
+        <InputField.password
           placeholder="Password"
-          onChangeText={onChangePassword}
+          onChange={onChangePassword}
           value={password}
-          secureTextEntry={true}
         />
         <Space.Stack size="huge" />
         <Button size="massive" title="Login" onPress={onPressSignIn} />

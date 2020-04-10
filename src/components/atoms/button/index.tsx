@@ -1,7 +1,6 @@
 import {
   buttonFactory,
-  ButtonProps as UIButtonProps,
-  ButtonVariations
+  ButtonProps as UIButtonProps
 } from "react-native-kinpaku-ui";
 import { themes, allColors } from "../../../symbols";
 import { buttonSizes } from "./const";
@@ -28,9 +27,12 @@ export type ButtonProps = Omit<
  * @param [props.size] - size of the button, default is medium.
  * @param [props.type] - type of button: solid | clear | outline
  */
-const Button: {
-  [buttonShape in ButtonVariations]: React.FunctionComponent<ButtonProps>;
-} = buttonFactory<typeof themes, typeof allColors, typeof buttonSizes, false>({
+const Button = buttonFactory<
+  typeof themes,
+  typeof allColors,
+  typeof buttonSizes,
+  false
+>({
   themes,
   additionalPalettes: allColors,
   sizes: buttonSizes,

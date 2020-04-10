@@ -1,71 +1,35 @@
-import React from "react";
-import { TextInput } from "react-native";
-import { StyleProps, stylizeInputField } from "./styles";
-import {
-  SettingProps,
-  resolveKeyboardTypes,
-  resolveAutoCapitalize
-} from "./settings";
+import { inputFieldFactory, InputFieldProps } from "react-native-kinpaku-ui";
+import { themes, allColors } from "../../../symbols";
 
-export type Props = {
-  onChangeText: (e: any) => void;
-  children?: never;
-  defaultValue?: string;
-  editable?: boolean;
-  maxLength?: number;
-  placeholder?: string;
-  secureTextEntry?: boolean;
-  value?: string;
-} & SettingProps &
-  StyleProps;
+export type Props = InputFieldProps<typeof allColors, null>;
 
-/**
- * Input Field
- *
- * @param props - properties
- * @param [props.defaultValue] - default value
- * @param [props.disableLine] - disable line to be used in another component
- * @param [props.editable] - is field editable
- * @param [props.isDisabled] - if the input field is disabled
- * @param [props.isErrornous] -if the input field contains an error
- * @param [props.maxLength] - max length of field
- * @param [props.onChangeText] - action fired when change occures
- * @param [props.placeholder] - placeholder of the field
- * @param [props.secureTextEntry] - if it is secure text entry
- * @param [props.value] - value of input
- * Settings
- * @param [props.autoCapitalize] - which characters to auto capitalize
- * @param [props.keyboardType] - the keyboard type of field
- */
-const InputField: React.FC<Props> = (props: Props): React.ReactElement => {
-  const {
-    keyboardType,
-    autoCapitalize,
-    color,
-    size,
-    disableLine,
-    isDisabled,
-    isErrornous,
-    isStretched,
-    ...otherProps
-  } = props;
-  const styles = stylizeInputField({
-    color,
-    size,
-    isDisabled,
-    disableLine,
-    isErrornous,
-    isStretched
-  });
-
-  return (
-    <TextInput
-      style={styles.inputField}
-      keyboardType={resolveKeyboardTypes(keyboardType)}
-      autoCapitalize={resolveAutoCapitalize(autoCapitalize)}
-      {...otherProps}
-    />
-  );
-};
+/*
+- InputField
+-
+- Required:
+- @param props - properties
+- @param props.value - the value in the inputField
+-
+- Optional:
+- @param [props.autoFocus] - if the field should be auto-focused
+- @param [props.backgroundColor] - background color of the field
+- @param [props.borderColor] - border color of the field
+- @param [props.defaultValue] - the default value of the field
+- @param [props.isDisabled] - if the input field is disabled
+- @param [props.maxLength] - max length of the field
+- @param [props.onBlur] - function that runs on blur
+- @param [props.onChange] - function that runs on change
+- @param [props.onEndEditing] - function that runs on end editing
+- @param [props.onFocus] - function that runs on focus
+- @param [props.onKeyPress] - function that runs on key press
+- @param [props.placeholder] - placeholder of the input field
+- @param [props.size] - size of the input field
+- @param [props.shape] - type of the input field: "sharp" | "rounded" | "circular"
+- @param [props.textColor] - text color of the field
+*/
+const InputField = inputFieldFactory<typeof themes, typeof allColors, null>({
+  themes,
+  additionalPalettes: allColors
+});
 
 export default InputField;
