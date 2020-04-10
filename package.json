@@ -32,13 +32,15 @@
     "react-native": "0.60.4",
     "react-native-blur": "^3.2.2",
     "react-native-camera": "git+https://git@github.com/react-native-community/react-native-camera.git",
-    "react-native-gesture-handler": "^1.3.0",
+    "react-native-gesture-handler": "^1.6.1",
     "react-native-indicator": "^1.0.0",
     "react-native-keychain": "^3.1.3",
-    "react-native-kinpaku-ui": "https://github.com/hirokazutei/react-native-kinpaku-ui.git",
+    "react-native-kinpaku-ui": "^0.0.1",
     "react-native-maps": "0.25.0",
     "react-native-modal": "^11.2.0",
     "react-native-permissions": "^2.0.2",
+    "react-native-reanimated": "^1.7.1",
+    "react-native-screens": "^2.4.0",
     "react-native-spacing-system": "0.4.2",
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^3.11.1",
@@ -59,7 +61,7 @@
     "@storybook/addons": "^5.2.3",
     "@storybook/react-native": "^5.2.3",
     "@storybook/react-native-server": "^5.2.3",
-    "@types/node": "^12.6.9",
+    "@types/node": "10.12.0",
     "@types/react": "^16.8.23",
     "@types/react-native": "^0.60.2",
     "@types/react-native-vector-icons": "^6.4.1",
@@ -76,7 +78,7 @@
     "react-native-typescript-transformer": "^1.2.12",
     "react-test-renderer": "16.8.6",
     "ts-jest": "^24.0.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.8.3"
   },
   "jest": {
     "preset": "react-native"
