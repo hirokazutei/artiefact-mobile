@@ -92,13 +92,13 @@ PODS:
   - React-jsinspector (0.60.4)
   - react-native-blur (0.8.0):
     - React
-  - react-native-camera (3.21.0):
+  - react-native-camera (3.23.1):
     - React
-    - react-native-camera/RCT (= 3.21.0)
-    - react-native-camera/RN (= 3.21.0)
-  - react-native-camera/RCT (3.21.0):
+    - react-native-camera/RCT (= 3.23.1)
+    - react-native-camera/RN (= 3.23.1)
+  - react-native-camera/RCT (3.23.1):
     - React
-  - react-native-camera/RN (3.21.0):
+  - react-native-camera/RN (3.23.1):
     - React
   - react-native-geolocation (1.4.2):
     - React
@@ -302,7 +302,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 7549641e48bafae7bfee3f3ea19bf4901639c5de
   React-jsinspector: 73f24a02fa684ed6a2b828ba116874a2191ded88
   react-native-blur: cad4d93b364f91e7b7931b3fa935455487e5c33c
-  react-native-camera: a9749fa0c1162cdb2f56b93a5d97a72ebd56694f
+  react-native-camera: 6fe72fd0a85732e2449928f9c59a2e0bf661ad3b
   react-native-geolocation: 79c743ad7a2e86617811ef23f49308824e92520c
   react-native-google-maps: 88d750ad441b19c24885f20d43a55ecac25939b5
   react-native-maps: 190c02ca533fddac5bb49cf17bdece3644612107
