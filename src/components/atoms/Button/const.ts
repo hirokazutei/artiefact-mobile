@@ -8,49 +8,49 @@ export type ButtonSizeKeys =
   | "huge"
   | "massive";
 
-export const buttonSizes: Readonly<
-  { [key in ButtonSizeKeys | "default"]: ButtonSizeProps }
-> = {
+export const buttonSizes: {
+  [key in ButtonSizeKeys | "default"]: ButtonSizeProps
+} = {
   tiny: {
-    horizontalPadding: 8,
-    verticalPaddding: 4,
+    borderRadius: 4,
     fontSize: 10,
-    borderRadius: 4
+    paddingHorizontal: 8,
+    paddingVertical: 4,
   },
   small: {
-    horizontalPadding: 10,
-    verticalPaddding: 5,
+    borderRadius: 5,
     fontSize: 12,
-    borderRadius: 5
+    paddingHorizontal: 10,
+    paddingVertical: 5,
   },
   medium: {
-    horizontalPadding: 12,
-    verticalPaddding: 6,
+    borderRadius: 6,
     fontSize: 16,
-    borderRadius: 6
+    paddingHorizontal: 12,
+    paddingVertical: 6,
   },
   large: {
-    horizontalPadding: 14,
-    verticalPaddding: 7,
+    borderRadius: 76,
     fontSize: 20,
-    borderRadius: 76
+    paddingHorizontal: 14,
+    paddingVertical: 7,
   },
   huge: {
-    horizontalPadding: 16,
-    verticalPaddding: 8,
+    borderRadius: 8,
     fontSize: 24,
-    borderRadius: 8
+    paddingHorizontal: 16,
+    paddingVertical: 8,
   },
   massive: {
-    horizontalPadding: 20,
-    verticalPaddding: 10,
+    borderRadius: 10,
     fontSize: 32,
-    borderRadius: 10
+    paddingHorizontal: 20,
+    paddingVertical: 10,
   },
   default: {
-    horizontalPadding: 12,
-    verticalPaddding: 6,
+    borderRadius: 6,
     fontSize: 16,
-    borderRadius: 6
-  }
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
 };

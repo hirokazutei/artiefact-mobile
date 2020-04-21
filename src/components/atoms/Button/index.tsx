@@ -15,17 +15,25 @@ export type ButtonProps = Omit<
 /**
  * Button
  *
- * Required:
  * @param props - properties
- * @param props.title - title label of the button
- * @param props.onPress - onPress event of the button
+ *
+ * Required:
+ * @param props.label - label of the Button
+ * @param props.onPress - onPress event of the Button
  *
  * Optional:
- * @param [props.color] - color of the button
- * @param [props.isDisabled] - if the button is disabled or not
- * @param [props.isStretched] - if the button spans the entire horizontal space
- * @param [props.size] - size of the button, default is medium.
- * @param [props.type] - type of button: solid | clear | outline
+ * @param [props.align] - the alignment of the text
+ * @param [props.color] - color of the Button
+ * @param [props.isDisabled] - if the Button is disabled or not
+ * @param [props.isStretched] - if the Button spans the entire horizontal space
+ * @param [props.size] - size of the Button
+ * @param [props.type] - type of Button: solid | clear | outline
+ *
+ * Optional Additional Args:
+ * @param [_customButtonProps] - additional props for the TouchableOpacity component
+ * @param [_customButtonStyle] - additional styles for the TouchableOpacity component
+ * @param [_customTextProps] - additional props for the Text component
+ * @param [_customTextProps] - additional styles for the Text component
  */
 const Button = buttonFactory<
   typeof themes,
