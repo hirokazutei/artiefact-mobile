@@ -1,53 +1,61 @@
 import { TouchableAllSizeProps } from "react-native-kinpaku-ui";
 
-export type IconSizes = "small" | "medium" | "large";
+type IconSizeKey = "small" | "medium" | "large";
 
-export const touchablePaddingSizes: Readonly<
-  { [key in IconSizes | "default"]: TouchableAllSizeProps }
+const touchablePaddingSizes: Readonly<
+  { [key in IconSizeKey | "default"]: TouchableAllSizeProps }
 > = {
   small: {
+    borderRadius: 24,
     padding: 4,
-    borderRadius: 24
   },
   medium: {
+    borderRadius: 48,
     padding: 8,
-    borderRadius: 48
   },
   large: {
+    borderRadius: 72,
     padding: 12,
-    borderRadius: 72
   },
   default: {
+    borderRadius: 48,
     padding: 8,
-    borderRadius: 48
-  }
+  },
 };
 
-export const iconSizes: Readonly<{ [key in IconSizes | "default"]: number }> = {
+const iconSizes: Readonly<{ [key in IconSizeKey | "default"]: number }> = {
   small: 24,
   medium: 36,
   large: 46,
-  default: 36
+  default: 36,
 };
 
-export type IconNames =
+type IconNameKey =
   | "camera"
   | "errorCircle"
   | "noConnection"
   | "successCircle"
   | "warningCircle";
 
-type FeatherIconNames =
+type FeatherIconNameKey =
   | "camera"
   | "check-circle"
   | "x-circle"
   | "alert-circle"
   | "wifi-off";
 
-export const iconNames: Readonly<{ [key in IconNames]: FeatherIconNames }> = {
+const iconNames: Readonly<{ [key in IconNameKey]: FeatherIconNameKey }> = {
   camera: "camera",
   successCircle: "check-circle",
   errorCircle: "x-circle",
   warningCircle: "alert-circle",
-  noConnection: "wifi-off"
+  noConnection: "wifi-off",
+};
+
+export {
+  touchablePaddingSizes,
+  iconSizes,
+  IconSizeKey,
+  IconNameKey,
+  iconNames,
 };
