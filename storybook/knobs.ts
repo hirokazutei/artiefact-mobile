@@ -1,35 +1,46 @@
 import { FlexAlignType, TextStyle } from "react-native";
-import { TextColorKeys, ThemePaletteKeys } from "../src/symbols";
+import { TextColorKeys, ThemePaletteKeys, AllColorKey } from "../src/symbols";
 
 type AlignKeys = "baseline" | "center" | "flexStart" | "flexEnd" | "stretch";
 
-const alignSelect: { [key in AlignKeys]: FlexAlignType } = {
+const selectAlign: { [key in AlignKeys]: FlexAlignType } = {
   baseline: "baseline",
   center: "center",
   flexStart: "flex-start",
   flexEnd: "flex-end",
-  stretch: "stretch"
+  stretch: "stretch",
 };
 
 const selectTextAlign: {
-  [key in NonNullable<TextStyle["textAlign"]>]: TextStyle["textAlign"];
+  [key in NonNullable<TextStyle["textAlign"]>]: TextStyle["textAlign"]
 } = {
   auto: "auto",
   left: "left",
   right: "right",
   center: "center",
-  justify: "justify"
+  justify: "justify",
+};
+
+const selectAllColor: { [key in AllColorKey]: AllColorKey } = {
+  primary: "primary",
+  secondary: "secondary",
+  tertiary: "tertiary",
+  disabled: "disabled",
+  background: "background",
+  text: "text",
+  danger: "danger",
+  faded: "faded",
 };
 
 const selectThemePaletteColor: {
-  [key in ThemePaletteKeys]: ThemePaletteKeys;
+  [key in ThemePaletteKeys]: ThemePaletteKeys
 } = {
   primary: "primary",
   secondary: "secondary",
   tertiary: "tertiary",
   background: "background",
   disabled: "disabled",
-  text: "text"
+  text: "text",
 };
 
 const selectTextColor: { [key in TextColorKeys]: TextColorKeys } = {
@@ -39,12 +50,13 @@ const selectTextColor: { [key in TextColorKeys]: TextColorKeys } = {
   disabled: "disabled",
   text: "text",
   danger: "danger",
-  faded: "faded"
+  faded: "faded",
 };
 
 export {
-  alignSelect,
+  selectAlign,
+  selectAllColor,
   selectTextAlign,
   selectThemePaletteColor,
-  selectTextColor
+  selectTextColor,
 };
