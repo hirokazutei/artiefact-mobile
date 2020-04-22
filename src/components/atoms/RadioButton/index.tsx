@@ -1,12 +1,22 @@
-import { radioButtonFactory } from "react-native-kinpaku-ui";
-import { allColors, themes } from "../../../symbols";
-import { radioButtonSize } from "./const";
+import {
+  radioButtonFactory,
+  RadioButtonProps as UIRadioButtonProps,
+} from "react-native-kinpaku-ui";
+import { additionalColors, themes } from "../../../symbols";
+import { radioButtonSizes } from "./const";
+
+type RadioButtonProps = UIRadioButtonProps<
+  typeof additionalColors,
+  typeof radioButtonSizes,
+  false
+>;
 
 /**
  * RadioButton
  *
- * Required:
  * @param props - properties
+ *
+ * Required:
  * @param props.active - if the radioButton is active
  * @param props.onPress - the onPress event of the button
  *
@@ -15,15 +25,17 @@ import { radioButtonSize } from "./const";
  * @param [props.isDisabled] - if the button is disabled
  * @param [props.size] - the size of Icon
  */
-const RadioButton = radioButtonFactory<
+const { Circular, Round, Sharp } = radioButtonFactory<
   typeof themes,
-  typeof allColors,
-  null,
+  typeof additionalColors,
+  typeof radioButtonSizes,
   false
 >({
   themes,
-  sizes: radioButtonSize,
-  additionalPalettes: allColors
+  sizes: radioButtonSizes,
+  additionalPalettes: additionalColors,
 });
 
-export default RadioButton.Dot;
+export { RadioButtonProps, Circular, Round, Sharp };
+
+export default Round;

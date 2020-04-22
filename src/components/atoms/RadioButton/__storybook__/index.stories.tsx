@@ -3,42 +3,34 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
-import { RadioButtonProps } from "react-native-kinpaku-ui";
-import { AllColorKeys, allColors } from "../../../../symbols";
 import Provider from "../../../../../storybook/Provider";
-import RadioButton from "../";
+import { selectAllColor } from "../../../../../storybook/knobs";
+import RadioButton, { RadioButtonProps } from "../";
 
 const DEFAULT_PROPS = {
-  active: false
-};
-
-const colorSelect: { [key in AllColorKeys]?: AllColorKeys } = {
-  primary: "primary",
-  secondary: "secondary",
-  tertiary: "tertiary"
+  active: false,
 };
 
 const getRequiredProps = (
-  overrides = {}
-): RadioButtonProps<typeof allColors, null, false> => {
+  overrides: Partial<RadioButtonProps> = {}
+): RadioButtonProps => {
   const { active } = {
     ...DEFAULT_PROPS,
-    ...overrides
+    ...overrides,
   };
   return {
     active: boolean("Active", active),
-    onPress: action("Pressed")
+    onPress: action("Pressed"),
   };
 };
 
-const getOptionalPropsProps = (): Partial<RadioButtonProps<
-  typeof allColors,
-  null,
-  false
->> => {
+const getOptionalPropsProps = (
+  overrides: Partial<RadioButtonProps> = {}
+): Partial<RadioButtonProps> => {
+  const { color, isDisabled = false } = overrides;
   return {
-    color: select("Color Options", colorSelect, undefined),
-    isDisabled: boolean("Disabled", false)
+    color: select("Color Options", selectAllColor, color),
+    isDisabled: boolean("Disabled", isDisabled),
   };
 };
 
@@ -47,4 +39,10 @@ storiesOf("Atoms/RadioButton")
   .addDecorator(withKnobs)
   .add("default", () => (
     <RadioButton {...getRequiredProps()} {...getOptionalPropsProps()} />
+  ))
+  .add("Disabled", () => (
+    <RadioButton
+      {...getRequiredProps()}
+      {...getOptionalPropsProps({ isDisabled: true })}
+    />
   ));
