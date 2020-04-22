@@ -3,19 +3,19 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react-native";
 import { text, withKnobs } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
-import NavigationTitle, { Props as NavigationTitleProps } from "../";
+import NavigationTitle, { NavigationTitleProps } from "../";
 
 const DEFAULT_PROPS = {
-  children: "SAMPLE TITLE"
+  children: "SAMPLE TITLE",
 };
 
 const getRequiredProps = (overrides = {}): NavigationTitleProps => {
   const { children } = {
     ...DEFAULT_PROPS,
-    ...overrides
+    ...overrides,
   };
   return {
-    children: text("Text Option", children)
+    children: text("Text Option", children),
   };
 };
 
