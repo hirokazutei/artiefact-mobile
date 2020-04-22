@@ -2,14 +2,16 @@ import React from "react";
 import {
   NavigationScreenProps,
   HeaderBackButton,
-  withNavigation
+  withNavigation,
 } from "react-navigation";
 
-export type Props = {
+type NavigationBackButtonProps = {
   onPress?: () => void;
 };
 
-class BackButton extends React.Component<Props & NavigationScreenProps<any>> {
+class NavigationBackButton extends React.Component<
+  NavigationBackButtonProps & NavigationScreenProps<any>
+> {
   render() {
     const { onPress, navigation } = this.props;
     const onPressBack = () => {
@@ -22,4 +24,6 @@ class BackButton extends React.Component<Props & NavigationScreenProps<any>> {
   }
 }
 
-export default withNavigation(BackButton);
+export { NavigationBackButtonProps };
+
+export default withNavigation(NavigationBackButton);
