@@ -1,16 +1,8 @@
 import { ButtonSizeProps } from "react-native-kinpaku-ui";
 
-export type ButtonSizeKeys =
-  | "tiny"
-  | "small"
-  | "medium"
-  | "large"
-  | "huge"
-  | "massive";
+type ButtonSizeKey = "tiny" | "small" | "medium" | "large" | "huge" | "massive";
 
-export const buttonSizes: {
-  [key in ButtonSizeKeys | "default"]: ButtonSizeProps
-} = {
+const buttonSizes: { [key in ButtonSizeKey | "default"]: ButtonSizeProps } = {
   tiny: {
     borderRadius: 4,
     fontSize: 10,
@@ -54,3 +46,5 @@ export const buttonSizes: {
     paddingVertical: 6,
   },
 };
+
+export { ButtonSizeKey, buttonSizes };

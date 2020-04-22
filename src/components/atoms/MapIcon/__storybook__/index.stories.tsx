@@ -3,7 +3,7 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react-native";
 import { select, withKnobs } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
-import { AllColorKey } from "../../../../symbols";
+import { selectAllColor } from "../../../../../storybook/knobs";
 import MapIcon, { MapIconProps } from "../";
 import { MapIconTypeKey, MapIconSizeKey } from "../const";
 
@@ -19,12 +19,6 @@ const selectType: { [key in MapIconTypeKey]: MapIconTypeKey } = {
   image: "image",
   audio: "audio",
   video: "video",
-};
-
-const selectColor: { [key in AllColorKey]?: AllColorKey } = {
-  primary: "primary",
-  secondary: "secondary",
-  tertiary: "tertiary",
 };
 
 const selectSize: { [key in MapIconSizeKey]: MapIconSizeKey } = {
@@ -50,7 +44,7 @@ const getOptionalProps = (
 ): Partial<MapIconProps> => {
   const { color, size } = overrides;
   return {
-    color: select("Color", selectColor, color),
+    color: select("Color", selectAllColor, color),
     size: select("Size", selectSize, size),
   };
 };

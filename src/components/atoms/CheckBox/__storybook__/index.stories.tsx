@@ -8,7 +8,7 @@ import { selectAllColor } from "../../../../../storybook/knobs";
 import CheckBox, { CheckBoxProps } from "../";
 import { CheckBoxSizeKey } from "../const";
 
-const sizeSelect: { [key in CheckBoxSizeKey]?: CheckBoxSizeKey } = {
+const selectSize: { [key in CheckBoxSizeKey]?: CheckBoxSizeKey } = {
   small: "small",
   medium: "medium",
   large: "large",
@@ -28,7 +28,7 @@ const getOptionalProps = (
     active: boolean("Active", active),
     color: select("Color Options", selectAllColor, color),
     isDisabled: boolean("isDisabled", isDisabled),
-    size: select("Size Options", sizeSelect, size),
+    size: select("Size Options", selectSize, size),
     type,
   };
 };

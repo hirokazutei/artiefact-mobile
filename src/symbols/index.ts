@@ -2,11 +2,11 @@ import * as borders from "./borders";
 import {
   additionalColors,
   allColors,
-  AllColorKeys,
+  AllColorKey,
   mainThemeColors,
   TextColorKeys,
   themes,
-  ThemePaletteKeys
+  ThemePaletteKeys,
 } from "./colors";
 import { spacing, SpacingKeys } from "./spacing";
 
@@ -14,11 +14,11 @@ export {
   borders,
   additionalColors,
   allColors,
-  AllColorKeys,
+  AllColorKey,
   mainThemeColors,
   TextColorKeys,
   themes,
   spacing,
   SpacingKeys,
-  ThemePaletteKeys
+  ThemePaletteKeys,
 };

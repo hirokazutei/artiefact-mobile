@@ -1,19 +1,18 @@
 // @flow
 import * as React from "react";
-import { View, StyleSheet, ViewStyle } from "react-native";
 import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
+import { selectAllColor } from "../../../../../storybook/knobs";
+import { ButtonSizeKey } from "../const";
 import Button, { ButtonProps } from "../";
-import { ButtonSizeKeys } from "../const";
-import { selectAllColorKeys } from "../../../../../storybook/knobs";
 
 const DEFAULT_PROPS = {
   label: "PRESS HERE",
 };
 
-const sizeSelect: { [key in ButtonSizeKeys]: ButtonSizeKeys } = {
+const selectSize: { [key in ButtonSizeKey]: ButtonSizeKey } = {
   tiny: "tiny",
   small: "small",
   medium: "medium",
@@ -46,16 +45,15 @@ const geOptionalProps = (
     type,
   } = overrides;
   return {
-    color: select("Color Options", selectAllColorKeys, color),
+    color: select("Color Options", selectAllColor, color),
     isDisabled: boolean("isDisabled", isDisabled),
     isStretched: boolean("isStretched", isStretched),
-    onPress: action("button-pressed"),
-    size: select("Size Options", sizeSelect, size),
+    size: select("Size Options", selectSize, size),
     type,
   };
 };
 
-storiesOf("UI/Button", module)
+storiesOf("Atom/Button", module)
   .addDecorator((story: () => React.ReactElement<null>) => (
     <Provider story={story} />
   ))

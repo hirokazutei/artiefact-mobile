@@ -43,8 +43,9 @@ const colorResolver = ({
 /**
  * IconButton
  *
- * Required:
  * @param props - properties
+ *
+ * Required:
  * @param props.name - the name of Icon type
  * @param props.onPress - the onPress event of the button
  *

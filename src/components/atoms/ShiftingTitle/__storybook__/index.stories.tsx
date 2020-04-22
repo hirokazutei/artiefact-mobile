@@ -4,19 +4,19 @@ import { storiesOf } from "@storybook/react-native";
 import { select, withKnobs } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
 import { selectThemePaletteColor } from "../../../../../storybook/knobs";
-import ShiftingTitle, { Props as ShiftingTitleProps } from "../";
+import ShiftingTitle, { ShiftingTitleProps } from "../";
 
 const DEFAULT_PROPS: ShiftingTitleProps = {
-  color: selectThemePaletteColor.primary
+  color: selectThemePaletteColor.primary,
 };
 
 const getRequiredProps = (overrides = {}): ShiftingTitleProps => {
   const { color } = {
     ...DEFAULT_PROPS,
-    ...overrides
+    ...overrides,
   };
   return {
-    color: select("Color", selectThemePaletteColor, color)
+    color: select("Color", selectThemePaletteColor, color),
   };
 };
 
