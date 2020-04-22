@@ -11,7 +11,7 @@ const DEFAULT_PROPS: IconProps = {
   name: "camera",
 };
 
-const typeSelect: { [key in IconTypeKey]: IconTypeKey } = {
+const selectType: { [key in IconTypeKey]: IconTypeKey } = {
   camera: "camera",
   successCircle: "successCircle",
   errorCircle: "errorCircle",
@@ -19,7 +19,7 @@ const typeSelect: { [key in IconTypeKey]: IconTypeKey } = {
   noConnection: "noConnection",
 };
 
-const sizeSelect: { [key in IconSizeKey]: IconSizeKey } = {
+const selectSize: { [key in IconSizeKey]: IconSizeKey } = {
   tiny: "tiny",
   small: "small",
   medium: "medium",
@@ -35,7 +35,7 @@ const getRequiredProps = (overrides: Partial<IconProps> = {}): IconProps => {
     ...overrides,
   };
   return {
-    name: select("Icon Type", typeSelect, name),
+    name: select("Icon Type", selectType, name),
   };
 };
 
@@ -45,7 +45,7 @@ const getOptionalProps = (
   const { size, color } = overrides;
   return {
     color: select("Color", selectAllColor, color),
-    size: select("Size", sizeSelect, size),
+    size: select("Size", selectSize, size),
   };
 };
 

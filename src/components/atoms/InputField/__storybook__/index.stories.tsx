@@ -1,5 +1,6 @@
 // @flow
 import * as React from "react";
+import { InputFieldVariation } from "react-native-kinpaku-ui";
 import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
 import {
@@ -17,7 +18,26 @@ const DEFAULT_PROPS = {
   value: "",
 };
 
-const variationSelect = {
+const inputFieldVariations: {
+  [key in InputFieldVariation]: React.FC<InputFieldProps>
+} = {
+  creditCardNumber: InputField.creditCardNumber,
+  decimal: InputField.decimal,
+  email: InputField.email,
+  freeField: InputField.freeField,
+  name: InputField.name,
+  number: InputField.number,
+  oneTimeNumberCode: InputField.oneTimeNumberCode,
+  oneTimeCode: InputField.oneTimeCode,
+  paragraph: InputField.paragraph,
+  passcode: InputField.passcode,
+  password: InputField.password,
+  phone: InputField.phone,
+  url: InputField.url,
+  username: InputField.username,
+};
+
+const selectVariation: { [key in InputFieldVariation]: InputFieldVariation } = {
   creditCardNumber: "creditCardNumber",
   decimal: "decimal",
   email: "email",
@@ -26,7 +46,7 @@ const variationSelect = {
   number: "number",
   oneTimeNumberCode: "oneTimeNumberCode",
   oneTimeCode: "oneTimeCode",
-  paragraph: "paragragh",
+  paragraph: "paragraph",
   passcode: "passcode",
   password: "password",
   phone: "phone",
@@ -122,48 +142,12 @@ storiesOf("UI/InputField", module)
       {...geOptionalProps({ size: "large" })}
     />
   ))
-  .add("Variation: CreditCardNumber", () => (
-    <InputField.creditCardNumber
-      {...getRequiredProps()}
-      {...geOptionalProps()}
-    />
-  ))
-  .add("Variation: Decimal", () => (
-    <InputField.decimal {...getRequiredProps()} {...geOptionalProps()} />
-  ))
-  .add("Variation: Email", () => (
-    <InputField.email {...getRequiredProps()} {...geOptionalProps()} />
-  ))
-  .add("Variation: Name", () => (
-    <InputField.name {...getRequiredProps()} {...geOptionalProps()} />
-  ))
-  .add("Variation: Number", () => (
-    <InputField.number {...getRequiredProps()} {...geOptionalProps()} />
-  ))
-  .add("Variation: OneTimeNumberCode", () => (
-    <InputField.oneTimeNumberCode
-      {...getRequiredProps()}
-      {...geOptionalProps()}
-    />
-  ))
-  .add("Variation: OneTimeCode", () => (
-    <InputField.oneTimeCode {...getRequiredProps()} {...geOptionalProps()} />
-  ))
-  .add("Variation: Paragraph", () => (
-    <InputField.paragragh {...getRequiredProps()} {...geOptionalProps()} />
-  ))
-  .add("Variation: Passcode", () => (
-    <InputField.passcode {...getRequiredProps()} {...geOptionalProps()} />
-  ))
-  .add("Variation: Password", () => (
-    <InputField.password {...getRequiredProps()} {...geOptionalProps()} />
-  ))
-  .add("Variation: Phone", () => (
-    <InputField.phone {...getRequiredProps()} {...geOptionalProps()} />
-  ))
-  .add("Variation: URL", () => (
-    <InputField.url {...getRequiredProps()} {...geOptionalProps()} />
-  ))
-  .add("Variation: Username", () => (
-    <InputField.username {...getRequiredProps()} {...geOptionalProps()} />
-  ));
+  .add("Input Variation", () => {
+    const inputFieldVariationKey = select(
+      "InputVariation",
+      selectVariation,
+      "freeField"
+    );
+    const Component = inputFieldVariations[inputFieldVariationKey];
+    return <Component {...getRequiredProps()} {...geOptionalProps()} />;
+  });

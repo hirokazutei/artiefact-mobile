@@ -1,56 +1,38 @@
 import React from "react";
 import RNVIcon from "react-native-vector-icons/Feather";
-import { touchableFactory, TouchableProps } from "react-native-kinpaku-ui";
-import { allColors, AllColorKeys, themes } from "../../../symbols";
+import { allColors, AllColorKey } from "../../../symbols";
 import {
   touchablePaddingSizes,
   iconSizes,
-  IconNames,
-  iconNames
+  IconNameKey,
+  iconNames,
 } from "./const";
-
-const Touchable: React.FunctionComponent<TouchableProps<
-  typeof allColors,
-  typeof touchablePaddingSizes,
-  false
->> = touchableFactory<
-  typeof themes,
-  typeof allColors,
-  typeof touchablePaddingSizes,
-  false
->({
-  themes,
-  sizes: touchablePaddingSizes,
-  additionalPalettes: allColors
-});
+import Touchable, { TouchableProps } from "../Touchable";
 
 type UnusedProps = "align" | "children" | "isStretched";
 
-type UsedTouchableProps = Omit<
-  TouchableProps<typeof allColors, typeof touchablePaddingSizes, false>,
-  UnusedProps
->;
+type UsedTouchableProps = Omit<TouchableProps, UnusedProps>;
 
-export type Props = {
-  color?: AllColorKeys;
-  isDisabled?: boolean;
-  name: IconNames;
-  onPress: (arg: any) => void;
+type IconButtonTypeKey = "fill" | "outline";
+
+type IconButtonProps = {
+  name: IconNameKey;
+  type?: IconButtonTypeKey;
 } & UsedTouchableProps;
 
 const colorResolver = ({
   color,
-  isSolidType,
-  isDisabled
+  isFillType,
+  isDisabled,
 }: {
-  color: AllColorKeys;
-  isSolidType: boolean;
+  color: AllColorKey;
+  isFillType: boolean;
   isDisabled?: boolean;
-}): { buttonColor: AllColorKeys; iconColor: string } => {
-  if (!isSolidType) {
+}): { buttonColor: AllColorKey; iconColor: string } => {
+  if (!isFillType) {
     return {
       buttonColor: "background",
-      iconColor: isDisabled ? allColors.disabled : allColors[color]
+      iconColor: isDisabled ? allColors.disabled : allColors[color],
     };
   } else if (isDisabled) {
     return { buttonColor: "disabled", iconColor: allColors.background };
@@ -61,8 +43,9 @@ const colorResolver = ({
 /**
  * IconButton
  *
- * Required:
  * @param props - properties
+ *
+ * Required:
  * @param props.name - the name of Icon type
  * @param props.onPress - the onPress event of the button
  *
@@ -72,28 +55,30 @@ const colorResolver = ({
  * @param [props.size] - the size of Icon
  * @param [props.type] - solid | outline button type
  */
-const IconButton: React.FC<Props> = ({
+const IconButton = ({
   size = "default",
   color = "primary",
   isDisabled,
   name,
-  type = "solid",
+  type = "fill",
   ...props
-}: Props): React.ReactElement => {
-  const isSolidType = type === "solid";
+}: IconButtonProps) => {
+  const isFillType = type === "fill";
   const iconSize = iconSizes[size as keyof typeof touchablePaddingSizes];
   const { buttonColor, iconColor } = colorResolver({
     color,
-    isSolidType,
-    isDisabled
+    isFillType,
+    isDisabled,
   });
   const iconName = iconNames[name];
-  // FIXME: It is better if the icons took the same color parameters instead of hex strings
+  const TouchableComponent = isFillType ? Touchable.Fill : Touchable.Outline;
   return (
-    <Touchable color={buttonColor} size={size} {...props}>
+    <TouchableComponent color={buttonColor} size={size} {...props}>
       <RNVIcon name={iconName} size={iconSize} color={iconColor} />
-    </Touchable>
+    </TouchableComponent>
   );
 };
+
+export { IconButtonProps, IconButtonTypeKey };
 
 export default IconButton;

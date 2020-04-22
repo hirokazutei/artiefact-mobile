@@ -4,11 +4,11 @@ import { storiesOf } from "@storybook/react-native";
 import { action } from "@storybook/addon-actions";
 import { withKnobs } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
-import BackButton, { Props as NavigationBackButtonProps } from "../";
+import BackButton, { NavigationBackButtonProps } from "../";
 
 const getOptionalProps = (): NavigationBackButtonProps => {
   return {
-    onPress: action("Pressed")
+    onPress: action("Pressed"),
   };
 };
 

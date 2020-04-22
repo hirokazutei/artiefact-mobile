@@ -9,7 +9,7 @@ import { textVariation } from "./const";
 const ANIMATION_DURATION = 1500;
 const ANIMATION_START_OFFSET = -4;
 
-export type Props = { color: keyof ThemePalette };
+type ShiftingTitleProps = { color?: keyof ThemePalette };
 
 type ComponentState = {
   title: UserTitle;
@@ -22,25 +22,36 @@ const { ShiftingTitle: ShiftingTitleComponent } = textFactory<
   null,
   typeof textVariation,
   null,
+  false,
   false
 >({
   themes,
-  textVariations: textVariation
+  textVariation,
 });
 
-export default class ShiftingTitle extends React.Component<
-  Props,
+// TODO: Turn it into functional component
+/**
+ * ShiftingTitle
+ *
+ * @param props - properties
+ *
+ * Optional:
+ *
+ * @param props.color
+ */
+class ShiftingTitle extends React.Component<
+  ShiftingTitleProps,
   React.ComponentState
 > {
   state: ComponentState = {
     title: getRandomUserTitle(),
-    fadeAnim: new Animated.Value(-2)
+    fadeAnim: new Animated.Value(-2),
   };
 
   fadeInNew() {
     Animated.timing(this.state.fadeAnim, {
       toValue: 1,
-      duration: ANIMATION_DURATION
+      duration: ANIMATION_DURATION,
     }).start();
   }
 
@@ -51,7 +62,7 @@ export default class ShiftingTitle extends React.Component<
         this.setState({ fadeAnim: new Animated.Value(ANIMATION_START_OFFSET) });
         this.fadeInNew();
         this.setState({ title: getRandomUserTitle(this.state.title) });
-      }, ANIMATION_DURATION * 2)
+      }, ANIMATION_DURATION * 2),
     });
   }
 
@@ -63,18 +74,17 @@ export default class ShiftingTitle extends React.Component<
 
   render() {
     const { fadeAnim, title } = this.state;
-    const { color } = this.props;
+    const { color = "primary" } = this.props;
     return (
       <Animated.View style={{ opacity: fadeAnim }}>
-        <ShiftingTitleComponent
-          //adjustsFontSizeToFit={true}
-          //numberOfLines={1}
-          //allowFontScaling={false}
-          color={color}
-        >
+        <ShiftingTitleComponent numberOfLines={1} color={color}>
           {title}
         </ShiftingTitleComponent>
       </Animated.View>
     );
   }
 }
+
+export { ShiftingTitleProps };
+
+export default ShiftingTitle;
