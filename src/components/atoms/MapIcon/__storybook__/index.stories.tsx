@@ -3,53 +3,55 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react-native";
 import { select, withKnobs } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
-import { AllColorKeys } from "../../../../symbols";
-import MapIcon, {
-  Props as MapIconButtonProps,
-  MapIconTypes,
-  MapIconSizeKeys
-} from "../";
+import { AllColorKey } from "../../../../symbols";
+import MapIcon, { MapIconProps } from "../";
+import { MapIconTypeKey, MapIconSizeKey } from "../const";
 
 const DEFAULT_PROPS: {
-  name: MapIconTypes;
+  name: MapIconTypeKey;
 } = {
-  name: "user"
+  name: "user",
 };
 
-const typeSelect: Readonly<{ [key in MapIconTypes]: MapIconTypes }> = {
+const selectType: { [key in MapIconTypeKey]: MapIconTypeKey } = {
   user: "user",
   text: "text",
   image: "image",
   audio: "audio",
-  video: "video"
+  video: "video",
 };
 
-const colorSelect: { [key in AllColorKeys]?: AllColorKeys } = {
+const selectColor: { [key in AllColorKey]?: AllColorKey } = {
   primary: "primary",
   secondary: "secondary",
-  tertiary: "tertiary"
+  tertiary: "tertiary",
 };
 
-const sizeSelect: { [key in MapIconSizeKeys]: MapIconSizeKeys } = {
+const selectSize: { [key in MapIconSizeKey]: MapIconSizeKey } = {
   small: "small",
   medium: "medium",
-  large: "large"
+  large: "large",
 };
 
-const getRequiredProps = (overrides = {}): MapIconButtonProps => {
+const getRequiredProps = (
+  overrides: Partial<MapIconProps> = {}
+): MapIconProps => {
   const { name } = {
     ...DEFAULT_PROPS,
-    ...overrides
+    ...overrides,
   };
   return {
-    name: select("name", typeSelect, name)
+    name: select("name", selectType, name),
   };
 };
 
-const getOptionalProps = () => {
+const getOptionalProps = (
+  overrides: Partial<MapIconProps> = {}
+): Partial<MapIconProps> => {
+  const { color, size } = overrides;
   return {
-    color: select("Color", colorSelect, "primary" as AllColorKeys),
-    size: select("Size", sizeSelect, "medium")
+    color: select("Color", selectColor, color),
+    size: select("Size", selectSize, size),
   };
 };
 
@@ -58,4 +60,22 @@ storiesOf("Atoms/MapIcon")
   .addDecorator(withKnobs)
   .add("default", () => (
     <MapIcon {...getRequiredProps()} {...getOptionalProps()} />
+  ))
+  .add("Type: Text", () => (
+    <MapIcon {...getRequiredProps({ name: "text" })} {...getOptionalProps()} />
+  ))
+  .add("Type: Image", () => (
+    <MapIcon {...getRequiredProps({ name: "image" })} {...getOptionalProps()} />
+  ))
+  .add("Type: Audio", () => (
+    <MapIcon {...getRequiredProps({ name: "audio" })} {...getOptionalProps()} />
+  ))
+  .add("Type: Video", () => (
+    <MapIcon {...getRequiredProps({ name: "video" })} {...getOptionalProps()} />
+  ))
+  .add("Size: Small", () => (
+    <MapIcon {...getRequiredProps()} {...getOptionalProps({ size: "small" })} />
+  ))
+  .add("Size: Large", () => (
+    <MapIcon {...getRequiredProps()} {...getOptionalProps({ size: "large" })} />
   ));
