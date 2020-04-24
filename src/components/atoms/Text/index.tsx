@@ -30,8 +30,7 @@ const { Title, Heading, SubHeading, Body, Label, Quote } = textFactory<
 >({
   themes,
   additionalPalettes: additionalColors,
-  textVariation: textVariations,
-  defaultFontSizeKey: "medium",
+  variation: textVariations,
 });
 
 export { TextProps, Title, Heading, SubHeading, Body, Label, Quote };

@@ -71,11 +71,16 @@ const IconButton = ({
     isDisabled,
   });
   const iconName = iconNames[name];
-  const TouchableComponent = isFillType ? Touchable.Fill : Touchable.Outline;
+  const touchableType = isFillType ? "fill" : "outline";
   return (
-    <TouchableComponent color={buttonColor} size={size} {...props}>
+    <Touchable.Circular
+      color={buttonColor}
+      size={size}
+      type={touchableType}
+      {...props}
+    >
       <RNVIcon name={iconName} size={iconSize} color={iconColor} />
-    </TouchableComponent>
+    </Touchable.Circular>
   );
 };
 

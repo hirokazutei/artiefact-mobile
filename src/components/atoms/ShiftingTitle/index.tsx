@@ -1,10 +1,9 @@
 import React from "react";
 import { Animated } from "react-native";
-import { textFactory, ThemePalette } from "react-native-kinpaku-ui";
+import { ThemePalette } from "react-native-kinpaku-ui";
 import { getRandomUserTitle } from "../../../helper/wording";
 import { UserTitle } from "../../../constants/messages";
-import { themes } from "../../../symbols";
-import { textVariation } from "./const";
+import { Title } from "../Text";
 
 const ANIMATION_DURATION = 1500;
 const ANIMATION_START_OFFSET = -4;
@@ -16,18 +15,6 @@ type ComponentState = {
   fadeAnim: Animated.Value;
   titleUpdate?: void;
 };
-
-const { ShiftingTitle: ShiftingTitleComponent } = textFactory<
-  typeof themes,
-  null,
-  typeof textVariation,
-  null,
-  false,
-  false
->({
-  themes,
-  textVariation,
-});
 
 // TODO: Turn it into functional component
 /**
@@ -77,9 +64,9 @@ class ShiftingTitle extends React.Component<
     const { color = "primary" } = this.props;
     return (
       <Animated.View style={{ opacity: fadeAnim }}>
-        <ShiftingTitleComponent numberOfLines={1} color={color}>
+        <Title numberOfLines={1} color={color}>
           {title}
-        </ShiftingTitleComponent>
+        </Title>
       </Animated.View>
     );
   }
