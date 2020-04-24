@@ -1,50 +1,44 @@
-import { ButtonSizeProps } from "react-native-kinpaku-ui";
+import { TouchableSizeProps } from "react-native-kinpaku-ui";
 
-type ButtonSizeKey = "tiny" | "small" | "medium" | "large" | "huge" | "massive";
+type TouchableSizeKey =
+  | "tiny"
+  | "small"
+  | "medium"
+  | "large"
+  | "huge"
+  | "massive";
 
-const buttonSizes: { [key in ButtonSizeKey | "default"]: ButtonSizeProps } = {
+const touchableSizes: {
+  [key in TouchableSizeKey | "default"]: TouchableSizeProps
+} = {
   tiny: {
-    borderRadius: 4,
-    fontSize: 10,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
+    padding: 4,
+    borderRadius: 6,
   },
   small: {
-    borderRadius: 5,
-    fontSize: 12,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+    padding: 6,
+    borderRadius: 9,
   },
   medium: {
-    borderRadius: 6,
-    fontSize: 16,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    padding: 8,
+    borderRadius: 12,
   },
   large: {
-    borderRadius: 76,
-    fontSize: 20,
-    paddingHorizontal: 14,
-    paddingVertical: 7,
+    padding: 8,
+    borderRadius: 16,
   },
   huge: {
-    borderRadius: 8,
-    fontSize: 24,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
+    padding: 12,
+    borderRadius: 18,
   },
   massive: {
-    borderRadius: 10,
-    fontSize: 32,
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+    padding: 12,
+    borderRadius: 24,
   },
   default: {
-    borderRadius: 6,
-    fontSize: 16,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    padding: 8,
+    borderRadius: 12,
   },
 };
 
-export { ButtonSizeKey, buttonSizes };
+export { TouchableSizeKey, touchableSizes };
