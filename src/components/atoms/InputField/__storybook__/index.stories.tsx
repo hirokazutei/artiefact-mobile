@@ -78,7 +78,7 @@ const geOptionalProps = (
     isDisabled = false,
     maxLength,
     placeholder = "",
-    shape,
+    type,
     textColor,
   } = overrides;
   return {
@@ -99,7 +99,7 @@ const geOptionalProps = (
     onFocus: action("on-focus"),
     onKeyPress: action("on-key-press"),
     placeholder: text("Place Holder", placeholder),
-    shape,
+    type,
     textColor: select("Text Color Options", selectAllColor, textColor),
   };
 };
@@ -112,16 +112,16 @@ storiesOf("UI/InputField", module)
   .add("Default", () => (
     <InputField.freeField {...getRequiredProps()} {...geOptionalProps()} />
   ))
-  .add("Shape: Sharp", () => (
+  .add("Shape: Underline", () => (
     <InputField.freeField
       {...getRequiredProps()}
-      {...geOptionalProps({ shape: "sharp" })}
+      {...geOptionalProps({ type: "underline" })}
     />
   ))
-  .add("Shape: Circular", () => (
+  .add("Shape: Fill", () => (
     <InputField.freeField
       {...getRequiredProps()}
-      {...geOptionalProps({ shape: "circular" })}
+      {...geOptionalProps({ type: "fill" })}
     />
   ))
   .add("Disabled", () => (

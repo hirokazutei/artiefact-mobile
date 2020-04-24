@@ -36,28 +36,28 @@ const geOptionalProps = (
 ): Partial<TextProps> => {
   const {
     align,
-    bold = false,
     color,
     ellipsizeMode,
-    italic = false,
-    lineThrough = false,
+    isBold = false,
+    isItalic = false,
+    isLinethrough = false,
+    isUnderline = false,
     numberOfLines = 1,
     size,
-    underline = false,
   } = overrides;
   return {
     align: select("Align Options", selectTextAlign, align),
-    bold: boolean("isBold", bold),
+    isBold: boolean("isBold", isBold),
     color: select("Color Options", selectAllColor, color),
     ellipsizeMode: select(
       "Ellipsize Mode Options",
       selectEllipsizeMode,
       ellipsizeMode
     ),
-    italic: boolean("isItalic", italic),
-    lineThrough: boolean("isLineThrough", lineThrough),
+    isItalic: boolean("isItalic", isItalic),
+    isLinethrough: boolean("isLineThrough", isLinethrough),
     numberOfLines: number("Number of Lines", numberOfLines),
-    underline: boolean("isUnderline", underline),
+    isUnderline: boolean("isUnderline", isUnderline),
     size: select("Size Options", selectSize, size),
   };
 };

@@ -44,20 +44,33 @@ storiesOf("Atom/Touchable", module)
   ))
   .addDecorator(withKnobs)
   .add("Default", () => (
-    <Touchable.Fill {...getRequiredProps()} {...geOptionalProps()}>
+    <Touchable.Circular {...getRequiredProps()} {...geOptionalProps()}>
       {DEFAULT_CHILDREN}
-    </Touchable.Fill>
+    </Touchable.Circular>
+  ))
+  .add("Round", () => (
+    <Touchable.Round {...getRequiredProps()} {...geOptionalProps()}>
+      {DEFAULT_CHILDREN}
+    </Touchable.Round>
+  ))
+  .add("Sharp", () => (
+    <Touchable.Sharp {...getRequiredProps()} {...geOptionalProps()}>
+      {DEFAULT_CHILDREN}
+    </Touchable.Sharp>
   ))
   .add("Outline", () => (
-    <Touchable.Outline {...getRequiredProps()} {...geOptionalProps()}>
+    <Touchable.Round
+      {...getRequiredProps()}
+      {...geOptionalProps({ type: "outline" })}
+    >
       {DEFAULT_CHILDREN}
-    </Touchable.Outline>
+    </Touchable.Round>
   ))
-  .add("Disabled", () => (
-    <Touchable.Fill
+  .add("Circular", () => (
+    <Touchable.Round
       {...getRequiredProps()}
       {...geOptionalProps({ isDisabled: true })}
     >
       {DEFAULT_CHILDREN}
-    </Touchable.Fill>
+    </Touchable.Round>
   ));
