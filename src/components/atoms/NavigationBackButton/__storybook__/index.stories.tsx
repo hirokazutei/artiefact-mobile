@@ -12,7 +12,7 @@ const getOptionalProps = (): NavigationBackButtonProps => {
   };
 };
 
-storiesOf("Atoms/NavigationBackButton")
+storiesOf("Atoms/NavigationBackButton", module)
   .addDecorator((story: () => React.ReactElement) => <Provider story={story} />)
   .addDecorator(withKnobs)
   .add("default", () => <BackButton {...getOptionalProps()} />);

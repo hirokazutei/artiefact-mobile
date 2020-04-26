@@ -62,7 +62,7 @@ const geOptionalProps = (
   };
 };
 
-storiesOf("Atom/Touchable", module)
+storiesOf("Atoms/Text", module)
   .addDecorator((story: () => React.ReactElement<null>) => (
     <Provider story={story} />
   ))

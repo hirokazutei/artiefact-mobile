@@ -19,6 +19,7 @@ const textVariations: {
       small: 28,
       medium: 32,
       large: 36,
+      default: 32,
     },
   },
   Heading: {
@@ -27,6 +28,7 @@ const textVariations: {
       small: 24,
       medium: 28,
       large: 32,
+      default: 328,
     },
   },
   SubHeading: {
@@ -35,6 +37,7 @@ const textVariations: {
       small: 20,
       medium: 24,
       large: 28,
+      default: 24,
     },
   },
   Body: {
@@ -42,6 +45,7 @@ const textVariations: {
       small: 14,
       medium: 16,
       large: 18,
+      default: 14,
     },
   },
   Label: {
@@ -49,6 +53,7 @@ const textVariations: {
       small: 12,
       medium: 14,
       large: 16,
+      default: 14,
     },
   },
   Quote: {
@@ -56,6 +61,7 @@ const textVariations: {
       small: 14,
       medium: 16,
       large: 18,
+      default: 16,
     },
     isItalic: true,
   },

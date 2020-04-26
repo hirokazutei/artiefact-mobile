@@ -29,26 +29,33 @@ const getRequiredProps = (): Omit<TouchableProps, "children"> => {
 const geOptionalProps = (
   overrides: Partial<TouchableProps> = {}
 ): Partial<TouchableProps> => {
-  const { color, isDisabled = false, isStretched = false, size } = overrides;
+  const {
+    color,
+    isDisabled = false,
+    isStretched = false,
+    size,
+    type,
+  } = overrides;
   return {
     color: select("Color Options", selectAllColor, color),
     isDisabled: boolean("isDisabled", isDisabled),
     isStretched: boolean("isStretched", isStretched),
     size: select("Size Options", selectSize, size),
+    type,
   };
 };
 
-storiesOf("Atom/Touchable", module)
+storiesOf("Atoms/Touchable", module)
   .addDecorator((story: () => React.ReactElement<null>) => (
     <Provider story={story} />
   ))
   .addDecorator(withKnobs)
-  .add("Default", () => (
+  .add("Fill: Default", () => (
     <Touchable.Circular {...getRequiredProps()} {...geOptionalProps()}>
       {DEFAULT_CHILDREN}
     </Touchable.Circular>
   ))
-  .add("Round", () => (
+  .add("Fill: Round", () => (
     <Touchable.Round {...getRequiredProps()} {...geOptionalProps()}>
       {DEFAULT_CHILDREN}
     </Touchable.Round>
@@ -58,19 +65,27 @@ storiesOf("Atom/Touchable", module)
       {DEFAULT_CHILDREN}
     </Touchable.Sharp>
   ))
-  .add("Outline", () => (
-    <Touchable.Round
+  .add("Fill: Outline: Default", () => (
+    <Touchable.Sharp
       {...getRequiredProps()}
       {...geOptionalProps({ type: "outline" })}
     >
       {DEFAULT_CHILDREN}
-    </Touchable.Round>
+    </Touchable.Sharp>
   ))
-  .add("Circular", () => (
-    <Touchable.Round
+  .add("Fill: Outline", () => (
+    <Touchable.Sharp
       {...getRequiredProps()}
-      {...geOptionalProps({ isDisabled: true })}
+      {...geOptionalProps({ type: "outline" })}
     >
       {DEFAULT_CHILDREN}
-    </Touchable.Round>
+    </Touchable.Sharp>
+  ))
+  .add("Fill: Outline", () => (
+    <Touchable.Sharp
+      {...getRequiredProps()}
+      {...geOptionalProps({ type: "outline" })}
+    >
+      {DEFAULT_CHILDREN}
+    </Touchable.Sharp>
   ));

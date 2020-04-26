@@ -33,7 +33,7 @@ const getOptionalProps = (
   };
 };
 
-storiesOf("Atom/CheckBox", module)
+storiesOf("Atoms/CheckBox", module)
   .addDecorator((story: () => React.ReactElement<null>) => (
     <Provider story={story} />
   ))
