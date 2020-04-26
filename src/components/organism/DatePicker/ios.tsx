@@ -29,20 +29,20 @@ export default class IOSDatePicker extends React.Component<Props, State> {
   render() {
     const { confirmButton, cancelButton, mode, isVisible } = this.props;
     const { chosenDate } = this.state;
-    const { onPress, title } = confirmButton;
+    const { onPress, label } = confirmButton;
     const secondaryButton = cancelButton && cancelButton;
     return (
       <Modal
         isVisible={isVisible}
         primaryButton={{
           onPress: () => onPress(chosenDate),
-          title: title
+          label,
         }}
         secondaryButton={secondaryButton}
       >
         <DatePickerIOS
           date={this.state.chosenDate}
-          onDateChange={newDate => this.setDate(newDate)}
+          onDateChange={(newDate) => this.setDate(newDate)}
           maximumDate={new Date()}
           mode={mode}
         />

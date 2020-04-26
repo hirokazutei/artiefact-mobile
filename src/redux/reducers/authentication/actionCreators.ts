@@ -18,7 +18,7 @@ export const changeEmailActionCreator = (
 ): Action => {
   return {
     type: actions.AUTH_CHANGE_EMAIL,
-    payload: { value: event }
+    payload: { value: event },
   };
 };
 
@@ -55,5 +55,5 @@ export default {
   showDatePickerModalActionCreator,
   onPressTermsActionCreator,
   resetSignUpFormActionCreator,
-  resetSignInFormActionCreator
+  resetSignInFormActionCreator,
 };

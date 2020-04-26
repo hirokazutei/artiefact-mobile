@@ -52,7 +52,7 @@ type UsernameConditions = {
 export const usernameValidator = (value: string): UsernameConditions => {
   return {
     hasLength: checkUsernameLength(value),
-    hasOnlyAllowedChars: checkUsernameAllowedChars(value)
+    hasOnlyAllowedChars: checkUsernameAllowedChars(value),
   };
 };
 
@@ -70,6 +70,6 @@ export const passwordValidator = (value: string): PasswordConditions => {
     hasLower: checkHasLower(value),
     hasUpper: checkHasUpper(value),
     hasNumber: checkHasNumber(value),
-    hasLength: checkPasswordLength(value)
+    hasLength: checkPasswordLength(value),
   };
 };

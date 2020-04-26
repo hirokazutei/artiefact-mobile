@@ -9,7 +9,7 @@ import ArtiefactError, { errorTypeNames } from "../../../entity/Error";
 import {
   checkPermission,
   requestPermission,
-  permissionStatus
+  permissionStatus,
 } from "../../../helper/permission";
 import { errorHandler } from "../../../logics/error";
 import { DEFAULT_DELTA } from "./const";
@@ -21,11 +21,11 @@ const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
     justifyContent: "flex-end",
-    alignItems: "center"
+    alignItems: "center",
   },
   map: {
-    ...StyleSheet.absoluteFillObject
-  }
+    ...StyleSheet.absoluteFillObject,
+  },
 });
 
 const DEFAULT_PROPS = {
@@ -35,7 +35,7 @@ const DEFAULT_PROPS = {
   zoomControlEnabled: false,
   pitchEnabled: false,
   toolbarEnabled: false,
-  moveonMarkerPress: false
+  moveonMarkerPress: false,
 };
 
 export type Props = {
@@ -77,7 +77,7 @@ export default class Map extends React.Component<Props, State> {
   // Watches the current location of the user
   watchPosition() {
     const watchID = geolocation.watchPosition(
-      position => {
+      (position) => {
         const region = {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
@@ -88,14 +88,14 @@ export default class Map extends React.Component<Props, State> {
           longitudeDelta:
             (this.state.currentRegion &&
               this.state.currentRegion.longitudeDelta) ||
-            DEFAULT_DELTA * ASPECT_RATIO
+            DEFAULT_DELTA * ASPECT_RATIO,
         };
         this.setRegion(region);
       },
       (error: PositionError) => {
         const artiefactError = new ArtiefactError({
           error,
-          errorType: errorTypeNames.positionError
+          errorType: errorTypeNames.positionError,
         });
         errorHandler(artiefactError);
       }
@@ -116,11 +116,11 @@ export default class Map extends React.Component<Props, State> {
         message: "message",
         buttonPositive: "positive",
         buttonNegative: "negative",
-        buttonNeutral: "neutral"
+        buttonNeutral: "neutral",
       };
       const requestPermissionResult = await requestPermission({
         type: "location",
-        rationale
+        rationale,
       });
       if (
         requestPermissionResult === permissionStatus.denied ||
@@ -145,14 +145,14 @@ export default class Map extends React.Component<Props, State> {
           longitudeDelta:
             (this.state.currentRegion &&
               this.state.currentRegion.longitudeDelta) ||
-            DEFAULT_DELTA * ASPECT_RATIO
+            DEFAULT_DELTA * ASPECT_RATIO,
         };
         this.setRegion(newRegion);
       },
-      error => {
+      (error) => {
         const artiefactError = new ArtiefactError({
           error,
-          errorType: errorTypeNames.positionError
+          errorType: errorTypeNames.positionError,
         });
         errorHandler(artiefactError);
       },
@@ -174,7 +174,7 @@ export default class Map extends React.Component<Props, State> {
               latitude: this.state.currentRegion.latitude,
               longitude: this.state.currentRegion.longitude,
               latitudeDelta: this.state.currentRegion.latitudeDelta,
-              longitudeDelta: this.state.currentRegion.longitudeDelta
+              longitudeDelta: this.state.currentRegion.longitudeDelta,
             }}
             {...DEFAULT_PROPS}
           >
@@ -189,7 +189,7 @@ export default class Map extends React.Component<Props, State> {
           <SubHeading>Permission not granted for maps.</SubHeading>
           <Space.Stack size="medium" />
           <Button
-            title="Request Permission"
+            label="Request Permission"
             onPress={() => this.checkMapPermission()}
           />
         </Space.Inset>

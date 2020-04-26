@@ -21,7 +21,7 @@ export function* signUpHandler() {
       // TODO Determine Axios Error and Server Error
       const artiefactError = new ArtiefactError({
         error,
-        errorType: errorTypeNames.axiosError
+        errorType: errorTypeNames.axiosError,
       });
       errorHandler(artiefactError);
     });

@@ -6,5 +6,5 @@ export const hideErrorModalActionCreator = (): Action => {
 };
 
 export default {
-  hideErrorModalActionCreator
+  hideErrorModalActionCreator,
 };

@@ -7,12 +7,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "black"
+    backgroundColor: "black",
   },
   preview: {
     flex: 1,
     justifyContent: "flex-end",
-    alignItems: "center"
+    alignItems: "center",
   },
   capture: {
     flex: 0,
@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
     padding: 15,
     paddingHorizontal: 20,
     alignSelf: "center",
-    margin: 20
-  }
+    margin: 20,
+  },
 });
 
 const PendingView = () => (
@@ -31,7 +31,7 @@ const PendingView = () => (
       flex: 1,
       backgroundColor: "lightgreen",
       justifyContent: "center",
-      alignItems: "center"
+      alignItems: "center",
     }}
   >
     <Text>Waiting</Text>
@@ -50,13 +50,13 @@ class Camera extends PureComponent {
             title: "Permission to use camera",
             message: "We need your permission to use your camera",
             buttonPositive: "Ok",
-            buttonNegative: "Cancel"
+            buttonNegative: "Cancel",
           }}
           androidRecordAudioPermissionOptions={{
             title: "Permission to use audio recording",
             message: "We need your permission to use your audio",
             buttonPositive: "Ok",
-            buttonNegative: "Cancel"
+            buttonNegative: "Cancel",
           }}
         >
           {({ camera, status, recordAudioPermissionStatus }) => {
@@ -68,7 +68,7 @@ class Camera extends PureComponent {
                 style={{
                   flex: 0,
                   flexDirection: "row",
-                  justifyContent: "center"
+                  justifyContent: "center",
                 }}
               >
                 <TouchableOpacity

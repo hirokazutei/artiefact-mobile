@@ -32,7 +32,7 @@ const Modal: React.FC<Props> = (props: Props): React.ReactElement => {
     onModalShow,
     onSwipeComplete,
     primaryButton,
-    secondaryButton
+    secondaryButton,
   } = props;
   const styles = stylizeModal();
   const SecondaryButton = secondaryButton && (

@@ -5,7 +5,7 @@ import { allColors } from "../src/symbols";
 
 const Provider = ({
   backgroundColor = allColors.background,
-  story
+  story,
 }: {
   backgroundColor?: string;
   story: () => React.ReactElement;
@@ -18,7 +18,7 @@ const Provider = ({
         justifyContent: "space-evenly",
         alignItems: "center",
         backgroundColor,
-        padding: 40
+        padding: 40,
       }}
     >
       {story()}

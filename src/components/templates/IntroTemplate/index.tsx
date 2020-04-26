@@ -9,7 +9,7 @@ type Styles = {
 };
 
 const styles: Styles = StyleSheet.create<Styles>({
-  base: { flex: 1, flexDirection: "column", justifyContent: "center" }
+  base: { flex: 1, flexDirection: "column", justifyContent: "center" },
 });
 
 type Props = {
@@ -19,7 +19,7 @@ type Props = {
 
 const IntroTemplate: React.FC<Props> = ({
   onPressSignIn,
-  onPressSignUp
+  onPressSignUp,
 }: Props): React.ReactElement => {
   return (
     <View style={styles.base}>
@@ -31,14 +31,14 @@ const IntroTemplate: React.FC<Props> = ({
         <Button
           size="massive"
           color="primary"
-          title="Login"
+          label="Login"
           onPress={onPressSignIn}
         />
         <Space.Stack size="medium" />
         <Button
           size="massive"
           color="secondary"
-          title="SignUp"
+          label="SignUp"
           onPress={onPressSignUp}
         />
       </Space.Inset>

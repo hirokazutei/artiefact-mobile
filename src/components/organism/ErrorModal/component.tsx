@@ -4,13 +4,13 @@ import Modal from "../../molecules/Modal";
 import { SubHeading } from "../../atoms/Text";
 import Space from "../../atoms/Space";
 import Icon from "../../atoms/Icon";
-import { IconTypes } from "../../atoms/Icon";
+import { IconTypeKey } from "../../atoms/Icon/const";
 
 type Props = {
   onPress: () => void;
   isVisible: boolean;
   message: string;
-  icon?: IconTypes;
+  icon?: IconTypeKey;
 };
 
 type Styles = {
@@ -19,8 +19,8 @@ type Styles = {
 
 const styles = StyleSheet.create<Styles>({
   iconView: {
-    alignSelf: "center"
-  }
+    alignSelf: "center",
+  },
 });
 
 export default class ErrorModal extends React.Component<Props> {
@@ -31,7 +31,7 @@ export default class ErrorModal extends React.Component<Props> {
         isVisible={isVisible}
         primaryButton={{
           onPress: onPress,
-          title: "OK"
+          label: "OK",
         }}
       >
         <Space.Inset top="huge" horizontal="huge">

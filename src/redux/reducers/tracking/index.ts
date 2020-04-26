@@ -13,7 +13,7 @@ export type State = {
 const defaultState: Readonly<State> = {
   isTracking: false,
   longitudes: [],
-  latitudes: []
+  latitudes: [],
 };
 
 export type Action = {

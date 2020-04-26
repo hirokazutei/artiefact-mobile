@@ -1,6 +1,6 @@
 import {
   NavigationNavigateAction,
-  NavigationScreenProp
+  NavigationScreenProp,
 } from "react-navigation";
 
 export default class Navigator {

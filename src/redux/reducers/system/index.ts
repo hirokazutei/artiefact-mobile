@@ -8,7 +8,7 @@ export type State = {
 
 const defaultState: Readonly<State> = {
   isConnected: false,
-  isListening: false
+  isListening: false,
 };
 
 export type Action = {

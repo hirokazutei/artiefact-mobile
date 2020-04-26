@@ -6,9 +6,7 @@ import store from "../../../store";
 
 type Props = NavigationProps;
 
-const InitializationPage: React.FC<Props> = (
-  props: Props
-): React.ReactElement => {
+const InitializationPage: React.FC<Props> = (): React.ReactElement => {
   useEffect(() => {
     const { dispatch } = store;
     dispatch(initizationActionCreator());

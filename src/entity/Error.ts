@@ -12,7 +12,7 @@ export const errorTypeNames: Readonly<{ [key in ErrorTypes]: ErrorTypes }> = {
   networkError: "networkError",
   positionError: "positionError",
   systemError: "systemError",
-  unknownError: "unknownError"
+  unknownError: "unknownError",
 };
 
 export type EncompassingErrors = Error | AxiosError | PositionError;
@@ -23,7 +23,7 @@ export default class ArtiefactError extends Error {
 
   constructor({
     error,
-    errorType
+    errorType,
   }: {
     error: EncompassingErrors;
     errorType: ErrorTypes;

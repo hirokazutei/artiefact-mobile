@@ -21,7 +21,7 @@ export default class TokenManager {
         .catch((error: Error) => {
           const artiefactError = new ArtiefactError({
             error,
-            errorType: errorTypeNames.systemError
+            errorType: errorTypeNames.systemError,
           });
           errorHandler(artiefactError);
         });
@@ -31,7 +31,7 @@ export default class TokenManager {
   }
 
   static clearAccessToken = (): Promise<any> => {
-    return Keychain.resetInternetCredentials(env.API_ENDPOINT);
+    return Keychain.resetInternetCredentials(env.API_ENDPOINT || "");
   };
 
   static createToken = (params: TokenParams): Token => {
@@ -40,15 +40,15 @@ export default class TokenManager {
 
   static saveAccessToken = (token: Token): Promise<any> => {
     return Keychain.setInternetCredentials(
-      env.API_ENDPOINT,
+      env.API_ENDPOINT || "",
       KEYCHAIN_USERNAME,
       JSON.stringify(token)
     );
   };
 
   static loadAccessToken = (): Promise<Token> => {
-    return Keychain.getInternetCredentials(env.API_ENDPOINT)
-      .then(credentials => {
+    return Keychain.getInternetCredentials(env.API_ENDPOINT || "")
+      .then((credentials) => {
         if (credentials && credentials.password) {
           return JSON.parse(credentials.password);
         }
@@ -57,7 +57,7 @@ export default class TokenManager {
       .catch((error: Error) => {
         const artiefactError = new ArtiefactError({
           error,
-          errorType: errorTypeNames.systemError
+          errorType: errorTypeNames.systemError,
         });
         errorHandler(artiefactError);
       });

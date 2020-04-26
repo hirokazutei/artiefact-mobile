@@ -14,14 +14,14 @@ type Styles = {
 
 const styles: Styles = StyleSheet.create<Styles>({
   base: {
-    ...StyleSheet.absoluteFillObject
+    ...StyleSheet.absoluteFillObject,
   },
   button: {},
   buttonView: {
     flex: 1,
     flexDirection: "column",
-    justifyContent: "flex-end"
-  }
+    justifyContent: "flex-end",
+  },
 });
 
 type Props = NavigationProps;

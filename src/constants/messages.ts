@@ -24,5 +24,5 @@ export const userTitle: Array<UserTitle> = [
   "Wayfarer",
   "Archaeologist",
   "Professor",
-  "Paleologist"
+  "Paleologist",
 ];

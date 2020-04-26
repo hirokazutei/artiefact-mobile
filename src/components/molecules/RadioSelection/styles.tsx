@@ -11,7 +11,7 @@ export const stylizeRadioSelection = (): Styles => {
   return StyleSheet.create<Styles>({
     base: {
       flexDirection: "row",
-      alignItems: "center"
-    }
+      alignItems: "center",
+    },
   });
 };
