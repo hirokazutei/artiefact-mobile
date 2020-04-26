@@ -1,9 +1,9 @@
 import { Reducer } from "redux";
 import { ActionTypes, actions } from "./actionTypes";
-import { IconTypes } from "../../../components/atoms/Icon";
+import { IconTypeKey } from "../../../components/atoms/Icon/const";
 
 export type State = {
-  icon?: IconTypes;
+  icon?: IconTypeKey;
   showModal: boolean;
   message: string;
 };
@@ -11,7 +11,7 @@ export type State = {
 const defaultState: Readonly<State> = {
   icon: undefined,
   showModal: false,
-  message: ""
+  message: "",
 };
 
 export type Action = {

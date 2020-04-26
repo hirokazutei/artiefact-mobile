@@ -14,8 +14,8 @@ const styles: Styles = StyleSheet.create<Styles>({
     flexDirection: "row",
     justifyContent: "center",
     padding: spacing.macro,
-    backgroundColor: allColors.background
-  }
+    backgroundColor: allColors.background,
+  },
 });
 
 const LoadingTemplate: React.FC = (): React.ReactElement => {

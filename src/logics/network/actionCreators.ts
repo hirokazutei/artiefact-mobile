@@ -4,7 +4,7 @@ import { Action } from "../../redux/types";
 export const connectionChangeActionCreator = (isConnected: boolean): Action => {
   return {
     type: actions.CONNECTION_CHANGE,
-    payload: { isConnected }
+    payload: { isConnected },
   };
 };
 
@@ -19,5 +19,5 @@ export const stopListeningConnectionActionCreator = (): Action => {
 export default {
   connectionChangeActionCreator,
   startListeningConnectionActionCreator,
-  stopListeningConnectionActionCreator
+  stopListeningConnectionActionCreator,
 };

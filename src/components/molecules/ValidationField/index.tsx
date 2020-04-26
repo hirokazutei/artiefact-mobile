@@ -1,13 +1,13 @@
 import React from "react";
 import { View, ViewStyle, StyleSheet } from "react-native";
-import { Props as InputFieldProps } from "../../atoms/InputField";
+import { InputFieldProps } from "../../atoms/InputField";
 import InputField from "../../atoms/InputField";
 import { Body } from "../../atoms/Text";
 import Space from "../../atoms/Space";
 import { borders, allColors, themes } from "../../../symbols";
 import { TextColorKeys } from "../../../symbols";
 import Icon from "../../atoms/Icon";
-import { IconTypes, IconSizes } from "../../atoms/Icon";
+import { IconTypeKey, IconSizeKey } from "../../atoms/Icon/const";
 import { Diff } from "../../../type/tsUtility";
 const RNIndicator = require("react-native-indicator");
 
@@ -28,15 +28,15 @@ type Styles = {
 
 const styles = StyleSheet.create<Styles>({
   iconWrapper: {
-    alignSelf: "center"
+    alignSelf: "center",
   },
   inputFieldWrapper: {
-    flex: 1
+    flex: 1,
   },
   validationFieldWrapper: {
     flexDirection: "row",
-    borderBottomWidth: borders.thickness.thin
-  }
+    borderBottomWidth: borders.thickness.thin,
+  },
 });
 
 export type ValidationResultType = "success" | "warning" | "error";
@@ -44,16 +44,16 @@ export type ValidationResultType = "success" | "warning" | "error";
 type ValidationFieldColorKeys = keyof (typeof themes & typeof allColors);
 
 const validationIconNames: Readonly<
-  { [key in ValidationResultType]: IconTypes | null }
+  { [key in ValidationResultType]: IconTypeKey | null }
 > = {
   success: "successCircle",
   warning: "warningCircle",
-  error: "errorCircle"
+  error: "errorCircle",
 };
 
 const validationFieldIcons = (
   status: ValidationResultType,
-  size: IconSizes,
+  size: IconSizeKey,
   color: ValidationFieldColorKeys
 ): React.ReactElement => {
   const iconName = validationIconNames[status];
@@ -69,7 +69,7 @@ const listMessagesColor: Readonly<
 > = {
   info: "text",
   warning: "secondary",
-  error: "danger"
+  error: "danger",
 };
 
 const listMessages = (
@@ -97,7 +97,7 @@ const listMessages = (
  */
 const ValidationField: React.FC<Props> = (props: Props): React.ReactElement => {
   const {
-    color = "primary",
+    color = "primary" as keyof typeof allColors,
     errors,
     infos,
     isValidating,
@@ -105,7 +105,7 @@ const ValidationField: React.FC<Props> = (props: Props): React.ReactElement => {
     warnings,
     ...inputFieldProps
   } = props;
-  const colorLiteral = allColors[color];
+  const colorLiteral = allColors[color as keyof typeof allColors];
   let validationIcon = validationResult
     ? validationFieldIcons(validationResult, "medium", color)
     : null;

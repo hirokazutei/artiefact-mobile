@@ -18,8 +18,8 @@ const styles: Styles = StyleSheet.create<Styles>({
   base: {
     flex: 1,
     flexDirection: "column",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });
 
 const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
@@ -46,7 +46,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
     showDatePickerModal,
     username,
     usernameErrors,
-    usernameValidationStatus
+    usernameValidationStatus,
   } = props;
   const birthdayField =
     changedBirthday && birthday ? formatDate(birthday) : "Enter Birthday";

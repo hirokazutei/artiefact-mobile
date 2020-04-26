@@ -22,7 +22,7 @@ export default connect(
     const { passwordForm, usernameForm } = state.authentication;
     return {
       password: passwordForm.value,
-      username: usernameForm.value
+      username: usernameForm.value,
     };
   },
   (dispatch: Dispatch): DispatchProps => {
@@ -38,7 +38,7 @@ export default connect(
       },
       onPressSignIn: () => {
         dispatch(useCaseActionCreators.signInActionCreator());
-      }
+      },
     };
   }
 )(SignInPage);

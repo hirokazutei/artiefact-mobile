@@ -23,14 +23,14 @@ export const signUpSelector = (state: State): SignUpSelected => {
     usernameForm,
     passwordForm,
     emailForm,
-    birthdayForm
+    birthdayForm,
   } = state.authentication;
   const convertedBirthday = datetimeToDateformatter(birthdayForm.value);
   return {
     username: usernameForm.value,
     password: passwordForm.value,
     email: emailForm.value,
-    birthday: convertedBirthday
+    birthday: convertedBirthday,
   };
 };
 

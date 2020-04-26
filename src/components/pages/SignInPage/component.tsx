@@ -29,13 +29,13 @@ class SignInPage extends React.Component<Props> {
             navigation.state.params.onPressBack
           }
         />
-      )
+      ),
     };
   };
 
   componentDidMount() {
     this.props.navigation.setParams({
-      onPressBack: this.props.onPressBack
+      onPressBack: this.props.onPressBack,
     });
   }
 

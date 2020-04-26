@@ -9,10 +9,10 @@ import Navigator from "../../navigation/navigationService";
 
 function* initializationHandler() {
   const token = yield TokenManager.loadAccessToken()
-    .then(token => {
+    .then((token) => {
       return token;
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
       return null;
     });
@@ -37,7 +37,7 @@ function* initializationHandler() {
     const authClient = AuthClient.get();
     const response = yield authClient
       .getUser({
-        bearerToken: `Bearer ${token.token}`
+        bearerToken: `Bearer ${token.token}`,
       })
       .then((response: object & { data: initializationRespose }) => response)
       .catch((error: Error) => {
@@ -51,7 +51,7 @@ function* initializationHandler() {
       // put(artiefact_user);
       nav.dispatch(
         NavigationActions.navigate({
-          routeName: routes.mainStackRoutes.mapStack
+          routeName: routes.mainStackRoutes.mapStack,
         })
       );
       return;

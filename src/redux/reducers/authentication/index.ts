@@ -58,12 +58,12 @@ const defaultState: Readonly<State> = {
     isDirty: false,
     isValidating: false,
     isAvailable: null,
-    hideErrors: true
+    hideErrors: true,
   },
-  showDatePickerModal: false
+  showDatePickerModal: false,
 };
 
-export type Action = {
+export type AuthAction = {
   type: ActionTypes;
   payload: any;
 };
@@ -80,7 +80,7 @@ export const reducer: Reducer<State, Action> = (
       newState.emailForm = {
         ...state.emailForm,
         value: payload.value,
-        isDirty: true
+        isDirty: true,
       };
       break;
     }
@@ -88,7 +88,7 @@ export const reducer: Reducer<State, Action> = (
       newState.emailForm = {
         ...state.emailForm,
         isValid: payload.isValid,
-        hideErrors: false
+        hideErrors: false,
       };
       break;
     }
@@ -97,7 +97,7 @@ export const reducer: Reducer<State, Action> = (
       newState.usernameForm = {
         ...state.usernameForm,
         value: payload.value,
-        isDirty: true
+        isDirty: true,
       };
       break;
     }
@@ -106,7 +106,7 @@ export const reducer: Reducer<State, Action> = (
         ...state.usernameForm,
         hasLength: payload.hasLength,
         hasOnlyAllowedChars: payload.hasOnlyAllowedChars,
-        hideErrors: false
+        hideErrors: false,
       };
 
       break;
@@ -115,7 +115,7 @@ export const reducer: Reducer<State, Action> = (
       newState.usernameForm = {
         ...state.usernameForm,
         isValidating: payload.isValidating,
-        isAvailable: true
+        isAvailable: true,
       };
       break;
     }
@@ -124,7 +124,7 @@ export const reducer: Reducer<State, Action> = (
         ...state.usernameForm,
         isValidating: false,
         isAvailable: payload.isAvailable,
-        hideErrors: false
+        hideErrors: false,
       };
       break;
     }
@@ -133,7 +133,7 @@ export const reducer: Reducer<State, Action> = (
       newState.passwordForm = {
         ...state.passwordForm,
         value: payload.value,
-        isDirty: true
+        isDirty: true,
       };
       break;
     }
@@ -143,7 +143,7 @@ export const reducer: Reducer<State, Action> = (
         hasLength: payload.hasLength,
         hasLower: payload.hasLower,
         hasUpper: payload.hasUpper,
-        hideErrors: false
+        hideErrors: false,
       };
       break;
     }
@@ -152,7 +152,7 @@ export const reducer: Reducer<State, Action> = (
       newState.agreeToTermsForm = {
         value: !state.agreeToTermsForm.value,
         date: new Date(),
-        isDirty: true
+        isDirty: true,
       };
       break;
     }

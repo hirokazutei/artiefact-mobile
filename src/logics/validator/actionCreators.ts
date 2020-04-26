@@ -18,5 +18,5 @@ export default {
   checkUsernameAvailabilityActionCreator,
   delayedUsernameValidationActionCreator,
   delayedPasswordValidationActionCreator,
-  delayedEmailValidationActionCreator
+  delayedEmailValidationActionCreator,
 };

@@ -16,5 +16,5 @@ export const spacing: Readonly<{ [key in SpacingKeys]: number }> = {
   large: 16,
   huge: 24,
   massive: 40,
-  macro: 64
+  macro: 64,
 };

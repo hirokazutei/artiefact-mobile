@@ -14,13 +14,13 @@ export const stylizeModal = (): Styles => {
   return StyleSheet.create<Styles>({
     modalView: {
       backgroundColor: allColors.background,
-      borderRadius: borders.radius.round
+      borderRadius: borders.radius.round,
     },
     buttonsView: {
-      flexDirection: "row"
+      flexDirection: "row",
     },
     buttonView: {
-      flex: 1
-    }
+      flex: 1,
+    },
   });
 };

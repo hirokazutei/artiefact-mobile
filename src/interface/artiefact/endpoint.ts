@@ -23,8 +23,8 @@ const ENDPOINTS: Readonly<{ [key in EndpointNames]: EndpointProperty }> = {
   getUser: { uriSuffix: "user/get-user", method: "post" },
   checkUsernameAvailability: {
     uriSuffix: "user/username-availability",
-    method: "post"
-  }
+    method: "post",
+  },
 };
 
 export default ENDPOINTS;

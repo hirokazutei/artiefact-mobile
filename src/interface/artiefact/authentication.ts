@@ -33,27 +33,27 @@ export default class AuthClient extends APIClient {
   }
 
   private constructor() {
-    super({ endpoint: env.API_ENDPOINT });
+    super({ endpoint: env.API_ENDPOINT || "" });
   }
 
   public signIn(args: SignInData): Promise<any> {
     const endpointProperty = <EndpointProperty>endpoint.signIn;
     return this.methods[endpointProperty.method](endpointProperty.uriSuffix, {
-      data: { ...args }
+      data: { ...args },
     });
   }
 
   public signUp(args: SignUpData): Promise<any> {
     const endpointProperty = <EndpointProperty>endpoint.signUp;
     return this.methods[endpointProperty.method](endpointProperty.uriSuffix, {
-      data: { ...args }
+      data: { ...args },
     });
   }
 
   public getUser(args: getUserData): Promise<any> {
     const endpointProperty = <EndpointProperty>endpoint.getUser;
     return this.methods[endpointProperty.method](endpointProperty.uriSuffix, {
-      headers: { Authorization: args.bearerToken }
+      headers: { Authorization: args.bearerToken },
     });
   }
 
@@ -64,7 +64,7 @@ export default class AuthClient extends APIClient {
       endpoint.checkUsernameAvailability
     );
     return this.methods[endpointProperty.method](endpointProperty.uriSuffix, {
-      data: { ...args }
+      data: { ...args },
     });
   }
 }

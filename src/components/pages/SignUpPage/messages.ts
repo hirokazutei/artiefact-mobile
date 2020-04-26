@@ -11,7 +11,7 @@ const messages = {
     "Password must contain both lowercase and uppercase.",
   passwordIsBlank: "Password field cannot be left blank.",
   emailIsInvalid: "The e-mail address provided is not valid.",
-  emailIsBlank: "Email cannot be left blank."
+  emailIsBlank: "Email cannot be left blank.",
 };
 
 export default messages;

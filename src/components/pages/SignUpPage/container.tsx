@@ -4,7 +4,7 @@ import reduxActionCreators from "../../../redux/reducers/authentication/actionCr
 import {
   EmailForm,
   PasswordForm,
-  UsernameForm
+  UsernameForm,
 } from "../../../redux/reducers/authentication";
 import { State } from "../../../redux/rootReducer";
 import validationActionCreators from "../../../logics/validator/actionCreators";
@@ -52,7 +52,7 @@ const extractUsernameVerificationErrorAndStatus = (
     isAvailable,
     hasLength,
     hideErrors,
-    isDirty
+    isDirty,
   } = usernameForm;
   const errorMessages = [];
   let status = "undefined";
@@ -84,7 +84,7 @@ const extractPasswordVerificationErrorAndStatus = (
     hasUpper,
     hasLower,
     hideErrors,
-    isDirty
+    isDirty,
   } = passwordForm;
   const errorMessages = [];
   let status = "undefined";
@@ -131,28 +131,28 @@ export default connect(
       emailForm,
       passwordForm,
       showDatePickerModal,
-      usernameForm
+      usernameForm,
     } = state.authentication;
 
     // Username
     const { value: username, isValidating, isAvailable } = usernameForm;
     const {
       errorMessages: usernameErrors,
-      status: usernameValidationStatus
+      status: usernameValidationStatus,
     } = extractUsernameVerificationErrorAndStatus(usernameForm);
 
     // Password
     const { value: password } = passwordForm;
     const {
       errorMessages: passwordErrors,
-      status: passwordValidationStatus
+      status: passwordValidationStatus,
     } = extractPasswordVerificationErrorAndStatus(passwordForm);
 
     // Email
     const { value: email } = emailForm;
     const {
       errorMessages: emailErrors,
-      status: emailValidationStatus
+      status: emailValidationStatus,
     } = extractEmailVerificationErrorAndStatus(emailForm);
 
     const isButtonDisabled =
@@ -182,7 +182,7 @@ export default connect(
       showDatePickerModal,
       username,
       usernameErrors,
-      usernameValidationStatus
+      usernameValidationStatus,
     };
   },
   (dispatch: Dispatch): DispatchProps => {
@@ -223,7 +223,7 @@ export default connect(
         dispatch(useCaseActionCreators.signUpActionCreator());
       },
       onPressTerms: () =>
-        dispatch(reduxActionCreators.onPressTermsActionCreator())
+        dispatch(reduxActionCreators.onPressTermsActionCreator()),
     };
   }
 )(SignUpPage);

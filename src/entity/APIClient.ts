@@ -7,7 +7,7 @@ const restMethods: Readonly<{ [key in RESTMethods]: RESTMethods }> = {
   get: "get",
   head: "head",
   post: "post",
-  put: "put"
+  put: "put",
 };
 
 const DEFAULT_TIMEOUT = 5000;
@@ -44,14 +44,14 @@ export default class APIClient {
       method: restMethods[method],
       headers: {
         "Content-Type": "application/json",
-        ...headers
+        ...headers,
       },
       baseURL: this.endpoint,
       url: path,
       data: JSON.stringify(data),
       params: query,
       cache: isSensitive ? "no-cache" : "default",
-      timeout: this.timeout
+      timeout: this.timeout,
     };
     return axios(fetchParams);
   }
@@ -91,6 +91,6 @@ export default class APIClient {
       isSensitive?: boolean
     ): Promise<any> => {
       return this.request("post", path, options, isSensitive);
-    }
+    },
   };
 }

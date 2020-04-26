@@ -8,12 +8,12 @@ import ArtiefactError, { errorTypeNames } from "../../entity/Error";
 import {
   usernameSelector,
   emailSelector,
-  passwordSelector
+  passwordSelector,
 } from "../../redux/selectors/authentication";
 import {
   emailValidator,
   passwordValidator,
-  usernameValidator
+  usernameValidator,
 } from "./authentication";
 import { AxiosError } from "axios";
 
@@ -29,7 +29,7 @@ function* checkUsernameAvailabilityhandler() {
   ) {
     yield put({
       type: reduxActions.AUTH_USERNAME_IS_VALIDATING,
-      payload: { isValidating: true }
+      payload: { isValidating: true },
     });
     const authClient = AuthClient.get();
     const response = yield authClient
@@ -42,20 +42,20 @@ function* checkUsernameAvailabilityhandler() {
       .catch((error: AxiosError) => {
         const artiefactError = new ArtiefactError({
           error,
-          errorType: errorTypeNames.axiosError
+          errorType: errorTypeNames.axiosError,
         });
         errorHandler(artiefactError);
       });
     const isAvailable = response && response.data && response.data.is_available;
     yield put({
       type: reduxActions.AUTH_USERNAME_AVAILABLE,
-      payload: { isAvailable: !!isAvailable }
+      payload: { isAvailable: !!isAvailable },
     });
     return;
   }
   yield put({
     type: reduxActions.AUTH_USERNAME_IS_VALIDATING,
-    payload: { isValidating: false }
+    payload: { isValidating: false },
   });
 }
 
@@ -69,7 +69,7 @@ function* delayedEmailValidationHandler() {
     }
     yield put({
       type: reduxActions.AUTH_EMAIL_VALIDATION,
-      payload: { isValid: emailValidationResult.valid }
+      payload: { isValid: emailValidationResult.valid },
     });
   }
 }
@@ -85,7 +85,7 @@ function* delayedUsernameValidationHandler() {
     }
     yield put({
       type: reduxActions.AUTH_USERNAME_VALIDATION,
-      payload: { hasLength, hasOnlyAllowedChars }
+      payload: { hasLength, hasOnlyAllowedChars },
     });
   }
 }
@@ -101,7 +101,7 @@ function* delayedPasswordValidationHandler() {
     }
     yield put({
       type: reduxActions.AUTH_PASSWORD_VALIDATION,
-      payload: { hasLength, hasLower, hasUpper }
+      payload: { hasLength, hasLower, hasUpper },
     });
   }
 }
@@ -123,6 +123,6 @@ export default function* validatorSaga() {
     yield takeLatest(
       actions.DELAYED_USERNAME_VALIDATION,
       delayedUsernameValidationHandler
-    )
+    ),
   ]);
 }

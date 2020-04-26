@@ -4,7 +4,7 @@ type NetworkChangeHandler = (result: boolean) => void;
 
 export default class Network {
   public static async isConnected(): Promise<Boolean> {
-    return NetInfo.isConnected.fetch().then(isConnected => {
+    return NetInfo.isConnected.fetch().then((isConnected) => {
       return isConnected;
     });
   }

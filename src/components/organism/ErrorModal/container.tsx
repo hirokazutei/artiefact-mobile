@@ -2,11 +2,11 @@ import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import actionCreators from "../../../redux/reducers/error/actionCreator";
 import { State } from "../../../redux/rootReducer";
-import { IconTypes } from "../../atoms/IconButton";
+import { IconNameKey } from "../../atoms/IconButton/const";
 import ErrorModal from "./component";
 
 export type StateProps = {
-  icon?: IconTypes;
+  icon?: IconNameKey;
   message: string;
   isVisible: boolean;
 };
@@ -21,14 +21,14 @@ export default connect(
     return {
       icon,
       message,
-      isVisible: showModal
+      isVisible: showModal,
     };
   },
   (dispatch: Dispatch): DispatchProps => {
     return {
       onPress: () => {
         dispatch(actionCreators.hideErrorModalActionCreator());
-      }
+      },
     };
   }
 )(ErrorModal);
