@@ -34,7 +34,7 @@ const getOptionalPropsProps = (
   };
 };
 
-storiesOf("Atoms/RadioButton")
+storiesOf("Atoms/RadioButton", module)
   .addDecorator((story: () => React.ReactElement) => <Provider story={story} />)
   .addDecorator(withKnobs)
   .add("default", () => (

@@ -49,7 +49,7 @@ const getOptionalProps = (
   };
 };
 
-storiesOf("Atoms/Icon")
+storiesOf("Atoms/Icon", module)
   .addDecorator((story: () => React.ReactElement) => <Provider story={story} />)
   .addDecorator(withKnobs)
   .add("Default", () => (

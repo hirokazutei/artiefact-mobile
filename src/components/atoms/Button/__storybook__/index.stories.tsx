@@ -53,7 +53,7 @@ const geOptionalProps = (
   };
 };
 
-storiesOf("Atom/Button", module)
+storiesOf("Atoms/Button", module)
   .addDecorator((story: () => React.ReactElement<null>) => (
     <Provider story={story} />
   ))
@@ -66,16 +66,4 @@ storiesOf("Atom/Button", module)
   ))
   .add("Outline", () => (
     <Button {...getRequiredProps()} {...geOptionalProps({ type: "outline" })} />
-  ))
-  .add("Tiny", () => (
-    <Button {...getRequiredProps()} {...geOptionalProps({ size: "tiny" })} />
-  ))
-  .add("Massive", () => (
-    <Button {...getRequiredProps()} {...geOptionalProps({ size: "massive" })} />
-  ))
-  .add("Disabled", () => (
-    <Button
-      {...getRequiredProps()}
-      {...geOptionalProps({ isDisabled: true })}
-    />
   ));

@@ -19,7 +19,7 @@ const getRequiredProps = (overrides = {}): NavigationTitleProps => {
   };
 };
 
-storiesOf("Atoms/NavigationBackButton")
+storiesOf("Atoms/NavigationTitle", module)
   .addDecorator((story: () => React.ReactElement) => <Provider story={story} />)
   .addDecorator(withKnobs)
   .add("default", () => <NavigationTitle {...getRequiredProps()} />);
