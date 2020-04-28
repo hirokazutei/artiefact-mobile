@@ -13,23 +13,11 @@ import Text, { TextProps } from "../";
 
 const DEFAULT_TEXT = "Sample Text";
 
-const selectSize: { [key in FontSizeKey]: FontSizeKey } = {
-  small: "small",
-  medium: "medium",
-  large: "large",
-};
+const selectSize: Array<FontSizeKey> = ["small", "medium", "large"];
 
-const selectEllipsizeMode: {
-  [key in Exclude<RNTextProps["ellipsizeMode"], undefined>]: Exclude<
-    RNTextProps["ellipsizeMode"],
-    undefined
-  >
-} = {
-  head: "head",
-  middle: "middle",
-  tail: "tail",
-  clip: "clip",
-};
+const selectEllipsizeMode: Array<
+  Exclude<RNTextProps["ellipsizeMode"], undefined>
+> = ["head", "middle", "tail", "clip"];
 
 const geOptionalProps = (
   overrides: Partial<TextProps> = {}

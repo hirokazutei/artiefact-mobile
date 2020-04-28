@@ -8,11 +8,7 @@ import { selectAllColor } from "../../../../../storybook/knobs";
 import CheckBox, { CheckBoxProps } from "../";
 import { CheckBoxSizeKey } from "../const";
 
-const selectSize: { [key in CheckBoxSizeKey]?: CheckBoxSizeKey } = {
-  small: "small",
-  medium: "medium",
-  large: "large",
-};
+const selectSize: Array<CheckBoxSizeKey> = ["small", "medium", "large"];
 
 const getRequiredProps = (): CheckBoxProps => {
   return {
@@ -40,4 +36,16 @@ storiesOf("Atoms/CheckBox", module)
   .addDecorator(withKnobs)
   .add("Default", () => (
     <CheckBox {...getRequiredProps()} {...getOptionalProps()} />
+  ))
+  .add("Type: Outline", () => (
+    <CheckBox
+      {...getRequiredProps()}
+      {...getOptionalProps({ type: "outline" })}
+    />
+  ))
+  .add("Type: Reverse", () => (
+    <CheckBox
+      {...getRequiredProps()}
+      {...getOptionalProps({ type: "reverse" })}
+    />
   ));

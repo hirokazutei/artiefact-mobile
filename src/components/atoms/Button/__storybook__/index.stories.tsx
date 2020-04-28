@@ -12,14 +12,14 @@ const DEFAULT_PROPS = {
   label: "PRESS HERE",
 };
 
-const selectSize: { [key in ButtonSizeKey]: ButtonSizeKey } = {
-  tiny: "tiny",
-  small: "small",
-  medium: "medium",
-  large: "large",
-  huge: "huge",
-  massive: "massive",
-};
+const selectSize: Array<ButtonSizeKey> = [
+  "tiny",
+  "small",
+  "medium",
+  "large",
+  "huge",
+  "massive",
+];
 
 const getRequiredProps = (
   overrides: Partial<ButtonProps> = {}

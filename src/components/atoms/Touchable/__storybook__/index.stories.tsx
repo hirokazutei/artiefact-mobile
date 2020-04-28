@@ -11,14 +11,14 @@ import Touchable, { TouchableProps } from "../";
 
 const DEFAULT_CHILDREN = <Text>Sample</Text>;
 
-const selectSize: { [key in TouchableSizeKey]: TouchableSizeKey } = {
-  tiny: "tiny",
-  small: "small",
-  medium: "medium",
-  large: "large",
-  huge: "huge",
-  massive: "massive",
-};
+const selectSize: Array<TouchableSizeKey> = [
+  "tiny",
+  "small",
+  "medium",
+  "large",
+  "huge",
+  "massive",
+];
 
 const getRequiredProps = (): Omit<TouchableProps, "children"> => {
   return {

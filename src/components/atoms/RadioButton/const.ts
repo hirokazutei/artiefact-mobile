@@ -2,9 +2,10 @@ import { RadioButtonSizeProps } from "react-native-kinpaku-ui";
 
 type RadioButtonSizeKey = "small" | "medium" | "large";
 
-const radioButtonSizes: {
-  [key in RadioButtonSizeKey | "default"]: RadioButtonSizeProps
-} = {
+const radioButtonSizes: Record<
+  RadioButtonSizeKey | "default",
+  RadioButtonSizeProps
+> = {
   small: {
     size: 16,
     dotSize: 8,

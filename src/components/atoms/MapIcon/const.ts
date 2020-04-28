@@ -2,9 +2,7 @@ type MapIconTypeKey = "user" | "text" | "image" | "audio" | "video";
 
 type FeatherIconNameKey = "user" | "pen-tool" | "image" | "mic" | "video";
 
-const mapIcontypes: Readonly<
-  { [key in MapIconTypeKey]: FeatherIconNameKey }
-> = {
+const mapIcontypes: Record<MapIconTypeKey, FeatherIconNameKey> = {
   user: "user",
   text: "pen-tool",
   image: "image",
@@ -14,7 +12,7 @@ const mapIcontypes: Readonly<
 
 type MapIconSizeKey = "small" | "medium" | "large";
 
-const mapIconSizes: Readonly<{ [key in MapIconSizeKey]: number }> = {
+const mapIconSizes: Record<MapIconSizeKey, number> = {
   small: 16,
   medium: 24,
   large: 32,

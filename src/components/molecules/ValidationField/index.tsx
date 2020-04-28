@@ -4,11 +4,10 @@ import { InputFieldProps } from "../../atoms/InputField";
 import InputField from "../../atoms/InputField";
 import { Body } from "../../atoms/Text";
 import Space from "../../atoms/Space";
-import { borders, allColors, themes } from "../../../symbols";
+import { borders, allColors } from "../../../symbols";
 import { TextColorKeys } from "../../../symbols";
 import Icon from "../../atoms/Icon";
 import { IconTypeKey, IconSizeKey } from "../../atoms/Icon/const";
-import { Diff } from "../../../type/tsUtility";
 const RNIndicator = require("react-native-indicator");
 
 type Props = {
@@ -39,13 +38,13 @@ const styles = StyleSheet.create<Styles>({
   },
 });
 
-export type ValidationResultType = "success" | "warning" | "error";
+type ValidationResultType = "success" | "warning" | "error";
 
-type ValidationFieldColorKeys = keyof (typeof themes & typeof allColors);
+type ListMessagesType = "info" | "warning" | "error";
 
-const validationIconNames: Readonly<
-  { [key in ValidationResultType]: IconTypeKey | null }
-> = {
+type ValidationFieldColorKeys = keyof typeof allColors;
+
+const validationIconNames: Record<ValidationResultType, IconTypeKey> = {
   success: "successCircle",
   warning: "warningCircle",
   error: "errorCircle",
@@ -55,27 +54,19 @@ const validationFieldIcons = (
   status: ValidationResultType,
   size: IconSizeKey,
   color: ValidationFieldColorKeys
-): React.ReactElement => {
+) => {
   const iconName = validationIconNames[status];
   const iconColor = color as TextColorKeys;
-  if (iconName != null) {
-    return <Icon name={iconName} size={size} color={iconColor} />;
-  }
-  return <View />;
+  return <Icon name={iconName} size={size} color={iconColor} />;
 };
 
-const listMessagesColor: Readonly<
-  { [key in Diff<ValidationResultType, "success"> | "info"]?: TextColorKeys }
-> = {
+const listMessagesColor: Record<ListMessagesType, TextColorKeys> = {
   info: "text",
   warning: "secondary",
   error: "danger",
 };
 
-const listMessages = (
-  type: Diff<ValidationResultType, "success"> | "info",
-  messages: Array<string>
-) => {
+const listMessages = (type: ListMessagesType, messages: Array<string>) => {
   const color = listMessagesColor[type];
   return messages.map((messages, i) => {
     return (
@@ -88,24 +79,32 @@ const listMessages = (
 
 /**
  * Validation Field Props
+ *
  * @param props - properties
+ *
+ * Required:
+ * @param props.value - input field valuee
+ *
+ * Optional:
  * @param [props.isValidating] - if the prop is validating
  * @param [props.validationResult] - the result of the validation
  * @param [props.errors] - the list of errors
  * @param [props.warnings] - the list of warnings
  * @param [props.infos] - the list of information
+ *
+ * Components:
+ * @extends InputField
  */
-const ValidationField: React.FC<Props> = (props: Props): React.ReactElement => {
-  const {
-    color = "primary" as keyof typeof allColors,
-    errors,
-    infos,
-    isValidating,
-    validationResult,
-    warnings,
-    ...inputFieldProps
-  } = props;
-  const colorLiteral = allColors[color as keyof typeof allColors];
+const ValidationField = ({
+  color = "primary" as keyof typeof allColors,
+  errors,
+  infos,
+  isValidating,
+  validationResult,
+  warnings,
+  ...inputFieldProps
+}: Props) => {
+  const colorLiteral = allColors[color];
   let validationIcon = validationResult
     ? validationFieldIcons(validationResult, "medium", color)
     : null;
@@ -114,9 +113,8 @@ const ValidationField: React.FC<Props> = (props: Props): React.ReactElement => {
       <RNIndicator.DotsLoader size={10} betweenSpace={5} color={colorLiteral} />
     );
   }
-  // Free Field Should Be Changed to be customizable.
   return (
-    <View>
+    <>
       <View
         style={[styles.validationFieldWrapper, { borderColor: colorLiteral }]}
       >
@@ -129,8 +127,10 @@ const ValidationField: React.FC<Props> = (props: Props): React.ReactElement => {
       {errors && listMessages("error", errors)}
       {warnings && listMessages("warning", warnings)}
       {infos && listMessages("info", infos)}
-    </View>
+    </>
   );
 };
+
+export { Props as ValidationFieldProps, ValidationResultType };
 
 export default ValidationField;

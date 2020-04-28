@@ -2,9 +2,7 @@ import { CheckBoxSizeProps } from "react-native-kinpaku-ui";
 
 type CheckBoxSizeKey = "small" | "medium" | "large";
 
-const checkBoxSizes: {
-  [key in CheckBoxSizeKey | "default"]: CheckBoxSizeProps
-} = {
+const checkBoxSizes: Record<CheckBoxSizeKey | "default", CheckBoxSizeProps> = {
   small: {
     size: 16,
   },

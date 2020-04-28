@@ -10,7 +10,7 @@ const DIALOG_OUT_ANIMATION_DURATION = 600;
 
 type Props = {
   avoidKeyboard?: boolean;
-  children: Array<React.ReactElement> | React.ReactElement;
+  children: React.ReactNode;
   isVisible: boolean;
   onBackButtonPress?: () => any;
   onBackdropPress?: () => any;
@@ -21,19 +21,30 @@ type Props = {
   secondaryButton?: ButtonProps;
 };
 
-const Modal: React.FC<Props> = (props: Props): React.ReactElement => {
-  const {
-    avoidKeyboard,
-    children,
-    isVisible,
-    onBackButtonPress,
-    onBackdropPress,
-    onModalHide,
-    onModalShow,
-    onSwipeComplete,
-    primaryButton,
-    secondaryButton,
-  } = props;
+/**
+ * Modal
+ *
+ * @param props - props
+ *
+ * Required:
+ * @param props.children - the content displayed in modal
+ * @param props.isVisible - if the modal is visible or not
+ *
+ * Optional:
+ * @param [props.avoidKeyboard] - if the modal avoids keyboard or not
+ * @param [onBackButtonPress] - callback fired when the back button is pressed
+ * @param [onBackdropPress] - callback fired when the backdrop is pressed
+ * @param [onModalHide] - callback fired when the modal is hidden
+ * @param [onModalShow] - callback fired when the modal is shown
+ * @param [onSwipeComplete] - callback fired when the modal is swiped away
+ * @param [primaryButton] - property of the primary button
+ * @param [secondaryButton] - property of the secondary buton
+ *
+ * Component:
+ * @extends Button
+ */
+const Modal = (props: Props) => {
+  const { children, primaryButton, secondaryButton, ...otherProps } = props;
   const styles = stylizeModal();
   const SecondaryButton = secondaryButton && (
     <View style={styles.buttonView}>
@@ -55,20 +66,18 @@ const Modal: React.FC<Props> = (props: Props): React.ReactElement => {
     <RNModal
       animationInTiming={DIALOG_IN_ANIMATION_DURATION}
       animationOutTiming={DIALOG_OUT_ANIMATION_DURATION}
-      avoidKeyboard={avoidKeyboard}
-      isVisible={isVisible}
-      onBackButtonPress={onBackButtonPress ? onBackButtonPress : () => {}}
-      onBackdropPress={onBackdropPress ? onBackdropPress : () => {}}
-      onModalHide={onModalHide ? onModalHide : () => {}}
-      onModalShow={onModalShow ? onModalShow : () => {}}
-      onSwipeComplete={onSwipeComplete ? onSwipeComplete : () => {}}
+      {...otherProps}
     >
       <View style={styles.modalView}>
-        {children}
-        {PrimaryButton}
+        <Space.Inset all="medium">
+          {children}
+          {PrimaryButton}
+        </Space.Inset>
       </View>
     </RNModal>
   );
 };
+
+export { Props as ModalProps };
 
 export default Modal;

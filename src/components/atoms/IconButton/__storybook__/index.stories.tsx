@@ -13,24 +13,17 @@ const DEFAULT_PROPS: IconButtonProps = {
   onPress: action("pressed"),
 };
 
-const selectIconType: { [key in IconNameKey]: IconNameKey } = {
-  camera: "camera",
-  successCircle: "successCircle",
-  errorCircle: "errorCircle",
-  warningCircle: "warningCircle",
-  noConnection: "noConnection",
-};
+const selectIconType: Array<IconNameKey> = [
+  "camera",
+  "successCircle",
+  "errorCircle",
+  "warningCircle",
+  "noConnection",
+];
 
-const selectSize: { [key in IconSizeKey]: IconSizeKey } = {
-  small: "small",
-  medium: "medium",
-  large: "large",
-};
+const selectSize: Array<IconSizeKey> = ["small", "medium", "large"];
 
-const selectType: { [key in IconButtonTypeKey]: IconButtonTypeKey } = {
-  fill: "fill",
-  outline: "outline",
-};
+const selectType: Array<IconButtonTypeKey> = ["fill", "outline"];
 
 const getRequiredProps = (
   overrides: Partial<IconButtonProps> = {}
