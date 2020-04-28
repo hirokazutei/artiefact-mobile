@@ -6,34 +6,42 @@ type Props = {
   speed: number;
 };
 
-const LoadingComma: React.FC<Props> = (props: Props): React.ReactElement => {
+/**
+ * Loading Comma
+ *
+ * @param props - props
+ *
+ * Required:
+ * @param props.commaLength - the number of commas
+ * @param props.speed - the speed of transition
+ */
+const LoadingComma = (props: Props) => {
   const { commaLength, speed } = props;
   const [commaCount, setCommaCount] = useState(0);
   useInterval(() => {
     setCommaCount(commaCount < commaLength ? commaCount + 1 : 0);
   }, speed);
-  // @ts-ignore
   return <Title>{".".repeat(commaCount)}</Title>;
 };
 
-function useInterval(callback: (args: any) => void, delay: number) {
-  const savedCallback = useRef();
+function useInterval(callback: () => void, delay: number) {
+  const savedCallback = useRef(callback);
 
   useEffect(() => {
-    // @ts-ignore
     savedCallback.current = callback;
   }, [callback]);
 
-  useEffect((): void | (() => void | undefined) => {
+  useEffect((): void | (() => void) => {
     const addComma = () => {
-      // @ts-ignore
       savedCallback.current();
     };
     if (delay !== null) {
-      let id = setInterval(addComma, delay);
+      const id = setInterval(addComma, delay);
       return () => clearInterval(id);
     }
   }, [delay]);
 }
+
+export { Props as LoadingCommaProps };
 
 export default LoadingComma;

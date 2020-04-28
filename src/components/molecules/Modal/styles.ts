@@ -10,11 +10,11 @@ type Styles = {
 /**
  * Stylize Modal
  */
-export const stylizeModal = (): Styles => {
+const stylizeModal = (): Styles => {
   return StyleSheet.create<Styles>({
     modalView: {
       backgroundColor: allColors.background,
-      borderRadius: borders.radius.round,
+      borderRadius: borders.radius.dull,
     },
     buttonsView: {
       flexDirection: "row",
@@ -24,3 +24,5 @@ export const stylizeModal = (): Styles => {
     },
   });
 };
+
+export { stylizeModal };
