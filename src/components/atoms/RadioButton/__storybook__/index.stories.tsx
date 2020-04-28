@@ -6,10 +6,13 @@ import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
 import { selectAllColor } from "../../../../../storybook/knobs";
 import RadioButton, { RadioButtonProps } from "../";
+import { RadioButtonSizeKey } from "../const";
 
 const DEFAULT_PROPS = {
   active: false,
 };
+
+const selectSize: Array<RadioButtonSizeKey> = ["small", "medium", "large"];
 
 const getRequiredProps = (
   overrides: Partial<RadioButtonProps> = {}
@@ -27,10 +30,11 @@ const getRequiredProps = (
 const getOptionalPropsProps = (
   overrides: Partial<RadioButtonProps> = {}
 ): Partial<RadioButtonProps> => {
-  const { color, isDisabled = false } = overrides;
+  const { color, isDisabled = false, size } = overrides;
   return {
     color: select("Color Options", selectAllColor, color),
     isDisabled: boolean("Disabled", isDisabled),
+    size: select("Size Options", selectSize, size),
   };
 };
 

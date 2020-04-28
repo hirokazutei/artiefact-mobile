@@ -11,23 +11,23 @@ const DEFAULT_PROPS: IconProps = {
   name: "camera",
 };
 
-const selectType: { [key in IconTypeKey]: IconTypeKey } = {
-  camera: "camera",
-  successCircle: "successCircle",
-  errorCircle: "errorCircle",
-  warningCircle: "warningCircle",
-  noConnection: "noConnection",
-};
+const selectType: Array<IconTypeKey> = [
+  "camera",
+  "successCircle",
+  "errorCircle",
+  "warningCircle",
+  "noConnection",
+];
 
-const selectSize: { [key in IconSizeKey]: IconSizeKey } = {
-  tiny: "tiny",
-  small: "small",
-  medium: "medium",
-  large: "large",
-  huge: "huge",
-  massive: "massive",
-  macro: "macro",
-};
+const selectSize: Array<IconSizeKey> = [
+  "tiny",
+  "small",
+  "medium",
+  "large",
+  "huge",
+  "massive",
+  "macro",
+];
 
 const getRequiredProps = (overrides: Partial<IconProps> = {}): IconProps => {
   const { name } = {
@@ -78,10 +78,4 @@ storiesOf("Atoms/Icon", module)
       {...getRequiredProps({ name: "warningCircle" })}
       {...getOptionalProps()}
     />
-  ))
-  .add("Tiny", () => (
-    <Icon {...getRequiredProps()} {...getOptionalProps({ size: "tiny" })} />
-  ))
-  .add("Macro", () => (
-    <Icon {...getRequiredProps()} {...getOptionalProps({ size: "macro" })} />
   ));

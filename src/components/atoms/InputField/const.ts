@@ -2,9 +2,10 @@ import { InputFieldSizeProps } from "react-native-kinpaku-ui";
 
 type InputFieldSizeKey = "small" | "medium" | "large";
 
-const inputFieldSizes: {
-  [key in InputFieldSizeKey | "default"]: InputFieldSizeProps
-} = {
+const inputFieldSizes: Record<
+  InputFieldSizeKey | "default",
+  InputFieldSizeProps
+> = {
   small: {
     borderWidth: 2,
     fontSize: 10,

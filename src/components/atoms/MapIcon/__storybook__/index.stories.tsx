@@ -13,19 +13,15 @@ const DEFAULT_PROPS: {
   name: "user",
 };
 
-const selectType: { [key in MapIconTypeKey]: MapIconTypeKey } = {
-  user: "user",
-  text: "text",
-  image: "image",
-  audio: "audio",
-  video: "video",
-};
+const selectType: Array<MapIconTypeKey> = [
+  "user",
+  "text",
+  "image",
+  "audio",
+  "video",
+];
 
-const selectSize: { [key in MapIconSizeKey]: MapIconSizeKey } = {
-  small: "small",
-  medium: "medium",
-  large: "large",
-};
+const selectSize: Array<MapIconSizeKey> = ["small", "medium", "large"];
 
 const getRequiredProps = (
   overrides: Partial<MapIconProps> = {}
@@ -66,10 +62,4 @@ storiesOf("Atoms/MapIcon", module)
   ))
   .add("Type: Video", () => (
     <MapIcon {...getRequiredProps({ name: "video" })} {...getOptionalProps()} />
-  ))
-  .add("Size: Small", () => (
-    <MapIcon {...getRequiredProps()} {...getOptionalProps({ size: "small" })} />
-  ))
-  .add("Size: Large", () => (
-    <MapIcon {...getRequiredProps()} {...getOptionalProps({ size: "large" })} />
   ));

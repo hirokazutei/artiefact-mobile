@@ -8,9 +8,10 @@ type TouchableSizeKey =
   | "huge"
   | "massive";
 
-const touchableSizes: {
-  [key in TouchableSizeKey | "default"]: TouchableSizeProps
-} = {
+const touchableSizes: Record<
+  TouchableSizeKey | "default",
+  TouchableSizeProps
+> = {
   tiny: {
     padding: 4,
     borderRadius: 6,

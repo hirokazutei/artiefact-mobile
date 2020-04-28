@@ -13,46 +13,30 @@ import {
 import Provider from "../../../../../storybook/Provider";
 import { selectAllColor } from "../../../../../storybook/knobs";
 import InputField, { InputFieldProps } from "../";
+import { InputFieldSizeKey } from "../const";
 
 const DEFAULT_PROPS = {
   value: "",
 };
 
-const inputFieldVariations: {
-  [key in InputFieldVariation]: React.FC<InputFieldProps>
-} = {
-  creditCardNumber: InputField.creditCardNumber,
-  decimal: InputField.decimal,
-  email: InputField.email,
-  freeField: InputField.freeField,
-  name: InputField.name,
-  number: InputField.number,
-  oneTimeNumberCode: InputField.oneTimeNumberCode,
-  oneTimeCode: InputField.oneTimeCode,
-  paragraph: InputField.paragraph,
-  passcode: InputField.passcode,
-  password: InputField.password,
-  phone: InputField.phone,
-  url: InputField.url,
-  username: InputField.username,
-};
+const selectVariation: Array<InputFieldVariation> = [
+  "creditCardNumber",
+  "decimal",
+  "email",
+  "freeField",
+  "name",
+  "number",
+  "oneTimeNumberCode",
+  "oneTimeCode",
+  "paragraph",
+  "passcode",
+  "password",
+  "phone",
+  "url",
+  "username",
+];
 
-const selectVariation: { [key in InputFieldVariation]: InputFieldVariation } = {
-  creditCardNumber: "creditCardNumber",
-  decimal: "decimal",
-  email: "email",
-  freeField: "freeField",
-  name: "name",
-  number: "number",
-  oneTimeNumberCode: "oneTimeNumberCode",
-  oneTimeCode: "oneTimeCode",
-  paragraph: "paragraph",
-  passcode: "passcode",
-  password: "password",
-  phone: "phone",
-  url: "url",
-  username: "username",
-};
+const selectSize: Array<InputFieldSizeKey> = ["small", "medium", "large"];
 
 const getRequiredProps = (
   overrides: Partial<InputFieldProps> = {}
@@ -78,6 +62,7 @@ const geOptionalProps = (
     isDisabled = false,
     maxLength,
     placeholder = "",
+    size,
     type,
     textColor,
   } = overrides;
@@ -99,12 +84,13 @@ const geOptionalProps = (
     onFocus: action("on-focus"),
     onKeyPress: action("on-key-press"),
     placeholder: text("Place Holder", placeholder),
+    size: select("Size Options", selectSize, size),
     type,
     textColor: select("Text Color Options", selectAllColor, textColor),
   };
 };
 
-storiesOf("UI/InputField", module)
+storiesOf("Atoms/InputField", module)
   .addDecorator((story: () => React.ReactElement<null>) => (
     <Provider story={story} />
   ))
@@ -130,24 +116,12 @@ storiesOf("UI/InputField", module)
       {...geOptionalProps({ isDisabled: true })}
     />
   ))
-  .add("Size: Small", () => (
-    <InputField.freeField
-      {...getRequiredProps()}
-      {...geOptionalProps({ size: "small" })}
-    />
-  ))
-  .add("Size: Large", () => (
-    <InputField.freeField
-      {...getRequiredProps()}
-      {...geOptionalProps({ size: "large" })}
-    />
-  ))
   .add("Input Variation", () => {
     const inputFieldVariationKey = select(
       "InputVariation",
       selectVariation,
       "freeField"
     );
-    const Component = inputFieldVariations[inputFieldVariationKey];
+    const Component = InputField[inputFieldVariationKey];
     return <Component {...getRequiredProps()} {...geOptionalProps()} />;
   });

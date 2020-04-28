@@ -2,8 +2,9 @@ import { TouchableAllSizeProps } from "react-native-kinpaku-ui";
 
 type IconSizeKey = "small" | "medium" | "large";
 
-const touchablePaddingSizes: Readonly<
-  { [key in IconSizeKey | "default"]: TouchableAllSizeProps }
+const touchablePaddingSizes: Record<
+  IconSizeKey | "default",
+  TouchableAllSizeProps
 > = {
   small: {
     borderRadius: 24,
@@ -23,7 +24,7 @@ const touchablePaddingSizes: Readonly<
   },
 };
 
-const iconSizes: Readonly<{ [key in IconSizeKey | "default"]: number }> = {
+const iconSizes: Record<IconSizeKey | "default", number> = {
   small: 24,
   medium: 36,
   large: 46,
@@ -44,7 +45,7 @@ type FeatherIconNameKey =
   | "alert-circle"
   | "wifi-off";
 
-const iconNames: Readonly<{ [key in IconNameKey]: FeatherIconNameKey }> = {
+const iconNames: Record<IconNameKey, FeatherIconNameKey> = {
   camera: "camera",
   successCircle: "check-circle",
   errorCircle: "x-circle",
