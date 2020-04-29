@@ -50,11 +50,7 @@ const geOptionalProps = (
   };
 };
 
-<<<<<<< HEAD
 storiesOf("Atoms/Text", module)
-=======
-storiesOf("Atoms/Touchable", module)
->>>>>>> FEAT: finishing up refactor of atoms
   .addDecorator((story: () => React.ReactElement<null>) => (
     <Provider story={story} />
   ))
