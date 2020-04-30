@@ -29,6 +29,7 @@ const selectAllColor: { [key in AllColorKey]: AllColorKey } = {
   background: "background",
   text: "text",
   danger: "danger",
+  warning: "warning",
   faded: "faded",
 };
 
@@ -50,6 +51,7 @@ const selectTextColor: { [key in TextColorKeys]: TextColorKeys } = {
   disabled: "disabled",
   text: "text",
   danger: "danger",
+  warning: "warning",
   faded: "faded",
 };
 

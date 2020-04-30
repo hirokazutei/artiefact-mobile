@@ -55,14 +55,24 @@ export const permissionStatus: {
 export const checkPermission = (
   type: RequiredPermissionAccess
 ): Promise<PermissionStatus> => {
-  return check(Platform.select(PERMISSION_TYPES[type]));
+  const permissionType = Platform.select(PERMISSION_TYPES[type]);
+  if (permissionType) {
+    return check(permissionType);
+  }
+  return new Promise(() => "unavailable");
 };
 
 export const checkPermissions = (
   types: Array<RequiredPermissionAccess>
 ): Promise<Array<PermissionStatus>> => {
   return Promise.all(
-    types.map((type) => check(Platform.select(PERMISSION_TYPES[type])))
+    types.map((type) => {
+      const permissionType = Platform.select(PERMISSION_TYPES[type]);
+      if (permissionType) {
+        return check(permissionType);
+      }
+      return new Promise(() => "unavailable") as Promise<PermissionStatus>;
+    })
   );
 };
 
@@ -73,7 +83,11 @@ export const requestPermission = ({
   type: RequiredPermissionAccess;
   rationale: Rationale;
 }): Promise<PermissionStatus> => {
-  return request(Platform.select(PERMISSION_TYPES[type]), rationale);
+  const permissionType = Platform.select(PERMISSION_TYPES[type]);
+  if (permissionType) {
+    return request(permissionType, rationale);
+  }
+  return new Promise(() => "unavailable");
 };
 
 // Initial Start-up Check.
