@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, ViewStyle, TouchableOpacity } from "react-native";
 import Space from "../../atoms/Space";
 import Button from "../../atoms/Button";
-import { Title, Caption } from "../../atoms/Text";
+import { Title, Label } from "../../atoms/Text";
 import ShiftingTitle from "../../atoms/ShiftingTitle";
 import RadioSelection from "../../molecules/RadioSelection";
 import { Props } from "../../pages/SignUpPage/component";
@@ -51,12 +51,13 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
   const birthdayField =
     changedBirthday && birthday ? formatDate(birthday) : "Enter Birthday";
   const secondaryButtonColor = isButtonDisabled ? "disabled" : "secondary";
+  // {/* Validation Field Needs Type secureTextEntry={true}} */}
   return (
     <View style={styles.base}>
       <IOSDatePicker
         isVisible={showDatePickerModal}
-        cancelButton={{ onPress: onPressCancelModal, title: "Cancel" }}
-        confirmButton={{ onPress: onPressConfirmModal, title: "Confirm" }}
+        cancelButton={{ onPress: onPressCancelModal, label: "Cancel" }}
+        confirmButton={{ onPress: onPressConfirmModal, label: "Confirm" }}
         mode="date"
       />
       <Space.Inset horizontal="macro" bottom="macro">
@@ -68,7 +69,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <ValidationField
           placeholder="Username"
           color="secondary"
-          onChangeText={onChangeUsername}
+          onKeyPress={onChangeUsername}
           value={username}
           errors={usernameErrors}
           validationResult={usernameValidationStatus}
@@ -78,8 +79,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <ValidationField
           placeholder="Password"
           color="secondary"
-          onChangeText={onChangePassword}
-          secureTextEntry={true}
+          onKeyPress={onChangePassword}
           value={password}
           validationResult={passwordValidationStatus}
           errors={passwordErrors}
@@ -88,7 +88,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <ValidationField
           placeholder="Email"
           color="secondary"
-          onChangeText={onChangeEmail}
+          onKeyPress={onChangeEmail}
           value={email}
           validationResult={emailValidationStatus}
           errors={emailErrors}
@@ -96,17 +96,17 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <Space.Stack size="huge" />
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View style={{ justifyContent: "flex-end" }}>
-            <Caption size="large" color="faded">
+            <Label size="large" color="faded">
               {"Birthday:"}
-            </Caption>
+            </Label>
           </View>
           <TouchableOpacity
             style={{ justifyContent: "flex-end" }}
             onPress={onPressSetBirthday}
           >
-            <Caption size="large" color="secondary">
+            <Label size="large" color="secondary">
               {birthdayField}
-            </Caption>
+            </Label>
           </TouchableOpacity>
         </View>
         <Space.Stack size="huge" />
@@ -114,14 +114,13 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           active={agreeToTerms}
           color="secondary"
           onPress={onPressTerms}
-        >
-          {"Agree to Terms & Con"}
-        </RadioSelection>
+          label="Agree to Terms and Conditions"
+        />
         <Space.Stack size="huge" />
         <Button
           size="massive"
           color={secondaryButtonColor}
-          title="Sign Up"
+          label="Sign Up"
           isDisabled={isButtonDisabled}
           onPress={onPressSignUp}
         />
