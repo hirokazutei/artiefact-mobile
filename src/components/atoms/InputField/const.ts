@@ -8,23 +8,23 @@ const inputFieldSizes: Record<
 > = {
   small: {
     borderWidth: 2,
-    fontSize: 10,
-    padding: 6,
+    fontSize: 14,
+    padding: 2,
   },
   medium: {
     borderWidth: 2,
-    fontSize: 12,
-    padding: 8,
+    fontSize: 16,
+    padding: 2,
   },
   large: {
     borderWidth: 2,
-    fontSize: 14,
-    padding: 10,
+    fontSize: 20,
+    padding: 4,
   },
   default: {
     borderWidth: 2,
-    fontSize: 12,
-    padding: 8,
+    fontSize: 16,
+    padding: 2,
   },
 };
 

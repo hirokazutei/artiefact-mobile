@@ -13,14 +13,6 @@ const DEFAULT_PROPS: {
   name: "user",
 };
 
-const selectType: Array<MapIconTypeKey> = [
-  "user",
-  "text",
-  "image",
-  "audio",
-  "video",
-];
-
 const selectSize: Array<MapIconSizeKey> = ["small", "medium", "large"];
 
 const getRequiredProps = (
@@ -31,7 +23,7 @@ const getRequiredProps = (
     ...overrides,
   };
   return {
-    name: select("name", selectType, name),
+    name,
   };
 };
 
@@ -51,15 +43,15 @@ storiesOf("Atoms/MapIcon", module)
   .add("default", () => (
     <MapIcon {...getRequiredProps()} {...getOptionalProps()} />
   ))
-  .add("Type: Text", () => (
+  .add("Text", () => (
     <MapIcon {...getRequiredProps({ name: "text" })} {...getOptionalProps()} />
   ))
-  .add("Type: Image", () => (
+  .add("Image", () => (
     <MapIcon {...getRequiredProps({ name: "image" })} {...getOptionalProps()} />
   ))
-  .add("Type: Audio", () => (
+  .add("Audio", () => (
     <MapIcon {...getRequiredProps({ name: "audio" })} {...getOptionalProps()} />
   ))
-  .add("Type: Video", () => (
+  .add("Video", () => (
     <MapIcon {...getRequiredProps({ name: "video" })} {...getOptionalProps()} />
   ));

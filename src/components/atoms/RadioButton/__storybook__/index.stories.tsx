@@ -30,11 +30,12 @@ const getRequiredProps = (
 const getOptionalPropsProps = (
   overrides: Partial<RadioButtonProps> = {}
 ): Partial<RadioButtonProps> => {
-  const { color, isDisabled = false, size } = overrides;
+  const { color, isDisabled = false, size, type } = overrides;
   return {
     color: select("Color Options", selectAllColor, color),
     isDisabled: boolean("Disabled", isDisabled),
     size: select("Size Options", selectSize, size),
+    type,
   };
 };
 
@@ -44,9 +45,15 @@ storiesOf("Atoms/RadioButton", module)
   .add("default", () => (
     <RadioButton {...getRequiredProps()} {...getOptionalPropsProps()} />
   ))
-  .add("Disabled", () => (
+  .add("default", () => (
     <RadioButton
       {...getRequiredProps()}
-      {...getOptionalPropsProps({ isDisabled: true })}
+      {...getOptionalPropsProps({ type: "outline" })}
+    />
+  ))
+  .add("default", () => (
+    <RadioButton
+      {...getRequiredProps()}
+      {...getOptionalPropsProps({ type: "reverse" })}
     />
   ));

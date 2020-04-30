@@ -98,22 +98,16 @@ storiesOf("Atoms/InputField", module)
   .add("Default", () => (
     <InputField.freeField {...getRequiredProps()} {...geOptionalProps()} />
   ))
-  .add("Shape: Underline", () => (
+  .add("Underline", () => (
     <InputField.freeField
       {...getRequiredProps()}
       {...geOptionalProps({ type: "underline" })}
     />
   ))
-  .add("Shape: Fill", () => (
+  .add("Fill", () => (
     <InputField.freeField
       {...getRequiredProps()}
       {...geOptionalProps({ type: "fill" })}
-    />
-  ))
-  .add("Disabled", () => (
-    <InputField.freeField
-      {...getRequiredProps()}
-      {...geOptionalProps({ isDisabled: true })}
     />
   ))
   .add("Input Variation", () => {

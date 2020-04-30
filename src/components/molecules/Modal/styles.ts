@@ -5,6 +5,7 @@ type Styles = {
   modalView: ViewStyle;
   buttonsView: ViewStyle;
   buttonView: ViewStyle;
+  titleView: ViewStyle;
 };
 
 /**
@@ -14,7 +15,7 @@ const stylizeModal = (): Styles => {
   return StyleSheet.create<Styles>({
     modalView: {
       backgroundColor: allColors.background,
-      borderRadius: borders.radius.dull,
+      borderRadius: borders.radius.round,
     },
     buttonsView: {
       flexDirection: "row",
@@ -22,6 +23,7 @@ const stylizeModal = (): Styles => {
     buttonView: {
       flex: 1,
     },
+    titleView: { flexDirection: "row" },
   });
 };
 

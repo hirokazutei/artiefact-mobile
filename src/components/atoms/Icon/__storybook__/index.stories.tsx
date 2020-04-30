@@ -5,19 +5,11 @@ import { select, withKnobs } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
 import { selectAllColor } from "../../../../../storybook/knobs";
 import Icon, { IconProps } from "../";
-import { IconSizeKey, IconTypeKey } from "../const";
+import { IconSizeKey } from "../const";
 
 const DEFAULT_PROPS: IconProps = {
   name: "camera",
 };
-
-const selectType: Array<IconTypeKey> = [
-  "camera",
-  "successCircle",
-  "errorCircle",
-  "warningCircle",
-  "noConnection",
-];
 
 const selectSize: Array<IconSizeKey> = [
   "tiny",
@@ -35,7 +27,7 @@ const getRequiredProps = (overrides: Partial<IconProps> = {}): IconProps => {
     ...overrides,
   };
   return {
-    name: select("Icon Type", selectType, name),
+    name,
   };
 };
 

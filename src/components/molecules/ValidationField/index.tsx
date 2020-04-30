@@ -1,10 +1,10 @@
 import React from "react";
-import { View, ViewStyle, StyleSheet } from "react-native";
+import { View } from "react-native";
 import { InputFieldProps } from "../../atoms/InputField";
 import InputField from "../../atoms/InputField";
 import { Body } from "../../atoms/Text";
 import Space from "../../atoms/Space";
-import { borders, allColors } from "../../../symbols";
+import { allColors } from "../../../symbols";
 import { TextColorKeys } from "../../../symbols";
 import Icon from "../../atoms/Icon";
 import { IconTypeKey, IconSizeKey } from "../../atoms/Icon/const";
@@ -18,25 +18,6 @@ type Props = {
   validationResult?: ValidationResultType;
   warnings?: Array<string>;
 } & InputFieldProps;
-
-type Styles = {
-  iconWrapper: ViewStyle;
-  inputFieldWrapper: ViewStyle;
-  validationFieldWrapper: ViewStyle;
-};
-
-const styles = StyleSheet.create<Styles>({
-  iconWrapper: {
-    alignSelf: "center",
-  },
-  inputFieldWrapper: {
-    flex: 1,
-  },
-  validationFieldWrapper: {
-    flexDirection: "row",
-    borderBottomWidth: borders.thickness.thin,
-  },
-});
 
 type ValidationResultType = "success" | "warning" | "error";
 
@@ -61,8 +42,8 @@ const validationFieldIcons = (
 };
 
 const listMessagesColor: Record<ListMessagesType, TextColorKeys> = {
-  info: "text",
-  warning: "secondary",
+  info: "primary",
+  warning: "warning",
   error: "danger",
 };
 
@@ -110,24 +91,25 @@ const ValidationField = ({
     : null;
   if (isValidating) {
     validationIcon = (
-      <RNIndicator.DotsLoader size={10} betweenSpace={5} color={colorLiteral} />
+      <RNIndicator.DotsLoader size={8} betweenSpace={5} color={colorLiteral} />
     );
   }
+  // TODO: Be able to change field
   return (
-    <>
-      <View
-        style={[styles.validationFieldWrapper, { borderColor: colorLiteral }]}
-      >
-        <View style={styles.inputFieldWrapper}>
-          <InputField.freeField {...inputFieldProps} />
-        </View>
-        <View style={styles.iconWrapper}>{validationIcon}</View>
+    <View style={{ flexDirection: "row" }}>
+      <View style={{ flex: 1, flexDirection: "column" }}>
+        <InputField.freeField
+          {...inputFieldProps}
+          color={color}
+          type="underline"
+          rightItem={validationIcon}
+        />
+        <Space.Stack size="tiny" />
+        {errors && listMessages("error", errors)}
+        {warnings && listMessages("warning", warnings)}
+        {infos && listMessages("info", infos)}
       </View>
-      <Space.Stack size="tiny" />
-      {errors && listMessages("error", errors)}
-      {warnings && listMessages("warning", warnings)}
-      {infos && listMessages("info", infos)}
-    </>
+    </View>
   );
 };
 
