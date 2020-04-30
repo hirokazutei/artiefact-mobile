@@ -28,7 +28,7 @@ const textVariations: {
       small: 24,
       medium: 28,
       large: 32,
-      default: 328,
+      default: 28,
     },
   },
   SubHeading: {

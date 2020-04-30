@@ -34,16 +34,16 @@ storiesOf("Atoms/CheckBox", module)
     <Provider story={story} />
   ))
   .addDecorator(withKnobs)
-  .add("Default", () => (
+  .add("Outline", () => (
     <CheckBox {...getRequiredProps()} {...getOptionalProps()} />
   ))
-  .add("Type: Outline", () => (
+  .add("Fill", () => (
     <CheckBox
       {...getRequiredProps()}
       {...getOptionalProps({ type: "outline" })}
     />
   ))
-  .add("Type: Reverse", () => (
+  .add("Reverse", () => (
     <CheckBox
       {...getRequiredProps()}
       {...getOptionalProps({ type: "reverse" })}

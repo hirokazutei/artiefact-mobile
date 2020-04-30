@@ -50,12 +50,12 @@ storiesOf("Atoms/Touchable", module)
     <Provider story={story} />
   ))
   .addDecorator(withKnobs)
-  .add("Fill: Default", () => (
+  .add("Default", () => (
     <Touchable.Circular {...getRequiredProps()} {...geOptionalProps()}>
       {DEFAULT_CHILDREN}
     </Touchable.Circular>
   ))
-  .add("Fill: Round", () => (
+  .add("Round", () => (
     <Touchable.Round {...getRequiredProps()} {...geOptionalProps()}>
       {DEFAULT_CHILDREN}
     </Touchable.Round>
@@ -65,23 +65,23 @@ storiesOf("Atoms/Touchable", module)
       {DEFAULT_CHILDREN}
     </Touchable.Sharp>
   ))
-  .add("Fill: Outline: Default", () => (
-    <Touchable.Sharp
+  .add("Outline Default", () => (
+    <Touchable.Circular
       {...getRequiredProps()}
       {...geOptionalProps({ type: "outline" })}
     >
       {DEFAULT_CHILDREN}
-    </Touchable.Sharp>
+    </Touchable.Circular>
   ))
-  .add("Fill: Outline", () => (
-    <Touchable.Sharp
+  .add("Outline Round", () => (
+    <Touchable.Round
       {...getRequiredProps()}
       {...geOptionalProps({ type: "outline" })}
     >
       {DEFAULT_CHILDREN}
-    </Touchable.Sharp>
+    </Touchable.Round>
   ))
-  .add("Fill: Outline", () => (
+  .add("Outline Sharp", () => (
     <Touchable.Sharp
       {...getRequiredProps()}
       {...geOptionalProps({ type: "outline" })}

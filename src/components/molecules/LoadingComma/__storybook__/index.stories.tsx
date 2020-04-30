@@ -7,7 +7,7 @@ import LoadingComma, { LoadingCommaProps } from "../index";
 
 const DEFAULT_PROPS: LoadingCommaProps = {
   commaLength: 3,
-  speed: 200,
+  speed: 300,
 };
 
 const getRequiredProps = (

@@ -9,6 +9,7 @@ type NavigationBackButtonProps = {
   onPress?: () => void;
 };
 
+// TODO: Move to container
 class NavigationBackButton extends React.Component<
   NavigationBackButtonProps & NavigationScreenProps<any>
 > {
