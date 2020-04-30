@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
 import { NavigationProps } from "../../../navigation/type";
 import Map from "../../organism/Map";
-import Icon from "../../atoms/IconButton";
+// import Icon from "../../atoms/IconButton";
 import routes from "../../../navigation/routes";
 import IconButton from "../../atoms/IconButton";
 
