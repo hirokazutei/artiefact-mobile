@@ -1,4 +1,4 @@
-// @flow
+/*
 import * as React from "react";
 import { storiesOf } from "@storybook/react-native";
 import { withKnobs } from "@storybook/addon-knobs";
@@ -22,3 +22,4 @@ storiesOf("Organism/Map")
   ))
   .add("autoUpdate", () => <Map shouldMapUpdate={true} />)
   .add("currentRegion", () => <Map />);
+*/
