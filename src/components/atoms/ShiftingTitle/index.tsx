@@ -8,7 +8,7 @@ import { Title } from "../Text";
 const ANIMATION_DURATION = 1500;
 const ANIMATION_START_OFFSET = -4;
 
-type ShiftingTitleProps = { color?: keyof ThemePalette };
+type ShiftingTitleProps = { color?: keyof ThemePalette; _storyshots?: boolean };
 
 type ComponentState = {
   title: UserTitle;
@@ -48,7 +48,11 @@ class ShiftingTitle extends React.Component<
       titleUpdate: setInterval(() => {
         this.setState({ fadeAnim: new Animated.Value(ANIMATION_START_OFFSET) });
         this.fadeInNew();
-        this.setState({ title: getRandomUserTitle(this.state.title) });
+        this.setState({
+          title: this.props._storyshots
+            ? "Storyshots"
+            : getRandomUserTitle(this.state.title),
+        });
       }, ANIMATION_DURATION * 2),
     });
   }
