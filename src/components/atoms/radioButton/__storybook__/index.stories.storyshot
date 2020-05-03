@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Atoms/RadioButton default 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#EEEEEE",
+      "flex": 1,
+      "flexDirection": "column",
+      "justifyContent": "space-evenly",
+      "padding": 40,
+    }
+  }
+>
+  <View
+    accessible={true}
+    clickable={true}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#ff9345",
+        "borderColor": "#ff9345",
+        "borderRadius": 4,
+        "borderWidth": 2,
+        "height": 20,
+        "justifyContent": "center",
+        "opacity": 1,
+        "width": 20,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#ff9345",
+          "borderRadius": 2,
+          "height": 10,
+          "width": 10,
+        }
+      }
+    />
+  </View>
+</View>
+`;

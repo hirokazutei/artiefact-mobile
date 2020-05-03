@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Atoms/ShiftingTitle default 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#EEEEEE",
+      "flex": 1,
+      "flexDirection": "column",
+      "justifyContent": "space-evenly",
+      "padding": 40,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "opacity": -2,
+      }
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Object {
+          "color": "#ff9345",
+          "fontFamily": undefined,
+          "fontSize": 32,
+          "fontStyle": "normal",
+          "fontWeight": "bold",
+          "letterSpacing": undefined,
+          "lineHeight": undefined,
+          "textAlign": undefined,
+          "textDecorationLine": "none",
+        }
+      }
+    >
+      Wanderer
+    </Text>
+  </View>
+</View>
+`;
