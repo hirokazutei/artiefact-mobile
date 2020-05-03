@@ -15,8 +15,8 @@ const styles: Styles = StyleSheet.create<Styles>({
   base: {
     flex: 1,
     flexDirection: "column",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });
 
 const SignInTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
@@ -25,7 +25,7 @@ const SignInTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
     onChangePassword,
     onPressSignIn,
     password,
-    username
+    username,
   } = props;
   return (
     <View style={styles.base}>
@@ -47,7 +47,7 @@ const SignInTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           value={password}
         />
         <Space.Stack size="huge" />
-        <Button size="massive" title="Login" onPress={onPressSignIn} />
+        <Button size="massive" label="Login" onPress={onPressSignIn} />
       </Space.Inset>
     </View>
   );
