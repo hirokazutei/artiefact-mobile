@@ -1,0 +1,49 @@
+version: 2
+
+jobs:
+  checkout_code:
+    docker:
+      - image: circleci/node:10.16
+    steps:
+      - checkout
+      - restore_cache:
+          key: yarn-cache-{{checksum "yarn.lock"}}-{{checksum "package.json"}}
+      - run: yarn
+      - save_cache:
+          key: yarn-cache-{{checksum "yarn.lock"}}-{{checksum "package.json"}}
+          paths:
+            - node_modules
+            - yarn_cache
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  test_storyshots:
+    docker:
+      - image: circleci/node:10.16
+    steps:
+      - attach_workspace:
+          at: .
+      - run: yarn storybook:load
+      - run: yarn test:storyshots
+
+  test_ts_build:
+    docker:
+      - image: circleci/node:10.16
+    steps:
+      - attach_workspace:
+          at: .
+      - run: yarn typecheck
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - checkout_code
+      - test_storyshots:
+          requires:
+            - checkout_code
+      - test_ts_build:
+          requires:
+            - checkout_code
