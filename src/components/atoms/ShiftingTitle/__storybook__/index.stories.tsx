@@ -23,4 +23,6 @@ const getRequiredProps = (overrides = {}): ShiftingTitleProps => {
 storiesOf("Atoms/ShiftingTitle", module)
   .addDecorator((story: () => React.ReactElement) => <Provider story={story} />)
   .addDecorator(withKnobs)
-  .add("default", () => <ShiftingTitle {...getRequiredProps()} />);
+  .add("default", () => (
+    <ShiftingTitle {...getRequiredProps()} _storyshots={true} />
+  ));
