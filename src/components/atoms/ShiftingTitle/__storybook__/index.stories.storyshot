@@ -36,7 +36,7 @@ exports[`Storyshots Atoms/ShiftingTitle default 1`] = `
         }
       }
     >
-      Traveller
+      Explorer
     </Text>
   </View>
 </View>
