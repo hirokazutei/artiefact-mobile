@@ -31,7 +31,7 @@ class ShiftingTitle extends React.Component<
   React.ComponentState
 > {
   state: ComponentState = {
-    title: getRandomUserTitle(),
+    title: this.props._storyshots ? "Traveller" : getRandomUserTitle(),
     fadeAnim: new Animated.Value(-2),
   };
 
@@ -49,9 +49,7 @@ class ShiftingTitle extends React.Component<
         this.setState({ fadeAnim: new Animated.Value(ANIMATION_START_OFFSET) });
         this.fadeInNew();
         this.setState({
-          title: this.props._storyshots
-            ? "Storyshots"
-            : getRandomUserTitle(this.state.title),
+          title: getRandomUserTitle(this.state.title),
         });
       }, ANIMATION_DURATION * 2),
     });

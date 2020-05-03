@@ -34,6 +34,7 @@ jobs:
     steps:
       - attach_workspace:
           at: .
+      - run: yarn generate:env
       - run: yarn typecheck
 
 workflows:
