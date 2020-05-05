@@ -10,8 +10,4 @@ type DatePickerProps = {
   isVisible: boolean;
 };
 
-type State = {
-  chosenDate: Date;
-};
-
-export { DatePickerProps, DatePickerMode, State };
+export { DatePickerProps, DatePickerMode };
