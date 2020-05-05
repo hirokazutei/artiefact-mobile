@@ -1,4 +1,3 @@
-/*
 import * as React from "react";
 import { storiesOf } from "@storybook/react-native";
 import { withKnobs } from "@storybook/addon-knobs";
@@ -14,7 +13,7 @@ const tokyoRegion = {
   },
 };
 
-storiesOf("Organism/Map")
+storiesOf("Organism/Map", module)
   .addDecorator((story: () => React.ReactElement) => <Provider story={story} />)
   .addDecorator(withKnobs)
   .add("default", () => (
@@ -22,4 +21,3 @@ storiesOf("Organism/Map")
   ))
   .add("autoUpdate", () => <Map shouldMapUpdate={true} />)
   .add("currentRegion", () => <Map />);
-*/

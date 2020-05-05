@@ -38,7 +38,7 @@ const DEFAULT_PROPS = {
   moveonMarkerPress: false,
 };
 
-export type Props = {
+type MapProps = {
   currentRegion?: Region;
   shouldMapUpdate?: boolean;
   children?: Array<React.ReactElement> | React.ReactElement;
@@ -54,7 +54,7 @@ type State = {
  * Map
  *
  */
-export default class Map extends React.Component<Props, State> {
+class Map extends React.Component<MapProps, State> {
   state: State = {};
 
   async componentDidMount() {
@@ -165,6 +165,19 @@ export default class Map extends React.Component<Props, State> {
   }
 
   render() {
+    const PermissionNotGrantedView = (
+      <View>
+        <Space.Inset all="massive">
+          <SubHeading>Permission not granted for maps.</SubHeading>
+          <Space.Stack size="medium" />
+          <Button
+            label="Request Permission"
+            onPress={() => this.checkMapPermission()}
+          />
+        </Space.Inset>
+      </View>
+    );
+
     return this.state.permission ? (
       <View style={styles.container}>
         {this.state.currentRegion && (
@@ -184,16 +197,11 @@ export default class Map extends React.Component<Props, State> {
         {this.props.children}
       </View>
     ) : (
-      <View>
-        <Space.Inset all="massive">
-          <SubHeading>Permission not granted for maps.</SubHeading>
-          <Space.Stack size="medium" />
-          <Button
-            label="Request Permission"
-            onPress={() => this.checkMapPermission()}
-          />
-        </Space.Inset>
-      </View>
+      PermissionNotGrantedView
     );
   }
 }
+
+export { MapProps };
+
+export default Map;

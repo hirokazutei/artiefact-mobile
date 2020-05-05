@@ -1,52 +1,37 @@
-import React from "react";
-import { DatePickerIOS, DatePickerIOSProps } from "react-native";
+import React, { useState } from "react";
+import { DatePickerIOS } from "react-native";
 import Modal from "../../molecules/Modal";
-import { ButtonProps } from "../../atoms/Button";
+import { DatePickerProps } from "./type";
 
-type modeType = DatePickerIOSProps["mode"];
+const IOSDatePicker = ({
+  confirmButton,
+  cancelButton,
+  mode,
+  isVisible,
+}: DatePickerProps) => {
+  const currentDate = new Date();
+  currentDate.setFullYear(currentDate.getFullYear() - 18);
+  const [date, setDate] = useState(currentDate);
 
-type Props = {
-  cancelButton?: ButtonProps;
-  confirmButton: ButtonProps;
-  mode: modeType;
-  isVisible: boolean;
+  const { onPress, label } = confirmButton;
+  const secondaryButton = cancelButton && cancelButton;
+  return (
+    <Modal
+      isVisible={isVisible}
+      primaryButton={{
+        onPress: () => onPress(date),
+        label,
+      }}
+      secondaryButton={secondaryButton}
+    >
+      <DatePickerIOS
+        date={date}
+        onDateChange={(newDate) => setDate(newDate)}
+        maximumDate={new Date()}
+        mode={mode}
+      />
+    </Modal>
+  );
 };
 
-type State = {
-  chosenDate: Date;
-};
-
-const currentDate = new Date();
-currentDate.setFullYear(currentDate.getFullYear() - 18);
-
-export default class IOSDatePicker extends React.Component<Props, State> {
-  state: State = { chosenDate: currentDate };
-
-  setDate(newDate: Date) {
-    this.setState({ chosenDate: newDate });
-  }
-
-  render() {
-    const { confirmButton, cancelButton, mode, isVisible } = this.props;
-    const { chosenDate } = this.state;
-    const { onPress, label } = confirmButton;
-    const secondaryButton = cancelButton && cancelButton;
-    return (
-      <Modal
-        isVisible={isVisible}
-        primaryButton={{
-          onPress: () => onPress(chosenDate),
-          label,
-        }}
-        secondaryButton={secondaryButton}
-      >
-        <DatePickerIOS
-          date={this.state.chosenDate}
-          onDateChange={(newDate) => this.setDate(newDate)}
-          maximumDate={new Date()}
-          mode={mode}
-        />
-      </Modal>
-    );
-  }
-}
+export default IOSDatePicker;

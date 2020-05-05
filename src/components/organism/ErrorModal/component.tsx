@@ -6,11 +6,11 @@ import Space from "../../atoms/Space";
 import Icon from "../../atoms/Icon";
 import { IconTypeKey } from "../../atoms/Icon/const";
 
-type Props = {
+type ErrorModalProps = {
   onPress: () => void;
-  isVisible: boolean;
   message: string;
   icon?: IconTypeKey;
+  isVisible?: boolean;
 };
 
 type Styles = {
@@ -23,12 +23,12 @@ const styles = StyleSheet.create<Styles>({
   },
 });
 
-export default class ErrorModal extends React.Component<Props> {
+class ErrorModal extends React.Component<ErrorModalProps> {
   render() {
     const { message, icon, isVisible, onPress } = this.props;
     return (
       <Modal
-        isVisible={isVisible}
+        isVisible={!!isVisible}
         primaryButton={{
           onPress: onPress,
           label: "OK",
@@ -47,3 +47,7 @@ export default class ErrorModal extends React.Component<Props> {
     );
   }
 }
+
+export { ErrorModalProps };
+
+export default ErrorModal;

@@ -5,17 +5,17 @@ import { State } from "../../../redux/rootReducer";
 import { IconNameKey } from "../../atoms/IconButton/const";
 import ErrorModal from "./component";
 
-export type StateProps = {
+type StateProps = {
   icon?: IconNameKey;
   message: string;
   isVisible: boolean;
 };
 
-export type DispatchProps = {
+type DispatchProps = {
   onPress: () => void;
 };
 
-export default connect(
+const ErrorModalContainer = connect(
   (state: State): StateProps => {
     const { showModal, message, icon } = state.error;
     return {
@@ -32,3 +32,5 @@ export default connect(
     };
   }
 )(ErrorModal);
+
+export default ErrorModalContainer;
