@@ -13,7 +13,7 @@ const tokyoRegion = {
   },
 };
 
-storiesOf("Organism/Map")
+storiesOf("Organism/Map", module)
   .addDecorator((story: () => React.ReactElement) => <Provider story={story} />)
   .addDecorator(withKnobs)
   .add("default", () => (

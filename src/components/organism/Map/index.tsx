@@ -165,6 +165,19 @@ class Map extends React.Component<MapProps, State> {
   }
 
   render() {
+    const PermissionNotGrantedView = (
+      <View>
+        <Space.Inset all="massive">
+          <SubHeading>Permission not granted for maps.</SubHeading>
+          <Space.Stack size="medium" />
+          <Button
+            label="Request Permission"
+            onPress={() => this.checkMapPermission()}
+          />
+        </Space.Inset>
+      </View>
+    );
+
     return this.state.permission ? (
       <View style={styles.container}>
         {this.state.currentRegion && (
@@ -184,16 +197,7 @@ class Map extends React.Component<MapProps, State> {
         {this.props.children}
       </View>
     ) : (
-      <View>
-        <Space.Inset all="massive">
-          <SubHeading>Permission not granted for maps.</SubHeading>
-          <Space.Stack size="medium" />
-          <Button
-            label="Request Permission"
-            onPress={() => this.checkMapPermission()}
-          />
-        </Space.Inset>
-      </View>
+      PermissionNotGrantedView
     );
   }
 }

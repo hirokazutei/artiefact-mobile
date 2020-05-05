@@ -115,8 +115,8 @@ exports[`Storyshots Organism/DatePicker Default 1`] = `
           >
             <View>
               <RCTDatePicker
-                date={1020520509078}
-                maximumDate={1588600509340}
+                date={1019805083000}
+                maximumDate={1587885083000}
                 mode="date"
                 onChange={[Function]}
                 onResponderTerminationRequest={[Function]}
@@ -303,8 +303,8 @@ exports[`Storyshots Organism/DatePicker With Cancel Button 1`] = `
           >
             <View>
               <RCTDatePicker
-                date={1020520509078}
-                maximumDate={1588600509346}
+                date={1019805083000}
+                maximumDate={1587885083000}
                 mode="date"
                 onChange={[Function]}
                 onResponderTerminationRequest={[Function]}
