@@ -8,5 +8,6 @@ initStoryshots({
   stories2snapsConverter: new Stories2SnapsConverter({
     snapshotsDirName: "./",
   }),
+  storyKindRegex: /^((?!.*?DontTest).)*$/,
   test: multiSnapshotWithOptions({}),
 });
