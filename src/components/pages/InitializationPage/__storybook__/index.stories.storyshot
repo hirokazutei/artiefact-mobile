@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Pages/InitializationPage Default 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#EEEEEE",
+        "flex": 1,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "padding": 64,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#2d2832",
+          "fontFamily": undefined,
+          "fontSize": 36,
+          "fontStyle": "normal",
+          "fontWeight": "bold",
+          "letterSpacing": undefined,
+          "lineHeight": undefined,
+          "textAlign": undefined,
+          "textDecorationLine": "none",
+        }
+      }
+    >
+      Initializing
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#2d2832",
+          "fontFamily": undefined,
+          "fontSize": 32,
+          "fontStyle": "normal",
+          "fontWeight": "bold",
+          "letterSpacing": undefined,
+          "lineHeight": undefined,
+          "textAlign": undefined,
+          "textDecorationLine": "none",
+        }
+      }
+    >
+      
+    </Text>
+  </View>
+</View>
+`;
