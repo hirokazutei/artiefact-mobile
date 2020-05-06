@@ -65,7 +65,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <Title size="large" color="secondary" align="center">
           {"Adventure Awaits,"}
         </Title>
-        <ShiftingTitle color="secondary" _storyshots={true} />
+        <ShiftingTitle color="secondary" _storyshots={_storyshots} />
         <Space.Stack size="huge" />
         <ValidationField
           placeholder="Username"
