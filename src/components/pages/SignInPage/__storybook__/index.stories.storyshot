@@ -65,7 +65,7 @@ exports[`Storyshots Pages/SignInPage Default 1`] = `
             }
           }
         >
-          Adventurer
+          Traveller
         </Text>
       </View>
       <View
