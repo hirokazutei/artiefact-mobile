@@ -5,7 +5,7 @@ import Button from "../../atoms/Button";
 import { Title, Label } from "../../atoms/Text";
 import ShiftingTitle from "../../atoms/ShiftingTitle";
 import RadioSelection from "../../molecules/RadioSelection";
-import { Props } from "../../pages/SignUpPage/component";
+import { SignUpPageProps as Props } from "../../pages/SignUpPage/component";
 import ValidationField from "../../molecules/ValidationField";
 import IOSDatePicker from "../../organism/DatePicker/ios";
 import { formatDate } from "../../../helper/wording";
