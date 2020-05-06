@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Pages/IntroPage Default 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "paddingBottom": 64,
+          "paddingHorizontal": 64,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#ff9345",
+            "fontFamily": undefined,
+            "fontSize": 36,
+            "fontStyle": "normal",
+            "fontWeight": "bold",
+            "letterSpacing": undefined,
+            "lineHeight": undefined,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          }
+        }
+      >
+        Artiefact
+      </Text>
+      <View
+        style={
+          Object {
+            "height": 12,
+          }
+        }
+      />
+      <View
+        accessibilityLabel="Login"
+        accessible={true}
+        clickable={true}
+        isTVSelectable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "alignSelf": "center",
+            "backgroundColor": "#ff9345",
+            "borderRadius": 40,
+            "opacity": 1,
+            "paddingHorizontal": 20,
+            "paddingVertical": 10,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#EEEEEE",
+              "fontSize": 32,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Login
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "height": 12,
+          }
+        }
+      />
+      <View
+        accessibilityLabel="SignUp"
+        accessible={true}
+        clickable={true}
+        isTVSelectable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "alignSelf": "center",
+            "backgroundColor": "#008148",
+            "borderRadius": 40,
+            "opacity": 1,
+            "paddingHorizontal": 20,
+            "paddingVertical": 10,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#EEEEEE",
+              "fontSize": 32,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          SignUp
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

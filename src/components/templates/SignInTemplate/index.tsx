@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
-import { Props } from "../../pages/SignInPage/component";
+import { SignInPageProps as Props } from "../../pages/SignInPage/component";
 import Space from "../../atoms/Space";
 import Button from "../../atoms/Button";
 import InputField from "../../atoms/InputField";
@@ -21,6 +21,7 @@ const styles: Styles = StyleSheet.create<Styles>({
 
 const SignInTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
   const {
+    _storyshots,
     onChangeUsername,
     onChangePassword,
     onPressSignIn,
@@ -33,7 +34,7 @@ const SignInTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <Title size="large" color="primary">
           Welcome Back,
         </Title>
-        <ShiftingTitle color="primary" />
+        <ShiftingTitle color="primary" _storyshots={_storyshots} />
         <Space.Stack size="huge" />
         <InputField.username
           placeholder="Username"

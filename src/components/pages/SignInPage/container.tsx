@@ -5,19 +5,19 @@ import useCaseActionCreators from "../../../useCases/signInUseCase/actionCreator
 import reduxActionCreators from "../../../redux/reducers/authentication/actionCreators";
 import SignInPage from "./component";
 
-export type StateProps = {
+type StateProps = {
   password: string;
   username: string;
 };
 
-export type DispatchProps = {
+type DispatchProps = {
   onChangeUsername: (event: React.FormEvent<HTMLSelectElement>) => void;
   onChangePassword: (event: React.FormEvent<HTMLSelectElement>) => void;
   onPressSignIn: () => void;
   onPressBack: () => void;
 };
 
-export default connect(
+const ConnectedSignInPage = connect(
   (state: State): StateProps => {
     const { passwordForm, usernameForm } = state.authentication;
     return {
@@ -42,3 +42,7 @@ export default connect(
     };
   }
 )(SignInPage);
+
+export { StateProps, DispatchProps };
+
+export default ConnectedSignInPage;

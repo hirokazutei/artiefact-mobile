@@ -5,7 +5,7 @@ import { StateProps, DispatchProps } from "./container";
 import NavigationTitle from "../../atoms/NavigationTitle";
 import BackButton from "../../atoms/NavigationBackButton";
 
-export type NavigationProps = NavigationNavigatorProps<
+type NavigationProps = NavigationNavigatorProps<
   {},
   {
     params: {
@@ -14,7 +14,11 @@ export type NavigationProps = NavigationNavigatorProps<
   }
 >;
 
-export type Props = StateProps & DispatchProps & NavigationParams;
+type StoryshotsProps = {
+  _storyshots?: boolean;
+};
+
+type Props = StateProps & DispatchProps & NavigationParams & StoryshotsProps;
 
 class SignUpPage extends React.Component<Props> {
   static navigationOptions = ({ navigation }: NavigationProps) => ({
@@ -41,5 +45,7 @@ class SignUpPage extends React.Component<Props> {
     return <SignUpPageTemplate {...this.props} />;
   }
 }
+
+export { Props as SignUpPageProps };
 
 export default SignUpPage;
