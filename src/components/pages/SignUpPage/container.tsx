@@ -13,7 +13,7 @@ import { ValidationResultType } from "../../molecules/ValidationField";
 import SignUpPage from "./component";
 import messages from "./messages";
 
-export type StateProps = {
+type StateProps = {
   agreeToTerms: boolean;
   birthday?: Date;
   changedBirthday: boolean;
@@ -31,7 +31,7 @@ export type StateProps = {
   usernameValidationStatus: ValidationResultType;
 };
 
-export type DispatchProps = {
+type DispatchProps = {
   onChangeEmail: (event: React.FormEvent<HTMLSelectElement>) => void;
   onChangeUsername: (event: React.FormEvent<HTMLSelectElement>) => void;
   onChangePassword: (event: React.FormEvent<HTMLSelectElement>) => void;
@@ -123,7 +123,7 @@ const extractEmailVerificationErrorAndStatus = (
   return { errorMessages, status: status as ValidationResultType };
 };
 
-export default connect(
+const ConnectedSignUpPage = connect(
   (state: State): StateProps => {
     const {
       agreeToTermsForm,
@@ -227,3 +227,7 @@ export default connect(
     };
   }
 )(SignUpPage);
+
+export { StateProps, DispatchProps };
+
+export default ConnectedSignUpPage;

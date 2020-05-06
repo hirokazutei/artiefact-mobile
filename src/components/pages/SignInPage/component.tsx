@@ -5,7 +5,7 @@ import { StateProps, DispatchProps } from "./container";
 import BackButton from "../../atoms/NavigationBackButton";
 import NavigationTitle from "../../atoms/NavigationTitle";
 
-export type NavigationProps = NavigationNavigatorProps<
+type NavigationProps = NavigationNavigatorProps<
   {},
   {
     params: {
@@ -14,7 +14,7 @@ export type NavigationProps = NavigationNavigatorProps<
   }
 >;
 
-export type Props = StateProps & DispatchProps & NavigationParams;
+type Props = StateProps & DispatchProps & NavigationParams;
 
 class SignInPage extends React.Component<Props> {
   static navigationOptions = ({ navigation }: NavigationProps) => {
@@ -43,5 +43,7 @@ class SignInPage extends React.Component<Props> {
     return <SignInTemplate {...this.props} />;
   }
 }
+
+export { Props as SignInPageProps };
 
 export default SignInPage;

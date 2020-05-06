@@ -31,4 +31,5 @@ const Provider = ({
     </View>
   );
 };
+
 export default Provider;
