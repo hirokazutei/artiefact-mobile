@@ -14,7 +14,11 @@ type NavigationProps = NavigationNavigatorProps<
   }
 >;
 
-type Props = StateProps & DispatchProps & NavigationParams;
+type StoryshotsPrps = {
+  _storyshots?: boolean;
+};
+
+type Props = StateProps & DispatchProps & NavigationParams & StoryshotsPrps;
 
 class SignInPage extends React.Component<Props> {
   static navigationOptions = ({ navigation }: NavigationProps) => {

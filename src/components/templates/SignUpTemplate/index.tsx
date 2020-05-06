@@ -24,6 +24,7 @@ const styles: Styles = StyleSheet.create<Styles>({
 
 const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
   const {
+    _storyshots,
     agreeToTerms,
     birthday,
     changedBirthday,
@@ -64,7 +65,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <Title size="large" color="secondary" align="center">
           {"Adventure Awaits,"}
         </Title>
-        <ShiftingTitle color="secondary" />
+        <ShiftingTitle color="secondary" _storyshots={true} />
         <Space.Stack size="huge" />
         <ValidationField
           placeholder="Username"

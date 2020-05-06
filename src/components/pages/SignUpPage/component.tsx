@@ -14,7 +14,11 @@ type NavigationProps = NavigationNavigatorProps<
   }
 >;
 
-type Props = StateProps & DispatchProps & NavigationParams;
+type StoryshotsProps = {
+  _storyshots?: boolean;
+};
+
+type Props = StateProps & DispatchProps & NavigationParams & StoryshotsProps;
 
 class SignUpPage extends React.Component<Props> {
   static navigationOptions = ({ navigation }: NavigationProps) => ({

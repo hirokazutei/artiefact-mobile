@@ -138,5 +138,6 @@ storiesOf("Pages/SignUpPage", module)
       navigation={navigationMockProp}
       {...getRequiredProps()}
       {...getOptionalProps()}
+      _storyshots={true}
     />
   ));

@@ -21,6 +21,7 @@ const styles: Styles = StyleSheet.create<Styles>({
 
 const SignInTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
   const {
+    _storyshots,
     onChangeUsername,
     onChangePassword,
     onPressSignIn,
@@ -33,7 +34,7 @@ const SignInTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <Title size="large" color="primary">
           Welcome Back,
         </Title>
-        <ShiftingTitle color="primary" />
+        <ShiftingTitle color="primary" _storyshots={_storyshots} />
         <Space.Stack size="huge" />
         <InputField.username
           placeholder="Username"

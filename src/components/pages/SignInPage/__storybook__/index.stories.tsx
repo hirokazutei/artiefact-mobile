@@ -46,5 +46,9 @@ storiesOf("Pages/SignInPage", module)
   ))
   .addDecorator(withKnobs)
   .add("Default", () => (
-    <SignInPage navigation={navigationMockProp} {...getRequiredProps()} />
+    <SignInPage
+      navigation={navigationMockProp}
+      {...getRequiredProps()}
+      _storyshots={true}
+    />
   ));
