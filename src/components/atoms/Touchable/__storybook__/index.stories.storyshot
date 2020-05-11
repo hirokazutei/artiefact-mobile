@@ -28,13 +28,12 @@ exports[`Storyshots Atoms/Touchable Default 1`] = `
       Object {
         "alignItems": "center",
         "alignSelf": "center",
-        "backgroundColor": "#ff9345",
+        "backgroundColor": "#EEEEEE",
         "borderColor": "#ff9345",
         "borderRadius": 3072,
         "borderWidth": 2,
         "opacity": 1,
-        "paddingHorizontal": 8,
-        "paddingVertical": 8,
+        "padding": 8,
       }
     }
   >
@@ -78,8 +77,7 @@ exports[`Storyshots Atoms/Touchable Outline Default 1`] = `
         "borderRadius": 3072,
         "borderWidth": 2,
         "opacity": 1,
-        "paddingHorizontal": 8,
-        "paddingVertical": 8,
+        "padding": 8,
       }
     }
   >
@@ -123,8 +121,7 @@ exports[`Storyshots Atoms/Touchable Outline Round 1`] = `
         "borderRadius": 12,
         "borderWidth": 2,
         "opacity": 1,
-        "paddingHorizontal": 8,
-        "paddingVertical": 8,
+        "padding": 8,
       }
     }
   >
@@ -168,8 +165,7 @@ exports[`Storyshots Atoms/Touchable Outline Sharp 1`] = `
         "borderRadius": 0,
         "borderWidth": 2,
         "opacity": 1,
-        "paddingHorizontal": 8,
-        "paddingVertical": 8,
+        "padding": 8,
       }
     }
   >
@@ -208,13 +204,12 @@ exports[`Storyshots Atoms/Touchable Round 1`] = `
       Object {
         "alignItems": "center",
         "alignSelf": "center",
-        "backgroundColor": "#ff9345",
+        "backgroundColor": "#EEEEEE",
         "borderColor": "#ff9345",
         "borderRadius": 12,
         "borderWidth": 2,
         "opacity": 1,
-        "paddingHorizontal": 8,
-        "paddingVertical": 8,
+        "padding": 8,
       }
     }
   >
@@ -253,13 +248,12 @@ exports[`Storyshots Atoms/Touchable Sharp 1`] = `
       Object {
         "alignItems": "center",
         "alignSelf": "center",
-        "backgroundColor": "#ff9345",
+        "backgroundColor": "#EEEEEE",
         "borderColor": "#ff9345",
         "borderRadius": 0,
         "borderWidth": 2,
         "opacity": 1,
-        "paddingHorizontal": 8,
-        "paddingVertical": 8,
+        "padding": 8,
       }
     }
   >

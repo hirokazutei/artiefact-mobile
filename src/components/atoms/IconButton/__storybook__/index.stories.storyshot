@@ -33,8 +33,7 @@ exports[`Storyshots Atoms/IconButton Default 1`] = `
         "borderRadius": 3072,
         "borderWidth": 2,
         "opacity": 1,
-        "paddingHorizontal": 8,
-        "paddingVertical": 8,
+        "padding": 8,
       }
     }
   >
@@ -95,8 +94,7 @@ exports[`Storyshots Atoms/IconButton Outline 1`] = `
         "borderRadius": 3072,
         "borderWidth": 2,
         "opacity": 1,
-        "paddingHorizontal": 8,
-        "paddingVertical": 8,
+        "padding": 8,
       }
     }
   >

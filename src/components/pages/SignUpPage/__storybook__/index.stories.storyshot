@@ -333,7 +333,7 @@ exports[`Storyshots Pages/SignUpPage Default 1`] = `
               dataDetectorTypes="all"
               keyboardType="default"
               multiline={false}
-              onKeyPress={[Function]}
+              onChangeText={[Function]}
               placeholder="Username"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -348,26 +348,30 @@ exports[`Storyshots Pages/SignUpPage Default 1`] = `
               underlineColorAndroid="transparent"
               value=""
             />
-            <Text
-              allowFontScaling={false}
-              style={
-                Array [
-                  Object {
-                    "color": "#008148",
-                    "fontSize": 24,
-                  },
-                  undefined,
-                  Object {
-                    "fontFamily": "Feather",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
-                  Object {},
-                ]
-              }
+            <View
+              style={Object {}}
             >
-              
-            </Text>
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#008148",
+                      "fontSize": 24,
+                    },
+                    undefined,
+                    Object {
+                      "fontFamily": "Feather",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
           </View>
           <View
             style={
@@ -420,7 +424,7 @@ exports[`Storyshots Pages/SignUpPage Default 1`] = `
               dataDetectorTypes="all"
               keyboardType="default"
               multiline={false}
-              onKeyPress={[Function]}
+              onChangeText={[Function]}
               placeholder="Password"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -435,26 +439,30 @@ exports[`Storyshots Pages/SignUpPage Default 1`] = `
               underlineColorAndroid="transparent"
               value=""
             />
-            <Text
-              allowFontScaling={false}
-              style={
-                Array [
-                  Object {
-                    "color": "#008148",
-                    "fontSize": 24,
-                  },
-                  undefined,
-                  Object {
-                    "fontFamily": "Feather",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
-                  Object {},
-                ]
-              }
+            <View
+              style={Object {}}
             >
-              
-            </Text>
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#008148",
+                      "fontSize": 24,
+                    },
+                    undefined,
+                    Object {
+                      "fontFamily": "Feather",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
           </View>
           <View
             style={
@@ -507,7 +515,7 @@ exports[`Storyshots Pages/SignUpPage Default 1`] = `
               dataDetectorTypes="all"
               keyboardType="default"
               multiline={false}
-              onKeyPress={[Function]}
+              onChangeText={[Function]}
               placeholder="Email"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -522,26 +530,30 @@ exports[`Storyshots Pages/SignUpPage Default 1`] = `
               underlineColorAndroid="transparent"
               value=""
             />
-            <Text
-              allowFontScaling={false}
-              style={
-                Array [
-                  Object {
-                    "color": "#008148",
-                    "fontSize": 24,
-                  },
-                  undefined,
-                  Object {
-                    "fontFamily": "Feather",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
-                  Object {},
-                ]
-              }
+            <View
+              style={Object {}}
             >
-              
-            </Text>
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#008148",
+                      "fontSize": 24,
+                    },
+                    undefined,
+                    Object {
+                      "fontFamily": "Feather",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
           </View>
           <View
             style={
@@ -757,8 +769,10 @@ exports[`Storyshots Pages/SignUpPage Default 1`] = `
           Object {
             "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "#008148",
+            "backgroundColor": "#EEEEEE",
+            "borderColor": "#008148",
             "borderRadius": 40,
+            "borderWidth": 2,
             "opacity": 1,
             "paddingHorizontal": 20,
             "paddingVertical": 10,
@@ -768,7 +782,7 @@ exports[`Storyshots Pages/SignUpPage Default 1`] = `
         <Text
           style={
             Object {
-              "color": "#EEEEEE",
+              "color": "#008148",
               "fontSize": 32,
               "fontWeight": "bold",
             }
