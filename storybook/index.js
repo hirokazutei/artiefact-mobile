@@ -1,3 +1,5 @@
 import StorybookUI from "./storybook";
+import { AppRegistry } from "react-native";
+import { name as appName } from "../app.json";
 
-export default StorybookUI;
+AppRegistry.registerComponent(appName, () => StorybookUI);
