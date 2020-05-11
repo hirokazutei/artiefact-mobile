@@ -7,7 +7,7 @@ import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
 import { selectAllColor } from "../../../../../storybook/knobs";
 import { TouchableSizeKey } from "../const";
-import Touchable, { TouchableProps } from "../";
+import Touchable, { Props as TouchableProps } from "../";
 
 const DEFAULT_CHILDREN = <Text>Sample</Text>;
 

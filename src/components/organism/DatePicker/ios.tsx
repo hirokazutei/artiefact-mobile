@@ -3,10 +3,23 @@ import { DatePickerIOS } from "react-native";
 import Modal from "../../molecules/Modal";
 import { DatePickerProps } from "./type";
 
+/**
+ * IOSDatePicker
+ *
+ * @param param
+ *
+ * Required:
+ * @param props.confirmButton - Button props of Confirm Button
+ * @param props.isVisible - if the date picker is visible or not
+ *
+ * Optional:
+ * @param [props.mode] - Mode of date/time select
+ * @param [props.cancelButton] - Button props of Cancel Button
+ */
 const IOSDatePicker = ({
   confirmButton,
   cancelButton,
-  mode,
+  mode = "date",
   isVisible,
 }: DatePickerProps) => {
   const currentDate = new Date();

@@ -9,7 +9,7 @@ import {
   selectTextAlign,
 } from "../../../../../storybook/knobs";
 import { FontSizeKey } from "../const";
-import Text, { TextProps } from "../";
+import Text, { Props as TextProps } from "../";
 
 const DEFAULT_TEXT = "Sample Text";
 

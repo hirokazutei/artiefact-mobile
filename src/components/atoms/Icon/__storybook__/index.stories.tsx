@@ -4,7 +4,7 @@ import { storiesOf } from "@storybook/react-native";
 import { select, withKnobs } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
 import { selectAllColor } from "../../../../../storybook/knobs";
-import Icon, { IconProps } from "../";
+import Icon, { Props as IconProps } from "../";
 import { IconSizeKey } from "../const";
 
 const DEFAULT_PROPS: IconProps = {

@@ -9,7 +9,7 @@ import {
   withKnobs,
 } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
-import ValidationField, { ValidationFieldProps } from "../index";
+import ValidationField, { Props as ValidationFieldProps } from "../index";
 
 const DEFAULT_PROPS: ValidationFieldProps = {
   value: "",

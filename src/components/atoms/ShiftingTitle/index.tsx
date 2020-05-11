@@ -8,7 +8,7 @@ import { Title } from "../Text";
 const ANIMATION_DURATION = 1500;
 const ANIMATION_START_OFFSET = -4;
 
-type ShiftingTitleProps = { color?: keyof ThemePalette; _storyshots?: boolean };
+type Props = { color?: keyof ThemePalette; _storyshots?: boolean };
 
 type ComponentState = {
   title: UserTitle;
@@ -26,10 +26,7 @@ type ComponentState = {
  *
  * @param props.color
  */
-class ShiftingTitle extends React.Component<
-  ShiftingTitleProps,
-  React.ComponentState
-> {
+class ShiftingTitle extends React.Component<Props, React.ComponentState> {
   state: ComponentState = {
     title: this.props._storyshots ? "Traveller" : getRandomUserTitle(),
     fadeAnim: new Animated.Value(-2),
@@ -74,6 +71,6 @@ class ShiftingTitle extends React.Component<
   }
 }
 
-export { ShiftingTitleProps };
+export { Props };
 
 export default ShiftingTitle;

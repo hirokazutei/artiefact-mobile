@@ -38,7 +38,7 @@ const DEFAULT_PROPS = {
   moveonMarkerPress: false,
 };
 
-type MapProps = {
+type Props = {
   currentRegion?: Region;
   shouldMapUpdate?: boolean;
   children?: Array<React.ReactElement> | React.ReactElement;
@@ -54,7 +54,7 @@ type State = {
  * Map
  *
  */
-class Map extends React.Component<MapProps, State> {
+class Map extends React.Component<Props, State> {
   state: State = {};
 
   async componentDidMount() {
@@ -202,6 +202,6 @@ class Map extends React.Component<MapProps, State> {
   }
 }
 
-export { MapProps };
+export { Props };
 
 export default Map;

@@ -4,7 +4,7 @@ import { action } from "@storybook/addon-actions";
 import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
 import { selectAllColor } from "../../../../../storybook/knobs";
-import CheckBox, { CheckBoxProps } from "../";
+import CheckBox, { Props as CheckBoxProps } from "../";
 import { CheckBoxSizeKey } from "../const";
 
 const selectSize: Array<CheckBoxSizeKey> = ["small", "medium", "large"];

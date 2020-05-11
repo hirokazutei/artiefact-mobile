@@ -1,11 +1,8 @@
-import {
-  checkBoxFactory,
-  CheckBoxProps as UICheckBoxProps,
-} from "react-native-kinpaku-ui";
+import { checkBoxFactory, CheckBoxProps } from "react-native-kinpaku-ui";
 import { themes, additionalColors } from "../../../symbols";
 import { checkBoxSizes } from "./const";
 
-type CheckBoxProps = UICheckBoxProps<
+type Props = CheckBoxProps<
   typeof additionalColors,
   typeof checkBoxSizes,
   false
@@ -39,6 +36,6 @@ const CheckBox = checkBoxFactory<
 
 const { Circular, Round, Sharp } = CheckBox;
 
-export { CheckBoxProps, Circular, Round, Sharp };
+export { Props, Circular, Round, Sharp };
 
 export default Circular;

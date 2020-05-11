@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import RNModal from "react-native-modal";
-import Button, { ButtonProps } from "../../atoms/Button";
+import Button, { Props as ButtonProps } from "../../atoms/Button";
 import Space from "../../atoms/Space";
 import { stylizeModal } from "./styles";
 import { Title } from "../../atoms/Text";
@@ -108,6 +108,6 @@ const Modal = (props: Props) => {
   );
 };
 
-export { Props as ModalProps };
+export { Props };
 
 export default Modal;

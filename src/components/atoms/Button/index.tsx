@@ -1,14 +1,11 @@
-import {
-  buttonFactory,
-  ButtonProps as UIButtonProps,
-} from "react-native-kinpaku-ui";
+import { buttonFactory, ButtonProps } from "react-native-kinpaku-ui";
 import { themes, additionalColors } from "../../../symbols";
 import { buttonSizes } from "./const";
 
 type UnusedProps = "align";
 
-type ButtonProps = Omit<
-  UIButtonProps<typeof additionalColors, typeof buttonSizes, false>,
+type Props = Omit<
+  ButtonProps<typeof additionalColors, typeof buttonSizes, false>,
   UnusedProps
 >;
 
@@ -48,6 +45,6 @@ const Button = buttonFactory<
 
 const { Circular, Round, Sharp } = Button;
 
-export { ButtonProps, Circular, Round, Sharp };
+export { Props, Circular, Round, Sharp };
 
 export default Button.Circular;

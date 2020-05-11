@@ -7,7 +7,7 @@ import {
   IconNameKey,
   iconNames,
 } from "./const";
-import Touchable, { TouchableProps } from "../Touchable";
+import Touchable, { Props as TouchableProps } from "../Touchable";
 
 type UnusedProps = "align" | "children" | "isStretched";
 
@@ -15,7 +15,7 @@ type UsedTouchableProps = Omit<TouchableProps, UnusedProps>;
 
 type IconButtonTypeKey = "fill" | "outline";
 
-type IconButtonProps = {
+type Props = {
   name: IconNameKey;
   type?: IconButtonTypeKey;
 } & UsedTouchableProps;
@@ -62,7 +62,7 @@ const IconButton = ({
   name,
   type = "fill",
   ...props
-}: IconButtonProps) => {
+}: Props) => {
   const isFillType = type === "fill";
   const iconSize = iconSizes[size as keyof typeof touchablePaddingSizes];
   const { buttonColor, iconColor } = colorResolver({
@@ -84,6 +84,6 @@ const IconButton = ({
   );
 };
 
-export { IconButtonProps, IconButtonTypeKey };
+export { Props, IconButtonTypeKey };
 
 export default IconButton;

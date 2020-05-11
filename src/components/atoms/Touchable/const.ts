@@ -13,32 +13,46 @@ const touchableSizes: Record<
   TouchableSizeProps
 > = {
   tiny: {
-    padding: 4,
     borderRadius: 6,
+    touchableSpacing: {
+      padding: 4,
+    },
   },
   small: {
-    padding: 6,
     borderRadius: 9,
+    touchableSpacing: {
+      padding: 6,
+    },
   },
   medium: {
-    padding: 8,
     borderRadius: 12,
+    touchableSpacing: {
+      padding: 8,
+    },
   },
   large: {
-    padding: 8,
     borderRadius: 16,
+    touchableSpacing: {
+      padding: 8,
+    },
   },
   huge: {
-    padding: 12,
     borderRadius: 18,
+    touchableSpacing: {
+      padding: 12,
+    },
   },
   massive: {
-    padding: 12,
     borderRadius: 24,
+    touchableSpacing: {
+      padding: 12,
+    },
   },
   default: {
-    padding: 8,
     borderRadius: 12,
+    touchableSpacing: {
+      padding: 8,
+    },
   },
 };
 

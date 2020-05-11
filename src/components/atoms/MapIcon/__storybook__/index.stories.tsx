@@ -4,7 +4,7 @@ import { storiesOf } from "@storybook/react-native";
 import { select, withKnobs } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
 import { selectAllColor } from "../../../../../storybook/knobs";
-import MapIcon, { MapIconProps } from "../";
+import MapIcon, { Props as MapIconProps } from "../";
 import { MapIconTypeKey, MapIconSizeKey } from "../const";
 
 const DEFAULT_PROPS: {

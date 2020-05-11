@@ -1,8 +1,8 @@
-import { textFactory, TextProps as UITextProps } from "react-native-kinpaku-ui";
+import { textFactory, TextProps } from "react-native-kinpaku-ui";
 import { themes, additionalColors } from "../../../symbols";
 import { textVariations, FontSizeKey } from "./const";
 
-type TextProps = UITextProps<typeof additionalColors, FontSizeKey, true, false>;
+type Props = TextProps<typeof additionalColors, FontSizeKey, true, false>;
 
 /**
  * Text
@@ -33,6 +33,6 @@ const { Title, Heading, SubHeading, Body, Label, Quote } = textFactory<
   variation: textVariations,
 });
 
-export { TextProps, Title, Heading, SubHeading, Body, Label, Quote };
+export { Props, Title, Heading, SubHeading, Body, Label, Quote };
 
 export default { Title, Heading, SubHeading, Body, Label, Quote };

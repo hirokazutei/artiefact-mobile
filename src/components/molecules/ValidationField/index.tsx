@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { InputFieldProps } from "../../atoms/InputField";
+import { Props as InputFieldProps } from "../../atoms/InputField";
 import InputField from "../../atoms/InputField";
 import { Body } from "../../atoms/Text";
 import Space from "../../atoms/Space";
@@ -113,6 +113,6 @@ const ValidationField = ({
   );
 };
 
-export { Props as ValidationFieldProps, ValidationResultType };
+export { Props, ValidationResultType };
 
 export default ValidationField;

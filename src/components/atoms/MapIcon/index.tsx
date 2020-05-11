@@ -9,7 +9,7 @@ import {
   MapIconSizeKey,
 } from "./const";
 
-type MapIconProps = {
+type Props = {
   name: MapIconTypeKey;
   size?: MapIconSizeKey;
   color?: AllColorKey;
@@ -28,7 +28,7 @@ type MapIconProps = {
  * @param [props.size] - size of Icon
  * @param [props.color] - color of Icon
  */
-const Icon = ({ size = "medium", color = "primary", name }: MapIconProps) => {
+const Icon = ({ size = "medium", color = "primary", name }: Props) => {
   const iconSize = mapIconSizes[size];
   const iconColor = allColors[color];
   const iconName = mapIcontypes[name];
@@ -40,6 +40,6 @@ const Icon = ({ size = "medium", color = "primary", name }: MapIconProps) => {
   );
 };
 
-export { MapIconProps };
+export { Props };
 
 export default Icon;

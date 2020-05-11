@@ -12,7 +12,7 @@ import {
 } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
 import { selectAllColor } from "../../../../../storybook/knobs";
-import InputField, { InputFieldProps } from "../";
+import InputField, { Props as InputFieldProps } from "../";
 import { InputFieldSizeKey } from "../const";
 
 const DEFAULT_PROPS = {
@@ -80,6 +80,7 @@ const geOptionalProps = (
     maxLength: maxLength ? number("Max Length", maxLength) : maxLength,
     onBlur: action("on-blur"),
     onChange: action("on-change"),
+    onChangeText: action("on-change-text"),
     onEndEditing: action("on-end-editing"),
     onFocus: action("on-focus"),
     onKeyPress: action("on-key-press"),

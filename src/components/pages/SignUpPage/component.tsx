@@ -9,7 +9,7 @@ type NavigationProps = NavigationNavigatorProps<
   {},
   {
     params: {
-      onPressBack?: () => void;
+      onPressBack: () => void;
     };
   }
 >;
@@ -42,6 +42,7 @@ class SignUpPage extends React.Component<Props> {
   }
 
   render() {
+    console.log(this.props);
     return <SignUpPageTemplate {...this.props} />;
   }
 }

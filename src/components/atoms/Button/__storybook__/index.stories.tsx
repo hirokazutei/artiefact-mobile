@@ -6,7 +6,7 @@ import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
 import { selectAllColor } from "../../../../../storybook/knobs";
 import { ButtonSizeKey } from "../const";
-import Button, { ButtonProps } from "../";
+import Button, { Props as ButtonProps } from "../";
 
 const DEFAULT_PROPS = {
   label: "PRESS HERE",

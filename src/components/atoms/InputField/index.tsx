@@ -1,11 +1,8 @@
-import {
-  inputFieldFactory,
-  InputFieldProps as UIInputFieldProps,
-} from "react-native-kinpaku-ui";
+import { inputFieldFactory, InputFieldProps } from "react-native-kinpaku-ui";
 import { themes, additionalColors } from "../../../symbols";
 import { inputFieldSizes } from "./const";
 
-type InputFieldProps = UIInputFieldProps<
+type Props = InputFieldProps<
   typeof additionalColors,
   typeof inputFieldSizes,
   false
@@ -29,6 +26,7 @@ type InputFieldProps = UIInputFieldProps<
  * @param [props.maxLength] - max length of the InputField
  * @param [props.onBlur] - function that runs on blur
  * @param [props.onChange] - function that runs on change
+ * @param [props.onChangeText] - function that runs when Text change
  * @param [props.onEndEditing] - function that runs on end editing
  * @param [props.onFocus] - function that runs on focus
  * @param [props.onKeyPress] - function that runs on key press
@@ -48,6 +46,6 @@ const InputField = inputFieldFactory<
   sizes: inputFieldSizes,
 });
 
-export { InputFieldProps };
+export { Props };
 
 export default InputField;

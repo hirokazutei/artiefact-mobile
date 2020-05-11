@@ -3,7 +3,7 @@ import RNVIcon from "react-native-vector-icons/Feather";
 import { allColors, AllColorKey } from "../../../symbols";
 import { IconTypeKey, IconSizeKey, iconSizes, iconTypes } from "./const";
 
-type IconProps = {
+type Props = {
   name: IconTypeKey;
   size?: IconSizeKey;
   color?: AllColorKey;
@@ -21,13 +21,13 @@ type IconProps = {
  * @param [props.size] - size of Icon
  * @param [props.color] - color of Icon
  */
-const Icon = ({ size = "medium", color = "primary", name }: IconProps) => {
+const Icon = ({ size = "medium", color = "primary", name }: Props) => {
   const iconSize = iconSizes[size];
   const iconColor = allColors[color];
   const iconName = iconTypes[name];
   return <RNVIcon name={iconName} size={iconSize} color={iconColor} />;
 };
 
-export { IconProps };
+export { Props };
 
 export default Icon;
