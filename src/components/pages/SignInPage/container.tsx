@@ -17,7 +17,7 @@ type DispatchProps = {
   onPressBack: () => void;
 };
 
-const ConnectedSignInPage = connect(
+export default connect(
   (state: State): StateProps => {
     const { passwordForm, usernameForm } = state.authentication;
     return {
@@ -44,5 +44,3 @@ const ConnectedSignInPage = connect(
 )(SignInPage);
 
 export { StateProps, DispatchProps };
-
-export default ConnectedSignInPage;

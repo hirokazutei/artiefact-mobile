@@ -13,14 +13,14 @@ import {
 } from "./routes";
 
 const initializaMapper: Readonly<
-  { [key in InitializationRouteTypes]: React.FunctionComponent<any> }
+  { [key in InitializationRouteTypes]: React.ReactElement<any> | React.FC<any> }
 > = {
   initialization: InitializationPage,
 };
 const InitializationStack = createStackNavigator(initializaMapper);
 
 const authStackMapper: Readonly<
-  { [key in AuthStackRouteTypes]: React.FunctionComponent<any> }
+  { [key in AuthStackRouteTypes]: React.ReactElement<any> | React.FC<any> }
 > = {
   intro: IntroPage,
   signIn: SignInPage,
@@ -30,7 +30,7 @@ const authStackMapper: Readonly<
 const AuthStack = createStackNavigator(authStackMapper);
 
 const mapStackMapper: Readonly<
-  { [key in MapStackRouteTypes]: React.FunctionComponent<any> }
+  { [key in MapStackRouteTypes]: React.ReactElement<any> | React.FC<any> }
 > = {
   mapView: MapViewPage,
   camera: CameraPage,
