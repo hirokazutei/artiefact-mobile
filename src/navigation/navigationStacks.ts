@@ -1,5 +1,4 @@
 import { createStackNavigator, NavigationContainer } from "react-navigation";
-import { ConnectedComponentClass } from "react-redux";
 import SignInPage from "../components/pages/SignInPage";
 import SignUpPage from "../components/pages/SignUpPage";
 import InitializationPage from "../components/pages/InitializationPage";
@@ -13,14 +12,13 @@ import {
   InitializationRouteTypes,
 } from "./routes";
 
-// FIXME: Page Types
-const initializaMapper: {
-  [key in InitializationRouteTypes]: React.Component<any>
-} = {
+// FIXME: Connected Page Types
+const initializaMapper: { [key in InitializationRouteTypes]: any } = {
   initialization: InitializationPage,
 };
 const InitializationStack = createStackNavigator(initializaMapper);
 
+// FIXME: Connected Page Types
 const authStackMapper: { [key in AuthStackRouteTypes]: any } = {
   intro: IntroPage,
   signIn: SignInPage,

@@ -15,7 +15,7 @@ type DispatchProps = {
   onPress: () => void;
 };
 
-const ErrorModalContainer = connect<StateProps, DispatchProps, null, State>(
+const ErrorModalContainer = connect(
   (state: State): StateProps => {
     const { showModal, message, icon } = state.error;
     return {
