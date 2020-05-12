@@ -123,7 +123,9 @@ const extractEmailVerificationErrorAndStatus = (
   return { errorMessages, status: status as ValidationResultType };
 };
 
-const ConnectedSignUpPage = connect(
+export { StateProps, DispatchProps };
+
+export default connect<StateProps, DispatchProps, null, State>(
   (state: State): StateProps => {
     const {
       agreeToTermsForm,
@@ -227,7 +229,3 @@ const ConnectedSignUpPage = connect(
     };
   }
 )(SignUpPage);
-
-export { StateProps, DispatchProps };
-
-export default ConnectedSignUpPage;

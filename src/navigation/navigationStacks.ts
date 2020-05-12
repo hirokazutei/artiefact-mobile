@@ -1,4 +1,5 @@
 import { createStackNavigator, NavigationContainer } from "react-navigation";
+import { ConnectedComponentClass } from "react-redux";
 import SignInPage from "../components/pages/SignInPage";
 import SignUpPage from "../components/pages/SignUpPage";
 import InitializationPage from "../components/pages/InitializationPage";
@@ -13,14 +14,24 @@ import {
 } from "./routes";
 
 const initializaMapper: Readonly<
-  { [key in InitializationRouteTypes]: React.ReactElement<any> | React.FC<any> }
+  {
+    [key in InitializationRouteTypes]:
+      | React.ReactElement<any>
+      | React.FC<any>
+      | ConnectedComponentClass<any, any>
+  }
 > = {
   initialization: InitializationPage,
 };
 const InitializationStack = createStackNavigator(initializaMapper);
 
 const authStackMapper: Readonly<
-  { [key in AuthStackRouteTypes]: React.ReactElement<any> | React.FC<any> }
+  {
+    [key in AuthStackRouteTypes]:
+      | React.ReactElement<any>
+      | React.FC<any>
+      | ConnectedComponentClass<any, any>
+  }
 > = {
   intro: IntroPage,
   signIn: SignInPage,
@@ -30,7 +41,12 @@ const authStackMapper: Readonly<
 const AuthStack = createStackNavigator(authStackMapper);
 
 const mapStackMapper: Readonly<
-  { [key in MapStackRouteTypes]: React.ReactElement<any> | React.FC<any> }
+  {
+    [key in MapStackRouteTypes]:
+      | React.ReactElement<any>
+      | React.FC<any>
+      | ConnectedComponentClass<any, any>
+  }
 > = {
   mapView: MapViewPage,
   camera: CameraPage,
