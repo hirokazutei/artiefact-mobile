@@ -5,17 +5,23 @@ import routes from "../../../navigation/routes";
 
 type Props = NavigationProps;
 
-const IntroPage: React.FC<Props> = (props: Props): React.ReactElement => {
-  const onPressSignUp = () =>
-    props.navigation.navigate(routes.authStackRoutes.signUp);
-  const onPressSignIn = () =>
-    props.navigation.navigate(routes.authStackRoutes.signIn);
-  return (
-    <IntroTemplate
-      onPressSignUp={onPressSignUp}
-      onPressSignIn={onPressSignIn}
-    />
-  );
-};
+class IntroPage extends React.Component<Props> {
+  static navigationOptions = {
+    header: null,
+  };
+
+  render() {
+    const onPressSignUp = () =>
+      this.props.navigation.navigate(routes.authStackRoutes.signUp);
+    const onPressSignIn = () =>
+      this.props.navigation.navigate(routes.authStackRoutes.signIn);
+    return (
+      <IntroTemplate
+        onPressSignUp={onPressSignUp}
+        onPressSignIn={onPressSignIn}
+      />
+    );
+  }
+}
 
 export default IntroPage;
