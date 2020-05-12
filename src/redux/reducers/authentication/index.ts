@@ -94,6 +94,7 @@ export const reducer: Reducer<State, Action> = (
     }
     // Username Form
     case actions.AUTH_CHANGE_USERNAME: {
+      console.log(payload);
       newState.usernameForm = {
         ...state.usernameForm,
         value: payload.value,

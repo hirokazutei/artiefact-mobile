@@ -30,6 +30,7 @@ const checkUsernameLength = (value: string): boolean => {
 
 const checkUsernameAllowedChars = (value: string): boolean => {
   const checkUsernameAllowedCharsRegExp = new RegExp("^[A-z0-9_+=-]+$");
+  console.log(value);
   return checkUsernameAllowedCharsRegExp.test(value);
 };
 

@@ -53,6 +53,6 @@ const RadioSelection: React.FC<Props> = (props: Props): React.ReactElement => {
   );
 };
 
-export { Props as RadioSelectionProps };
+export { Props };
 
 export default RadioSelection;

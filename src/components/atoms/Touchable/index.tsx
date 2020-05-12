@@ -1,14 +1,11 @@
-import {
-  touchableFactory,
-  TouchableProps as UITouchableProps,
-} from "react-native-kinpaku-ui";
+import { touchableFactory, TouchableProps } from "react-native-kinpaku-ui";
 import { themes, additionalColors } from "../../../symbols";
 import { touchableSizes } from "./const";
 
 type UnusedProps = "align";
 
-type TouchableProps = Omit<
-  UITouchableProps<typeof additionalColors, typeof touchableSizes, false>,
+type Props = Omit<
+  TouchableProps<typeof additionalColors, typeof touchableSizes, false>,
   UnusedProps
 >;
 
@@ -43,6 +40,6 @@ const Touchable = touchableFactory<
   sizes: touchableSizes,
 });
 
-export { TouchableProps };
+export { Props };
 
 export default Touchable;

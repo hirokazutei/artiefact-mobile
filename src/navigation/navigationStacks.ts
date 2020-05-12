@@ -1,8 +1,8 @@
 import { createStackNavigator, NavigationContainer } from "react-navigation";
-// import SignInPage from "../components/pages/SignInPage";
-// import SignUpPage from "../components/pages/SignUpPage";
+import SignInPage from "../components/pages/SignInPage";
+import SignUpPage from "../components/pages/SignUpPage";
 import InitializationPage from "../components/pages/InitializationPage";
-// import IntroPage from "../components/pages/IntroPage";
+import IntroPage from "../components/pages/IntroPage";
 import MapViewPage from "../components/pages/MapViewPage";
 import CameraPage from "../components/pages/CameraPage";
 import {
@@ -12,27 +12,24 @@ import {
   InitializationRouteTypes,
 } from "./routes";
 
-const initializaMapper: Readonly<
-  { [key in InitializationRouteTypes]: React.FunctionComponent<any> }
-> = {
+// FIXME: Connected Page Types
+const initializaMapper: { [key in InitializationRouteTypes]: any } = {
   initialization: InitializationPage,
 };
 const InitializationStack = createStackNavigator(initializaMapper);
 
-const authStackMapper: Readonly<
-  { [key in AuthStackRouteTypes]: React.FunctionComponent<any> }
-> = {
-  intro: MapViewPage,
-  signIn: MapViewPage,
-  signUp: MapViewPage,
-  // Temporarily changing these to MapView
+// FIXME: Connected Page Types
+const authStackMapper: { [key in AuthStackRouteTypes]: any } = {
+  intro: IntroPage,
+  signIn: SignInPage,
+  signUp: SignUpPage,
 };
 
 const AuthStack = createStackNavigator(authStackMapper);
 
-const mapStackMapper: Readonly<
-  { [key in MapStackRouteTypes]: React.FunctionComponent<any> }
-> = {
+const mapStackMapper: {
+  [key in MapStackRouteTypes]: React.FC<any> | React.Component<any>
+} = {
   mapView: MapViewPage,
   camera: CameraPage,
 };

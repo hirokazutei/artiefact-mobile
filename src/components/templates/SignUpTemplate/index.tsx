@@ -70,7 +70,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <ValidationField
           placeholder="Username"
           color="secondary"
-          onKeyPress={onChangeUsername}
+          onChangeText={onChangeUsername}
           value={username}
           errors={usernameErrors}
           validationResult={usernameValidationStatus}
@@ -80,7 +80,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <ValidationField
           placeholder="Password"
           color="secondary"
-          onKeyPress={onChangePassword}
+          onChangeText={onChangePassword}
           value={password}
           validationResult={passwordValidationStatus}
           errors={passwordErrors}
@@ -89,7 +89,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <ValidationField
           placeholder="Email"
           color="secondary"
-          onKeyPress={onChangeEmail}
+          onChangeText={onChangeEmail}
           value={email}
           validationResult={emailValidationStatus}
           errors={emailErrors}

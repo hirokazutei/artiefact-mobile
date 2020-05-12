@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
 import { Title } from "../Text";
 
-type NavigationTitleProps = {
+type Props = {
   children: Required<string>;
 };
 
@@ -27,7 +27,7 @@ const styles: Styles = StyleSheet.create<Styles>({
  * Required:
  * @param props.children - children
  */
-const NavigationTitle = (props: NavigationTitleProps) => {
+const NavigationTitle = (props: Props) => {
   const { children } = props;
   return (
     <View style={styles.view}>
@@ -36,6 +36,6 @@ const NavigationTitle = (props: NavigationTitleProps) => {
   );
 };
 
-export { NavigationTitleProps };
+export { Props };
 
 export default NavigationTitle;

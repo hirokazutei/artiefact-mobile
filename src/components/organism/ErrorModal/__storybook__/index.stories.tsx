@@ -4,7 +4,7 @@ import { storiesOf } from "@storybook/react-native";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import Provider from "../../../../../storybook/Provider";
-import { ErrorModalProps } from "../component";
+import { Props as ErrorModalProps } from "../component";
 import { IconTypeKey } from "../../../atoms/Icon/const";
 import ErrorModal from "../component";
 

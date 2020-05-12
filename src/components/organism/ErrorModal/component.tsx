@@ -6,7 +6,7 @@ import Space from "../../atoms/Space";
 import Icon from "../../atoms/Icon";
 import { IconTypeKey } from "../../atoms/Icon/const";
 
-type ErrorModalProps = {
+type Props = {
   onPress: () => void;
   message: string;
   icon?: IconTypeKey;
@@ -23,7 +23,7 @@ const styles = StyleSheet.create<Styles>({
   },
 });
 
-class ErrorModal extends React.Component<ErrorModalProps> {
+class ErrorModal extends React.Component<Props> {
   render() {
     const { message, icon, isVisible, onPress } = this.props;
     return (
@@ -39,7 +39,7 @@ class ErrorModal extends React.Component<ErrorModalProps> {
           {icon && (
             <View style={styles.iconView}>
               <Space.Stack size="large" />
-              <Icon name={icon} size={"macro"} color={"primary"} />
+              <Icon name={icon} size="macro" color="primary" />
             </View>
           )}
         </Space.Inset>
@@ -48,6 +48,6 @@ class ErrorModal extends React.Component<ErrorModalProps> {
   }
 }
 
-export { ErrorModalProps };
+export { Props };
 
 export default ErrorModal;

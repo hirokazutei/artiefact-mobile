@@ -5,8 +5,8 @@ import { storiesOf } from "@storybook/react-native";
 import { boolean, object, text, withKnobs } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import Provider from "../../../../../storybook/Provider";
-import Modal, { ModalProps } from "../index";
-import { ButtonProps } from "../../../atoms/Button";
+import Modal, { Props as ModalProps } from "../index";
+import { Props as ButtonProps } from "../../../atoms/Button";
 
 const DEFAULT_PROPS: ModalProps = {
   children: (

@@ -8,7 +8,6 @@ import { DatePickerProps, DatePickerMode } from "../type";
 import { IOSDatePicker } from "../index";
 
 const DEFAULT_PROPS: DatePickerProps = {
-  mode: "date",
   isVisible: true,
   confirmButton: {
     onPress: action("confirm-button-pressed"),
@@ -25,12 +24,11 @@ const selectMode: Array<Exclude<DatePickerMode, undefined>> = [
 const getRequiredProps = (
   overrides: Partial<DatePickerProps> = {}
 ): DatePickerProps => {
-  const { mode, isVisible, confirmButton } = {
+  const { isVisible, confirmButton } = {
     ...DEFAULT_PROPS,
     ...overrides,
   };
   return {
-    mode: select("Date Picker Mode Options", selectMode, mode),
     isVisible: boolean("Visible", isVisible),
     confirmButton: object("Confirm Button Props", confirmButton),
   };
@@ -39,9 +37,10 @@ const getRequiredProps = (
 const geOptionalProps = (
   overrides: Partial<DatePickerProps> = {}
 ): Partial<DatePickerProps> => {
-  const { cancelButton } = overrides;
+  const { cancelButton, mode } = overrides;
   return {
     cancelButton: object("Cancel Button Props", cancelButton),
+    mode: select("Date Picker Mode Options", selectMode, mode),
   };
 };
 

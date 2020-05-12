@@ -3,7 +3,7 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react-native";
 import { text, withKnobs } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
-import NavigationTitle, { NavigationTitleProps } from "../";
+import NavigationTitle, { Props as NavigationTitleProps } from "../";
 
 const DEFAULT_PROPS = {
   children: "SAMPLE TITLE",

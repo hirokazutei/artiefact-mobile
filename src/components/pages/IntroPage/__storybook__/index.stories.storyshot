@@ -65,8 +65,10 @@ exports[`Storyshots Pages/IntroPage Default 1`] = `
           Object {
             "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "#ff9345",
+            "backgroundColor": "#EEEEEE",
+            "borderColor": "#ff9345",
             "borderRadius": 40,
+            "borderWidth": 2,
             "opacity": 1,
             "paddingHorizontal": 20,
             "paddingVertical": 10,
@@ -76,7 +78,7 @@ exports[`Storyshots Pages/IntroPage Default 1`] = `
         <Text
           style={
             Object {
-              "color": "#EEEEEE",
+              "color": "#ff9345",
               "fontSize": 32,
               "fontWeight": "bold",
             }
@@ -108,8 +110,10 @@ exports[`Storyshots Pages/IntroPage Default 1`] = `
           Object {
             "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "#008148",
+            "backgroundColor": "#EEEEEE",
+            "borderColor": "#008148",
             "borderRadius": 40,
+            "borderWidth": 2,
             "opacity": 1,
             "paddingHorizontal": 20,
             "paddingVertical": 10,
@@ -119,7 +123,7 @@ exports[`Storyshots Pages/IntroPage Default 1`] = `
         <Text
           style={
             Object {
-              "color": "#EEEEEE",
+              "color": "#008148",
               "fontSize": 32,
               "fontWeight": "bold",
             }

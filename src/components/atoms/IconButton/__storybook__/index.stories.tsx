@@ -6,7 +6,7 @@ import { boolean, select, withKnobs } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
 import { selectAllColor } from "../../../../../storybook/knobs";
 import { IconNameKey, IconSizeKey } from "../const";
-import IconButton, { IconButtonProps } from "../";
+import IconButton, { Props as IconButtonProps } from "../";
 
 const DEFAULT_PROPS: IconButtonProps = {
   name: "camera",

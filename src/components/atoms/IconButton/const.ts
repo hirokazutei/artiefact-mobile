@@ -1,26 +1,34 @@
-import { TouchableAllSizeProps } from "react-native-kinpaku-ui";
+import { TouchableSizeProps } from "react-native-kinpaku-ui";
 
 type IconSizeKey = "small" | "medium" | "large";
 
 const touchablePaddingSizes: Record<
   IconSizeKey | "default",
-  TouchableAllSizeProps
+  TouchableSizeProps
 > = {
   small: {
     borderRadius: 24,
-    padding: 4,
+    touchableSpacing: {
+      padding: 4,
+    },
   },
   medium: {
     borderRadius: 48,
-    padding: 8,
+    touchableSpacing: {
+      padding: 8,
+    },
   },
   large: {
     borderRadius: 72,
-    padding: 12,
+    touchableSpacing: {
+      padding: 12,
+    },
   },
   default: {
     borderRadius: 48,
-    padding: 8,
+    touchableSpacing: {
+      padding: 8,
+    },
   },
 };
 

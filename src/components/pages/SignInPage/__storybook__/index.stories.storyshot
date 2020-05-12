@@ -80,7 +80,7 @@ exports[`Storyshots Pages/SignInPage Default 1`] = `
           Object {
             "alignItems": "center",
             "borderColor": "#ff9345",
-            "borderRadius": 2048,
+            "borderRadius": 8,
             "borderWidth": 2,
             "flexDirection": "row",
             "padding": 2,
@@ -94,7 +94,7 @@ exports[`Storyshots Pages/SignInPage Default 1`] = `
           dataDetectorTypes="none"
           keyboardType="default"
           multiline={false}
-          onChange={[Function]}
+          onChangeText={[Function]}
           placeholder="Username"
           rejectResponderTermination={true}
           secureTextEntry={false}
@@ -123,7 +123,7 @@ exports[`Storyshots Pages/SignInPage Default 1`] = `
           Object {
             "alignItems": "center",
             "borderColor": "#ff9345",
-            "borderRadius": 2048,
+            "borderRadius": 8,
             "borderWidth": 2,
             "flexDirection": "row",
             "padding": 2,
@@ -138,7 +138,7 @@ exports[`Storyshots Pages/SignInPage Default 1`] = `
           dataDetectorTypes="none"
           keyboardType="default"
           multiline={false}
-          onChange={[Function]}
+          onChangeText={[Function]}
           placeholder="Password"
           rejectResponderTermination={true}
           secureTextEntry={true}
@@ -178,8 +178,10 @@ exports[`Storyshots Pages/SignInPage Default 1`] = `
           Object {
             "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "#ff9345",
+            "backgroundColor": "#EEEEEE",
+            "borderColor": "#ff9345",
             "borderRadius": 40,
+            "borderWidth": 2,
             "opacity": 1,
             "paddingHorizontal": 20,
             "paddingVertical": 10,
@@ -189,7 +191,7 @@ exports[`Storyshots Pages/SignInPage Default 1`] = `
         <Text
           style={
             Object {
-              "color": "#EEEEEE",
+              "color": "#ff9345",
               "fontSize": 32,
               "fontWeight": "bold",
             }

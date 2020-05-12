@@ -4,7 +4,7 @@ import { storiesOf } from "@storybook/react-native";
 import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import Provider from "../../../../../storybook/Provider";
-import RadioSelection, { RadioSelectionProps } from "../index";
+import RadioSelection, { Props as RadioSelectionProps } from "../index";
 
 const DEFAULT_PROPS: RadioSelectionProps = {
   active: false,

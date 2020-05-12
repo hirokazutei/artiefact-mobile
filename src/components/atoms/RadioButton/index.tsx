@@ -1,11 +1,8 @@
-import {
-  radioButtonFactory,
-  RadioButtonProps as UIRadioButtonProps,
-} from "react-native-kinpaku-ui";
+import { radioButtonFactory, RadioButtonProps } from "react-native-kinpaku-ui";
 import { additionalColors, themes } from "../../../symbols";
 import { radioButtonSizes } from "./const";
 
-type RadioButtonProps = UIRadioButtonProps<
+type Props = RadioButtonProps<
   typeof additionalColors,
   typeof radioButtonSizes,
   false
@@ -36,6 +33,6 @@ const { Circular, Round, Sharp } = radioButtonFactory<
   additionalPalettes: additionalColors,
 });
 
-export { RadioButtonProps, Circular, Round, Sharp };
+export { Props, Circular, Round, Sharp };
 
 export default Round;
