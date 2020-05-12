@@ -13,26 +13,15 @@ import {
   InitializationRouteTypes,
 } from "./routes";
 
-const initializaMapper: Readonly<
-  {
-    [key in InitializationRouteTypes]:
-      | React.ReactElement<any>
-      | React.FC<any>
-      | ConnectedComponentClass<any, any>
-  }
-> = {
+// FIXME: Page Types
+const initializaMapper: {
+  [key in InitializationRouteTypes]: React.Component<any>
+} = {
   initialization: InitializationPage,
 };
 const InitializationStack = createStackNavigator(initializaMapper);
 
-const authStackMapper: Readonly<
-  {
-    [key in AuthStackRouteTypes]:
-      | React.ReactElement<any>
-      | React.FC<any>
-      | ConnectedComponentClass<any, any>
-  }
-> = {
+const authStackMapper: { [key in AuthStackRouteTypes]: any } = {
   intro: IntroPage,
   signIn: SignInPage,
   signUp: SignUpPage,
@@ -40,14 +29,9 @@ const authStackMapper: Readonly<
 
 const AuthStack = createStackNavigator(authStackMapper);
 
-const mapStackMapper: Readonly<
-  {
-    [key in MapStackRouteTypes]:
-      | React.ReactElement<any>
-      | React.FC<any>
-      | ConnectedComponentClass<any, any>
-  }
-> = {
+const mapStackMapper: {
+  [key in MapStackRouteTypes]: React.FC<any> | React.Component<any>
+} = {
   mapView: MapViewPage,
   camera: CameraPage,
 };
