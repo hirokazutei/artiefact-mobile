@@ -31,7 +31,9 @@ const NavigationTitle = (props: Props) => {
   const { children } = props;
   return (
     <View style={styles.view}>
-      <Title numberOfLines={1}>{children}</Title>
+      <Title size="small" numberOfLines={1}>
+        {children}
+      </Title>
     </View>
   );
 };

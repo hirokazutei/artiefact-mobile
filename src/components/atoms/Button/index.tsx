@@ -41,6 +41,7 @@ const Button = buttonFactory<
   themes,
   additionalPalettes: additionalColors,
   sizes: buttonSizes,
+  defaultType: "fill",
 });
 
 const { Circular, Round, Sharp } = Button;

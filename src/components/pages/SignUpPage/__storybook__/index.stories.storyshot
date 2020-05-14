@@ -253,7 +253,7 @@ exports[`Storyshots Pages/SignUpPage Default 1`] = `
           Object {
             "color": "#008148",
             "fontFamily": undefined,
-            "fontSize": 36,
+            "fontSize": 40,
             "fontStyle": "normal",
             "fontWeight": "bold",
             "letterSpacing": undefined,
@@ -769,10 +769,8 @@ exports[`Storyshots Pages/SignUpPage Default 1`] = `
           Object {
             "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "#EEEEEE",
-            "borderColor": "#008148",
+            "backgroundColor": "#008148",
             "borderRadius": 40,
-            "borderWidth": 2,
             "opacity": 1,
             "paddingHorizontal": 20,
             "paddingVertical": 10,
@@ -782,7 +780,7 @@ exports[`Storyshots Pages/SignUpPage Default 1`] = `
         <Text
           style={
             Object {
-              "color": "#008148",
+              "color": "#EEEEEE",
               "fontSize": 32,
               "fontWeight": "bold",
             }

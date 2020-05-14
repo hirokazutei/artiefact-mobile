@@ -16,9 +16,9 @@ const textVariations: {
   Title: {
     fontWeight: "bold",
     fontSize: {
-      small: 28,
+      small: 24,
       medium: 32,
-      large: 36,
+      large: 40,
       default: 32,
     },
   },

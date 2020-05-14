@@ -29,7 +29,7 @@ exports[`Storyshots Atoms/NavigationTitle default 1`] = `
         Object {
           "color": "#2d2832",
           "fontFamily": undefined,
-          "fontSize": 32,
+          "fontSize": 24,
           "fontStyle": "normal",
           "fontWeight": "bold",
           "letterSpacing": undefined,

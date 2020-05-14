@@ -30,7 +30,7 @@ exports[`Storyshots Pages/IntroPage Default 1`] = `
           Object {
             "color": "#ff9345",
             "fontFamily": undefined,
-            "fontSize": 36,
+            "fontSize": 40,
             "fontStyle": "normal",
             "fontWeight": "bold",
             "letterSpacing": undefined,
@@ -65,21 +65,19 @@ exports[`Storyshots Pages/IntroPage Default 1`] = `
           Object {
             "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "#EEEEEE",
-            "borderColor": "#ff9345",
-            "borderRadius": 40,
-            "borderWidth": 2,
+            "backgroundColor": "#ff9345",
+            "borderRadius": 32,
             "opacity": 1,
-            "paddingHorizontal": 20,
-            "paddingVertical": 10,
+            "paddingHorizontal": 16,
+            "paddingVertical": 8,
           }
         }
       >
         <Text
           style={
             Object {
-              "color": "#ff9345",
-              "fontSize": 32,
+              "color": "#EEEEEE",
+              "fontSize": 24,
               "fontWeight": "bold",
             }
           }
@@ -110,21 +108,19 @@ exports[`Storyshots Pages/IntroPage Default 1`] = `
           Object {
             "alignItems": "center",
             "alignSelf": "center",
-            "backgroundColor": "#EEEEEE",
-            "borderColor": "#008148",
-            "borderRadius": 40,
-            "borderWidth": 2,
+            "backgroundColor": "#008148",
+            "borderRadius": 32,
             "opacity": 1,
-            "paddingHorizontal": 20,
-            "paddingVertical": 10,
+            "paddingHorizontal": 16,
+            "paddingVertical": 8,
           }
         }
       >
         <Text
           style={
             Object {
-              "color": "#008148",
-              "fontSize": 32,
+              "color": "#EEEEEE",
+              "fontSize": 24,
               "fontWeight": "bold",
             }
           }

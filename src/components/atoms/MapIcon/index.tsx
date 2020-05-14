@@ -35,7 +35,7 @@ const Icon = ({ size = "medium", color = "primary", name }: Props) => {
   return (
     <View style={{ alignItems: "center" }}>
       <RNVIcon name={iconName} size={iconSize} color={iconColor} />
-      <RNVIcon name={"chevron-down"} size={iconSize} color={iconColor} />
+      <RNVIcon name="chevron-down" size={iconSize} color={iconColor} />
     </View>
   );
 };
