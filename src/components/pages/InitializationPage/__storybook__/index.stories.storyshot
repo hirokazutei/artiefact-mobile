@@ -24,7 +24,7 @@ exports[`Storyshots Pages/InitializationPage Default 1`] = `
         Object {
           "color": "#2d2832",
           "fontFamily": undefined,
-          "fontSize": 36,
+          "fontSize": 40,
           "fontStyle": "normal",
           "fontWeight": "bold",
           "letterSpacing": undefined,

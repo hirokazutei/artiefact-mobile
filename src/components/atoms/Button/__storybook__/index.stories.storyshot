@@ -81,10 +81,8 @@ exports[`Storyshots Atoms/Button Default 1`] = `
       Object {
         "alignItems": "center",
         "alignSelf": "center",
-        "backgroundColor": "#EEEEEE",
-        "borderColor": "#ff9345",
+        "backgroundColor": "#ff9345",
         "borderRadius": 24,
-        "borderWidth": 2,
         "opacity": 1,
         "paddingHorizontal": 12,
         "paddingVertical": 6,
@@ -94,7 +92,7 @@ exports[`Storyshots Atoms/Button Default 1`] = `
     <Text
       style={
         Object {
-          "color": "#ff9345",
+          "color": "#EEEEEE",
           "fontSize": 16,
           "fontWeight": "bold",
         }
