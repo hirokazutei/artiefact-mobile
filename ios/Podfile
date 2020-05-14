@@ -9,6 +9,7 @@ target 'artiefact' do
   # react-native-vector-icon
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
   # Pods for artiefact
+  pod 'React-ART', :path => '../node_modules/react-native/Libraries/ART'
   pod 'Permission-Camera', :path => "#{permissions_path}/Camera.podspec"
   pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways.podspec"
   pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse.podspec"

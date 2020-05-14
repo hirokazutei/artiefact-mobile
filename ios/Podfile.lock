@@ -57,6 +57,8 @@ PODS:
     - React-RCTText (= 0.60.4)
     - React-RCTVibration (= 0.60.4)
     - React-RCTWebSocket (= 0.60.4)
+  - React-ART (0.60.4):
+    - React-Core (= 0.60.4)
   - React-Core (0.60.4):
     - Folly (= 2018.10.22.00)
     - React-cxxreact (= 0.60.4)
@@ -161,6 +163,7 @@ DEPENDENCIES:
   - Permission-Notifications (from `../node_modules/react-native-permissions/ios/Notifications.podspec`)
   - Permission-PhotoLibrary (from `../node_modules/react-native-permissions/ios/PhotoLibrary.podspec`)
   - React (from `../node_modules/react-native/`)
+  - React-ART (from `../node_modules/react-native/Libraries/ART`)
   - React-Core (from `../node_modules/react-native/React`)
   - React-cxxreact (from `../node_modules/react-native/ReactCommon/cxxreact`)
   - React-DevSupport (from `../node_modules/react-native/React`)
@@ -219,6 +222,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-permissions/ios/PhotoLibrary.podspec"
   React:
     :path: "../node_modules/react-native/"
+  React-ART:
+    :path: "../node_modules/react-native/Libraries/ART"
   React-Core:
     :path: "../node_modules/react-native/React"
   React-cxxreact:
@@ -294,6 +299,7 @@ SPEC CHECKSUMS:
   Permission-Notifications: 239d88f23915b360b596da931dfdb91f0b3b6d8f
   Permission-PhotoLibrary: ad505899484e71adb65dfa7ba06c486a8322bb19
   React: ff7ee2ae5ee1c1d9ae2183b4111045b25294bb01
+  React-ART: 87b6e9d975551e6177c660dd212529f73ed03681
   React-Core: 8e0ea421cae5609d2562850f98421b15030476fa
   React-cxxreact: 326880209990151a7182a813311054e9772ba510
   React-DevSupport: e9f10e6721e78e87622fc985db695c0c0168db8a
@@ -325,6 +331,6 @@ SPEC CHECKSUMS:
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   yoga: c2c050f6ae6e222534760cc82f559b89214b67e2
 
-PODFILE CHECKSUM: 1b9961f03f7d4bff5fd325789a5351cc38424c1b
+PODFILE CHECKSUM: a1fd775c2181c178fbe9b1d1dd30a492e4c9f757
 
 COCOAPODS: 1.9.1
