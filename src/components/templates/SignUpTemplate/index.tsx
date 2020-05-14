@@ -63,7 +63,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
       />
       <Space.Inset horizontal="macro" bottom="macro">
         <Title size="large" color="secondary" align="center">
-          {"Adventure Awaits,"}
+          Adventure Awaits,
         </Title>
         <ShiftingTitle color="secondary" _storyshots={_storyshots} />
         <Space.Stack size="huge" />
@@ -98,7 +98,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View style={{ justifyContent: "flex-end" }}>
             <Label size="large" color="faded">
-              {"Birthday:"}
+              Birthday:
             </Label>
           </View>
           <TouchableOpacity

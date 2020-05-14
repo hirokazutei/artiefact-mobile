@@ -8,7 +8,8 @@ import { allColors } from "../../../symbols";
 import { TextColorKeys } from "../../../symbols";
 import Icon from "../../atoms/Icon";
 import { IconTypeKey, IconSizeKey } from "../../atoms/Icon/const";
-const RNIndicator = require("react-native-indicator");
+// @ts-ignore: No Typing for react-native-indicator
+import { DotsLoader } from "react-native-indicator";
 
 type Props = {
   color?: keyof typeof allColors;
@@ -91,7 +92,7 @@ const ValidationField = ({
     : null;
   if (isValidating) {
     validationIcon = (
-      <RNIndicator.DotsLoader size={8} betweenSpace={5} color={colorLiteral} />
+      <DotsLoader size={8} betweenSpace={5} color={colorLiteral} />
     );
   }
   // TODO: Be able to change field

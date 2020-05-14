@@ -14,16 +14,16 @@ type NavigationProps = NavigationNavigatorProps<
   }
 >;
 
-type StoryshotsPrps = {
+type StoryshotsProps = {
   _storyshots?: boolean;
 };
 
-type Props = StateProps & DispatchProps & NavigationParams & StoryshotsPrps;
+type Props = StateProps & DispatchProps & NavigationParams & StoryshotsProps;
 
 class SignInPage extends React.Component<Props> {
   static navigationOptions = ({ navigation }: NavigationProps) => {
     return {
-      headerTitle: <NavigationTitle>{"SIGN IN"}</NavigationTitle>,
+      headerTitle: <NavigationTitle>SIGN IN</NavigationTitle>,
       headerLeft: (
         <BackButton
           onPress={

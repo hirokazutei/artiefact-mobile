@@ -36,6 +36,13 @@ class ShiftingTitle extends React.Component<Props, React.ComponentState> {
     Animated.timing(this.state.fadeAnim, {
       toValue: 1,
       duration: ANIMATION_DURATION,
+    }).start(() => this.fadeOutNew());
+  }
+
+  fadeOutNew() {
+    Animated.timing(this.state.fadeAnim, {
+      toValue: 0,
+      duration: ANIMATION_DURATION,
     }).start();
   }
 
@@ -48,7 +55,7 @@ class ShiftingTitle extends React.Component<Props, React.ComponentState> {
         this.setState({
           title: getRandomUserTitle(this.state.title),
         });
-      }, ANIMATION_DURATION * 2),
+      }, ANIMATION_DURATION * 3),
     });
   }
 

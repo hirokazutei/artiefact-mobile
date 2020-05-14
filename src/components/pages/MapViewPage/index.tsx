@@ -4,8 +4,14 @@ import { NavigationProps } from "../../../navigation/type";
 
 type Props = NavigationProps;
 
-const MapViewPage: React.FC<Props> = (props: Props): React.ReactElement => {
-  return <MapViewTemplate {...props} />;
-};
+class MapViewPage extends React.Component<Props> {
+  static navigationOptions = {
+    header: null,
+  };
+
+  render() {
+    return <MapViewTemplate {...this.props} />;
+  }
+}
 
 export default MapViewPage;

@@ -10,7 +10,7 @@ class InitializationPage extends React.Component<Props> {
     header: null,
   };
 
-  onComponentMount() {
+  componentDidMount() {
     this.props.initialize();
   }
 

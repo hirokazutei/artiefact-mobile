@@ -22,7 +22,7 @@ type Props = StateProps & DispatchProps & NavigationParams & StoryshotsProps;
 
 class SignUpPage extends React.Component<Props> {
   static navigationOptions = ({ navigation }: NavigationProps) => ({
-    headerTitle: <NavigationTitle>{"SIGN UP"}</NavigationTitle>,
+    headerTitle: <NavigationTitle>SIGN UP</NavigationTitle>,
     headerLeft: (
       <BackButton
         onPress={

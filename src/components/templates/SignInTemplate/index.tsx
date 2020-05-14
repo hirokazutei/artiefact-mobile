@@ -40,12 +40,14 @@ const SignInTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           placeholder="Username"
           onChangeText={onChangeUsername}
           value={username}
+          type="underline"
         />
         <Space.Stack size="huge" />
         <InputField.password
           placeholder="Password"
           onChangeText={onChangePassword}
           value={password}
+          type="underline"
         />
         <Space.Stack size="huge" />
         <Button size="massive" label="Login" onPress={onPressSignIn} />
