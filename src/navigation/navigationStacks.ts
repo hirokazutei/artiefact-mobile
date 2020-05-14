@@ -28,7 +28,7 @@ const authStackMapper: { [key in AuthStackRouteTypes]: any } = {
 const AuthStack = createStackNavigator(authStackMapper);
 
 const mapStackMapper: {
-  [key in MapStackRouteTypes]: React.FC<any> | React.Component<any>
+  [key in MapStackRouteTypes]:any 
 } = {
   mapView: MapViewPage,
   camera: CameraPage,
