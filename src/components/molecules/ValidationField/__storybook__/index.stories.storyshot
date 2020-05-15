@@ -42,15 +42,16 @@ exports[`Storyshots Molecules/ValidationField Default 1`] = `
       >
         <TextInput
           allowFontScaling={true}
-          autoCapitalize="sentences"
-          autoCorrect={true}
+          autoCapitalize="none"
+          autoCorrect={false}
           caretHidden={false}
-          dataDetectorTypes="all"
-          keyboardType="default"
+          dataDetectorTypes="none"
+          keyboardType="number-pad"
           multiline={false}
           rejectResponderTermination={true}
           secureTextEntry={false}
-          spellCheck={true}
+          selectTextOnFocus={true}
+          spellCheck={false}
           style={
             Object {
               "color": "#ff9345",

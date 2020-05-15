@@ -327,17 +327,17 @@ exports[`Storyshots Pages/SignUpPage Default 1`] = `
           >
             <TextInput
               allowFontScaling={true}
-              autoCapitalize="sentences"
-              autoCorrect={true}
-              caretHidden={false}
-              dataDetectorTypes="all"
+              autoCapitalize="none"
+              autoCorrect={false}
+              dataDetectorTypes="none"
               keyboardType="default"
               multiline={false}
               onChangeText={[Function]}
               placeholder="Username"
               rejectResponderTermination={true}
               secureTextEntry={false}
-              spellCheck={true}
+              selectTextOnFocus={false}
+              spellCheck={false}
               style={
                 Object {
                   "color": "#008148",
@@ -418,17 +418,18 @@ exports[`Storyshots Pages/SignUpPage Default 1`] = `
           >
             <TextInput
               allowFontScaling={true}
-              autoCapitalize="sentences"
-              autoCorrect={true}
-              caretHidden={false}
-              dataDetectorTypes="all"
+              autoCapitalize="none"
+              autoCorrect={false}
+              caretHidden={true}
+              dataDetectorTypes="none"
               keyboardType="default"
               multiline={false}
               onChangeText={[Function]}
               placeholder="Password"
               rejectResponderTermination={true}
-              secureTextEntry={false}
-              spellCheck={true}
+              secureTextEntry={true}
+              selectTextOnFocus={true}
+              spellCheck={false}
               style={
                 Object {
                   "color": "#008148",
@@ -509,17 +510,18 @@ exports[`Storyshots Pages/SignUpPage Default 1`] = `
           >
             <TextInput
               allowFontScaling={true}
-              autoCapitalize="sentences"
-              autoCorrect={true}
+              autoCapitalize="none"
+              autoCorrect={false}
               caretHidden={false}
-              dataDetectorTypes="all"
-              keyboardType="default"
+              dataDetectorTypes="none"
+              keyboardType="email-address"
               multiline={false}
               onChangeText={[Function]}
               placeholder="Email"
               rejectResponderTermination={true}
               secureTextEntry={false}
-              spellCheck={true}
+              selectTextOnFocus={true}
+              spellCheck={false}
               style={
                 Object {
                   "color": "#008148",
