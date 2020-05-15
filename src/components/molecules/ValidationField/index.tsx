@@ -1,5 +1,6 @@
 import React from "react";
 import { View } from "react-native";
+import { InputFieldVariation } from "react-native-kinpaku-ui";
 import { Props as InputFieldProps } from "../../atoms/InputField";
 import InputField from "../../atoms/InputField";
 import { Body } from "../../atoms/Text";
@@ -25,6 +26,23 @@ type ValidationResultType = "success" | "warning" | "error";
 type ListMessagesType = "info" | "warning" | "error";
 
 type ValidationFieldColorKeys = keyof typeof allColors;
+
+const InputFieldVariationKeys: Array<InputFieldVariation> = [
+  "creditCardNumber",
+  "decimal",
+  "email",
+  "freeField",
+  "name",
+  "number",
+  "oneTimeNumberCode",
+  "oneTimeCode",
+  "paragraph",
+  "passcode",
+  "password",
+  "phone",
+  "url",
+  "username",
+];
 
 const validationIconNames: Record<ValidationResultType, IconTypeKey> = {
   success: "successCircle",
@@ -77,43 +95,54 @@ const listMessages = (type: ListMessagesType, messages: Array<string>) => {
  * Components:
  * @extends InputField
  */
-const ValidationField = ({
-  color = "primary" as keyof typeof allColors,
-  errors,
-  infos,
-  isValidating,
-  validationResult,
-  warnings,
-  ...inputFieldProps
-}: Props) => {
-  const colorLiteral = allColors[color];
-  let validationIcon = validationResult
-    ? validationFieldIcons(validationResult, "medium", color)
-    : null;
-  if (isValidating) {
-    validationIcon = (
-      <DotsLoader size={8} betweenSpace={5} color={colorLiteral} />
-    );
-  }
-  // TODO: Be able to change field
-  return (
-    <View style={{ flexDirection: "row" }}>
-      <View style={{ flex: 1, flexDirection: "column" }}>
-        <InputField.freeField
-          {...inputFieldProps}
-          color={color}
-          type="underline"
-          rightItem={validationIcon}
-        />
-        <Space.Stack size="tiny" />
-        {errors && listMessages("error", errors)}
-        {warnings && listMessages("warning", warnings)}
-        {infos && listMessages("info", infos)}
+
+const validationFields: Partial<
+  Record<InputFieldVariation, React.FunctionComponent<Props>>
+> = {};
+
+for (const key of InputFieldVariationKeys) {
+  const InputFieldCompoent = InputField[key];
+  validationFields[key] = ({
+    color = "primary" as keyof typeof allColors,
+    errors,
+    infos,
+    isValidating,
+    validationResult,
+    warnings,
+    ...inputFieldProps
+  }: Props) => {
+    const colorLiteral = allColors[color];
+    let validationIcon = validationResult
+      ? validationFieldIcons(validationResult, "medium", color)
+      : null;
+    if (isValidating) {
+      validationIcon = (
+        <DotsLoader size={8} betweenSpace={5} color={colorLiteral} />
+      );
+    }
+
+    return (
+      <View style={{ flexDirection: "row" }}>
+        <View style={{ flex: 1, flexDirection: "column" }}>
+          <InputFieldCompoent
+            {...inputFieldProps}
+            color={color}
+            type="underline"
+            rightItem={validationIcon}
+          />
+          <Space.Stack size="tiny" />
+          {errors && listMessages("error", errors)}
+          {warnings && listMessages("warning", warnings)}
+          {infos && listMessages("info", infos)}
+        </View>
       </View>
-    </View>
-  );
-};
+    );
+  };
+}
 
-export { Props, ValidationResultType };
+export default validationFields as Record<
+  InputFieldVariation,
+  React.FunctionComponent<Props>
+>;
 
-export default ValidationField;
+export { Props, ValidationResultType, InputFieldVariationKeys };

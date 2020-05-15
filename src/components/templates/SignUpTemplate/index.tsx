@@ -67,7 +67,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
         </Title>
         <ShiftingTitle color="secondary" _storyshots={_storyshots} />
         <Space.Stack size="huge" />
-        <ValidationField
+        <ValidationField.username
           placeholder="Username"
           color="secondary"
           onChangeText={onChangeUsername}
@@ -77,7 +77,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           isValidating={isUsernameValidating}
         />
         <Space.Stack size="huge" />
-        <ValidationField
+        <ValidationField.password
           placeholder="Password"
           color="secondary"
           onChangeText={onChangePassword}
@@ -86,7 +86,7 @@ const SignUpTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           errors={passwordErrors}
         />
         <Space.Stack size="huge" />
-        <ValidationField
+        <ValidationField.email
           placeholder="Email"
           color="secondary"
           onChangeText={onChangeEmail}

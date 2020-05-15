@@ -9,7 +9,10 @@ import {
   withKnobs,
 } from "@storybook/addon-knobs";
 import Provider from "../../../../../storybook/Provider";
-import ValidationField, { Props as ValidationFieldProps } from "../index";
+import ValidationField, {
+  Props as ValidationFieldProps,
+  InputFieldVariationKeys,
+} from "../index";
 
 const DEFAULT_PROPS: ValidationFieldProps = {
   value: "",
@@ -57,6 +60,12 @@ storiesOf("Molecules/ValidationField", module)
     <Provider story={story} />
   ))
   .addDecorator(withKnobs)
-  .add("Default", () => (
-    <ValidationField {...getRequiredProps()} {...geOptionalProps()} />
-  ));
+  .add("Default", () => {
+    const variation = select(
+      "Variation Options",
+      InputFieldVariationKeys,
+      "number"
+    );
+    const Component = ValidationField[variation];
+    return <Component {...getRequiredProps()} {...geOptionalProps()} />;
+  });
