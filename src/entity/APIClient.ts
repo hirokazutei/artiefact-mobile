@@ -15,7 +15,7 @@ const DEFAULT_TIMEOUT = 5000;
 type APIOption = {
   data?: { [key: string]: any };
   headers?: { [key: string]: string };
-  queryParams?: string;
+  queryParams?: { [key: string]: string };
 };
 
 // JS DOCS, should have a prse response method
@@ -48,10 +48,10 @@ export default class APIClient {
       },
       baseURL: this.endpoint,
       url: path,
-      data: JSON.stringify(data),
       params: query,
       cache: isSensitive ? "no-cache" : "default",
       timeout: this.timeout,
+      ...(method !== restMethods.get ? { data: JSON.stringify(data) } : {}),
     };
     return axios(fetchParams);
   }
