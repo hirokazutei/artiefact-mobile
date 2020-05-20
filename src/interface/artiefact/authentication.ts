@@ -38,23 +38,35 @@ export default class AuthClient extends APIClient {
 
   public signIn(args: SignInData): Promise<any> {
     const endpointProperty = <EndpointProperty>endpoint.signIn;
-    return this.methods[endpointProperty.method](endpointProperty.uriSuffix, {
-      data: { ...args },
-    });
+    return this.methods[endpointProperty.method](
+      endpointProperty.uriSuffix,
+      {
+        data: { ...args },
+      },
+      true
+    );
   }
 
   public signUp(args: SignUpData): Promise<any> {
     const endpointProperty = <EndpointProperty>endpoint.signUp;
-    return this.methods[endpointProperty.method](endpointProperty.uriSuffix, {
-      data: { ...args },
-    });
+    return this.methods[endpointProperty.method](
+      endpointProperty.uriSuffix,
+      {
+        data: { ...args },
+      },
+      true
+    );
   }
 
   public getUser(args: getUserData): Promise<any> {
     const endpointProperty = <EndpointProperty>endpoint.getUser;
-    return this.methods[endpointProperty.method](endpointProperty.uriSuffix, {
-      headers: { Authorization: args.bearerToken },
-    });
+    return this.methods[endpointProperty.method](
+      endpointProperty.uriSuffix,
+      {
+        headers: { Authorization: args.bearerToken },
+      },
+      true
+    );
   }
 
   public checkUsernameAvailability(
@@ -64,7 +76,7 @@ export default class AuthClient extends APIClient {
       endpoint.checkUsernameAvailability
     );
     return this.methods[endpointProperty.method](endpointProperty.uriSuffix, {
-      data: { ...args },
+      queryParams: { ...args },
     });
   }
 }

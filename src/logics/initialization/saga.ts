@@ -1,4 +1,4 @@
-import { delay, takeEvery } from "redux-saga/effects";
+import { delay, put, takeEvery } from "redux-saga/effects";
 import { NavigationActions } from "react-navigation";
 import TokenManager from "../../managers/Authentication/tokenManager";
 import { initializationRespose } from "../../entity/Authentication/responses";
@@ -48,7 +48,7 @@ function* initializationHandler() {
       // TODO: Response parsing should not be done here
       const { artiefact_user } = response.data;
       console.log(artiefact_user);
-      // put(artiefact_user);
+      put(artiefact_user);
       nav.dispatch(
         NavigationActions.navigate({
           routeName: routes.mainStackRoutes.mapStack,
