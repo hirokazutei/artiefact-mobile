@@ -65,6 +65,7 @@ class Map extends React.Component<Props, State> {
         this.setRegion(this.state.currentRegion);
       } else {
         this.setCurrentRegion();
+        // When prop.shouldMapUpdate is't on, position souldn't be watched
         this.watchPosition();
       }
     }
