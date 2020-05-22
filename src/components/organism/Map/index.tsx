@@ -41,7 +41,6 @@ const DEFAULT_PROPS = {
 type Props = {
   currentRegion?: Region;
   shouldMapUpdate?: boolean;
-  children?: Array<React.ReactElement> | React.ReactElement;
 };
 
 type State = {
@@ -62,16 +61,13 @@ class Map extends React.Component<Props, State> {
     if (this.state.permission) {
       if (this.props.shouldMapUpdate) {
         this.watchPosition();
-      } else if (this.props.currentRegion) {
-        this.setRegion(this.props.currentRegion);
+      } else if (this.state.currentRegion) {
+        this.setRegion(this.state.currentRegion);
       } else {
         this.setCurrentRegion();
+        this.watchPosition();
       }
     }
-  }
-
-  componentWillUnmount() {
-    geolocation.clearWatch(this.state.watchID);
   }
 
   // Watches the current location of the user
@@ -109,8 +105,7 @@ class Map extends React.Component<Props, State> {
     if (permissionResult === permissionStatus.granted) {
       this.setState({ ...this.state, permission: true });
       return;
-    }
-    if (permissionResult === permissionStatus.unavailable) {
+    } else {
       const rationale: Rationale = {
         title: "title",
         message: "message",
@@ -190,11 +185,8 @@ class Map extends React.Component<Props, State> {
               longitudeDelta: this.state.currentRegion.longitudeDelta,
             }}
             {...DEFAULT_PROPS}
-          >
-            {this.props.children}
-          </MapView>
+          />
         )}
-        {this.props.children}
       </View>
     ) : (
       PermissionNotGrantedView

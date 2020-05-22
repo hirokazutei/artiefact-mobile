@@ -2,25 +2,30 @@ import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
 import { NavigationProps } from "../../../navigation/type";
 import Map from "../../organism/Map";
-// import Icon from "../../atoms/IconButton";
 import routes from "../../../navigation/routes";
 import IconButton from "../../atoms/IconButton";
+import Space from "../../atoms/Space";
 
 type Styles = {
   base: ViewStyle;
-  button: ViewStyle;
   buttonView: ViewStyle;
+  mapView: ViewStyle;
 };
 
 const styles: Styles = StyleSheet.create<Styles>({
   base: {
     ...StyleSheet.absoluteFillObject,
   },
-  button: {},
   buttonView: {
+    alignSelf: "stretch",
+    zIndex: 1,
     flex: 1,
     flexDirection: "column",
+    alignItems: "flex-end",
     justifyContent: "flex-end",
+  },
+  mapView: {
+    alignSelf: "stretch",
   },
 });
 
@@ -31,18 +36,17 @@ const MapViewTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
     props.navigation.navigate(routes.mapStackRoutes.camera);
   return (
     <View style={styles.base}>
-      <Map>
-        <View style={styles.buttonView}>
-          <View style={styles.button}>
-            <IconButton
-              name="camera"
-              color="primary"
-              size="medium"
-              onPress={onPressPhoto}
-            />
-          </View>
-        </View>
-      </Map>
+      <Map />
+      <View style={styles.buttonView}>
+        <Space.Inset all="large">
+          <IconButton
+            name="camera"
+            color="primary"
+            size="large"
+            onPress={onPressPhoto}
+          />
+        </Space.Inset>
+      </View>
     </View>
   );
 };
