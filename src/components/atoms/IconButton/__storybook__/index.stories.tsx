@@ -19,6 +19,7 @@ const selectIconType: Array<IconNameKey> = [
   "errorCircle",
   "warningCircle",
   "noConnection",
+  "navigation",
 ];
 
 const selectSize: Array<IconSizeKey> = ["small", "medium", "large"];
