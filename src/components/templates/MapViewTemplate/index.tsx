@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
 import { NavigationProps } from "../../../navigation/type";
 import Map from "../../organism/Map";
@@ -7,37 +7,46 @@ import IconButton from "../../atoms/IconButton";
 import Space from "../../atoms/Space";
 
 type Styles = {
-  base: ViewStyle;
-  buttonView: ViewStyle;
-  mapView: ViewStyle;
+  buttonContainer: ViewStyle;
 };
 
 const styles: Styles = StyleSheet.create<Styles>({
-  base: {
-    ...StyleSheet.absoluteFillObject,
-  },
-  buttonView: {
-    alignSelf: "stretch",
-    zIndex: 1,
-    flex: 1,
-    flexDirection: "column",
-    alignItems: "flex-end",
-    justifyContent: "flex-end",
-  },
-  mapView: {
-    alignSelf: "stretch",
+  buttonContainer: {
+    position: "absolute",
+    bottom: 0,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
   },
 });
 
 type Props = NavigationProps;
 
 const MapViewTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
+  const [followSelf, setFollowSelf] = useState<boolean>(true);
   const onPressPhoto = () =>
     props.navigation.navigate(routes.mapStackRoutes.camera);
+  const onPressFollowSelf = () => setFollowSelf(!followSelf);
+  const onPressFollowSelfCancel = () => {
+    console.log(followSelf);
+    setFollowSelf(false);
+  };
   return (
-    <View style={styles.base}>
-      <Map />
-      <View style={styles.buttonView}>
+    <>
+      <Map
+        displaySelf={true}
+        followSelf={followSelf}
+        onPressFollowSelfCancel={onPressFollowSelfCancel}
+      />
+      <View style={styles.buttonContainer}>
+        <Space.Inset all="huge">
+          <IconButton
+            name="navigation"
+            color="secondary"
+            size="medium"
+            onPress={onPressFollowSelf}
+          />
+        </Space.Inset>
         <Space.Inset all="large">
           <IconButton
             name="camera"
@@ -47,7 +56,7 @@ const MapViewTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
           />
         </Space.Inset>
       </View>
-    </View>
+    </>
   );
 };
 export default MapViewTemplate;

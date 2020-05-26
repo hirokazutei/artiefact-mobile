@@ -18,13 +18,11 @@ const { width, height } = Dimensions.get("window");
 const ASPECT_RATIO = width / height;
 
 const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: "flex-end",
-    alignItems: "center",
-  },
   map: {
     ...StyleSheet.absoluteFillObject,
+  },
+  childrenContainer: {
+    flex: 1,
   },
 });
 
@@ -32,15 +30,24 @@ const DEFAULT_PROPS = {
   provider: PROVIDER_GOOGLE,
   showsTraffic: false,
   showsIndoors: false,
-  zoomControlEnabled: false,
-  pitchEnabled: false,
-  toolbarEnabled: false,
-  moveonMarkerPress: false,
+  pitchEnabled: true,
+  toolbarEnabled: true,
+  moveonMarkerPress: true,
+  showCompass: true,
+  zoomEnabled: true,
+  zoomControlEnabled: true,
+  rotateEnabled: true,
+  scrollEnabled: true,
+  showScale: true,
+  maxDelta: DEFAULT_DELTA,
 };
 
 type Props = {
+  children?: React.ReactNode;
   currentRegion?: Region;
-  shouldMapUpdate?: boolean;
+  displaySelf?: boolean;
+  followSelf?: boolean;
+  onPressFollowSelfCancel?: () => void;
 };
 
 type State = {
@@ -59,15 +66,18 @@ class Map extends React.Component<Props, State> {
   async componentDidMount() {
     await this.checkMapPermission();
     if (this.state.permission) {
-      if (this.props.shouldMapUpdate) {
-        this.watchPosition();
-      } else if (this.state.currentRegion) {
+      this.watchPosition();
+      if (this.state.currentRegion) {
         this.setRegion(this.state.currentRegion);
       } else {
         this.setCurrentRegion();
-        // When prop.shouldMapUpdate is't on, position souldn't be watched
-        this.watchPosition();
       }
+    }
+  }
+
+  componentDidUpdate(_: Props, prevState: State) {
+    if (!prevState.permission && this.state.permission) {
+      this.watchPosition();
     }
   }
 
@@ -87,7 +97,7 @@ class Map extends React.Component<Props, State> {
               this.state.currentRegion.longitudeDelta) ||
             DEFAULT_DELTA * ASPECT_RATIO,
         };
-        this.setRegion(region);
+        this.props.followSelf && this.setRegion(region);
       },
       (error: PositionError) => {
         const artiefactError = new ArtiefactError({
@@ -157,7 +167,10 @@ class Map extends React.Component<Props, State> {
   }
 
   setRegion(region: Region) {
-    this.setState({ ...this.state, currentRegion: region });
+    this.setState({
+      ...this.state,
+      currentRegion: { ...this.state.currentRegion, ...region },
+    });
   }
 
   render() {
@@ -174,24 +187,25 @@ class Map extends React.Component<Props, State> {
       </View>
     );
 
-    return this.state.permission ? (
-      <View style={styles.container}>
-        {this.state.currentRegion && (
-          <MapView
-            style={styles.map}
-            region={{
-              latitude: this.state.currentRegion.latitude,
-              longitude: this.state.currentRegion.longitude,
-              latitudeDelta: this.state.currentRegion.latitudeDelta,
-              longitudeDelta: this.state.currentRegion.longitudeDelta,
-            }}
-            {...DEFAULT_PROPS}
-          />
-        )}
-      </View>
-    ) : (
-      PermissionNotGrantedView
-    );
+    const Map = this.state.currentRegion ? (
+      <MapView
+        style={styles.map}
+        region={{
+          latitude: this.state.currentRegion.latitude,
+          longitude: this.state.currentRegion.longitude,
+          latitudeDelta: this.state.currentRegion.latitudeDelta,
+          longitudeDelta: this.state.currentRegion.longitudeDelta,
+        }}
+        showsUserLocation={this.props.displaySelf}
+        onPanDrag={() => {
+          this.props.onPressFollowSelfCancel &&
+            this.props.onPressFollowSelfCancel();
+        }}
+        {...DEFAULT_PROPS}
+      />
+    ) : null;
+
+    return this.state.permission ? Map : PermissionNotGrantedView;
   }
 }
 

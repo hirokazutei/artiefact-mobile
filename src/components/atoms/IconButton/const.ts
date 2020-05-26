@@ -44,14 +44,16 @@ type IconNameKey =
   | "errorCircle"
   | "noConnection"
   | "successCircle"
-  | "warningCircle";
+  | "warningCircle"
+  | "navigation";
 
 type FeatherIconNameKey =
   | "camera"
   | "check-circle"
   | "x-circle"
   | "alert-circle"
-  | "wifi-off";
+  | "wifi-off"
+  | "navigation-2";
 
 const iconNames: Record<IconNameKey, FeatherIconNameKey> = {
   camera: "camera",
@@ -59,6 +61,7 @@ const iconNames: Record<IconNameKey, FeatherIconNameKey> = {
   errorCircle: "x-circle",
   warningCircle: "alert-circle",
   noConnection: "wifi-off",
+  navigation: "navigation-2",
 };
 
 export {
