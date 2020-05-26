@@ -16,8 +16,6 @@ const tokyoRegion = {
 storiesOf("Organism/Map", module)
   .addDecorator((story: () => React.ReactElement) => <Provider story={story} />)
   .addDecorator(withKnobs)
-  .add("default", () => (
-    <Map currentRegion={tokyoRegion.currentRegion} shouldMapUpdate={false} />
-  ))
-  .add("autoUpdate", () => <Map shouldMapUpdate={true} />)
+  .add("default", () => <Map currentRegion={tokyoRegion.currentRegion} />)
+  .add("autoUpdate", () => <Map followSelf={true} />)
   .add("currentRegion", () => <Map />);

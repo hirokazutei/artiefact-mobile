@@ -3,14 +3,16 @@ type IconTypeKey =
   | "errorCircle"
   | "noConnection"
   | "successCircle"
-  | "warningCircle";
+  | "warningCircle"
+  | "navigation";
 
 type FeatherIconNameKey =
   | "camera"
   | "check-circle"
   | "x-circle"
   | "alert-circle"
-  | "wifi-off";
+  | "wifi-off"
+  | "navigation-2";
 
 const iconTypes: Record<IconTypeKey, FeatherIconNameKey> = {
   camera: "camera",
@@ -18,6 +20,7 @@ const iconTypes: Record<IconTypeKey, FeatherIconNameKey> = {
   errorCircle: "x-circle",
   warningCircle: "alert-circle",
   noConnection: "wifi-off",
+  navigation: "navigation-2",
 };
 
 type IconSizeKey =
