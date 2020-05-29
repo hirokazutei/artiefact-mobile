@@ -44,12 +44,13 @@ const MapViewTemplate: React.FC<Props> = (props: Props): React.ReactElement => {
             name="navigation"
             color="secondary"
             size="medium"
+            type="outline"
             onPress={onPressFollowSelf}
           />
         </Space.Inset>
         <Space.Inset all="large">
           <IconButton
-            name="camera"
+            name="plus"
             color="primary"
             size="large"
             onPress={onPressPhoto}
