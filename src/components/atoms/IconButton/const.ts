@@ -48,7 +48,8 @@ type IconNameKey =
   | "navigation"
   | "plus"
   | "image"
-  | "rotate";
+  | "rotate"
+  | "close";
 
 type FeatherIconNameKey =
   | "camera"
@@ -59,7 +60,8 @@ type FeatherIconNameKey =
   | "navigation-2"
   | "plus"
   | "image"
-  | "refresh-cw";
+  | "refresh-cw"
+  | "x";
 
 const iconNames: Record<IconNameKey, FeatherIconNameKey> = {
   camera: "camera",
@@ -71,6 +73,7 @@ const iconNames: Record<IconNameKey, FeatherIconNameKey> = {
   plus: "plus",
   image: "image",
   rotate: "refresh-cw",
+  close: "x",
 };
 
 export {

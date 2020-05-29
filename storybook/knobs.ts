@@ -31,6 +31,7 @@ const selectAllColor: { [key in AllColorKey]: AllColorKey } = {
   danger: "danger",
   warning: "warning",
   faded: "faded",
+  darkBackground: "darkBackground",
 };
 
 const selectThemePaletteColor: {
@@ -53,6 +54,7 @@ const selectTextColor: { [key in TextColorKeys]: TextColorKeys } = {
   danger: "danger",
   warning: "warning",
   faded: "faded",
+  darkBackground: "darkBackground",
 };
 
 export {

@@ -7,7 +7,8 @@ type IconTypeKey =
   | "navigation"
   | "plus"
   | "image"
-  | "rotate";
+  | "rotate"
+  | "close";
 
 type FeatherIconNameKey =
   | "camera"
@@ -18,7 +19,8 @@ type FeatherIconNameKey =
   | "navigation-2"
   | "plus"
   | "image"
-  | "refresh-cw";
+  | "refresh-cw"
+  | "x";
 
 const iconTypes: Record<IconTypeKey, FeatherIconNameKey> = {
   camera: "camera",
@@ -30,6 +32,7 @@ const iconTypes: Record<IconTypeKey, FeatherIconNameKey> = {
   plus: "plus",
   image: "image",
   rotate: "refresh-cw",
+  close: "x",
 };
 
 type IconSizeKey =

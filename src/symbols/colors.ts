@@ -20,12 +20,13 @@ const themes: Themes<ThemePalettes> = {
   main: mainThemeColors,
 };
 
-type AdditionalColorKeys = "danger" | "faded" | "warning";
+type AdditionalColorKeys = "danger" | "faded" | "warning" | "darkBackground";
 
 const additionalColors: { [key in AdditionalColorKeys]: string } = {
   danger: "#BB2222",
   warning: "#BB6622",
   faded: "#b4afbe",
+  darkBackground: "#000000",
 };
 
 const allColors = {
