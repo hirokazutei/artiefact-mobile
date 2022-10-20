@@ -43,7 +43,7 @@
     "react-native-maps": "0.25.0",
     "react-native-modal": "11.2.0",
     "react-native-permissions": "2.0.2",
-    "react-native-reanimated": "1.7.1",
+    "react-native-reanimated": "2.10.0",
     "react-native-screens": "^1.0.0-alpha.23",
     "react-native-spacing-system": "1.0.0",
     "react-native-vector-icons": "6.6.0",
